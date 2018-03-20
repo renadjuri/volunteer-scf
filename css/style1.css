@@ -1,0 +1,139 @@
+/* 
+    Created on : Mar 8, 2018, 5:11:58 PM
+*/
+
+/*Style for the Page Body*/ 
+body  {                   
+    text-align: right;
+} 
+
+
+/*contant*/
+.body{
+    background-color:#ffffff; 
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+}
+.title {position:relative;
+        margin-right: 30pt;
+        padding-top: 200pt;
+        margin-bottom:10px;
+        border-top:  1px solid #E7E7E7;
+	    text-align: right;
+}
+.content{
+	    background-color:#ffffff; 
+	padding: 10px;
+    width: 95%;
+    position:relative;
+   margin-top: 350px; 
+    height: 900px;
+    margin: 20pt;
+}
+.img_background { padding: 0;
+                  position: absolute;
+                  height: 75pt;
+                  z-index: 1;
+                  text-align: center;
+                  width: 530px
+}
+/*Style for the page footer*/
+footer {
+    width: 1100px;
+    font-weight:bold;
+    text-align: center;
+    color:#404040;
+    bottom: -200px;
+}
+/*Style for the sitemap in footer*/
+.LinksFooter{font-size: 10pt;
+}
+/*Style for the images inside the footer*/
+.imgfooter { 
+    width:25px;         
+    height:25px;
+    margin-top:1px;
+}
+.imgfooter:hover {
+    opacity: 0.3; filter: alpha(opacity=30);}
+
+h1 {font-size: 30pt;
+    color: #0F9EA5;
+    margin-right: 10pt;
+    z-index: 2;
+    position:relative;
+	 text-align: right;
+}
+p {font-size: 14pt;
+   color: grey;
+   font-family: Futura;
+}
+h2 {font-family: Futura;
+    color: #0F9EA5;
+    margin-right: 10pt;
+}
+a {text-decoration: none;   
+   margin-right: 2px;
+   color:cadetblue;
+   font-size:13px;
+}
+a:hover{text-decoration: underline;
+        color:#7B7B7B;
+}
+
+
+
+button { padding: 5pt 15pt;
+         text-align: center;
+		 border-radius: 10px;
+         font-size: 10pt;
+         margin: 2pt 2pt;
+         cursor: pointer;
+         background-color: #b7a900; 
+         color: #fcfcfc; 
+         border: 1pt solid #b7a900;
+}
+button:hover {border: 1pt solid #cebe03;
+             background-color: #cebe03;
+              color: #fcfcfc;
+              border-radius: 10px;
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
+a{ text-decoration: none;
+}
+/* CCS for the Tool Tip */
+a.tooltips {position: relative;
+            display: inline;
+            text-decoration: none;
+}
+a.tooltips span{position: absolute;
+                color: #FFFFFF;
+                background: #0F9EA5;
+                height: 27px;
+                width: 180px;
+                line-height: 30px;
+                text-align: center;
+                visibility: hidden;
+                border-radius: 6px;
+}
+a.tooltips span:after{content: '';
+                      position: absolute;
+                      top: 50%;
+                      right: 100%;
+                      margin-top: -8px;
+                      width: 0; height: 0;
+                      border-right: 8px solid #0F9EA5;
+                      border-top: 8px solid transparent;
+                      border-bottom: 8px solid transparent;
+}
+a:hover.tooltips span {visibility: visible;
+                       opacity: 0.8;
+                       left: 100%;
+                       top: 50%;
+                       margin-top: -5px;
+                       margin-left: 5px;
+                       z-index: 999;
+}
+
+
+

@@ -14,8 +14,6 @@
         <link rel="icon" type="image/png" href="images/logo.png"/>
     </head>
     <body>
-
-
         <!-- header element creates a header for the page -->
         <header>
             <!--Logo of the TechBay website-->
@@ -25,8 +23,6 @@
             </a>
             <!--Navigation Menu-->
             <div class="d">
-
-
                 <button class="menu"><a href="Contact_us.php">تواصل معنا</a></button>
                 <button class="menu"><a href="Laptops.php">التطوع في الجمعية</a></button>
                 <button class="menu"><a href="Smartphones.php">ميثاق التطوع</a></button>
