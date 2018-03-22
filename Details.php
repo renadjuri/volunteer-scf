@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html;  charset=utf-8" />
-        <?php
-        $page_title = "التفاصيل"; //page title to pass it to the header
-        include('includes/Header.php'); // the header of the page
-        ?>
+  
+<head>
+    <title>التفاصيل</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+    <link href="css\style13.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery.min.js"></script>
 
-        <style>
-            table {
+    <style>
+        body{
+            background-image:url("images/orange wallpaper.jpg");
+            background-size:cover;
+            background-attachment:fixed;
+        }
+          table {
                 border: 1px solid black;
                 border-collapse: collapse;
                 background: #FCFBF9;
@@ -20,12 +27,24 @@
                 border-top: 1px dotted #f5f5f5;
                 width:600px;
             }
+    </style>	
+</head>
 
-        </style>
+<body>
+    <!--Navigation menu-->
+<center><img src="images/logo.png" id="logo" ></center>
 
-    </head>
-    <body>
+<ul>
+    <li><a href="index.php">الرئيسية </a></li>
+    <li><a href="events.php">الفعاليات</a></li>
+    <li><a href="includes/CharterofVolunteerism.pdf">ميثاق  التطوع</a></li>
+    <li><a href="Contact_us.php">اتصل بنا</a></li>
 
+</ul>
+
+
+<br>
+<br>
 
         <?php
         if (isset($_GET['EventID'])) {
@@ -114,10 +133,10 @@
         ?>
         <br>
         <br>
-        <!--Footer of the page -->
+          <!--Footer of the page -->
         <div class="footer">
-            <footer>  
-                <?php include('includes/footer.php'); ?>
+            <footer>             
+                <?php include('includes\footer.php'); ?>
             </footer>
         </div>
     </body>

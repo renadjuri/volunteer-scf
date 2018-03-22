@@ -1,0 +1,469 @@
+@font-face {
+    font-family: myFirstFont;
+}
+
+* {
+    font-family: ge thameen;
+    font-size:15px;
+}
+
+/* header style */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    border-radius:5px;
+    text-align: center;
+
+
+
+}
+
+
+
+li {
+    float: left;
+    text-align: center;
+
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size:18px;
+
+
+}
+
+li a:hover:not(.active) {
+    background-color: #c6b900;
+}
+li {
+    float: right;
+}
+
+
+
+/* input style*/
+input[type=text] {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+
+
+}
+input[type=tel] {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+input[type=email] {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+input[type=Qualification] {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+input[type=date] {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+
+
+input[type=password] {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+select {
+    width: 60%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+radio{
+
+}
+/* Style the tab */
+.tab {
+    float: right;
+    border: 0px solid #d6d5c3;
+    background-color: #f1f1f1;
+    width: 30%;
+
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    display: block;
+    background-color: #d6d5c3;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: right;
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: ge thameen;
+    font-size: 18px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #b7a900;
+    color: white;
+    border:0px solid #b7a900;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+    background-color: #297b39;
+    color: white;
+}
+table {
+    width:100%;
+    border-collapse: collapse;
+    font-size: 14px;
+
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+
+
+}
+th, td {
+    padding: 5px;
+    text-align: center;
+
+}
+t
+table#t01 tr:nth-child(even) {
+    background-color: #fff;
+}
+table#t01 tr:nth-child(odd) {
+    background-color:#fff;
+}
+table#t01 th {
+
+    background-color: #297b39;
+    color: white;
+}
+
+
+
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;
+      text-align: right;
+}
+/* 
+   Created on : Mar 8, 2018, 5:11:58 PM
+*/
+
+/*Style for the Page Body*/ 
+body  {                   
+    width: 1100px;
+    margin: 0 auto;
+    font-family: "ge thameen", sans-serif;
+    text-align: right;
+} 
+.title {
+    position:relative;
+    margin-right: 30pt;
+    padding-top: 160pt;
+    margin-bottom:0;
+    border-top:  1px solid #E7E7E7;
+    text-align: right;
+}
+
+/* Page Header Style*/
+header  {                
+    position:absolute;
+    width: 100%;
+    margin-right:40px;
+    margin-top: 10px;	
+    text-align: center;
+} 
+/*Style for the container of the header*/	
+.header1{           
+    width: 100%;
+    margin: 0 auto;
+    position:relative;
+    z-index: 3;
+} 
+
+.d{
+    margin-right: 50px;
+    margin-top: 160px;
+    position:absolute;
+    background-color:#0F9EA5;
+    text-align: center;
+}
+.dicon{
+
+    margin-right:  15px;
+    margin-top: 155px;
+    position:absolute;
+}
+.dicon a { 
+    text-decoration: none;   
+    margin-right: 2px;
+    color:#7B7B7B;
+    font-size:11px;
+    padding: 0;
+    margin: 0;
+}
+/*login Icons texts hover Style*/
+.dicon a:hover{             
+    color:cadetblue;
+}
+
+
+/*Style for the sitemap in footer*/
+.LinksFooter{font-size: 10pt;
+}
+/*Style for the images inside the footer*/
+.imgfooter { 
+    width:25px;         
+    height:25px;
+    margin-top:1px;
+}
+.imgfooter:hover {
+    opacity: 0.3; filter: alpha(opacity=30);}
+
+h1 {font-size: 30pt;
+    font-family: Futura;
+    color: #0F9EA5;
+    margin-right: 10pt;
+    z-index: 2;
+    position: absolute;
+    text-align: right;
+}
+p {font-size: 14pt;
+   color: white;
+   font-family: Futura;
+}
+h2 {font-family: Futura;
+    color: #0F9EA5;
+    margin-right: 10pt;
+}
+a {text-decoration: none;   
+   margin-right: 2px;
+   color:#ffffff;
+   font-size:13px;
+}
+a:hover{text-decoration: none;
+        color:#7B7B7B;
+}
+
+.img_background { padding: 0;
+                  position: absolute;
+                  height: 75pt;
+                  z-index: 1;
+                  text-align: center;
+                  width: 530px
+}
+
+button { padding: 5pt 15pt;
+         text-align: center;
+         border-radius: 10px;
+         font-size: 10pt;
+         margin: 2pt 2pt;
+         cursor: pointer;
+         background-color: #b7a900; 
+         color: #fcfcfc; 
+         border: 1pt solid #b7a900;
+}
+button:hover {border: 1pt solid #cebe03;
+              background-color: #cebe03;
+              color: #fcfcfc;
+              border-radius: 10px;
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
+a{ text-decoration: none;
+}
+/* CCS for the Tool Tip */
+a.tooltips {position: relative;
+            display: inline;
+            text-decoration: none;
+}
+a.tooltips span{position: absolute;
+                color: #FFFFFF;
+                background: #0F9EA5;
+                height: 27px;
+                width: 180px;
+                line-height: 30px;
+                text-align: center;
+                visibility: hidden;
+                border-radius: 6px;
+}
+a.tooltips span:after{content: '';
+                      position: absolute;
+                      top: 50%;
+                      right: 100%;
+                      margin-top: -8px;
+                      width: 0; height: 0;
+                      border-right: 8px solid #0F9EA5;
+                      border-top: 8px solid transparent;
+                      border-bottom: 8px solid transparent;
+}
+a:hover.tooltips span {visibility: visible;
+                       opacity: 0.8;
+                       left: 100%;
+                       top: 50%;
+                       margin-top: -5px;
+                       margin-left: 5px;
+                       z-index: 999;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+    float: right;
+    background-color: #f2f2f2;
+    padding: 0px 30px;
+    width: 70%;
+    height: 800px;
+}
+/*Style for the page footer*/
+footer {
+    margin-top:2px;
+    width: 1100px;
+    font-weight:bold;
+    text-align: center;
+    color:#404040;
+    bottom: -200px;
+}
+/*Style for the sitemap in footer*/
+.LinksFooter{font-size: 10pt;
+}
+/*Style for the images inside the footer*/
+.imgfooter { 
+    width:25px;         
+    height:25px;
+    margin-top:1px;
+}
+.imgfooter:hover {
+    opacity: 0.3; filter: alpha(opacity=30);}
+
+h1 {font-size: 30pt;
+    font-family: ge thameen;
+    color: #0F9EA5;
+    margin-right: 10pt;
+    z-index: 2;
+    position: absolute;
+    text-align: right;
+}
+p {font-size: 14pt;
+   color: grey;
+   font-family: ge thameen;
+}
+h2 {font-family: ge thameen;
+    color: #0F9EA5;
+    margin-right: 10pt;
+}
+h3 {font-family: ge thameen;
+    color: #0F9EA5;
+    margin-right: 10pt;
+}
+h4{font-family: ge thameen;
+   color: #0F9EA5;
+   margin-right: 10pt;
+}
+h5{
+    font-family: ge thameen;
+    color: #0F9EA5;
+    margin-right: 10pt;
+}
+h6 {font-family: ge thameen;
+    color: #333;
+    margin-right: 10pt;
+}
+
+/* login- sign up-forget password */
+#form-container {
+
+    width: 500px;
+    height: 500px;
+    padding: 5px;
+    border-radius: 25px;
+    background: #287c39;
+    background: linear-gradient(to bottom right, #1d682c , #44ac5a);
+    margin-top:30px;
+} 
+#form-topcontainer {
+    width: 490px;
+    height: 80px;
+    padding: 1px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background: #eaeaea;
+    background: linear-gradient(to bottom right, #d1d1d1 , #ffffff);
+
+}
+
+#logo-form{
+
+
+    width:95px;
+    height:70px;
+}
+
+#logo 
+{
+    width:110px;
+    height:80px;	
+}
+
+h2{
+    color: #43433d;
+    font-family: "ge thameen", sans-serif;
+}
+
+h3 {
+    color: #297b39;
+    font-family: "ge thameen", sans-serif;
+}
+
+/* The "Forgot password" text */
+span.psw {
+    float: center;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+}
