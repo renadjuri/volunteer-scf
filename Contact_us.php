@@ -9,39 +9,17 @@
         <style>
             .error {color: #FF0000;}
             /*tooltip to help the user to enter valid input*/
-            a.tooltips {position: relative;
-                        display: inline;
-                        text-decoration: none;}
-            a.tooltips span{position: absolute;
-                            width:140px;
-                            color: #FFFFFF;
-                            background: #0F9EA5;
-                            height: 27px;
-                            width: 180px;
-                            line-height: 30px;
-                            text-align: center;
-                            visibility: hidden;
-                            border-radius: 6px;}
-            a.tooltips span:after{content: '';
-                                  position: absolute;
-                                  top: 50%;
-                                  right: 100%;
-                                  margin-top: -8px;
-                                  width: 0; height: 0;
-                                  border-right: 8px solid #0F9EA5;
-                                  border-top: 8px solid transparent;
-                                  border-bottom: 8px solid transparent;}
-            a:hover.tooltips span {visibility: visible;
-                                   opacity: 0.8;
-                                   left: 100%;
-                                   top: 50%;
-                                   margin-top: -15px;
-                                   margin-left: 15px;
-                                   z-index: 999;}
+            .a {font-size: 14pt;
+                color: grey;
+            }
             body{
                 background-image:url("images/orange wallpaper.jpg");
                 background-size:cover;
                 background-attachment:fixed;
+            }
+            form {
+                border: none;
+                
             }
         </style>
     </head>
@@ -92,12 +70,16 @@
             //First Name validation 
             if (empty($_POST["first_name"])) {
                 $FnameErr = "تأكد من تعبئة البيانات المطلوبة.";
-            } else if (!preg_match("/[[:alpha:]]/", $_POST["first_name"])) {
+            } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["first_name"])) {
                 $FnameErr = "الإسم المدخل غير صحيح";
             }
             //Last Name validation 
+            if (empty($_POST["last_name"])) {
+                $LnameErr = "تأكد من تعبئة البيانات المطلوبة.";
+            }
+
             if (!empty($_POST["last_name"])) {
-                if (!preg_match("/[[:alpha:]]/", $_POST["last_name"])) {
+                if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["last_name"])) {
                     $LnameErr = "الإسم الاخير المدخل غير صحيح";
                 }
             }
@@ -147,6 +129,22 @@
     <form name="contactform" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
         <table width = "450px">
+            <tr><!--Contact Us Via PHONE with phone icon-->
+                <td>
+                    <p> رقم الهاتف : 
+                        (013) 888-1004 <img  src="images\phone.png" alt="phone" height="30px" width="30px">
+                        <br>
+
+                        <!--Contact Us Via EMAIL with email icon-->
+
+                    <p>
+                        <a class="a" href="mailto:volunteer@scf.org.sa">volunteer@scf.org.sa</a>
+                        بريدنا الإلكتروني
+                        <img  src="images\mail.png" alt="phone" height="30px" width="30px"> 
+                    </p>
+                    <!--Contact Us Via ADDRESS with location icon-->
+
+            </tr>
             <tr>
             <label style = "color:red"> * مطلوب </label>
             </tr>
