@@ -8,7 +8,6 @@
 
         <style type="text/css">
             body{
-                background-image:url("images/orange wallpaper.jpg");
                 background-size:cover;
                 background-attachment:fixed;
             }

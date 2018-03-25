@@ -9,7 +9,7 @@ $_SESSION["username"] = "admin"; //0000
 <link href="css\style13.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
     body{
-        background-image:url("images/orange wallpaper.jpg");
+      
         background-size:cover;
         background-attachment:fixed;
     }

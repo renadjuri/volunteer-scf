@@ -252,6 +252,7 @@ header  {
 
 /*Style for the sitemap in footer*/
 .LinksFooter{font-size: 10pt;
+            color: gray;
 }
 /*Style for the images inside the footer*/
 .imgfooter { 
@@ -280,7 +281,7 @@ h2 {font-family: Futura;
 }
 a {text-decoration: none;   
    margin-right: 2px;
-   color:#ffffff;
+   color:black;
    font-size:13px;
 }
 a:hover{text-decoration: none;
@@ -310,8 +311,7 @@ button:hover {border: 1pt solid #cebe03;
               color: #fcfcfc;
               border-radius: 10px;
               box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
-a{ text-decoration: none;
-}
+
 /* CCS for the Tool Tip */
 a.tooltips {position: relative;
             display: inline;
