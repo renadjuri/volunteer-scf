@@ -3,6 +3,7 @@
 ?>
 <!-- the header of the page-->
 <?php
+//0000 temporary
 $_SESSION["username"] = "nora555"; //0000
 $username = $_SESSION["username"];
 ?>
