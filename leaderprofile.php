@@ -20,6 +20,8 @@ $username = $_SESSION["username"];
                 background-attachment:fixed;
                 
                 
+                
+                
             }
         </style>	
     </head>
