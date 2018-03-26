@@ -3,7 +3,7 @@
 ?>
 <!-- the header of the page-->
 <?php
-//0000 temporary
+//0000 temporary j
 $_SESSION["username"] = "nora555"; //0000
 $username = $_SESSION["username"];
 ?>
@@ -18,6 +18,8 @@ $username = $_SESSION["username"];
             body{
                 background-size:cover;
                 background-attachment:fixed;
+                
+                
             }
         </style>	
     </head>
