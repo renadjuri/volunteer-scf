@@ -110,7 +110,9 @@
 		<td   width='400'style='vertical-align: top;'><p align='right'>  $Location </p></td>            
         </tr>
         <tr>
-            <td colspan='2' align='left'><h6 align='right'> <select>";
+            <td colspan='2' align='left'><h6 align='right'>
+            <form method='post' action='EventRegistration.php'>
+            <select name='TaskOption'>";
                 $qry2 = "SELECT * FROM taskofevent  
 													 
 													  where Event_ID=$EventID";
@@ -118,12 +120,16 @@
 
                 $result2 = mysqli_query($con, $qry2);
                 while ($row = mysqli_fetch_array($result2)) {
-                    echo"<option>";
+                    echo'<option value="'.$row['Task'].'">';
                     echo $row['Task'];
                     echo"</option>";
                 }
 
-                echo" </select> </h6></td>
+                echo" </select> 
+                    
+                    <br>
+                    <button type='submit'>Submit</button>
+                    </form></h6></td>
 		</tr>
         </table >
         <hr class='style4'>";
