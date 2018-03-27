@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>الفعاليات</title> <!--page title-->
+        <title>الفعاليات</title> <!--page title sumayah-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
         <link href="css\style13.css" rel="stylesheet" type="text/css" />
