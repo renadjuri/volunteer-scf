@@ -1,8 +1,10 @@
 <?php
-//manage database at databases.000webhost.com 
-//user name :id5221681_admin , password:didit3636 
-//database name: id5221681_cancergroup
-$mysqli = mysqli_connect('localhost', 'id5221681_admin', 'Ididit3636', 'id5221681_cancergroup');
+//manage database at http://www.phpmyadmin.co
+//Username: sql12229449 , Password: xQDtaEtuwZ
+//database name: sql12229449
+//Server: sql12.freemysqlhosting.net
+
+$mysqli = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449');
 
 $query = function ($query) use ($mysqli) {
     return mysqli_query($mysqli, $query);
