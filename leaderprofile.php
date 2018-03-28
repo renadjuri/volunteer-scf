@@ -19,9 +19,6 @@ $username = $_SESSION["username"];
                 background-size:cover;
                 background-attachment:fixed;
                 
-                
-                
-                
             }
         </style>	
     </head>

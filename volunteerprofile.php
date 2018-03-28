@@ -84,7 +84,7 @@ $username = $_SESSION["username"];
                     <td><label>الاسم</label></td>		 
                 </tr>
                 <tr>
-                    <td><input type="date" name="bdaytime" value="<?php print ($DateOfBirth); ?>" required></td>
+                    <td><input type="date" name="bdate" value="<?php print ($DateOfBirth); ?>" required></td>
                     <td> <label>تاريخ الميلاد</label></td>
                 </tr>
                 <tr>
@@ -102,10 +102,6 @@ $username = $_SESSION["username"];
                     </td>
                     <td><label> الجنس</label></td>	
                 </tr>
-                <tr>
-                    <td><input type="text" name="residence" value="<?php print ($residence); ?>" required></td>	
-                    <td><label>مكان الإقامة</label></td>	
-                </tr>
                 <tr> 
                     <td><select name="nationality"  value="" required>  
                             <option value="" ><?php print ($nationality); ?></option> 
@@ -117,6 +113,11 @@ $username = $_SESSION["username"];
                     <td><input type="text" name="Nid" value=" <?php print ($VolunteerID); ?>"></td> 
                     <td><label> السجل المدني/الإقامة</label></td>
                 </tr>
+                <tr>
+                    <td><input type="text" name="residence" value="<?php print ($residence); ?>" required></td>	
+                    <td><label>مكان الإقامة</label></td>	
+                </tr>
+                
                 <tr>
                     <td><select name="Qualification" value="" required>
 
@@ -147,6 +148,7 @@ $username = $_SESSION["username"];
                 </tr>
                 <tr>
                     <td><button name="update" value="update" type="submit">حفظ التعديل</button></td>
+                    <td><button name="cancel" value="cancel" type="reset">إلغاء</button></td>
                 </tr>
             </table>
         </form>
