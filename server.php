@@ -9,7 +9,7 @@ $phone = "";
 $errors = array();
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'cancergroup');
+$db = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449');
 
 // REGISTER USER
 if (isset($_POST['register_btn'])) {

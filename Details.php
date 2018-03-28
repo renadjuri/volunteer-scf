@@ -49,14 +49,14 @@
         if (isset($_GET['EventID'])) {
 
             $EventID = $_GET['EventID'];
-            $con = mysqli_connect("localhost", "root", "");
+            $con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ');
 
-            mysqli_select_db($con, "cancergroup");
+            mysqli_select_db($con, 'sql12229449');
 
-            if (!($con = mysqli_connect("localhost", "root", "")))
+            if (!($con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ')))
                 die("cannot connect </body></html>");
 
-            if (!mysqli_select_db($con, "cancergroup"))
+            if (!mysqli_select_db($con, 'sql12229449'))
                 die("Could not open cancergroup database </body></html>");
 
             $get_events = "select * from event where EventID=$EventID";
