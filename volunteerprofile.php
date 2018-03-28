@@ -1,5 +1,5 @@
 <?php
-$_SESSION["username"] = "nora555"; //0000
+$_SESSION["username"] = "sara555"; //0000
 $username = $_SESSION["username"];
 ?>
 <!DOCTYPE html>
@@ -80,7 +80,7 @@ $username = $_SESSION["username"];
         <form method="post" action = "test.php">
             <table cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><input type="text" name="Name" value="<?php print ($FirstName . $MiddleName . $LastName); ?>" required></td>
+                    <td><input type="text" name="Name" value="<?php print ($FirstName. " " . $MiddleName ." ". $LastName); ?>" required></td>
                     <td><label>الاسم</label></td>		 
                 </tr>
                 <tr>
