@@ -1,9 +1,10 @@
 <?php
-$_SESSION["username"] = "sara555"; //0000
+$_SESSION["username"] = "nora555"; //0000
 $username = $_SESSION["username"];
 ?>
 <!DOCTYPE html>
 <html>
+    cancer
     <head>
         <title>الصفحة الشخصية</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,11 +48,11 @@ $username = $_SESSION["username"];
         <?php
         $query = 'select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, residence, nationality, Qualification, Email from volunteer, account  where account.Username = volunteer.VolunteerUsername and account.Username = "' . $username . '"';
 // Connect to MySQL
-        if (!($DB = mysqli_connect('localhost', 'root', '', 'cancergroup'))) {
+        if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
             die("could not connect to database");
         }
         // open database 
-        if (!mysqli_select_db($DB, "cancergroup")) {
+        if (!mysqli_select_db($DB, "sql12229449")) {
             die("could not open cancer store to database");
         }
         // query database 
@@ -80,7 +81,7 @@ $username = $_SESSION["username"];
         <form method="post" action = "test.php">
             <table cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><input type="text" name="Name" value="<?php print ($FirstName. " " . $MiddleName ." ". $LastName); ?>" required></td>
+                    <td><input type="text" name="Name" value="<?php print ($FirstName . " ". $MiddleName ." ". $LastName); ?>" required></td>
                     <td><label>الاسم</label></td>		 
                 </tr>
                 <tr>
@@ -163,11 +164,11 @@ $username = $_SESSION["username"];
         $query = "select EventID, EventName, Location from event";
 
         // Connect to MySQL
-        if (!($DB = mysqli_connect('localhost', 'root', '', 'cancergroup'))) {
+        if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
             die("could not connect to database");
         }
         // open database 
-        if (!mysqli_select_db($DB, "cancergroup")) {
+        if (!mysqli_select_db($DB, "sql12229449")) {
             die("could not open cancer store to database");
         }
         // query database 
@@ -233,11 +234,11 @@ $username = $_SESSION["username"];
         $query = "select EventName, StartingHour, EndingHour, SUM(StartingHour+EndingHour) from volunteerparticipateonevent, event, volunteer where volunteerparticipateonevent.Event_ID = event.EventID and volunteerparticipateonevent.Volunteer_ID = volunteer.VolunteerID and volunteer.VolunteerUsername = '$username'";
 
         // Connect to MySQL
-        if (!($DB = mysqli_connect('localhost', 'root', '', 'cancergroup'))) {
+        if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
             die("could not connect to database");
         }
         // open database 
-        if (!mysqli_select_db($DB, "cancergroup")) {
+        if (!mysqli_select_db($DB, "sql12229449")) {
             die("could not open cancer store to database");
         }
         // query database 
