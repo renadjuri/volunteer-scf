@@ -558,7 +558,7 @@ $_SESSION["username"] = "admin"; //0000
 <!--Footer of the page -->
 <div class="footer">
     <footer>             
-        <?php include('includes\footer.php'); ?>
+        <?php include('includes/footer.php'); ?>
     </footer>
 </div>
 

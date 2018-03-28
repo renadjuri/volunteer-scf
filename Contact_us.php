@@ -256,7 +256,7 @@
 
     <div class="footer">
         <footer>             
-            <?php include('includes\footer.php'); ?>
+            <?php include('includes/footer.php'); ?>
         </footer>
     </div>
 </body>
