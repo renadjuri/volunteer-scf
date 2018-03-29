@@ -9,10 +9,8 @@
         <style>
 
             body{
-                background-size:cover;
-                background-attachment:fixed;
-                
-                
+                background-size:cover; 
+                background-attachment:fixed; 
             }
 
         </style>
@@ -36,7 +34,7 @@
         <div id="form-container" >
             <div id="form-topcontainer">
                 <img id="logo-form" src="images/logo.png" alt="logo" width="100" />
-                <h2> التسجيل </h2>
+                <h2> التسجيل </h2>  /* test comment*/
             </div>
             <center>
 
