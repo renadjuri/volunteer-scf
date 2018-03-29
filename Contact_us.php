@@ -13,13 +13,15 @@
                 color: grey;
             }
             body{
-              
+
                 background-size:cover;
                 background-attachment:fixed;
+                text-align: right;
             }
             form {
                 border: none;
-                
+                text-align: right;
+
             }
         </style>
     </head>
@@ -90,38 +92,37 @@
             }
         } if (!empty($_POST["first_name"]) && !empty($_POST["last_name"]) && !empty($_POST["email"]) &&
                 !empty($_POST["comments"])) {
-            if (isset($_POST['email'])) {
 
 
-                // EDIT THE 2 LINES BELOW AS REQUIRED
-                $email_to = "renadjuri@gmail.com";
-                $email_subject = "صفحة التواصل في موقع ادارة المتطوعين لجكعية السرطان السعودية";
-                $email_message = "رسالة تواصل من:\n\n";
 
-                function clean_string($string) {
-                    $bad = array("content-type", "bcc:", "to:", "cc:", "href");
-                    return str_replace($bad, "", $string);
-                }
+            // EDIT THE 2 LINES BELOW AS REQUIRED
+            $email_to = "renadjuri@gmail.com";
+            $email_subject = "صفحة التواصل في موقع ادارة المتطوعين لجكعية السرطان السعودية";
+            $email_message = "رسالة تواصل من:\n\n";
 
-                $email_message .= "الأسم الأول " . clean_string($first_name) . "\n";
-                $email_message .= "الأسم الأخير " . clean_string($last_name) . "\n";
-                $email_message .= "البريد الإلكتروني" . clean_string($email_from) . "\n";
-                $email_message .= "رقم الهاتف" . clean_string($telephone) . "\n";
-                $email_message .= "الرسالة:" . clean_string($comments) . "\n";
-                $email_message .= "-- " . "\n" . "هذه الرسالة مرسلة من قسم التواصل" . "\n" . "موقع ادارة المتطوعين في جمعية السرطان السعودية" . "\n" . "(http://scf.org.sa/volunteer)" . "\n";
+            function clean_string($string) {
+                $bad = array("content-type", "bcc:", "to:", "cc:", "href");
+                return str_replace($bad, "", $string);
+            }
+
+            $email_message .= "الأسم الأول " . clean_string($first_name) . "\n";
+            $email_message .= "الأسم الأخير " . clean_string($last_name) . "\n";
+            $email_message .= "البريد الإلكتروني" . clean_string($email_from) . "\n";
+            $email_message .= "رقم الهاتف" . clean_string($telephone) . "\n";
+            $email_message .= "الرسالة:" . clean_string($comments) . "\n";
+            $email_message .= "-- " . "\n" . "هذه الرسالة مرسلة من قسم التواصل" . "\n" . "موقع ادارة المتطوعين في جمعية السرطان السعودية" . "\n" . "(http://scf.org.sa/volunteer)" . "\n";
 
 
 
 // create email headers
-                $headers = 'From: ' . $email_from . "\r\n" .
-                        'Reply-To: ' . $email_from . "\r\n" .
-                        'X-Mailer: PHP/' . phpversion();
-                @mail($email_to, $email_subject, $email_message, $headers);
+            $headers = 'From: ' . $email_from . "\r\n" .
+                    'Reply-To: ' . $email_from . "\r\n" .
+                    'X-Mailer: PHP/' . phpversion();
+            mail($email_to, $email_subject, $email_message, $headers);
 
-                echo "<p class='error'>
+            echo "<p class='error'>
 						شكرا لتواصلك معنا
 						 </p>";
-            }
         }
     }
     ?>
