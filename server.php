@@ -9,6 +9,7 @@ $errors="";
 // connect to the database
 $db = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449');
 // REGISTER USER
+
 if (isset($_POST['register_btn'])) {
 // receive all input values from the form
     $FirstName = mysqli_real_escape_string($db, $_POST['FirstName']);
