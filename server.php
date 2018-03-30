@@ -1,67 +1,85 @@
 <?php
 
 session_start();
-
 // initializing variables
-$username = "";
-$email = "";
-$phone = "";
-$errors = array();
+$FirstName=$MiddleName=$LastName=$MobileNumber=$DateOfBirth=$Gender=$nationality=$residence=$Qualification="";
+$errors="";
+
 
 // connect to the database
 $db = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449');
-
 // REGISTER USER
 if (isset($_POST['register_btn'])) {
-    // receive all input values from the form
-    $username = mysqli_real_escape_string($db, $_POST['username']);
-    $email = mysqli_real_escape_string($db, $_POST['email']);
-    $phone = mysqli_real_escape_string($db, $_POST['phone']);
+// receive all input values from the form
+    $FirstName = mysqli_real_escape_string($db, $_POST['FirstName']);
+    $MiddleName = mysqli_real_escape_string($db, $_POST['MiddleName']);
+    $LastName = mysqli_real_escape_string($db, $_POST['LastName']);
+    $MobileNumber = mysqli_real_escape_string($db, $_POST['MobileNumber']);
+    $DateOfBirth = mysqli_real_escape_string($db, $_POST['DateOfBirth']);
+    $Gender = mysqli_real_escape_string($db, $_POST['Gender']);
+    $nationality = mysqli_real_escape_string($db, $_POST['nationality']);
+    $residence = mysqli_real_escape_string($db, $_POST['residence']);
+    $Qualification = mysqli_real_escape_string($db, $_POST['Qualification']);
+    $Email = mysqli_real_escape_string($db, $_POST['Email']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
     $password2 = mysqli_real_escape_string($db, $_POST['password2']);
-    $id = mysqli_real_escape_string($db, $_POST['id']);
-    $education = mysqli_real_escape_string($db, $_POST['education']);
     if ($password == $password2) {
         $password = md5($password); //hash password
-        $sql = "INSERT INTO account(username,email , phone, password, id,education)
-		VALUES('$username','$email','$phone','$password','$id',;$education')";
-        mysql_query($db, $sql);
+        mysqli_query($db, $sql);
 
 
-        // form validation: ensure that the form is correctly filled ...
-        // by adding (array_push()) corresponding error unto $errors array
-        if (empty($username)) {
-            array_push($errors, "يتطلب إدخال الاسم");
-        }
-        if (empty($email)) {
-            array_push($errors, "الرجاء ادخال البريد الإلكتروني");
-        }
-        if (empty($phone)) {
-            array_push($errors, "الرجاء اخال رقم الهاتف");
-        }
-        if (empty($password)) {
-            array_push($errors, "الرجاء ادخال كلمة المرور");
-        }
-        if ($password != $password2) {
-            array_push($errors, "كلمة المرور غير متطابقة");
-        }
+       
+         if (empty($_POST["FirstName"])) {
+                $errors = "الرجاء ادخال الاسم بشكل صحيح";
+            } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["FirstName"])) {
+                $errors = "الإسم المدخل غير صحيح";
+            }
+			
+		if (empty($_POST["Email"])) {
+                $errors = "الرجاء ادخال البريد الإلكتروني";
+            } else if (!filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
+                $errors = "البريد الإلكتروني غير صحيح";
+            }
+			
+	    if (empty($_POST["MobileNumber"])) {
+                $errors = "الرجاء ادخال رقم الهاتف";
+            } else if (!preg_match("/[ 0-9 ]/",$_POST["MobileNumber"])) {
+                $errors = "رقم الهاتف المدخل غير صحيح";
+            }
+			
+        if (empty($_POST["password"])) {
+                $errors = "الرجاء ادخال كلمة المرور";
+            } else if (!preg_match("/[ 0-9 ]/",$_POST["password"])) {
+                $errors = "رقم الهاتف المُدخل غير صحيح";
+            }
+  
+  if ($password != $password2) {
+	$errors=  "كلمة المرور غير متطابقة";
+  }
+        if (empty($_POST["VolunteerID"])) {
+                $errors = "الرجاء ادخال السجل المدني";
+            } else if (!preg_match("/[ 0-9  ]/",$_POST["VolunteerID"])) {
+                $errors = "الرقم المدخل غير صحيح";
+            }
 
+             if (empty($_POST["Qualification"])) {
+                $errors = "الرجاء ادخال المؤهل العلمي";
+            } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["Qualification"])) {
+                $errors = "المؤهل العلمي غير صحيح";
+            }
         // first check the database to make sure 
         // a user does not already exist with the same username and/or email
-        $user_check_query = "SELECT * FROM account WHERE username='$username' OR email='$email' OR phone='$phone' LIMIT 1";
+        $user_check_query = "SELECT * FROM Volunteer WHERE Email='$Email' OR MobileNumber='$MobileNumber' LIMIT 1";
         $result = mysqli_query($db, $user_check_query);
         $user = mysqli_fetch_assoc($result);
 
         if ($user) { // if user exists
-            if ($user['username'] === $username) {
-                array_push($errors, "الاسم موجود مسبقاً");
-            }
 
-            if ($user['email'] === $email) {
-                array_push($errors, "البريد الإلكتروني موجود مسبقاً");
+            if ($user['Email'] === $Email) {
+                $errors= "البريد الإلكتروني موجود مسبقاً";
             }
-            if ($user['phone'] === $phone) {
-                array_push($errors, "رقم الهاتف موجود مسبقاً");
+            if ($user['MobileNumber'] === $MobileNumber) {
+                $errors="رقم الهاتف موجود مسبقاً";
             }
         }
 
@@ -69,28 +87,11 @@ if (isset($_POST['register_btn'])) {
         if (count($errors) == 0) {
             $password = md5($password); //encrypt the password before saving in the database
 
-            $query = "INSERT INTO account (username, email,phone, password, id,education) 
-  			  VALUES('$username', '$email', 'phone','$password','$id','$education')";
+            $query = "INSERT INTO Volunteer (FirstName,MiddleName,LastName,MobileNumber,DateOfBirth,Gender,nationality,residence,Qualification)
+  			  VALUES('$FirstName','$MiddleName','$LastName','$MobileNumber','$DateOfBirth','$Gender','$nationality','$residence','$Qualification')";
             mysqli_query($db, $query);
             $_SESSION['username'] = $username;
             $_SESSION['success'] = "انت مسجل الآن";
-        }
-    }
-
-// LOGIN USER
-    if (isset($_POST['login_user']))//هنا اسم البوتن اللي في اللوق ان {
-        $username = mysqli_real_escape_string($db, $_POST['username']);
-    $password = mysqli_real_escape_string($db, $_POST['password']);
-
-
-    if (count($errors) == 0) {
-        $password = md5($password);
-        $query = "SELECT * FROM account WHERE username='$username' AND password='$password'";
-        $results = mysqli_query($db, $query);
-        if (mysqli_num_rows($results) == 1) {
-            $_SESSION['username'] = $username;
-        } else {
-            array_push($errors, "اسم المستخدم او كلمة المرور خاطئة");
         }
     }
 }
