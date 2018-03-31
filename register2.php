@@ -9,8 +9,8 @@
         <style>
 
             body{
-                background-size:cover;
-                background-attachment:fixed;
+                background-size:cover; 
+                background-attachment:fixed; 
             }
 
         </style>
@@ -28,13 +28,13 @@
     </ul>
 
 
-    <br>
+  
     <br>
     <center>
         <div id="form-container" >
             <div id="form-topcontainer">
                 <img id="logo-form" src="images/logo.png" alt="logo" width="100" />
-                <h2> التسجيل </h2>
+                <h2> التسجيل </h2>  
             </div>
             <center>
 
@@ -47,7 +47,7 @@
 
                             <td>
 
-
+                                
                                 <?php
                                 $gender = $info->gender;
                                 if ($gender == "Male") {
@@ -57,13 +57,14 @@
                                     $female = " selected='true'";
                                 }
                                 ?>
-
-                                <input type="radio" name="gender" value="female" checked <?= $female ?>>أنثى<br>
-                                <input type="radio" name="gender" value="male"  <?= $male ?>> ذكر<br>
-                            </td>
+                                <input type="radio" name="Gender" value="female" checked <?= $female ?>>أنثى<br>
+                                <input type="radio" name="Gender" value="male"  <?= $male ?>> ذكر<br>
+                            
+                                </td>
+                            
                             <td><b> : الجنس</b></td>
-                            </select>
-                            </td>
+                           
+                            
                         </tr>
 
 
@@ -125,6 +126,7 @@
                         <?php include('includes/footer.php'); ?>
                     </footer>
                 </div>
+            </center>
             </center>
         </div>
     </body>

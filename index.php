@@ -21,7 +21,7 @@
 </head>
 
 <body>
-
+    
     <!--Navigation menu-->
 <center><img src="images/logo.png" id="logo" ></center>
 

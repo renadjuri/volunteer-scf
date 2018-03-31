@@ -48,7 +48,23 @@ li {
 }
 
 
-
+/*search button style author @NuhaKhayat*/
+.s_button {
+    text-align: center;
+    display: inline-block;
+    margin: 0px;
+    cursor: pointer;
+    background-color: white; 
+    color: #0F9EA5; 
+    border: 1pt solid #0F9EA5;
+    border-radius: 3pt;
+}
+.s_button:hover {border: 1pt solid #666666;
+                 color:#c6b900;
+                 border-radius: 3pt;
+                 text-decoration: none;
+                 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
 /* input style*/
 input[type=text] {
     width: 70%;
