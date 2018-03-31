@@ -1,4 +1,4 @@
-<?php include('server.php') ?>
+<?php //include('server.php') ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,27 +38,19 @@
             </div>
             <center>
 
-                <form method="post" action="register2.php" >
+                <form method="post" action="#" >
 
-                    <?php $info = $account->getRow("cancergroup", $_SESSION["userid"]); ?>
-                    <?php include('errors.php'); ?>
+                    <?php //$info = $account->getRow("cancergroup", $_SESSION["userid"]); ?>
+                    <?php //include('errors.php'); ?>
                     <table>
                         <tr>
 
                             <td>
 
                                 
-                                <?php
-                                $gender = $info->gender;
-                                if ($gender == "Male") {
-                                    $male = " selected='true'";
-                                }
-                                if ($gender == "Female") {
-                                    $female = " selected='true'";
-                                }
-                                ?>
-                                <input type="radio" name="Gender" value="female" checked <?= $female ?>>أنثى<br>
-                                <input type="radio" name="Gender" value="male"  <?= $male ?>> ذكر<br>
+                              
+                                <input type="radio" name="gender" value="f" checked >أنثى<br>
+                                <input type="radio" name="gender" value="m" > ذكر<br>
                             
                                 </td>
                             
@@ -66,17 +58,34 @@
                            
                             
                         </tr>
-
-
+                        <tr> 
+    <td> <input type="text" name="VolunteerID"placeholder="vID"></td>
+                        </tr>
+                        <tr> 
+                            <td> <input type="text" name="FirstName"></td>
+                        </tr>
+                        <tr> 
+                             <td> <input type="text" name="MiddleName"placeholder="middlename"></td>
+                        </tr>
+                        
+                        <tr> 
+                             <td> <input type="text" name="LastName"placeholder="lastname"></td>
+                        </tr>
+                        <tr> 
+                             <td> <input type="text" name="MobileNumber"placeholder="mobilen"></td>
+                        </tr>
+                        <tr> 
+                             <td> <input type="text" name="residance"placeholder="risedance"></td>
+                        </tr>
                         <tr>
                             <td>
-                                <input type="date" name="birthdate" required value="<?= $basic_info->birthdate ?>">
+                                <input type="date" name="birthdate" required >
                             </td>
                             <td><b>  : تاريخ الميلاد </b></td>
 
                         </tr><tr>
                             <td>
-                                <input type="text" style="text-align:right" name="id" placeholder="1234567899" maxlength="10" required >
+                                <input type="text"  name="id"  maxlength="10" required >
                             </td>
                             <td><b> : السجل المدني/الإقامة</b></td>
 
@@ -85,7 +94,7 @@
                             <td>
                                 <select name="edu_select">
                                     <?php
-                                    $edu_select = $info->edu_select;
+                                    /*$edu_select = $info->edu_select;
                                     if ($edu_select == "Master") {
                                         $Master = " selected='true'";
                                     }
@@ -97,29 +106,57 @@
                                     }
                                     if ($edu_select == "Other") {
                                         $Other = " selected='true'";
-                                    }
+                                    }*/
                                     ?>
-                                    <option value="Master" <?= $Master ?>>ماجستير</option>
-                                    <option value="Bachelor" <?= $Bachelor ?>>بكالوريوس</option>
-                                    <option value="secondary" <?= $secondary ?> >ثانوي</option>
-                                    <option value="Other" <?= $Other ?> >أخرى</option>
+                                    <option value="Master" >ماجستير</option>
+                                    <option value="Bachelor" >بكالوريوس</option>
+                                    <option value="secondary"  >ثانوي</option>
+                                    <option value="Other"  >أخرى</option>
 
                                 </select>
                             </td>
                             <td><b>  : المؤهل العلمي</b></td>
 
                         </tr>
+                      
                         <tr>
-                            <td>
-                                <input style="text-align:right" type="text" name="education" placeholder="التخصص الدراسي" maxlength="20" >
-                            </td>
-                            <td><b>: المؤهل العلمي</b></td>
-                        </tr>
-                        <tr>
-                            <td><button type="submit" name="register_btn" formaction="/profile.php">الدخول الى الملف الشخصي </button></td>
+                            <td><button type="submit" name="submit" >تسجيل </button></td>
                         </tr>
                     </table>
                 </form>
+                <?php 
+                if(isset($_POST['submit'])){
+                    $FirstName = $_POST['FirstName'];
+                    $MiddleName = $_POST['MiddleName'];
+                    $LastName = $_POST['LastName'];
+                    $VolunteerID = $_POST['VolunteerID'];
+                    $MobileNumber = $_POST['MobileNumber'];
+                    $gender = $_POST['gender'];
+                    $birthdate = $_POST['birthdate'];
+                    $nationality = $_POST['id'];
+                    $qualification = $_POST['edu_select'];
+ $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification) 
+         VALUES ('".$VolunteerID."', '".$FirstName."', '".$MiddleName."', '".$LastName."', '".$MobileNumber."', '".$birthdate."', '".$gender."', '".$nationality."', '".$residence."', '".$qualification."' );";
+
+        // Connect to MySQL
+        if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
+            die("could not connect to database");
+        }
+        // open database 
+        if (!mysqli_select_db($DB, "sql12229449")) {
+            die("could not open cancer store to database");
+        }
+        // query database 
+        if (!($result = mysqli_query($DB, $query))) {
+            die("could not execute the query");
+        }
+        mysqli_close($DB);
+                         
+             //  echo "<br> لا يوجد فعاليات في الوقت الحالي";      
+                  echo "<script type='text/javascript'>alert('submitted successfully!')</script>";   
+                    
+                }
+                ?>
                 <!--Footer of the page -->
                 <div class="footer">
                     <footer>             

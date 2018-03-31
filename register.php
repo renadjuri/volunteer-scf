@@ -38,7 +38,7 @@
                 <img id="logo-form" src="images/logo.png" alt="logo" width="100"/>
                 <h2> تسجيل الدخول </h2>
             </div>
-            <form method="post" action="register.php" >
+            <form method="post" action="register2.php" >
                 <?php include('errors.php'); ?>
                 <table>
                     <tr>
@@ -89,7 +89,7 @@
                     </tr>
 
                     <tr>
-                        <td><button type="submit" name="register_btn" formaction="/register2.php" >اكمال التسجيل </button></td>
+                        <td><button type="submit" name="register_btn"  >اكمال التسجيل </button></td>
                     </tr>
 
                 </table>
