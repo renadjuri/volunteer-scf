@@ -92,13 +92,14 @@
     <br>
     <br>
 
-    <!--Footer of the page -->
-    <div class="footer">
-        <footer>             
-            <?php include('includes/footer.php'); ?>
-        </footer>
-    </div>
-
+  <!--Footer of the page -->
+    <center>
+        <div class="footer">
+            <footer>             
+                <?php include('includes/footer.php'); ?>
+            </footer>
+        </div>
+    </center>
 </center>
 </body>
 </html>

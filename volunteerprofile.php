@@ -413,11 +413,13 @@ $query = "UPDATE volunteer SET VolunteerID = '$VolunteerID' WHERE volunteer.Volu
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
         </script>
-        <!--Footer of the page -->
+    <!--Footer of the page -->
+    <center>
         <div class="footer">
             <footer>             
                 <?php include('includes/footer.php'); ?>
             </footer>
         </div>
+    </center>
     </body>
 </html>

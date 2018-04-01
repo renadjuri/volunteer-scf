@@ -9,7 +9,7 @@ $_SESSION["username"] = "admin"; //0000
 <link href="css\style13.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
     body{
-      
+
         background-size:cover;
         background-attachment:fixed;
     }
@@ -207,7 +207,7 @@ $_SESSION["username"] = "admin"; //0000
     <?php
     $query = "select EventID, EventName from event";
 
-   // Connect to MySQL
+    // Connect to MySQL
     if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
         die("could not connect to database");
     }
@@ -243,14 +243,14 @@ $_SESSION["username"] = "admin"; //0000
 
         $query = "select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, email from volunteer, account, volunteerparticipateonevent where account.Username = volunteer.VolunteerUsername and volunteer.VolunteerID = volunteerparticipateonevent.Volunteer_ID and volunteerparticipateonevent.Event_ID = $selectEvent";
 
-         // Connect to MySQL
-    if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-        die("could not connect to database");
-    }
-    // open database 
-    if (!mysqli_select_db($DB, "sql12229449")) {
-        die("could not open cancer store to database");
-    }
+        // Connect to MySQL
+        if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
+            die("could not connect to database");
+        }
+        // open database 
+        if (!mysqli_select_db($DB, "sql12229449")) {
+            die("could not open cancer store to database");
+        }
         // query database 
         if (!($result = mysqli_query($DB, $query))) {
             die("could not execute the query");
@@ -323,13 +323,13 @@ $_SESSION["username"] = "admin"; //0000
         $query = "select FirstName, MiddleName, LastName, VolunteerID, BlackList from volunteer where BlackList = 1";
 
         // Connect to MySQL
-    if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-        die("could not connect to database");
-    }
-    // open database 
-    if (!mysqli_select_db($DB, "sql12229449")) {
-        die("could not open cancer store to database");
-    }
+        if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
+            die("could not connect to database");
+        }
+        // open database 
+        if (!mysqli_select_db($DB, "sql12229449")) {
+            die("could not open cancer store to database");
+        }
         // query database 
         if (!($result = mysqli_query($DB, $query))) {
             die("could not execute the query");
@@ -469,13 +469,13 @@ $_SESSION["username"] = "admin"; //0000
 // $query = 'select * from admin where AdminUsername="'.$username.'"';
 // //include ("connection.php");
 // // Connect to MySQL
-  //  if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-   //     die("could not connect to database");
-  //  }
+    //  if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
+    //     die("could not connect to database");
+    //  }
     // open database 
-  //  if (!mysqli_select_db($DB, "sql12229449")) {
-  //      die("could not open cancer store to database");
- //   }
+    //  if (!mysqli_select_db($DB, "sql12229449")) {
+    //      die("could not open cancer store to database");
+    //   }
 // // query database 
 // if (!($re = mysqli_query($DB, $query))) {
 // die("could not execute the query");
@@ -556,11 +556,13 @@ $_SESSION["username"] = "admin"; //0000
 
 
 <!--Footer of the page -->
-<div class="footer">
-    <footer>             
-        <?php include('includes/footer.php'); ?>
-    </footer>
-</div>
+<center>
+    <div class="footer">
+        <footer>             
+            <?php include('includes/footer.php'); ?>
+        </footer>
+    </div>
+</center>
 
 </body>
 </html> 

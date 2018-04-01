@@ -1,4 +1,4 @@
-<?php //include('server.php')   ?>
+<?php //include('server.php')     ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -146,15 +146,18 @@
                     echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
                 }
                 ?>
-                <!--Footer of the page -->
-                <div class="footer">
-                    <footer>             
-                        <?php include('includes/footer.php'); ?>
-                    </footer>
-                </div>
+
             </center>
     </center>
-</div>
+    <!--Footer of the page -->
+    <center>
+        <div class="footer">
+            <footer>             
+                <?php include('includes/footer.php'); ?>
+            </footer>
+        </div>
+    </center>
+
 </body>
 
 </html>

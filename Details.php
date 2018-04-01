@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-  
-<head>
-    <title>التفاصيل</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-    <link href="css\style13.css" rel="stylesheet" type="text/css" />
-    <script src="js/jquery.min.js"></script>
 
-    <style>
-        body{
-            background-size:cover;
-            background-attachment:fixed;
-        }
-          table {
+    <head>
+        <title>التفاصيل</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+        <link href="css\style13.css" rel="stylesheet" type="text/css" />
+        <script src="js/jquery.min.js"></script>
+
+        <style>
+            body{
+                background-size:cover;
+                background-attachment:fixed;
+            }
+            table {
                 border: 1px solid black;
                 border-collapse: collapse;
                 background: #FCFBF9;
@@ -26,45 +26,45 @@
                 border-top: 1px dotted #f5f5f5;
                 width:600px;
             }
-    </style>	
-</head>
+        </style>	
+    </head>
 
-<body>
-    <!--Navigation menu-->
-<center><img src="images/logo.png" id="logo" ></center>
+    <body>
+        <!--Navigation menu-->
+    <center><img src="images/logo.png" id="logo" ></center>
 
-<ul>
-    <li><a href="index.php">الرئيسية </a></li>
-    <li><a href="events.php">الفعاليات</a></li>
-    <li><a href="includes/CharterofVolunteerism.pdf">ميثاق  التطوع</a></li>
-    <li><a href="Contact_us.php">اتصل بنا</a></li>
+    <ul>
+        <li><a href="index.php">الرئيسية </a></li>
+        <li><a href="events.php">الفعاليات</a></li>
+        <li><a href="includes/CharterofVolunteerism.pdf">ميثاق  التطوع</a></li>
+        <li><a href="Contact_us.php">اتصل بنا</a></li>
 
-</ul>
-<br>
-<br>
+    </ul>
+    <br>
+    <br>
 
-        <?php
-        if (isset($_GET['EventID'])) {
+    <?php
+    if (isset($_GET['EventID'])) {
 
-            $EventID = $_GET['EventID'];
-            $con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ');
-            mysqli_select_db($con, 'sql12229449');
-            if (!($con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ')))
-                die("cannot connect </body></html>");
-            if (!mysqli_select_db($con, 'sql12229449'))
-                die("Could not open cancergroup database </body></html>");
-            $get_events = "select * from event where EventID=$EventID";
-            mysqli_query($con, "SET NAMES utf8");
-            $run_events = mysqli_query($con, $get_events);
+        $EventID = $_GET['EventID'];
+        $con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ');
+        mysqli_select_db($con, 'sql12229449');
+        if (!($con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ')))
+            die("cannot connect </body></html>");
+        if (!mysqli_select_db($con, 'sql12229449'))
+            die("Could not open cancergroup database </body></html>");
+        $get_events = "select * from event where EventID=$EventID";
+        mysqli_query($con, "SET NAMES utf8");
+        $run_events = mysqli_query($con, $get_events);
 
-            while ($row_events = mysqli_fetch_array($run_events)) {
+        while ($row_events = mysqli_fetch_array($run_events)) {
 
-                $EventID = $row_events['EventID'];
-                $EventName = $row_events['EventName'];
-                $EventDescription = $row_events['EventDescription'];
-                $EventImage = $row_events['EventImage'];
-                $Location = $row_events['Location'];
-                echo "
+            $EventID = $row_events['EventID'];
+            $EventName = $row_events['EventName'];
+            $EventDescription = $row_events['EventDescription'];
+            $EventImage = $row_events['EventImage'];
+            $Location = $row_events['Location'];
+            echo "
 	  <br>
 	  <br>
 	  <br>
@@ -78,13 +78,13 @@
 		<table  style='height:40px; width:700px; margin-top:5px; margin-left: auto; margin-right: auto; border:1px #F8F7F3 solid;' >
 		<tr>
 		<td  style='vertical-align: top;'> <p>:تاريخ الفعالية</p><p align='right' >";
-                $qry2 = "SELECT * FROM dateofevent where Event_ID=$EventID";
-                $result2 = mysqli_query($con, $qry2);
-                while ($row = mysqli_fetch_array($result2)) {
-                    $Date = $row['Date'];
-                    echo "$Date <br> ";
-                }
-                echo" </p></td>
+            $qry2 = "SELECT * FROM dateofevent where Event_ID=$EventID";
+            $result2 = mysqli_query($con, $qry2);
+            while ($row = mysqli_fetch_array($result2)) {
+                $Date = $row['Date'];
+                echo "$Date <br> ";
+            }
+            echo" </p></td>
 			<td  rowspan='2' width='700'style='vertical-align: top;'> <p align='right' > $EventName </p>
 			<p align='right'>   $EventDescription سيتضمن البرنامج أمسيات حوارية، حيث تقام في اليوم الأول: أمسية “الوعي الاسري”، من تقديم الدكتور/خالد الحليبي، والدكتور/ عبد السلام الصقعبي، أما اليوم الثاني فستقام أمسية حوارية بعنوان “الوعي الذاتي”، من تقديم الدكتور/محمد المقهوي والدكتور/فهد الماجد.ا </p></td>
 			
@@ -98,19 +98,19 @@
             <td colspan='2' align='left'><h6 align='right'>
             <form method='post' action='EventRegistration.php'>
             <select name='TaskOption'>";
-                $qry2 = "SELECT * FROM taskofevent  
+            $qry2 = "SELECT * FROM taskofevent  
 													 
 													  where Event_ID=$EventID";
 
 
-                $result2 = mysqli_query($con, $qry2);
-                while ($row = mysqli_fetch_array($result2)) {
-                    echo'<option value="'.$row['Task'].'">';
-                    echo $row['Task'];
-                    echo"</option>";
-                }
+            $result2 = mysqli_query($con, $qry2);
+            while ($row = mysqli_fetch_array($result2)) {
+                echo'<option value="' . $row['Task'] . '">';
+                echo $row['Task'];
+                echo"</option>";
+            }
 
-                echo" </select> 
+            echo" </select> 
                     
                     <br>
                     <button type='submit'>Submit</button>
@@ -118,16 +118,18 @@
 		</tr>
         </table >
         <hr class='style4'>";
-            }
         }
-        ?>
-        <br>
-        <br>
-          <!--Footer of the page -->
+    }
+    ?>
+    <br>
+    <br>
+    <!--Footer of the page -->
+    <center>
         <div class="footer">
             <footer>             
                 <?php include('includes/footer.php'); ?>
             </footer>
         </div>
-    </body>
+    </center>
+</body>
 </html>

@@ -49,15 +49,15 @@
 
 
     <?php
-   $con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ');
+    $con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ');
 
-     mysqli_select_db($con, 'sql12229449');
+    mysqli_select_db($con, 'sql12229449');
 
-       if (!($con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ')))
-                die("cannot connect </body></html>");
+    if (!($con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ')))
+        die("cannot connect </body></html>");
 
-            if (!mysqli_select_db($con, 'sql12229449'))
-                die("Could not open cancergroup database </body></html>");
+    if (!mysqli_select_db($con, 'sql12229449'))
+        die("Could not open cancergroup database </body></html>");
 
 
     $get_events = "select * from event ";
@@ -108,10 +108,12 @@
     <br>
     <br>
     <!--Footer of the page -->
-    <div class="footer">
-        <footer>             
-            <?php include('includes/footer.php'); ?>
-        </footer>
-    </div>
+    <center>
+        <div class="footer">
+            <footer>             
+                <?php include('includes/footer.php'); ?>
+            </footer>
+        </div>
+    </center>
 </body>
 </html>

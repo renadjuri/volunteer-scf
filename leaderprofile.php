@@ -413,10 +413,12 @@ leaderleadvolunteers.LeaderID = (SELECT volunteer.VolunteerID from volunteer whe
         document.getElementById("defaultOpen").click();
     </script>
     <!--Footer of the page -->
-    <div class="footer">
-        <footer>             
-            <?php include('includes/footer.php'); ?>
-        </footer>
-    </div>
+    <center>
+        <div class="footer">
+            <footer>             
+                <?php include('includes/footer.php'); ?>
+            </footer>
+        </div>
+    </center>
 </body>
 </html> 

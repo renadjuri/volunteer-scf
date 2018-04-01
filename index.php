@@ -15,13 +15,13 @@
             background-size:cover;
             background-attachment:fixed;
         }
-         .mySlides {display:none;
+        .mySlides {display:none;
         }
     </style>
 </head>
 
 <body>
-    
+
     <!--Navigation menu-->
 <center><img src="images/logo.png" id="logo" ></center>
 
@@ -79,10 +79,12 @@
     }
 </script>
 <!--Footer of the page -->
-<div class="footer">
-    <footer>             
-        <?php include('includes/footer.php'); ?>
-    </footer>
-</div>
+<center>
+    <div class="footer">
+        <footer>             
+            <?php include('includes/footer.php'); ?>
+        </footer>
+    </div>
+</center>
 </body>
 </html>
