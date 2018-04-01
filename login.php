@@ -20,7 +20,7 @@ if (is_login()) {
                 background-size:cover;
                 background-attachment:fixed;
             }
-            a{color:white;}
+
 
         </style>
     </head>
@@ -40,13 +40,13 @@ if (is_login()) {
                             switch (data) {
                                 case "empty":
                                     alert(111);
-                                    msg_login.html("<font color='red'>Username or Password is empty</font>");
+                                    msg_login.html("<font color='red'>كلمة المرور أو أسم المستخدم فارغة</font>");
                                     break;
                                 case "invalid":
-                                    msg_login.html("<font color='red'>Username or Password is invalid</font>");
+                                    msg_login.html("<font color='red'>كلمة المرور أو اسم المستخدم غير صحيحة</font>");
                                     break;
                                 case "login":
-                                    msg_login.html("<font color='#50be4c'>Login successfully</font>");
+                                    msg_login.html("<font color='#50be4c'>تم تسجيل الدخول</font>");
                                     location.reload();
                                     break;
                             }
@@ -67,11 +67,8 @@ if (is_login()) {
         <li><a href="Contact_us.php">اتصل بنا</a></li>
 
     </ul>
-
-
     <br>
     <br>
-
     <center>
         <div id="form-container" >
             <div id="form-topcontainer">
@@ -81,41 +78,30 @@ if (is_login()) {
             <center>
                 <?php if (!is_login()) { ?>
                     <div class="login">
-                        <div id="msg_login">
-                        </div>
                         <form method="post">
                             <br><br>
-                            
                             <input id="username" name="username" placeholder="إسم المستخدم" type="text">
                             <label style="color:#FCFBF9;
-                                  font-size: 18px;">إسم المستخدم&nbsp;</label>
-                            <br>
-                           
+                                   font-size: 18px;">إسم المستخدم&nbsp;</label>
+                            <br>                           
                             <input id="password" name="password" placeholder="*********" type="password">
-                           
-                             <label style="color:#FCFBF9;
+                            <label style="color:#FCFBF9;
                                    font-size: 18px;">كلمة المرور &nbsp;</label>
-                                    <br>
-                                    <a id="link" href="forget-password.php">نسيت كلمة المرور؟</a>
-                           
-                            <div style="margin-left: 100px; margin-top: 5px ; padding: 5px">
+                            <br>
+                            <a id="link" href="forget-password.php">نسيت كلمة المرور؟</a>
+                            
+                            <div style="margin-left: 5px; margin-top: 5px ; padding: 5px">
+                                <a style="padding: 15px; text-decoration:none" class="s_button" href="register.php">تسجيل مستخدم جديد</a>
                                 <a style="padding: 15px" class="s_button" id="login_ajax">تسجيل الدخول</a>
-                                <a style="padding: 15px" class="s_button" href="register.php">تسجيل مستخدم جديد</a>
                             </div>
-
-
-
                             </span>   
                             <br>
+                            <div id="msg_login">
+                            </div>
                             <br>
                         </form>
-
-
                     </div>
                 <?php } ?>
-
-
-
         </div>
     </center>
     <!--Footer of the page -->

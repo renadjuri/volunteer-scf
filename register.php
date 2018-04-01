@@ -15,8 +15,7 @@
             form{border:none;
                  box-shadow: none;}
             </style>
-        </head>
-       
+        </head>       
     <body>
         <!--Navigation menu-->
     <center><img src="images/logo.png" id="logo" ></center>
@@ -28,8 +27,6 @@
         <li><a href="Contact_us.php">اتصل بنا</a></li>
 
     </ul>
-
-
     <br>
     <br>
     <center>
@@ -80,18 +77,15 @@
                         </td>
                     <br>
                     </tr>
-
                     <tr>
                         <td>
                             <a href="includes/Terms_and_Conditions.pdf"><b>أتعهد بالإلتزام بشروط و أحكام التطوع في الجمعية السعودية للسرطان</b></a>
                             <input type="checkbox" name="check2" value="ok2"required><form action="/action_page.php">
                         </td>
                     </tr>
-
                     <tr>
                         <td><button type="submit" name="register_btn"  >اكمال التسجيل </button></td>
                     </tr>
-
                 </table>
             </form>
     </center>

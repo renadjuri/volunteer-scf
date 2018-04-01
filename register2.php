@@ -1,11 +1,10 @@
-<?php //include('server.php') ?>
+<?php //include('server.php')   ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css\style13.css" rel="stylesheet" type="text/css" />
-
         <style>
 
             body{
@@ -26,9 +25,6 @@
         <li><a href="Contact_us.php">اتصل بنا</a></li>
 
     </ul>
-
-
-  
     <br>
     <center>
         <div id="form-container" >
@@ -44,38 +40,32 @@
                     <?php //include('errors.php'); ?>
                     <table>
                         <tr>
-
-                            <td>
-
-                                
-                              
+                            <td> 
                                 <input type="radio" name="gender" value="f" checked >أنثى<br>
                                 <input type="radio" name="gender" value="m" > ذكر<br>
-                            
-                                </td>
-                            
-                            <td><b> : الجنس</b></td>
-                           
-                            
+
+                            </td>
+
+                            <td><b> : الجنس</b></td>                
                         </tr>
                         <tr> 
-    <td> <input type="text" name="VolunteerID"placeholder="vID"></td>
+                            <td> <input type="text" name="VolunteerID"placeholder="vID"></td>
                         </tr>
                         <tr> 
                             <td> <input type="text" name="FirstName"></td>
                         </tr>
                         <tr> 
-                             <td> <input type="text" name="MiddleName"placeholder="middlename"></td>
+                            <td> <input type="text" name="MiddleName"placeholder="middlename"></td>
                         </tr>
-                        
+
                         <tr> 
-                             <td> <input type="text" name="LastName"placeholder="lastname"></td>
-                        </tr>
-                        <tr> 
-                             <td> <input type="text" name="MobileNumber"placeholder="mobilen"></td>
+                            <td> <input type="text" name="LastName"placeholder="lastname"></td>
                         </tr>
                         <tr> 
-                             <td> <input type="text" name="residance"placeholder="risedance"></td>
+                            <td> <input type="text" name="MobileNumber"placeholder="mobilen"></td>
+                        </tr>
+                        <tr> 
+                            <td> <input type="text" name="residance"placeholder="risedance"></td>
                         </tr>
                         <tr>
                             <td>
@@ -94,19 +84,19 @@
                             <td>
                                 <select name="edu_select">
                                     <?php
-                                    /*$edu_select = $info->edu_select;
-                                    if ($edu_select == "Master") {
-                                        $Master = " selected='true'";
-                                    }
-                                    if ($edu_select == "Bachelor") {
-                                        $Bachelor = " selected='true'";
-                                    }
-                                    if ($edu_select == "secondary") {
-                                        $secondary = " selected='true'";
-                                    }
-                                    if ($edu_select == "Other") {
-                                        $Other = " selected='true'";
-                                    }*/
+                                    /* $edu_select = $info->edu_select;
+                                      if ($edu_select == "Master") {
+                                      $Master = " selected='true'";
+                                      }
+                                      if ($edu_select == "Bachelor") {
+                                      $Bachelor = " selected='true'";
+                                      }
+                                      if ($edu_select == "secondary") {
+                                      $secondary = " selected='true'";
+                                      }
+                                      if ($edu_select == "Other") {
+                                      $Other = " selected='true'";
+                                      } */
                                     ?>
                                     <option value="Master" >ماجستير</option>
                                     <option value="Bachelor" >بكالوريوس</option>
@@ -118,14 +108,14 @@
                             <td><b>  : المؤهل العلمي</b></td>
 
                         </tr>
-                      
+
                         <tr>
                             <td><button type="submit" name="submit" >تسجيل </button></td>
                         </tr>
                     </table>
                 </form>
-                <?php 
-                if(isset($_POST['submit'])){
+                <?php
+                if (isset($_POST['submit'])) {
                     $FirstName = $_POST['FirstName'];
                     $MiddleName = $_POST['MiddleName'];
                     $LastName = $_POST['LastName'];
@@ -135,26 +125,25 @@
                     $birthdate = $_POST['birthdate'];
                     $nationality = $_POST['id'];
                     $qualification = $_POST['edu_select'];
- $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification) 
-         VALUES ('".$VolunteerID."', '".$FirstName."', '".$MiddleName."', '".$LastName."', '".$MobileNumber."', '".$birthdate."', '".$gender."', '".$nationality."', '".$residence."', '".$qualification."' );";
+                    $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification) 
+         VALUES ('" . $VolunteerID . "', '" . $FirstName . "', '" . $MiddleName . "', '" . $LastName . "', '" . $MobileNumber . "', '" . $birthdate . "', '" . $gender . "', '" . $nationality . "', '" . $residence . "', '" . $qualification . "' );";
 
-        // Connect to MySQL
-        if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-            die("could not connect to database");
-        }
-        // open database 
-        if (!mysqli_select_db($DB, "sql12229449")) {
-            die("could not open cancer store to database");
-        }
-        // query database 
-        if (!($result = mysqli_query($DB, $query))) {
-            die("could not execute the query");
-        }
-        mysqli_close($DB);
-                         
-             //  echo "<br> لا يوجد فعاليات في الوقت الحالي";      
-                  echo "<script type='text/javascript'>alert('submitted successfully!')</script>";   
-                    
+                    // Connect to MySQL
+                    if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
+                        die("could not connect to database");
+                    }
+                    // open database 
+                    if (!mysqli_select_db($DB, "sql12229449")) {
+                        die("could not open cancer store to database");
+                    }
+                    // query database 
+                    if (!($result = mysqli_query($DB, $query))) {
+                        die("could not execute the query");
+                    }
+                    mysqli_close($DB);
+
+                    //  echo "<br> لا يوجد فعاليات في الوقت الحالي";      
+                    echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
                 }
                 ?>
                 <!--Footer of the page -->
@@ -164,8 +153,8 @@
                     </footer>
                 </div>
             </center>
-            </center>
-        </div>
-    </body>
+    </center>
+</div>
+</body>
 
 </html>

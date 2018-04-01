@@ -40,8 +40,6 @@
     <li><a href="Contact_us.php">اتصل بنا</a></li>
 
 </ul>
-
-
 <br>
 <br>
 
@@ -50,15 +48,11 @@
 
             $EventID = $_GET['EventID'];
             $con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ');
-
             mysqli_select_db($con, 'sql12229449');
-
             if (!($con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ')))
                 die("cannot connect </body></html>");
-
             if (!mysqli_select_db($con, 'sql12229449'))
                 die("Could not open cancergroup database </body></html>");
-
             $get_events = "select * from event where EventID=$EventID";
             mysqli_query($con, "SET NAMES utf8");
             $run_events = mysqli_query($con, $get_events);
@@ -82,23 +76,14 @@
 	  <br>
 	  <br>
 		<table  style='height:40px; width:700px; margin-top:5px; margin-left: auto; margin-right: auto; border:1px #F8F7F3 solid;' >
-
 		<tr>
 		<td  style='vertical-align: top;'> <p>:تاريخ الفعالية</p><p align='right' >";
-
-
                 $qry2 = "SELECT * FROM dateofevent where Event_ID=$EventID";
-
-
                 $result2 = mysqli_query($con, $qry2);
                 while ($row = mysqli_fetch_array($result2)) {
-
-
-
                     $Date = $row['Date'];
                     echo "$Date <br> ";
                 }
-
                 echo" </p></td>
 			<td  rowspan='2' width='700'style='vertical-align: top;'> <p align='right' > $EventName </p>
 			<p align='right'>   $EventDescription سيتضمن البرنامج أمسيات حوارية، حيث تقام في اليوم الأول: أمسية “الوعي الاسري”، من تقديم الدكتور/خالد الحليبي، والدكتور/ عبد السلام الصقعبي، أما اليوم الثاني فستقام أمسية حوارية بعنوان “الوعي الذاتي”، من تقديم الدكتور/محمد المقهوي والدكتور/فهد الماجد.ا </p></td>
