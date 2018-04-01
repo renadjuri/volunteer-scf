@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>تواصل معنا</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-        <link href="css\style13.css" rel="stylesheet" type="text/css" />
+
+<?php
+$page_title = "تواصل معنا"; //page title to pass it to the header
+include("includes/Header.php"); // the header of the page
+?>
         <style>
             .error {color: #FF0000;}
             /*tooltip to help the user to enter valid input*/
@@ -23,22 +22,9 @@
 
             }
         </style>
-    </head>
+
     <body>  
-        <!--Navigation menu-->
-    <center><img src="images/logo.png" id="logo" ></center>
-
-    <ul>
-        <li><a href="index.php">الرئيسية </a></li>
-        <li><a href="events.php">الفعاليات</a></li>
-        <li><a href="includes/CharterofVolunteerism.pdf">ميثاق  التطوع</a></li>
-        <li><a class="active" href="Contact_us.php">اتصل بنا</a></li>
-
-    </ul>
-
-
-    <br>
-    <br>
+   
     <div>
 
 
@@ -256,13 +242,13 @@
             </table>
         </form>
         <!--Footer of the page -->
- <center>
+        <center>
             <div class="footer">
                 <footer>             
                     <?php include('includes/footer.php'); ?>
                 </footer>
             </div>
-   </center>
+        </center>
     </div>
 </body>
 </html>

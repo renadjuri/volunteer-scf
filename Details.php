@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<html>
-    <head>
 
-    <head>
-        <title>التفاصيل</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-        <link href="css\style13.css" rel="stylesheet" type="text/css" />
-        <script src="js/jquery.min.js"></script>
+<?php
+   $page_title = "تفاصيل عن الفعالية";//page title to pass it to the header
+   include("includes/Header.php"); // the header of the page
+?>
 
         <style>
             body{
@@ -27,20 +23,10 @@
                 width:600px;
             }
         </style>	
-    </head>
+
 
     <body>
-        <!--Navigation menu-->
-    <center><img src="images/logo.png" id="logo" ></center>
-
-    <ul>
-        <li><a href="index.php">الرئيسية </a></li>
-        <li><a href="events.php">الفعاليات</a></li>
-        <li><a href="includes/CharterofVolunteerism.pdf">ميثاق  التطوع</a></li>
-        <li><a href="Contact_us.php">اتصل بنا</a></li>
-
-    </ul>
-    <br>
+        
     <br>
 
     <?php

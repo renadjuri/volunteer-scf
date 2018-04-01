@@ -1,10 +1,9 @@
-<?php include('server.php') ?>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css\style13.css" rel="stylesheet" type="text/css"/>
+<?php
+$page_title = "تسجيل مستخدم جديد"; //page title to pass it to the header
+include("includes/Header.php"); // the header of the page
+include('server.php')
+?>
 
         <style>
 
@@ -19,19 +18,9 @@
             #form-topcontainer {
                 width: 590px;}
             </style>
-        </head>       
+     
         <body>
-            <!--Navigation menu-->
-        <center><img src="images/logo.png" id="logo" ></center>
-
-    <ul>
-        <li><a href="index.php">الرئيسية </a></li>
-        <li><a href="events.php">الفعاليات</a></li>
-        <li><a href="includes/CharterofVolunteerism.pdf">ميثاق  التطوع</a></li>
-        <li><a href="Contact_us.php">اتصل بنا</a></li>
-
-    </ul>
-    <br>
+        
     <br>
     <center>
         <div id="form-container" >

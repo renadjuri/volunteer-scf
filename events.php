@@ -1,50 +1,35 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>الفعاليات</title> <!--page title sumayah-->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-        <link href="css\style13.css" rel="stylesheet" type="text/css" />
+<!-- the header of the page-->
+<?php
+$page_title = "الفعاليات"; //page title to pass it to the header
+include("includes/Header.php"); // the header of the page
+?>
 
-        <style type="text/css">
-            body{
-                background-size:cover;
-                background-attachment:fixed;
-            }
-            table {
-                border: 1px solid black;
-                border-collapse: collapse;
-                background: #FCFBF9;
-            }
-            td {
-                border: none;
-            }
+<style type="text/css">
+    body{
+        background-size:cover;
+        background-attachment:fixed;
+    }
+    table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        background: #FCFBF9;
+    }
+    td {
+        border: none;
+    }
 
-            table:hover {background-color:#f5f5f5;}
+    table:hover {background-color:#f5f5f5;}
 
-            hr.style4 {
-                border-top: 1px dotted #f5f5f5;
-                width:600px;
-            }
+    hr.style4 {
+        border-top: 1px dotted #f5f5f5;
+        width:600px;
+    }
 
-        </style>
+</style>
 
-    </head>
+<body>
 
-    <body>
-        <!--Navigation menu-->
-    <center><img src="images/logo.png" id="logo" ></center>
-
-    <ul>
-        <li><a href="index.php">الرئيسية </a></li>
-        <li><a class="active" href="events.php">الفعاليات</a></li>
-        <li><a href="includes/CharterofVolunteerism.pdf">ميثاق  التطوع</a></li>
-        <li><a href="Contact_us.php">اتصل بنا</a></li>
-
-    </ul>
-
-
-    <br>
     <br>
 
 
@@ -108,12 +93,12 @@
     <br>
     <br>
     <!--Footer of the page -->
-    <center>
-        <div class="footer">
-            <footer>             
-                <?php include('includes/footer.php'); ?>
-            </footer>
-        </div>
-    </center>
+<center>
+    <div class="footer">
+        <footer>             
+            <?php include('includes/footer.php'); ?>
+        </footer>
+    </div>
+</center>
 </body>
 </html>

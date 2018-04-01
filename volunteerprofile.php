@@ -1,15 +1,15 @@
+
+<!DOCTYPE html>
+<!-- the header of the page-->
 <?php
+$page_title = "الصفحة الشخصية"; //page title to pass it to the header
+include("includes/Header.php"); // the header of the page
+session_start();
+//0000 temporary j
 $_SESSION["username"] = "nora555"; //0000
 $username = $_SESSION["username"];
 ?>
-<!DOCTYPE html>
-<html>
-   
-    <head>
-        <title>الصفحة الشخصية</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-        <link href="css\style13.css" rel="stylesheet" type="text/css" />
+
 
         <style>
             body{
@@ -17,22 +17,10 @@ $username = $_SESSION["username"];
                 background-attachment:fixed;
             }
         </style>	
-    </head>
+
 
     <body>
-        <!--Navigation menu-->
-    <center><img src="images/logo.png" id="logo" ></center>
-
-    <ul>
-        <li><a href="index.php">الرئيسية </a></li>
-        <li><a href="events.php">الفعاليات</a></li>
-        <li><a href="includes/CharterofVolunteerism.pdf">ميثاق  التطوع</a></li>
-        <li><a href="Contact_us.php">اتصل بنا</a></li>
-
-    </ul>
-
-
-    <br>
+  
     <br>
 
     <div class="tab" >

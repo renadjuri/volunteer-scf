@@ -1,4 +1,5 @@
 <?php
+
 ob_start();
 session_start(); // Starting Session
 include("includes/database.php");
@@ -17,10 +18,10 @@ if ($_POST) {
             $id = $_SESSION['id'];
             setcookie('id', $id);
 
-        // if is_admin == 1 return true else return false
+            // if is_admin == 1 return true else return false
             $msg = "login";
         } else {
-        //$msg = "Username or Password is invalid";
+            //$msg = "Username or Password is invalid";
             $msg = "invalid";
         }
     }
