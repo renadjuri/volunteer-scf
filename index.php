@@ -16,7 +16,7 @@
             background-attachment:fixed;
         }
         .mySlides {display:none;
-        }
+                        }
     </style>
 </head>
 
@@ -38,10 +38,9 @@
 <br>
 
 
-<div class="w3-content w3-section" style="max-width:500px">
-    <img class="mySlides" src="img.jpg" style="width:100%">
-    <img class="mySlides" src="img.jpg" style="width:100%">
-    <img class="mySlides" src="img.jpg" style="width:100%">
+<div class="w3-content w3-section">
+    <img class="mySlides" src="images/img1.jpg" style="width:100%">
+    <img class="mySlides" src="images/img2.jpg" style="width:100%">
     <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
     <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
 </div>
