@@ -15,7 +15,7 @@
 body {  font-family: ge thameen;
         text-align: right;
         width: 1100px;
-         margin: 0 auto;
+        margin: 0 auto;
 } 
 
 
@@ -29,20 +29,17 @@ body {  font-family: ge thameen;
 }
 
 
-h1 {font-size: 30pt;
+h1 {font-size: 23pt;
     font-family: ge thameen;
-    color: #0F9EA5;
+    color: #b7a900;
     margin-right: 10pt;
-    z-index: 2;
-    position: absolute;
-    text-align: right;
 }
 p {font-size: 14pt;
    color: black;
    font-family: Futura;
 }
 h2 {font-family: Futura;
-    color: #0F9EA5;
+    color: #b7a900;
     margin-right: 10pt;
 }
 a {  
@@ -109,7 +106,7 @@ a:hover.tooltips span {visibility: visible;
 #form-container {
 
     width: 500px;
-    height: 500px;
+    height: 700px;
     padding: 5px;
     border-radius: 25px;
     background: #287c39;
@@ -124,7 +121,7 @@ a:hover.tooltips span {visibility: visible;
     border-top-right-radius: 25px;
     background: #eaeaea;
     background: linear-gradient(to bottom right, #d1d1d1 , #ffffff);
-
+text-align: center;
 }
 
 #logo-form{

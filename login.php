@@ -20,6 +20,10 @@ if (is_login()) {
                 background-size:cover;
                 background-attachment:fixed;
             }
+            #form-container {
+
+                width: 500px;
+                height: 400px;}
 
 
         </style>
@@ -72,8 +76,7 @@ if (is_login()) {
     <center>
         <div id="form-container" >
             <div id="form-topcontainer">
-                <img id="logo-form" src="images/logo.png" alt="logo" width="100"/>
-                <h2> التسجيل </h2>
+                    <h1> تسجيل الدخول </h1>
             </div>
             <center>
                 <?php if (!is_login()) { ?>
@@ -89,7 +92,7 @@ if (is_login()) {
                                    font-size: 18px;">كلمة المرور &nbsp;</label>
                             <br>
                             <a id="link" href="forget-password.php">نسيت كلمة المرور؟</a>
-                            
+
                             <div style="margin-left: 5px; margin-top: 5px ; padding: 5px">
                                 <a style="padding: 15px; text-decoration:none" class="s_button" href="register.php">تسجيل مستخدم جديد</a>
                                 <a style="padding: 15px" class="s_button" id="login_ajax">تسجيل الدخول</a>
@@ -104,7 +107,7 @@ if (is_login()) {
                 <?php } ?>
         </div>
     </center>
-  <!--Footer of the page -->
+    <!--Footer of the page -->
     <center>
         <div class="footer">
             <footer>             

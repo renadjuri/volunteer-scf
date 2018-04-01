@@ -12,13 +12,17 @@
                 background-size:cover;
                 background-attachment:fixed;
             }
-            form{border:none;
-                 box-shadow: none;}
+            #form-container {
+
+                width: 600px;
+                height: 700px;}
+            #form-topcontainer {
+                width: 590px;}
             </style>
         </head>       
-    <body>
-        <!--Navigation menu-->
-    <center><img src="images/logo.png" id="logo" ></center>
+        <body>
+            <!--Navigation menu-->
+        <center><img src="images/logo.png" id="logo" ></center>
 
     <ul>
         <li><a href="index.php">الرئيسية </a></li>
@@ -32,8 +36,7 @@
     <center>
         <div id="form-container" >
             <div id="form-topcontainer">
-                <img id="logo-form" src="images/logo.png" alt="logo" width="100"/>
-                <h2> تسجيل الدخول </h2>
+                <h1> تسجيل مستخدم جديد </h1>
             </div>
             <form method="post" action="register2.php" >
                 <?php include('errors.php'); ?>
@@ -72,15 +75,18 @@
                     </tr>
                     <tr>
                         <td>
-                            <a href="includes/CharterofVolunteerism.pdf"><b>أقر أني اطلعت على ميثاق التطوع</b></a>
-                            <input type="checkbox" name="check" value="ok"required>
+                            <a href="includes/CharterofVolunteerism.pdf"><b>أقر أني اطلعت على ميثاق التطوع</b>
+                                <input type="checkbox" name="check" value="ok"required>
+                            </a>
                         </td>
                     <br>
                     </tr>
                     <tr>
                         <td>
-                            <a href="includes/Terms_and_Conditions.pdf"><b>أتعهد بالإلتزام بشروط و أحكام التطوع في الجمعية السعودية للسرطان</b></a>
-                            <input type="checkbox" name="check2" value="ok2"required><form action="/action_page.php">
+                            <a href="includes/Terms_and_Conditions.pdf"><b>أتعهد بالإلتزام بشروط و أحكام التطوع في الجمعية السعودية للسرطان</b>
+                                <input type="checkbox" name="check2" value="ok2"required>
+                               <!-- <form action="/action_page.php">-->
+                            </a>
                         </td>
                     </tr>
                     <tr>
@@ -92,7 +98,7 @@
     <br>
     <br>
 
-  <!--Footer of the page -->
+    <!--Footer of the page -->
     <center>
         <div class="footer">
             <footer>             

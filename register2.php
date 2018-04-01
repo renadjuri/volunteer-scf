@@ -7,10 +7,16 @@
         <link href="css\style13.css" rel="stylesheet" type="text/css" />
         <style>
 
-            body{
-                background-size:cover; 
-                background-attachment:fixed; 
+               body{
+                background-size:cover;
+                background-attachment:fixed;
             }
+            #form-container {
+
+                width: 600px;
+                height: 850px;}
+            #form-topcontainer {
+                width: 590px;}
 
         </style>
     </head>
@@ -29,8 +35,7 @@
     <center>
         <div id="form-container" >
             <div id="form-topcontainer">
-                <img id="logo-form" src="images/logo.png" alt="logo" width="100" />
-                <h2> التسجيل </h2>  
+                <h1> تسجيل مستخدم جديد </h1>  
             </div>
             <center>
 
@@ -53,16 +58,20 @@
                         </tr>
                         <tr> 
                             <td> <input type="text" name="FirstName"></td>
+                            <td><b> : الأسم الأول</b></td>  
                         </tr>
                         <tr> 
                             <td> <input type="text" name="MiddleName"placeholder="middlename"></td>
+                             <td><b> : الأسم الثاني</b></td>  
                         </tr>
 
                         <tr> 
                             <td> <input type="text" name="LastName"placeholder="lastname"></td>
+                             <td><b> : العائلة</b></td>  
                         </tr>
                         <tr> 
                             <td> <input type="text" name="MobileNumber"placeholder="mobilen"></td>
+                             <td><b> : رقم الهاتف</b></td>  
                         </tr>
                         <tr> 
                             <td> <input type="text" name="residance"placeholder="risedance"></td>
