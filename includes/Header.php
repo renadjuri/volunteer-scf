@@ -8,7 +8,7 @@
         </title>
         <link rel="shortcut icon" href="images/logo1.png"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="css\style13.css" rel="stylesheet" type="text/css" />
 

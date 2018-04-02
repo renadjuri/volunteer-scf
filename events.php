@@ -36,7 +36,7 @@ include("includes/Header.php"); // the header of the page
     <?php
     $con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ');
 
-    mysqli_select_db($con, 'sql12229449');
+   mysqli_select_db($con, 'sql12229449');
 
     if (!($con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ')))
         die("cannot connect </body></html>");

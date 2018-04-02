@@ -37,6 +37,24 @@ include("includes/Header.php"); // the header of the page
                 <?php //$info = $account->getRow("cancergroup", $_SESSION["userid"]); ?>
                 <?php //include('errors.php'); ?>
                 <table>
+
+                    <tr> 
+                        <td> <input type="text" name="VolunteerID"placeholder="سجل مدني"></td>
+                        <td><b> : الاقامة/ رقم السجل المدني</b></td>  
+                    </tr>
+                    <tr> 
+                        <td> <input type="text" name="FirstName"></td>
+                        <td><b> : الأسم الأول</b></td>  
+                    </tr>
+                    <tr> 
+                        <td> <input type="text" name="MiddleName"placeholder="اسم الاب"></td>
+                        <td><b> : الأسم الثاني</b></td>  
+                    </tr>
+
+                    <tr> 
+                        <td> <input type="text" name="LastName"placeholder="العائلة"></td>
+                        <td><b> : العائلة</b></td>  
+                    </tr>
                     <tr>
                         <td> 
                             <input type="radio" name="gender" value="f" checked >أنثى<br>
@@ -47,27 +65,12 @@ include("includes/Header.php"); // the header of the page
                         <td><b> : الجنس</b></td>                
                     </tr>
                     <tr> 
-                        <td> <input type="text" name="VolunteerID"placeholder="vID"></td>
-                    </tr>
-                    <tr> 
-                        <td> <input type="text" name="FirstName"></td>
-                        <td><b> : الأسم الأول</b></td>  
-                    </tr>
-                    <tr> 
-                        <td> <input type="text" name="MiddleName"placeholder="middlename"></td>
-                        <td><b> : الأسم الثاني</b></td>  
-                    </tr>
-
-                    <tr> 
-                        <td> <input type="text" name="LastName"placeholder="lastname"></td>
-                        <td><b> : العائلة</b></td>  
-                    </tr>
-                    <tr> 
-                        <td> <input type="text" name="MobileNumber"placeholder="mobilen"></td>
+                        <td> <input type="text" name="MobileNumber"placeholder="رقم الهاتف"></td>
                         <td><b> : رقم الهاتف</b></td>  
                     </tr>
                     <tr> 
-                        <td> <input type="text" name="residance"placeholder="risedance"></td>
+                        <td> <input type="text" name="residance"placeholder="مكان الاقامة"></td>
+                        <td><b>  : مكان الاقامة</b></td>
                     </tr>
                     <tr>
                         <td>
@@ -77,9 +80,10 @@ include("includes/Header.php"); // the header of the page
 
                     </tr><tr>
                         <td>
-                            <input type="text"  name="id"  maxlength="10" required >
+                            <input type="text"  name="nationality"  maxlength="10" required >
                         </td>
-                        <td><b> : السجل المدني/الإقامة</b></td>
+                        <td><b> :الجنسية</b></td>
+
 
                     </tr>
                     <tr>
@@ -125,12 +129,12 @@ include("includes/Header.php"); // the header of the page
                 $MobileNumber = $_POST['MobileNumber'];
                 $gender = $_POST['gender'];
                 $birthdate = $_POST['birthdate'];
-                $nationality = $_POST['id'];
+                $nationality = $_POST['nationality'];
                 $qualification = $_POST['edu_select'];
+                $residence = $_POST['residance'];
                 $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification) 
          VALUES ('" . $VolunteerID . "', '" . $FirstName . "', '" . $MiddleName . "', '" . $LastName . "', '" . $MobileNumber . "', '" . $birthdate . "', '" . $gender . "', '" . $nationality . "', '" . $residence . "', '" . $qualification . "' );";
 
-                // Connect to MySQL
                 if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
                     die("could not connect to database");
                 }
