@@ -4,7 +4,7 @@ $page_title = "تسجيل دخول"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
 ob_start();
 session_start(); // Starting Session
-include("includes/database.php");
+include("connection_arabic.php");
 if (is_login()) {
     $CID = $get_user_data("ID");
 }
@@ -79,7 +79,7 @@ if (is_login()) {
                         <a id="link" href="forget-password.php">نسيت كلمة المرور؟</a>
 
                         <div style="margin-left: 5px; margin-top: 5px ; padding: 5px">
-                            <a style="padding: 15px; text-decoration:none" class="s_button" href="register.php">تسجيل مستخدم جديد</a>
+                            <a style="padding: 15px; text-decoration:none" class="s_button" href="register2.php">تسجيل مستخدم جديد</a>
                             <a style="padding: 15px" class="s_button" id="login_ajax">تسجيل الدخول</a>
                         </div>
                         </span>   

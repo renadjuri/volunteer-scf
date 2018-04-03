@@ -2,7 +2,7 @@
 
 ob_start();
 session_start(); // Starting Session
-include("includes/database.php");
+include("connection_arabic.php");
 if ($_POST) {
     $username = $post("username");
     $password = $post("password");

@@ -132,21 +132,27 @@ include("includes/Header.php"); // the header of the page
                 $nationality = $_POST['nationality'];
                 $qualification = $_POST['edu_select'];
                 $residence = $_POST['residance'];
+
                 $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification) 
          VALUES ('" . $VolunteerID . "', '" . $FirstName . "', '" . $MiddleName . "', '" . $LastName . "', '" . $MobileNumber . "', '" . $birthdate . "', '" . $gender . "', '" . $nationality . "', '" . $residence . "', '" . $qualification . "' );";
 
-                if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-                    die("could not connect to database");
-                }
-                // open database 
-                if (!mysqli_select_db($DB, "sql12229449")) {
-                    die("could not open cancer store to database");
-                }
-                // query database 
-                if (!($result = mysqli_query($DB, $query))) {
-                    die("could not execute the query");
-                }
-                mysqli_close($DB);
+
+                require 'connection_arabic.php';
+                mysqli_set_charset($con, 'utf8');
+
+                mysqli_query($con,$query);
+                /* if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
+                  die("could not connect to database");
+                  }
+                  // open database
+                  if (!mysqli_select_db($DB, "sql12229449")) {
+                  die("could not open cancer store to database");
+                  }
+                  // query database
+                  if (!($result = mysqli_query($DB, $query))) {
+                  die("could not execute the query");
+                  }
+                  mysqli_close($DB); */
 
                 //  echo "<br> لا يوجد فعاليات في الوقت الحالي";      
                 echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
