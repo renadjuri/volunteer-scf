@@ -13,10 +13,10 @@ if ($_POST) {
         $account = $query("select * from account where password='$password' AND username='$username'");
         $row = mysqli_fetch_array($account);
         if ($row) {
-            $_SESSION['id'] = $row['ID'];
-            $_SESSION['is_admin'] = $row['is_admin'] == 1;
-            $id = $_SESSION['id'];
-            setcookie('id', $id);
+          //$_SESSION['id'] = $row['ID'];
+           //  $_SESSION['is_admin'] = $row['is_admin'] == 1;
+            //$id = $_SESSION['id'];
+            //setcookie('id', $id);
 
             // if is_admin == 1 return true else return false
             $msg = "login";

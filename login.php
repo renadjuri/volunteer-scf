@@ -45,10 +45,10 @@ if (is_login()) {
                             case "invalid":
                                 msg_login.html("<font color='red'>كلمة المرور أو اسم المستخدم غير صحيحة</font>");
                                 break;
-                            case "login":
+                            case "login":{
                                 msg_login.html("<font color='#50be4c'>تم تسجيل الدخول</font>");
-                                location.reload();
-                                break;
+                                 window.location = "index.php";
+                                break;}
                         }
                     }
                 });
