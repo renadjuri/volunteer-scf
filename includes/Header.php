@@ -28,7 +28,6 @@
         <ul>
             <li><a href="index.php">الرئيسية </a></li>
             <li><a href="events.php">الفعاليات</a></li>
-            <li><a href="includes/CharterofVolunteerism.pdf">ميثاق  التطوع</a></li>
             <li><a href="Contact_us.php">اتصل بنا</a></li>
 
         </ul>
