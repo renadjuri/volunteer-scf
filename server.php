@@ -7,8 +7,14 @@ $errors="";
 
 
 // connect to the database
-$db = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449');
+//$db = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449');
 // REGISTER USER
+$db=mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ');
+if(!$db) die ("failed");
+
+mysqli_select_db($db, 'sql12229449');
+mysqli_query($db,"set NAMES utf8");
+
 
 if (isset($_POST['register_btn'])) {
 // receive all input values from the form
@@ -26,6 +32,8 @@ if (isset($_POST['register_btn'])) {
     $password2 = mysqli_real_escape_string($db, $_POST['password2']);
     if ($password == $password2) {
         $password = md5($password); //hash password
+        
+         mysqli_set_charset($db, 'utf8');
         mysqli_query($db, $sql);
 
 
