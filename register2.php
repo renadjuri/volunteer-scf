@@ -21,6 +21,7 @@ include("includes/Header.php"); // the header of the page
             width: 590px;}
 
     </style>
+    
 </head>
 <body>
 
@@ -162,14 +163,6 @@ include("includes/Header.php"); // the header of the page
         </center>
 </center>
 <!--Footer of the page -->
-<center>
-    <div class="footer">
-        <footer>             
-            <?php include('includes/footer.php'); ?>
-        </footer>
-    </div>
-</center>
 
-</body>
-
-</html>
+  
+    <?php include('includes/footer.php'); ?>

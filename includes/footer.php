@@ -5,11 +5,10 @@
     <p>&copy; جميع الحقوق محفوظة لجمعية السرطان السعودية  2018 <br>
         <a href="http://scf.org.sa" title="قم بزيارة الموقع">scf.org.sa</a></p>
 </footer>
-
 <script>
     $(document).ready(function () {
         // Add smooth scrolling to all links in navbar + footer link
-        $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
+        $(".navbar a, footer a[href='#']").on('click', function (event) {
             // Make sure this.hash has a value before overriding default behavior
             if (this.hash !== "#") {
                 // Prevent default anchor click behavior
@@ -42,27 +41,32 @@
         });
     })
 </script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <!--java script for going to the top of the page-->
 <script>
 // When the user scrolls down 30px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+    window.onscroll = function () {
+        scrollFunction()
+    };
 
-function scrollFunction() {
-    if(document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
-        document.getElementById("myBtn").style.display = "block";
-    } else {
-        document.getElementById("myBtn").style.display = "none";
+    function scrollFunction() {
+        if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
     }
-}
 
 // When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
 
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </body>
 </html>

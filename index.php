@@ -28,9 +28,9 @@ include("includes/Header.php"); // the header of the page
     }
 </style>
 </head>
+
 <body>
 
-<button onclick="topFunction()" id="myBtn">  <span class="glyphicon glyphicon-chevron-up"></span></button>
     <?php
     $name = $email = $message = $human = "";
     $errName = $errEmail = $errMessage = $errHuman = $result = "";
