@@ -1,0 +1,76 @@
+/* 
+    Created on : Apr 5, 2018, 10:54:22 PM
+    Author     : renad
+*/
+
+h1 {font-size: 23pt;
+    font-family: ge thameen;
+    color: #b7a900;
+    margin-right: 10pt;
+}
+
+h2 { 
+    font-family: ge thameen;
+    color: #b7a900;
+    margin-right: 10pt;
+}
+h3 { 
+    font-family: ge thameen;
+    color: #b7a900;
+    margin-right: 10pt;
+}
+h4 { 
+    font-family: ge thameen;
+    color: #b7a900;
+    margin-right: 10pt;
+}
+
+
+/*navigation menu style*/
+.navbar {
+    margin-bottom: 15px;
+    margin-top: 5px;
+    background-color:black;
+    z-index: 9999;
+    border: 0;
+    font-size: 16px !important;
+    line-height: 4 !important;
+    border-radius: 0;
+}
+
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #fff !important;
+    background-color:goldenrod !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+}
+footer a {   color: white;}
+footer a:hover {   color:  #b7a900;}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {height:auto;} 
+}

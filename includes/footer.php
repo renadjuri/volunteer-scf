@@ -1,28 +1,48 @@
 
 <!-- footer of the volunteer of scf website -->
 
-<br>
-<center>
-    <div class="LinksFooter">
-        <a href="index.php">الصفحة الرئيسية</a> | <!-- Link to home page -->
-        <a href="events.php">الفعاليات</a> | <!-- Link to events page -->
-        <a href="Contact_us.php">تواصل معنا</a> <!-- Link to Contact us page -->
-     
-    </div> 
+<footer class="container-fluid text-center">
+  <a href="#" title="الى أعلى الصفحة">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>&copy; جميع الحقوق محفوظة لجمعية السرطان السعودية  2018 <br>
+  <a href="http://scf.org.sa" title="قم بزيارة الموقع">scf.org.sa</a></p>
+</footer>
 
-    <h6>&copy; 2018 جميع الحقوق محفوظة لجمعية السرطان السعودية</h6>
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "#") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
 
-    <address> 
-        <!-- Links to social media accounts -->
-        <a href="http://Twitter.com">
-            <img src="images\Twitter.png" alt="Twitter" 
-                 class="imgfooter"></a>
-        <a href="http://Instagram.com">
-            <img src="images\Instagram.png" alt="Instagram" 
-                 class="imgfooter"></a>
-        <a href="https://www.facebook.com">
-            <img src="images\Facebook.png" alt="Facebook" 
-                 class="imgfooter"></a>
-    </address>
-</center>
+      // Store hash
+      var hash = this.hash;
 
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
+    
