@@ -1,9 +1,21 @@
 
 <!-- footer of the volunteer of scf website -->
 
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 <footer class="container-fluid text-center">
+    <div class="social">
+    <a> <i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a> 
+    <a><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+    <a><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+    </div>
+     <br>
     <p>&copy; جميع الحقوق محفوظة لجمعية السرطان السعودية  2018 <br>
-        <a href="http://scf.org.sa" title="قم بزيارة الموقع">scf.org.sa</a></p>
+        <a href="http://scf.org.sa" title="قم بزيارة الموقع">scf.org.sa</a>
+    </p>
+   
+
+
 </footer>
 <script>
     $(document).ready(function () {

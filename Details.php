@@ -33,16 +33,8 @@
     if (isset($_GET['EventID'])) {
 
         $EventID = $_GET['EventID'];
-        $con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ');
-        mysqli_select_db($con, 'sql12229449');
-        if (!($con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ')))
-            die("cannot connect </body></html>");
-        if (!mysqli_select_db($con, 'sql12229449'))
-            die("Could not open cancergroup database </body></html>");
-        $get_events = "select * from event where EventID=$EventID";
-        mysqli_query($con, "SET NAMES utf8");
-        $run_events = mysqli_query($con, $get_events);
-
+      
+        $run_events = $quiry( "select * from event where EventID=$EventID");
         while ($row_events = mysqli_fetch_array($run_events)) {
 
             $EventID = $row_events['EventID'];
@@ -64,8 +56,8 @@
 		<table  style='height:40px; width:700px; margin-top:5px; margin-left: auto; margin-right: auto; border:1px #F8F7F3 solid;' >
 		<tr>
 		<td  style='vertical-align: top;'> <p>:تاريخ الفعالية</p><p align='right' >";
-            $qry2 = "SELECT * FROM dateofevent where Event_ID=$EventID";
-            $result2 = mysqli_query($con, $qry2);
+             $result2= $quiry( "SELECT * FROM dateofevent where Event_ID=$EventID");
+          
             while ($row = mysqli_fetch_array($result2)) {
                 $Date = $row['Date'];
                 echo "$Date <br> ";
@@ -110,12 +102,5 @@
     <br>
     <br>
     <!--Footer of the page -->
-    <center>
-        <div class="footer">
-            <footer>             
+          
                 <?php include('includes/footer.php'); ?>
-            </footer>
-        </div>
-    </center>
-</body>
-</html>

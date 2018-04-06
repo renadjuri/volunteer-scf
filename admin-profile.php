@@ -6,6 +6,7 @@ $_SESSION["username"] = "admin"; //0000
 
    $page_title = "لوحة التحكم";//page title to pass it to the header
    include("includes/Header.php"); // the header of the page
+include('connection_arabic.php'); //connect to the database
 
 
 if (isset($_GET['volunteer_id'])) {
@@ -123,22 +124,23 @@ switch ($action) {
 
     <!-- All events-->
 <?php
-$query = "select EventID, EventName, Location from event";
+$result =$query ( "select EventID, EventName, Location from event");
 
-// Connect to MySQL
-if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-    die("could not connect to database");
-}
-// open database 
-if (!mysqli_select_db($DB, "sql12229449")) {
-    die("could not open cancer store to database");
-}
-// query database 
-if (!($result = mysqli_query($DB, $query))) {
-    die("could not execute the query");
-}
-mysqli_close($DB);
+//// Connect to MySQL
+//if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
+//    die("could not connect to database");
+//}
+//// open database 
+//if (!mysqli_select_db($DB, "sql12229449")) {
+//    die("could not open cancer store to database");
+//}
+//// query database 
+//if (!($result = mysqli_query($DB, $query))) {
+//    die("could not execute the query");
+//}
+//mysqli_close($DB);
 
+$numRows="";
 
 $numRows = mysqli_num_rows($result);
 if ($numRows <= 0) {
@@ -188,21 +190,21 @@ if ($numRows <= 0) {
     <p>كشف بمعلومات المتطوعين</p>
 
 <?php
-$query = "select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, VolunteerUsername, BlackList, email from volunteer, account where account.Username = volunteer.VolunteerUsername and BlackList=0";
+$result =$query ( "select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, VolunteerUsername, BlackList, email from volunteer, account where account.Username = volunteer.VolunteerUsername and BlackList=0");
 
-// Connect to MySQL
-if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-    die("could not connect to database");
-}
-// open database 
-if (!mysqli_select_db($DB, "sql12229449")) {
-    die("could not open cancer store to database");
-}
-// query database 
-if (!($result = mysqli_query($DB, $query))) {
-    die("could not execute the query");
-}
-mysqli_close($DB);
+//// Connect to MySQL
+//if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
+//    die("could not connect to database");
+//}
+//// open database 
+//if (!mysqli_select_db($DB, "sql12229449")) {
+//    die("could not open cancer store to database");
+//}
+//// query database 
+//if (!($result = mysqli_query($DB, $query))) {
+//    die("could not execute the query");
+//}
+//mysqli_close($DB);
 
 $numRows = mysqli_num_rows($result);
 if ($numRows <= 0) {
@@ -261,21 +263,21 @@ if ($numRows <= 0) {
 
     <!-- Volunteers in each event-->
 <?php
-$query = "select EventID, EventName from event";
+$result =$query ( "select EventID, EventName from event");
 
-// Connect to MySQL
-if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-    die("could not connect to database");
-}
-// open database 
-if (!mysqli_select_db($DB, "sql12229449")) {
-    die("could not open cancer store to database");
-}
-// query database 
-if (!($result = mysqli_query($DB, $query))) {
-    die("could not execute the query");
-}
-mysqli_close($DB);
+//// Connect to MySQL
+//if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
+//    die("could not connect to database");
+//}
+//// open database 
+//if (!mysqli_select_db($DB, "sql12229449")) {
+//    die("could not open cancer store to database");
+//}
+//// query database 
+//if (!($result = mysqli_query($DB, $query))) {
+//    die("could not execute the query");
+//}
+//mysqli_close($DB);
 
 //Events' list
 echo "<form method='post' name='Volunteer_selectEvent' action='admin-profile.php'>";
@@ -297,21 +299,21 @@ if (isset($_POST["Volunteer_selectEvent"])) {
 
     $Volunteer_selectEvent = $_POST["Volunteer_selectEvent"];
 
-    $query = "select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, email from volunteer, account, volunteerparticipateonevent where account.Username = volunteer.VolunteerUsername and volunteer.VolunteerID = volunteerparticipateonevent.Volunteer_ID and volunteerparticipateonevent.Event_ID = $Volunteer_selectEvent";
+   $result = $query ("select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, email from volunteer, account, volunteerparticipateonevent where account.Username = volunteer.VolunteerUsername and volunteer.VolunteerID = volunteerparticipateonevent.Volunteer_ID and volunteerparticipateonevent.Event_ID = $Volunteer_selectEvent");
 
-    // Connect to MySQL
-    if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-        die("could not connect to database");
-    }
-    // open database 
-    if (!mysqli_select_db($DB, "sql12229449")) {
-        die("could not open cancer store to database");
-    }
-    // query database 
-    if (!($result = mysqli_query($DB, $query))) {
-        die("could not execute the query");
-    }
-    mysqli_close($DB);
+//    // Connect to MySQL
+//    if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
+//        die("could not connect to database");
+//    }
+//    // open database 
+//    if (!mysqli_select_db($DB, "sql12229449")) {
+//        die("could not open cancer store to database");
+//    }
+//    // query database 
+//    if (!($result = mysqli_query($DB, $query))) {
+//        die("could not execute the query");
+//    }
+//    mysqli_close($DB);
 
     $numRows = mysqli_num_rows($result);
     if ($numRows <= 0) {
@@ -374,21 +376,21 @@ if (isset($_POST["Volunteer_selectEvent"])) {
 
         <!-- Blacklist page code-->
 <?php
-$query = "select FirstName, MiddleName, LastName, VolunteerID, BlackList from volunteer where BlackList = 1";
+$result = $query ( "select FirstName, MiddleName, LastName, VolunteerID, BlackList from volunteer where BlackList = 1");
 
-// Connect to MySQL
-if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-    die("could not connect to database");
-}
-// open database 
-if (!mysqli_select_db($DB, "sql12229449")) {
-    die("could not open cancer store to database");
-}
-// query database 
-if (!($result = mysqli_query($DB, $query))) {
-    die("could not execute the query");
-}
-mysqli_close($DB);
+//// Connect to MySQL
+//if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
+//    die("could not connect to database");
+//}
+//// open database 
+//if (!mysqli_select_db($DB, "sql12229449")) {
+//    die("could not open cancer store to database");
+//}
+//// query database 
+//if (!($result = mysqli_query($DB, $query))) {
+//    die("could not execute the query");
+//}
+//mysqli_close($DB);
 
 $numRows = mysqli_num_rows($result);
 if ($numRows <= 0) {
@@ -448,21 +450,21 @@ if ($numRows <= 0) {
 
 <?php
 //0000000000000000000000000000000000000000000000000000000
-$query = "select EventID, EventName from event";
+$result = $query ( "select EventID, EventName from event");
 
-// Connect to MySQL
-            if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-                die("could not connect to database");
-            }
-            // open database 
-            if (!mysqli_select_db($DB, "sql12229449")) {
-                die("could not open cancer store to database");
-            }
-            // query database 
-            if (!($result = mysqli_query($DB, $query))) {
-                die("could not execute the query");
-            }
-            mysqli_close($DB);
+//// Connect to MySQL
+//            if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
+//                die("could not connect to database");
+//            }
+//            // open database )
+//            if (!mysqli_select_db($DB, "sql12229449")) {
+//                die("could not open cancer store to database");
+//            }
+//            // query database 
+//            if (!($result = mysqli_query($DB, $query))) {
+//                die("could not execute the query");
+//            }
+//            mysqli_close($DB);
 
 //Events' list
 echo "<form method='post' name='selectEvent' action='admin-profile.php'>";
@@ -484,21 +486,21 @@ if (isset($_POST["selectEvent"])) {
 
     $selectEvent = $_POST["selectEvent"];
 
-    $query = "select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, email from volunteer, account, volunteerparticipateonevent where account.Username = volunteer.VolunteerUsername and volunteer.VolunteerID = volunteerparticipateonevent.Volunteer_ID and volunteerparticipateonevent.Event_ID = $selectEvent";
+    $result = $query ( "select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, email from volunteer, account, volunteerparticipateonevent where account.Username = volunteer.VolunteerUsername and volunteer.VolunteerID = volunteerparticipateonevent.Volunteer_ID and volunteerparticipateonevent.Event_ID = $selectEvent");
 
-    // Connect to MySQL
-            if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-                die("could not connect to database");
-            }
-            // open database 
-            if (!mysqli_select_db($DB, "sql12229449")) {
-                die("could not open cancer store to database");
-            }
-            // query database 
-            if (!($result = mysqli_query($DB, $query))) {
-                die("could not execute the query");
-            }
-            mysqli_close($DB);
+//    // Connect to MySQL
+//            if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
+//                die("could not connect to database");
+//            }
+//            // open database 
+//            if (!mysqli_select_db($DB, "sql12229449")) {
+//                die("could not open cancer store to database");
+//            }
+//            // query database 
+//            if (!($result = mysqli_query($DB, $query))) {
+//                die("could not execute the query");
+//            }
+//            mysqli_close($DB);
 
     $numRows = mysqli_num_rows($result);
     if ($numRows <= 0) {
@@ -560,20 +562,20 @@ if (isset($_POST["selectEvent"])) {
     <p>.المعلومات الشخصية للادمن</p>
 <?php
 
-$query = 'select AdminID, FirstName, MiddleName, LastName, AdminUsername, Email, password from admin, account where account.Username = admin.AdminUsername and account.Username = "' . $_SESSION["username"] . '"';
-// Connect to MySQL
-            if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-                die("could not connect to database");
-            }
-            // open database 
-            if (!mysqli_select_db($DB, "sql12229449")) {
-                die("could not open cancer store to database");
-            }
-            // query database 
-            if (!($result = mysqli_query($DB, $query))) {
-                die("could not execute the query");
-            }
-            mysqli_close($DB);
+$result = $query ( 'select AdminID, FirstName, MiddleName, LastName, AdminUsername, Email, password from admin, account where account.Username = admin.AdminUsername and account.Username = "' . $_SESSION["username"] . '"');
+//// Connect to MySQL
+//            if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
+//                die("could not connect to database");
+//            }
+//            // open database 
+//            if (!mysqli_select_db($DB, "sql12229449")) {
+//                die("could not open cancer store to database");
+//            }
+//            // query database 
+//            if (!($result = mysqli_query($DB, $query))) {
+//                die("could not execute the query");
+//            }
+//            mysqli_close($DB);
 
 $numRows = mysqli_num_rows($result);
 if ($numRows <= 0) {

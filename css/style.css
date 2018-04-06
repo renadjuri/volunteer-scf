@@ -83,6 +83,22 @@ body {  font-family: ge thameen;
     background-color: #7B7B7B;
 }
 
+/*social button*/
+#myBtn2 {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    right: 10px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    cursor: pointer;
+ 
+}
+
+#myBtn:hover {
+    background-color: #7B7B7B;
+}
 /* login- sign up-forget password */
 #form-container {
 
@@ -102,9 +118,28 @@ body {  font-family: ge thameen;
     border-top-right-radius: 25px;
     background: #eaeaea;
     background: linear-gradient(to bottom right, #d1d1d1 , #ffffff);
-text-align: center;
+    text-align: center;
 }
 
+/*login button style */
+.s_button {
+    text-align: center;
+    display: inline-block;
+    margin: 0px;
+    cursor: pointer;
+    background-color: #b7a900; 
+    color: #fcfcfc; 
+    border: 1pt solid #b7a900;
+    border-radius: 10px;}
+
+.s_button:hover {border: 1pt solid #666666;
+                 color:#c6b900;
+                 background-color: #cebe03;
+                 color: #fcfcfc;
+                 border-radius: 10px;
+                 text-decoration: none;
+                 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
 
 /* Style the tab */
 .tab {
@@ -158,8 +193,19 @@ footer {
     color: white;
     padding: 15px;
 }
-footer a {   color: white;}
+footer a {   color: white;
+             cursor: pointer;}
 footer a:hover {   color:  #b7a900;}
+.social a{
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+    text-align: center;
+    margin :0 10px;   
+    color: white;
+    
+}
+.social a:hover {   color:  #b7a900;}
 
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {

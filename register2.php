@@ -2,37 +2,32 @@
 <?php
 $page_title = "تسجيل مستخدم جديد"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
-//include('server.php')
+if (is_login()) {
+    $CID = $get_user_data("ID");
+}
 ?>
-<!DOCTYPE html>
-<html>
 
-    <style>
+<style>
 
-        body{
-            background-size:cover;
-            background-attachment:fixed;
-        }
-        #form-container {
+  
+    #form-container {
 
-            width: 600px;
-            height: 850px;}
-        #form-topcontainer {
-            width: 590px;}
+        width: 500px;
+        height: 400px;}
 
-    </style>
-    
-</head>
+
+</style>
+
 <body>
 
+   
     <br>
 <center>
     <div id="form-container" >
         <div id="form-topcontainer">
-            <h1> تسجيل مستخدم جديد </h1>  
+            <h1> تسجيل مستخدم جديد </h1>
         </div>
         <center>
-
             <form method="post" action="#" >
 
                 <?php //$info = $account->getRow("cancergroup", $_SESSION["userid"]); ?>
@@ -134,26 +129,8 @@ include("includes/Header.php"); // the header of the page
                 $qualification = $_POST['edu_select'];
                 $residence = $_POST['residance'];
 
-                $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification) 
-         VALUES ('" . $VolunteerID . "', '" . $FirstName . "', '" . $MiddleName . "', '" . $LastName . "', '" . $MobileNumber . "', '" . $birthdate . "', '" . $gender . "', '" . $nationality . "', '" . $residence . "', '" . $qualification . "' );";
-
-
-                require 'connection_arabic.php';
-                mysqli_set_charset($con, 'utf8');
-
-                mysqli_query($con,$query);
-                /* if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-                  die("could not connect to database");
-                  }
-                  // open database
-                  if (!mysqli_select_db($DB, "sql12229449")) {
-                  die("could not open cancer store to database");
-                  }
-                  // query database
-                  if (!($result = mysqli_query($DB, $query))) {
-                  die("could not execute the query");
-                  }
-                  mysqli_close($DB); */
+               $result= $query ("INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification) 
+         VALUES ('" . $VolunteerID . "', '" . $FirstName . "', '" . $MiddleName . "', '" . $LastName . "', '" . $MobileNumber . "', '" . $birthdate . "', '" . $gender . "', '" . $nationality . "', '" . $residence . "', '" . $qualification . "' );");
 
                 //  echo "<br> لا يوجد فعاليات في الوقت الحالي";      
                 echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
@@ -161,6 +138,7 @@ include("includes/Header.php"); // the header of the page
             ?>
 
         </center>
+    </div>
 </center>
 <!--Footer of the page -->
 

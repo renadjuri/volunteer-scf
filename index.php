@@ -151,7 +151,7 @@ include("includes/Header.php"); // the header of the page
             
             <div class="col-sm-7">
 
-                <form class="form-horizontal" role="form" method="post" action="home.php">
+                <form class="form-horizontal" role="form" method="post" action="index.php">
                     <div class="form-group">
 <!--  value ="<?php //echo htmlspecialchars($_POST['email']);  ?>"-->
                         <div class="col-sm-10 col-sm-offset-2">

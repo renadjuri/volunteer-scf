@@ -2,7 +2,7 @@
 
 ob_start();
 session_start(); // Starting Session
-include("connection_arabic.php");
+include("includes\connection_arabic.php");
 if ($_POST) {
     $username = $post("username");
     $password = $post("password");
@@ -13,7 +13,7 @@ if ($_POST) {
         $account = $query("select * from account where password='$password' AND username='$username'");
         $row = mysqli_fetch_array($account);
         if ($row) {
-          //$_SESSION['id'] = $row['ID'];
+          $_SESSION['id'] = $row['ID'];
            //  $_SESSION['is_admin'] = $row['is_admin'] == 1;
             //$id = $_SESSION['id'];
             //setcookie('id', $id);

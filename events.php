@@ -3,6 +3,7 @@
 <?php
 $page_title = "الفعاليات"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
+include ("includes/connection_arabic.php"); //connecting to the database
 ?>
 
 <style type="text/css">
@@ -34,20 +35,7 @@ include("includes/Header.php"); // the header of the page
 
 
     <?php
-    $con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ');
-
-   mysqli_select_db($con, 'sql12229449');
-
-    if (!($con = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ')))
-        die("cannot connect </body></html>");
-
-    if (!mysqli_select_db($con, 'sql12229449'))
-        die("Could not open cancergroup database </body></html>");
-
-
-    $get_events = "select * from event ";
-    mysqli_query($con, "SET NAMES utf8");
-    $run_events = mysqli_query($con, $get_events);
+    $run_events = $quiry("select * from event ");
 
     while ($row_events = mysqli_fetch_array($run_events)) {
 
@@ -73,10 +61,10 @@ include("includes/Header.php"); // the header of the page
         <tr>
         <td ><p align='left'> <a href='Details.php?EventID=$EventID' >..الإطلاع على المزيد</a></p></td>
             <td align='left'><h6 align='right'>";
-        $qry2 = "SELECT * FROM dateofevent  
+         $result2  =$quiry( "SELECT * FROM dateofevent  
 													 
-													  where Event_ID=$EventID";
-        $result2 = mysqli_query($con, $qry2);
+													  where Event_ID=$EventID");
+       
         while ($row = mysqli_fetch_array($result2)) {
 
             $Date = $row['Date'];
@@ -93,12 +81,6 @@ include("includes/Header.php"); // the header of the page
     <br>
     <br>
     <!--Footer of the page -->
-<center>
-    <div class="footer">
-        <footer>             
+            
             <?php include('includes/footer.php'); ?>
-        </footer>
-    </div>
-</center>
-</body>
-</html>
+     
