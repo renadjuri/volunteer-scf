@@ -3,7 +3,7 @@
     Author     : renad
 */
 
-h1 {font-size: 23pt;
+h1 {font-size: 28pt;
     font-family: ge thameen;
     color: #b7a900;
     margin-right: 10pt;
@@ -93,7 +93,7 @@ body {  font-family: ge thameen;
     border: none;
     outline: none;
     cursor: pointer;
- 
+
 }
 
 #myBtn:hover {
@@ -106,7 +106,7 @@ body {  font-family: ge thameen;
     height: 700px;
     padding: 5px;
     border-radius: 25px;
-    background: #287c39;
+    background: #d1d1d1;
     background: linear-gradient(to bottom right, #1d682c , #44ac5a);
     margin-top:30px;
 } 
@@ -203,7 +203,7 @@ footer a:hover {   color:  #b7a900;}
     text-align: center;
     margin :0 10px;   
     color: white;
-    
+
 }
 .social a:hover {   color:  #b7a900;}
 

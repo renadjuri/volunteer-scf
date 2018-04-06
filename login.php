@@ -7,6 +7,7 @@ if (is_login()) {
 }
 ?>
 
+
 <style>
 
 
@@ -20,42 +21,43 @@ if (is_login()) {
 
 <body>
 
-
-
-    <br>
 <center>
-    <div id="form-container" >
-        <div id="form-topcontainer">
-            <h1> تسجيل الدخول </h1>
+    <div>
+        <div class="container text-center" >
+            <h1>تسجيل الدخول</h1>
         </div>
-        <center>
-            <?php if (!is_login()) { ?>
 
-                <form method="post">
-                    <br><br>
-                    <input id="username" name="username" placeholder="إسم المستخدم" type="text">
-                    <label style="color:#FCFBF9;
-                           font-size: 18px;">إسم المستخدم&nbsp;</label>
-                    <br>                           
-                    <input id="password" name="password" placeholder="*********" type="password">
-                    <label style="color:#FCFBF9;
-                           font-size: 18px;">كلمة المرور &nbsp;</label>
-                    <br>
-                    <a id="link" href="forget-password.php">نسيت كلمة المرور؟</a>
 
-                    <div style="margin-left: 5px; margin-top: 5px ; padding: 5px">
-                        <a style="padding: 15px; text-decoration:none" class="s_button" href="register2.php">تسجيل مستخدم جديد</a>
-                        <a style="padding: 15px;" class="s_button" id="login_ajax">تسجيل الدخول</a>
-                    </div>
-                    </span>   
-                    <br>
-                    <div id="msg_login">
-                    </div>
-                    <br>
-                </form>
+        <div id="form-container" >
 
-            <?php } ?>
-    </div>
+            <center>
+                <?php if (!is_login()) { ?>
+
+                    <form method="post">
+                        <br><br>
+                        <input id="username" name="username" placeholder="إسم المستخدم" type="text">
+                        <label style="color:#FCFBF9;
+                               font-size: 18px;">إسم المستخدم&nbsp;</label>
+                        <br>                           
+                        <input id="password" name="password" placeholder="*********" type="password">
+                        <label style="color:#FCFBF9;
+                               font-size: 18px;">كلمة المرور &nbsp;</label>
+                        <br>
+                        <a class="text-success" href="forget-password.php">نسيت كلمة المرور؟</a>
+
+                        <div style="margin-left: 5px; margin-top: 5px ; padding: 5px">
+                            <a style="padding: 15px; text-decoration:none" class="s_button" href="register2.php">تسجيل مستخدم جديد</a>
+                            <a style="padding: 15px;" class="s_button" id="login_ajax">تسجيل الدخول</a>
+                        </div>
+                        </span>   
+                        <br>
+                        <div id="msg_login">
+                        </div>
+                        <br>
+                    </form>
+
+                <?php } ?>
+        </div>
 </center>
 <script>
 // Function take the username and password and send them to the login page then

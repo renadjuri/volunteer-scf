@@ -20,14 +20,15 @@ if (is_login()) {
 
 <body>
 
-   
-    <br>
-<center>
-    <div id="form-container" >
-        <div id="form-topcontainer">
-            <h1> تسجيل مستخدم جديد </h1>
+      <center>
+    <div class="container text-center" >
+        
+            <h1 class="display-3 ">إنشاء حساب</h1>
+            <p class="lead">إنضم الآن وكن ضمن المتطوعين في فعاليات جمعية السرطان السعودية</p>
         </div>
-        <center>
+    <div id="form-container" >
+       
+     
             <form method="post" action="#" >
 
                 <?php //$info = $account->getRow("cancergroup", $_SESSION["userid"]); ?>
