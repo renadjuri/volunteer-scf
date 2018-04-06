@@ -1,0 +1,21 @@
+<?php
+$con = mysqli_connect('localhost', 'root', '');
+if (!$con)
+    die("failed");
+
+mysqli_select_db($con, 'sql12229449');
+mysqli_query($con, "set NAMES utf8");
+
+/*
+
+  to call the database and use query add those lines to your code :
+ * 
+ require 'database.php';
+ mysqli_set_charset($con,"utf8");
+ 
+//your query:
+ 
+$query=""; 
+ mysqli_query($con,$query);
+ *  */
+?>

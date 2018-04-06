@@ -1,7 +1,8 @@
 <!--Log out Page -->
 <?php
-session_start();// Starting Session
-session_destroy(); // Ending Session
-header('Location:./index.php');
-ob_end_flush();
+session_start(); //to ensure you are using same session
+session_destroy(); //destroy the session
+header("location:index.php"); //to redirect back to "index.php" after logging out
+exit();
+
 ?>

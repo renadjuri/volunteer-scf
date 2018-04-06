@@ -1,10 +1,7 @@
 <?php
-ob_start();
+
 session_start(); // Starting Session
-include ("connection_arabic.php");
-if (is_login()) {
-    $CID = $get_user_data("ID");
-}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,25 +62,26 @@ if (is_login()) {
                         </ul>
                         <ul class="nav navbar-nav navbar-left">
                             <!-- check if there is no logged in user-->
-                            <?php if (!is_login()) { ?>
-                                <li <?php echo ($filename == 'register2') ? 'class="active"' : ''; ?>><a href="register2.php"><span class="glyphicon glyphicon-user"></span>إنشاء حساب</a></li>
-                                <li <?php echo ($filename == 'login') ? 'class="active"' : ''; ?>><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> تسجيل الدخول</a></li>
+                            <?php
+                             
+                             if ( empty($_SESSION['id'])){ ?>
+                                <li <?php echo ($filename == 'login-signup') ? 'class="active"' : ''; ?>><a href="login-signup.php"><span class="glyphicon glyphicon-log-in"></span> تسجيل الدخول</a></li>
                                 <?php
                             }
                             ?>
                             <!-- check if the user logged in and not admin-->
-                            <?php if (is_login()) { ?>
-                                <?php if (!is_admin()) { ?>
-                                    <li <?php echo ($filename == 'volunteerprofile') ? 'class="active"' : ''; ?>><a href="volunteerprofile.php"><span class="glyphicon glyphicon-user"></span> <span> <?php echo $get_user_data("FirstName"); ?> </span></a></li>
+                           <?php if (! empty($_SESSION['id'])){ ?>
+                                <?php if ( $_SESSION['admin']=='false'){ ?>
+                                    <li <?php echo ($filename == 'volunteerprofile') ? 'class="active"' : ''; ?>><a href="volunteerprofile.php"><span class="glyphicon glyphicon-user"></span> <span><?php $username = $_SESSION["username"]; echo $username;   ?>  </span></a></li>
                                     <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
 
                                     <?php
-                                }
+                            }
                                 ?>
                                 <!-- check if the user is admin-->
 
-                                <?php if (is_admin()) { ?> 
-                                    <li <?php echo ($filename == 'admin-profile') ? 'class="active"' : ''; ?>><a href="admin-profile.php"><span class="glyphicon glyphicon-user"></span> <span> <?php echo $get_user_data("FirstName"); ?> </span></a></li>
+                                <?php if ($_SESSION['admin']=='true') { ?> 
+                                    <li <?php echo ($filename == 'admin-profile') ? 'class="active"' : ''; ?>><a href="admin-profile.php"><span class="glyphicon glyphicon-user"></span> <span>  </span></a></li>
                                     <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
 
                                     <?php

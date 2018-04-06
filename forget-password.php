@@ -5,48 +5,53 @@ $page_title = " إستعادة كلمة المرور"; //page title to pass it t
 include("includes/Header.php"); // the header of the page
 ?>
 
-<style>
+<!-- Style CSS -->
 
-    body{
-        background-size:cover;
-        background-attachment:fixed;
-    }
-    p{color: white;}
-
-    #form-container {
-
-        width: 500px;
-        height: 400px;}
-
-</style>
-
+<link href="css/style-login.css" rel="stylesheet" type="text/css" />
 <body>
-   
-<br>
-<center>
-    <div id="form-container" >
-        <div id="form-topcontainer">
-         
-            <h1> استعادة كلمة المرور </h1>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-login">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <a  class="active" id="login-form-link" >استعادة كلمة المرور</a>
+                            </div>
+
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p> فضلا قم بإدخال بريدك الإلكتروني و سوف يتم إرسال تعليمات كلمة المرور الخاصة بك من خلال البريد الإلكتروني  </p> 
+                                <form action="/action_page.php">
+
+                                    <div style="margin-bottom: 25px" class="input-group"> 
+                                        <input type="text" name="Email" id="username" tabindex="1" class="form-control" placeholder="البريد الإلكتروني" value="" required> 
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" name="forgetpassword-submit"  tabindex="4" class="form-control btn btn-login" value="إرسال">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <br>
-        <br>
-        <p> فضلا قم بإدخال بريدك الإلكتروني و سوف يتم إرسال تعليمات كلمة المرور الخاصة بك من خلال البريد الإلكتروني  </p> 
-        <form action="/action_page.php">
-            <input type="text" name="Email" value=""> البريد الإلكتروني<br>
-            <button type="submit">إرسال</button> 
-            <br>
-        </form>
-    </div>   
-</center>
-<!--Footer of the page -->
-<center>
-    <div class="footer">
-        <footer>             
-            <?php include('includes/footer.php'); ?>
-        </footer>
     </div>
-</center>
-</div>
-</body>
-</html>
+    <br>
+    <!--Footer of the page -->
+
+    <?php include('includes/footer.php'); ?>
