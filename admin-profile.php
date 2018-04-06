@@ -5,9 +5,8 @@
 $_SESSION["username"] = "admin"; //0000
 
    $page_title = "لوحة التحكم";//page title to pass it to the header
-   include("includes/Header.php"); // the header of the page
-include('includes/connection_arabic.php'); //connect to the database
-
+include("includes/Header.php"); // the header of the page
+include ("includes/connection_arabic.php"); //connecting to the database
 
 if (isset($_GET['volunteer_id'])) {
 
