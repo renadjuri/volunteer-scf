@@ -1,7 +1,5 @@
 <?php
-
 session_start(); // Starting Session
-
 ?>
 <!DOCTYPE html>
 <html>
