@@ -59,7 +59,7 @@ include("includes/Header.php"); // the header of the page
                                             </div>
                                         </div>
                                     </form>
-                                
+
                                 <?php } ?>
                                 <form id="register-form" action="#" method="post" role="form" style="display: none;">
                                     <div class="form-group">
@@ -164,49 +164,51 @@ include("includes/Header.php"); // the header of the page
         } else {
             $query = "select * from account where password='$password' AND username='$username'";
             $run = mysqli_query($con, $query);
+            if ($run) {
+                if (mysqli_num_rows($run)) {
 
-            if (mysqli_num_rows($run)) {
 
 
+                    $query = "select * from account INNER JOIN volunteer ON (account.Username = volunteer.VolunteerUsername) where account.Username = '$username' ";
 
-                $query = "select * from account INNER JOIN volunteer ON (account.Username = volunteer.VolunteerUsername) where account.Username = '$username' ";
+                    $result = mysqli_query($con, $query);
 
-                $result = mysqli_query($con, $query);
+                    $admin_query = "select * from account INNER JOIN admin ON (account.Username = admin.AdminUsername) where account.Username = '$username' ";
+                    $admin_result = mysqli_query($con, $admin_query);
 
-                $admin_query = "select * from account INNER JOIN admin ON (account.Username = admin.AdminUsername) where account.Username = '$username' ";
-                $admin_result = mysqli_query($con, $admin_query);
+                    if ($admin_result && $result) {
+                        if ($result) {
 
-                if ($admin_result && $result) {
-                    if ($result) {
+                            $row = mysqli_fetch_array($result);
+                            $_SESSION['id'] = $row['VolunteerID']; //here session is used and value of volunter id store in $_SESSION.
+                            $_SESSION["username"] = $row['Username'];
+                            $_SESSION['admin'] = "false";
+                        } else {
 
-                        $row = mysqli_fetch_array($result);
-                        $_SESSION['id'] = $row['VolunteerID']; //here session is used and value of volunter id store in $_SESSION.
-                        $_SESSION["username"] = $row['Username'];
-                        $_SESSION['admin'] = "false";
+                            $row = mysqli_fetch_array($admin_result);
+                            $_SESSION["username"] = $row['Username'];
+
+                            $_SESSION['admin'] = "true";
+                        }
+                        echo '<div class="alert alert-success">تم تسجيل الدخول</div>';
+                        echo "<script>window.open('index.php','_self')</script>";
                     } else {
 
-                        $row = mysqli_fetch_array($admin_result);
-                        $_SESSION["username"] = $row['Username'];
-
-                        $_SESSION['admin'] = "true";
+                        echo '<div class="alert alert-danger">بياناتك غير مسجلة لدينا ، قم بئنشاء حساب جديد</div>';
                     }
-                    echo '<div class="alert alert-success">تم تسجيل الدخول</div>';
-                    echo "<script>window.open('index.php','_self')</script>";
-                } else {
+                }  echo '<div class="alert alert-danger"><strong>إنتبه! </strong>الإسم المدخل أو كلمة المرور غير صحيحة </div>';
+                
+            }else {
 
-                    echo '<div class="alert alert-danger">بياناتك غير مسجلة لدينا ، قم بئنشاء حساب جديد</div>';
+                    //$msg = "Username or Password is invalid";
+                    echo '<div class="alert alert-danger"><strong>إنتبه! </strong>الإسم المدخل أو كلمة المرور غير صحيحة </div>';
                 }
-            } else {
-
-                //$msg = "Username or Password is invalid";
-                echo '<div class="alert alert-danger"><strong>إنتبه! </strong>الإسم المدخل أو كلمة المرور غير صحيحة </div>';
             }
         }
-    }
-    ?>
-    <!--Footer of the page -->
+        ?>
+        <!--Footer of the page -->
 
-    <?php include('includes/footer.php'); ?>
+        <?php include('includes/footer.php'); ?>
     <script>
         $(function () {
 
