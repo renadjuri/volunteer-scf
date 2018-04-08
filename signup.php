@@ -129,9 +129,9 @@ include("includes/Header.php"); // the header of the page
             // Finally, register user if there are no errors in the form
             if (!$errUser && !$errorUser) {
 
-                $password = md5($password); //encrypt the password before saving in the database
+               // $password = md5($password); //encrypt the password before saving in the database
                 $query1 = "INSERT INTO account (UserName, password, Email)
-                 VALUES ('" . $username . "', '" . $Email . "', '" . $password . "' );";
+                 VALUES ('" . $username . "', '" . $password . "', '" . $Email . "' );";
 
 
                 $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification, WorkStatus, VolunteerUsername)
@@ -147,6 +147,7 @@ include("includes/Header.php"); // the header of the page
                     //msg successfuly registered
                     $_SESSION['username'] = $username;
                      $_SESSION['id'] = $nationalID;
+                      $_SESSION['admin'] = 'false';
                     $msg = '<div class="alert alert-success">تم حفظ بياناتك بنجاح&ensp;<span class= "glyphicon glyphicon-send"></span></div>';
                       echo "<script>window.open('index.php','_self')</script>";
                 } else {
