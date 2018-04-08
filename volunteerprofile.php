@@ -4,9 +4,7 @@
 <?php
 $page_title = "الصفحة الشخصية"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
-session_start();
-//0000 temporary j
-$_SESSION["username"] = "sara555"; //0000
+
 $username = $_SESSION["username"];
 ?>
 
