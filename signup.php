@@ -110,7 +110,7 @@ include("includes/Header.php"); // the header of the page
                 }
 
                 if ($user['Username'] === $username) {
-                    $errorUser = "البريد الإلكتروني موجود مسبقاً";
+                    $errorUser = "اسم المستخدم موجود مسبقاً";
                 }
             }
 
