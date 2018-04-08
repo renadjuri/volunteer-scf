@@ -12,19 +12,21 @@ include("includes/Header.php"); // the header of the page
     <?php
     require 'includes/connection.php'; //connecting to the database
     mysqli_set_charset($con, "utf8");
-    $errName = $errMiddleName = $errLastName = $errID = $errnationality = $errCity = $errPhone = $erremail = $errUsername = $errPassword = $errConfirm = $errorUser = $errUser = $msg = "";
+    $errName = $errMiddleName = $errLastName = $errID = $errnationality = $errCity = 
+            $errPhone = $erremail = $errUsername = $errPassword = $errConfirm = $errorUser = $errUser = $msg =  $errwork= "";
     if (isset($_POST['register-submit'])) {
-
+        $nationalID = $_POST['nationalID'];
         $FirstName = $_POST['FirstName'];
         $MiddleName = $_POST['MiddleName'];
         $LastName = $_POST['LastName'];
-        $nationalID = $_POST['nationalID'];
+        $MobileNumber = $_POST['phone'];
+        $birthdate = $_POST['birthdate'];
         $nationality = $_POST['nationality'];
         $city = $_POST['city'];
-        $MobileNumber = $_POST['phone'];
-        $Email = $_POST['email'];
         $degree = $_POST['degree'];
-        $birthdate = $_POST['birthdate'];
+        $gender = $_POST['gender'];
+        $workstation= $_POST['workstation'];
+        $Email = $_POST['email'];
         $username = $_POST['username'];
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm-password'];
@@ -63,6 +65,11 @@ include("includes/Header.php"); // the header of the page
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["city"])) {
             $errCity = "الجنسية المدخلة غير صحيحة";
         }
+          if (empty($_POST["workstation"])) {
+            $errwork = 'الرجاء ادخال الوظيفة';
+        } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["workstation"])) {
+            $errwork = "الوظيفة المدخلة غير صحيحة";
+        }
         if (empty($_POST["phone"])) {
             $errPhone = "الرجاء ادخال رقم الهاتف";
         } else if (!preg_match("/[ 0-9 ]/", $_POST["phone"])) {
@@ -75,8 +82,8 @@ include("includes/Header.php"); // the header of the page
         }
         if (empty($_POST["username"])) {
             $errUsername = "الرجاء ادخال اسم المستخدم";
-        } else if (!preg_match("/[ 0-9 a-z A-Z ا-ي ]/", $_POST["password"])) {
-            $errUsername = "كلمة المرور تتكون من أرقام أو حروف ";
+        } else if (!preg_match("/[ 0-9 a-z A-Z ا-ي ]/", $_POST["username"])) {
+            $errUsername = "اسم المستخدم يتكون من ارقام او حروف ";
         }
 
         if (empty($_POST["password"])) {
@@ -96,8 +103,8 @@ include("includes/Header.php"); // the header of the page
             // a user does not already exist with the same nationalID and/or email
             $user_check_query1 = "SELECT * FROM account WHERE Email='$Email' OR Username='$username' LIMIT 1";
             $result1 = mysqli_query($con, $user_check_query1);
-            $user1 = mysqli_fetch_assoc($result1);
-            if ($user1) { // if user exists
+            $user = mysqli_fetch_assoc($result1);
+            if ($user) { // if user exists
                 if ($user['Email'] === $Email) {
                     $errorUser = "البريد الإلكتروني موجود مسبقاً";
                 }
@@ -114,7 +121,7 @@ include("includes/Header.php"); // the header of the page
 
 
             if ($user) { // if user exists
-                if ($user['VolunteerID'] === $$nationalID) {
+                if ($user['VolunteerID'] === $nationalID) {
                     $errUser = "رقم السجل الوطني موجود مسبقاً";
                 }
             }
@@ -129,7 +136,7 @@ include("includes/Header.php"); // the header of the page
 
                 $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification, WorkStatus, VolunteerUsername)
                 VALUES ('" . $nationalID . "', '" . $FirstName . "', '" . $MiddleName . "', '" . $LastName . "', '" . $MobileNumber . "', '" .
-                        $birthdate . "', '" . "', '" . $nationality . "', '" . $city . "', '" . $degree . "' );";
+                        $birthdate . "', '" . $gender . "', '" . $nationality . "', '" . $city . "', '" . $degree . "', '" . $workstation . "', '" . $username . "' );";
 
 
 
@@ -139,7 +146,9 @@ include("includes/Header.php"); // the header of the page
                 if ($result) {
                     //msg successfuly registered
                     $_SESSION['username'] = $username;
+                     $_SESSION['id'] = $nationalID;
                     $msg = '<div class="alert alert-success">تم حفظ بياناتك بنجاح&ensp;<span class= "glyphicon glyphicon-send"></span></div>';
+                      echo "<script>window.open('index.php','_self')</script>";
                 } else {
                     $msg = '<div class="alert alert-danger">عذرا حدث خطأ أثناء إرسال رسالتك&ensp;<span class= "glyphicon glyphicon-send"></span> ، حاول مجددا لاحقاً</div>';
                 }
@@ -169,10 +178,10 @@ include("includes/Header.php"); // the header of the page
                                 <form method="post" id="register-form"  role="form" style="display: block;
                                       ">
                                     <div class="form-group">
-                                        <div class="radio" name="gender">
-                                            <center> <label><input type="radio" name="gender">أنثى</label>
+                                        <div class="radio" >
+                                            <center> <label><input type="radio" name="gender" value="أنثى">أنثى</label>
 
-                                                <label><input type="radio" name="gender">ذكر</label>
+                                                <label><input type="radio" name="gender" value="ذكر">ذكر</label>
                                             </center>
                                         </div>
                                     </div>
@@ -213,6 +222,11 @@ include("includes/Header.php"); // the header of the page
                                         <div>  <?php echo "<p class = 'text-danger'>$errCity</p>"; ?> </div>
                                     </div>
 
+                                     <div class="form-group">
+                                        <input type="text" name="workstation" id="workstation" tabindex="1" class="form-control" placeholder="الوظيفة" 
+                                               value=""  ata-toggle="tooltip" data-placement="bottom" title="وظيفتك التي تستطيع القيام بها">
+                                        <div>  <?php echo "<p class = 'text-danger'> $errwork</p>"; ?> </div>
+                                    </div>
                                     <div class="form-group">
                                         <input type="phone" name="phone" id="phone" tabindex="1" class="form-control" placeholder="رقم الهاتف/الجوال" 
                                                value=""  ata-toggle="tooltip" data-placement="bottom" title="رقم الهاتف">
@@ -228,10 +242,10 @@ include("includes/Header.php"); // the header of the page
                                         <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="المؤهل العلمي">المؤهل العلمي </span>
 
                                         <select class="form-control" name="degree" id="degree">
-                                            <option>ثانوي</option>
-                                            <option>بكالوريوس</option>
-                                            <option>ماجستير</option>
-                                            <option>أخرى</option>
+                                            <option value="ثانوي">ثانوي</option>
+                                            <option value ="بكالوريوس">بكالوريوس</option>
+                                            <option value="ماجستير">ماجستير</option>
+                                            <option value="دكتوراه">دكتوراه</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
