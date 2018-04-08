@@ -180,9 +180,9 @@ include("includes/Header.php"); // the header of the page
                                       ">
                                     <div class="form-group">
                                         <div class="radio" >
-                                            <center> <label><input type="radio" name="gender" value="أنثى">أنثى</label>
+                                            <center> <label><input type="radio" name="gender" value="F">أنثى</label>
 
-                                                <label><input type="radio" name="gender" value="ذكر">ذكر</label>
+                                                <label><input type="radio" name="gender" value="M">ذكر</label>
                                             </center>
                                         </div>
                                     </div>
