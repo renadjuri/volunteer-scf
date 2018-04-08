@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 
 <?php
-   $page_title = "تفاصيل عن الفعالية";//page title to pass it to the header
-   include("includes/Header.php"); // the header of the page
-   include ("includes/connection_arabic.php"); //connecting to the database
+$page_title = "تفاصيل عن الفعالية"; //page title to pass it to the header
+include("includes/Header.php"); // the header of the page
 ?>
 
-        <style>
-            body{
-                background-size:cover;
-                background-attachment:fixed;
-            }
-            table {
-                border: 1px solid black;
-                border-collapse: collapse;
-                background: #FCFBF9;
-            }
+<style>
+    body{
+        background-size:cover;
+        background-attachment:fixed;
+    }
+    table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        background: #FCFBF9;
+    }
 
-            table:hover {background-color:#f5f5f5;}
+    table:hover {background-color:#f5f5f5;}
 
-            hr.style4 {
-                border-top: 1px dotted #f5f5f5;
-                width:600px;
-            }
-        </style>	
+    hr.style4 {
+        border-top: 1px dotted #f5f5f5;
+        width:600px;
+    }
+</style>	
 
 
-    <body>
-        
+<body>
+
     <br>
 
     <?php
+    if (isset($_GET['reg'])) {
+
+
+        echo"done";
+    }
     if (isset($_GET['EventID'])) {
 
         $EventID = $_GET['EventID'];
-      
-        $run_events = $query( "select * from event where EventID=$EventID");
+        
+        require 'includes/connection.php'; //connecting to the database
+        mysqli_set_charset($con, "utf8");
+        $get_events = "select * from event where EventID=$EventID";
+        $run_events = mysqli_query($con, $get_events);
         while ($row_events = mysqli_fetch_array($run_events)) {
 
             $EventID = $row_events['EventID'];
@@ -47,35 +54,42 @@
 	  <br>
 	  <br>
 	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-		<table  style='height:40px; width:700px; margin-top:5px; margin-left: auto; margin-right: auto; border:1px #F8F7F3 solid;' >
+	 
+		<table  style='height:40px; width:700px; margin-top:5px; margin-left: auto; margin-right: auto; border:2px #F8F7F3 solid;' >
 		<tr>
-		<td  style='vertical-align: top;'> <p>:تاريخ الفعالية</p><p align='right' >";
-             $result2= $query( "SELECT * FROM dateofevent where Event_ID=$EventID");
-          
+                <td  width='200'> <p align='center' ><img src='images/events/$EventImage' height='170' width='200' alt='$EventName'></td>
+                </tr>
+
+<tr>
+		
+			<td   width='700'style='vertical-align: top;'> <p align='center' > $EventName </p>
+			<p align='center'>   $EventDescription</p></td>
+			
+       <p> </tr>
+
+		<tr>
+		<td   width='400'style='vertical-align: top;'><p align='center'>  $Location </p></td>            
+        </tr>
+        <tr>
+        <td  style='vertical-align: top;'> <p align='center'>:تاريخ الفعالية</p><p align='center' >";
+            $qry2 = "SELECT * FROM dateofevent where Event_ID=$EventID";
+            $result2 = mysqli_query($con, $qry2);
+
             while ($row = mysqli_fetch_array($result2)) {
                 $Date = $row['Date'];
                 echo "$Date <br> ";
             }
             echo" </p></td>
-			<td  rowspan='2' width='700'style='vertical-align: top;'> <p align='right' > $EventName </p>
-			<p align='right'>   $EventDescription سيتضمن البرنامج أمسيات حوارية، حيث تقام في اليوم الأول: أمسية “الوعي الاسري”، من تقديم الدكتور/خالد الحليبي، والدكتور/ عبد السلام الصقعبي، أما اليوم الثاني فستقام أمسية حوارية بعنوان “الوعي الذاتي”، من تقديم الدكتور/محمد المقهوي والدكتور/فهد الماجد.ا </p></td>
-			
-			<td rowspan='3' width='200'> <p align='right' ><img src='images/events/$EventImage' height='170' width='200' alt='$EventName'></td>
-       <p> </tr>
-
-		<tr>
-		<td   width='400'style='vertical-align: top;'><p align='right'>  $Location </p></td>            
         </tr>
         <tr>
-            <td colspan='2' align='left'><h6 align='right'>
+         </td>
+            <td  style='vertical-align: top;'> <p align='center'>:للتسجيل في الفعالية اختر المهمة المطلوبة</p> 
+            </td>
+        </tr>
+        <tr>
+            <td colspan='2' align='center'><h6 align='center'>
             <form method='post' action='EventRegistration.php'>
+             <input type='hidden' name='id' value='$EventID'>
             <select name='TaskOption'>";
             $qry2 = "SELECT * FROM taskofevent  
 													 
@@ -90,9 +104,10 @@
             }
 
             echo" </select> 
-                    
                     <br>
-                    <button type='submit'>Submit</button>
+                    <br>
+
+                    <button type='submit'>التسجيل</button>
                     </form></h6></td>
 		</tr>
         </table >
@@ -103,5 +118,5 @@
     <br>
     <br>
     <!--Footer of the page -->
-          
-                <?php include('includes/footer.php'); ?>
+
+<?php include('includes/footer.php'); ?>

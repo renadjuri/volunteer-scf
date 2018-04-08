@@ -23,7 +23,7 @@ session_start(); // Starting Session
         <!-- Style CSS -->
         <link href="css\style.css" rel="stylesheet" type="text/css" />
     </head>
-   
+
     <body>
 
         <header>
@@ -53,32 +53,38 @@ session_start(); // Starting Session
                         <ul class="nav navbar-nav  navbar-right">
                             <!-- Image and text -->
                             <li<?php echo ($filename == '#contact') ? 'class="active"' : ''; ?> ><a href="index.php#contact">تواصل</a></li>
-                            <li <?php echo ($filename == 'about') ? 'class="active"' : ''; ?>><a href="about.php">عن جمعية السرطان السعوية</a></li>
+                            <li <?php echo ($filename == 'about') ? 'class="active"' : ''; ?>><a href="about.php">عن جمعية السرطان السعودية</a></li>
                             <li <?php echo ($filename == 'events') ? 'class="active"' : ''; ?> ><a href="events.php">الفعاليات</a></li> 
                             <li <?php echo ($filename == 'index') ? 'class="active"' : ''; ?> ><a href="index.php">الصفحة الرئيسة</a></li>
 
                         </ul>
                         <ul class="nav navbar-nav navbar-left">
                             <!-- check if there is no logged in user-->
-                            <?php
-                             
-                             if ( empty($_SESSION['id'])){ ?>
-                                <li <?php echo ($filename == 'login-signup') ? 'class="active"' : ''; ?>><a href="login-signup.php"><span class="glyphicon glyphicon-log-in"></span> تسجيل الدخول</a></li>
-                                <?php
-                            }
-                            ?>
+                            <?php if (empty($_SESSION['username'])) { ?>
+                                <li <?php echo ($filename == 'انشاء حساب') ? 'class="active"' : ''; ?>><a href="signup.php"><span class="glyphicon glyphicon glyphicon-user">
+
+                                        </span> انشاء حساب</a></li>
+                                <li <?php echo ($filename == 'login') ? 'class="active"' : ''; ?>><a href="login.php"><span class="glyphicon glyphicon-log-in">
+
+                                        </span> تسجيل الدخول</a></li>
+
+    <?php
+}
+?>
                             <!-- check if the user logged in and not admin-->
-                           <?php if (! empty($_SESSION['id'])){ ?>
-                                <?php if ( $_SESSION['admin']=='false'){ ?>
-                                    <li <?php echo ($filename == 'volunteerprofile') ? 'class="active"' : ''; ?>><a href="volunteerprofile.php"><span class="glyphicon glyphicon-user"></span> <span><?php $username = $_SESSION["username"]; echo $username;   ?>  </span></a></li>
+                            <?php if (!empty($_SESSION['id'])) { ?>
+                                <?php if ($_SESSION['admin'] == 'false') { ?>
+                                    <li <?php echo ($filename == 'volunteerprofile') ? 'class="active"' : ''; ?>>
+                                        <a href="volunteerprofile.php"><span class="glyphicon glyphicon-user"></span> <span><?php $username = $_SESSION["username"];
+                            echo $username; ?>  </span></a></li>
                                     <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
 
                                     <?php
-                            }
+                                }
                                 ?>
                                 <!-- check if the user is admin-->
 
-                                <?php if ($_SESSION['admin']=='true') { ?> 
+                                <?php if ($_SESSION['admin'] == 'true') { ?> 
                                     <li <?php echo ($filename == 'admin-profile') ? 'class="active"' : ''; ?>><a href="admin-profile.php"><span class="glyphicon glyphicon-user"></span> <span>  </span></a></li>
                                     <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
 
@@ -96,7 +102,7 @@ session_start(); // Starting Session
         </header>
     <body>
         <button onclick="topFunction()" id="myBtn">  <span class="glyphicon glyphicon-chevron-up"></span></button>
-       
+
 
 
 

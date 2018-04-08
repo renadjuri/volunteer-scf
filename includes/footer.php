@@ -5,15 +5,16 @@
 
 <footer class="container-fluid text-center">
     <div class="social">
-    <a> <i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a> 
-    <a><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
-    <a><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+
+        <a href="https://twitter.com/SaudiCancerF"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+        <a > <i class="fa fa-snapchat fa-2x" aria-hidden="true"></i></a> 
+        <a href="https://www.instagram.com/saudicancerf/"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
     </div>
-     <br>
+    <br>
     <p>&copy; جميع الحقوق محفوظة لجمعية السرطان السعودية  2018 <br>
         <a href="http://scf.org.sa" title="قم بزيارة الموقع">scf.org.sa</a>
     </p>
-   
+
 
 
 </footer>

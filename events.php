@@ -3,7 +3,6 @@
 <?php
 $page_title = "الفعاليات"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
-include ("includes/connection_arabic.php"); //connecting to the database
 ?>
 
 <style type="text/css">
@@ -35,7 +34,12 @@ include ("includes/connection_arabic.php"); //connecting to the database
 
 
     <?php
-    $run_events = $query("select * from event ");
+    require 'includes/connection.php'; //connecting to the database
+      mysqli_set_charset($con, "utf8");
+
+    $get_events = "select * from event ";
+
+    $run_events = mysqli_query($con, $get_events);
 
     while ($row_events = mysqli_fetch_array($run_events)) {
 
@@ -61,10 +65,11 @@ include ("includes/connection_arabic.php"); //connecting to the database
         <tr>
         <td ><p align='left'> <a href='Details.php?EventID=$EventID' >..الإطلاع على المزيد</a></p></td>
             <td align='left'><h6 align='right'>";
-         $result2  =$query( "SELECT * FROM dateofevent  
-													 
-													  where Event_ID=$EventID");
-       
+        $qry2 = "SELECT * FROM dateofevent where Event_ID=$EventID";
+
+
+        $result2 = mysqli_query($con, $qry2);
+
         while ($row = mysqli_fetch_array($result2)) {
 
             $Date = $row['Date'];
@@ -81,6 +86,6 @@ include ("includes/connection_arabic.php"); //connecting to the database
     <br>
     <br>
     <!--Footer of the page -->
-            
-            <?php include('includes/footer.php'); ?>
+
+    <?php include('includes/footer.php'); ?>
      

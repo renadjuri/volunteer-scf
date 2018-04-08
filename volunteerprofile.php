@@ -4,21 +4,22 @@
 <?php
 $page_title = "الصفحة الشخصية"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
-
+include("includes/connection.php"); //connecting to the database
+mysqli_set_charset($con, "utf8");
 $username = $_SESSION["username"];
 ?>
 
 
-        <style>
-            body{
-                background-size:cover;
-                background-attachment:fixed;
-            }
-        </style>	
+<style>
+    body{
+        background-size:cover;
+        background-attachment:fixed;
+    }
+</style>	
 
 
-    <body>
-  
+<body>
+
     <br>
 
     <div class="tab" >
@@ -33,19 +34,8 @@ $username = $_SESSION["username"];
         <h3>المعلومات الشخصية</h3>
         <?php
         $query = 'select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, residence, nationality, Qualification, Email from volunteer, account  where account.Username = volunteer.VolunteerUsername and account.Username = "' . $username . '"';
-// Connect to MySQL
-        if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-            die("could not connect to database");
-        }
-        // open database 
-        if (!mysqli_select_db($DB, "sql12229449")) {
-            die("could not open cancer store to database");
-        }
-        // query database 
-        if (!($result = mysqli_query($DB, $query))) {
-            die("could not execute the query");
-        }
-        mysqli_close($DB);
+        $result = mysqli_query($con, $query);
+
 
         while ($row = mysqli_fetch_array($result)) {
             foreach ($row as $id => $val) {
@@ -64,102 +54,84 @@ $username = $_SESSION["username"];
         }
         ?>
 
-        
+
         <?php
-    
-    //Check form method is post
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        //Setting php variables
-                $VolunteerID = $row['VolunteerID'];
-                $FirstName = $row['FirstName'];
-                $MiddleName = $row['MiddleName'];
-                $LastName = $row['LastName'];
-                $MobileNumber = $row['MobileNumber'];
-                $DateOfBirth = $row['DateOfBirth'];
-                $Gender = $row['Gender'];
-                $residence = $row['residence'];
-                $nationality = $row['nationality'];
-                $Qualification = $row['Qualification'];
-                $Email = $row['Email'];
-        //Check if all fields are empty if true show error message 
-        if (empty($_POST["VolunteerID"]) && empty($_POST["FirstName"]) && empty($_POST["MiddleName"]) &&
-                empty($_POST["LastName"])&& empty($_POST["MobileNumber"]) && empty($_POST["DateOfBirth"]) && empty($_POST["residence"]) && empty($_POST["nationality"])
-                && empty($_POST["Qualification"])&& empty($_POST["Email"])) {
-            echo "<p class='error'>
+        //Check form method is post
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            //Setting php variables
+            $VolunteerID = $row['VolunteerID'];
+            $FirstName = $row['FirstName'];
+            $MiddleName = $row['MiddleName'];
+            $LastName = $row['LastName'];
+            $MobileNumber = $row['MobileNumber'];
+            $DateOfBirth = $row['DateOfBirth'];
+            $Gender = $row['Gender'];
+            $residence = $row['residence'];
+            $nationality = $row['nationality'];
+            $Qualification = $row['Qualification'];
+            $Email = $row['Email'];
+            //Check if all fields are empty if true show error message 
+            if (empty($_POST["VolunteerID"]) && empty($_POST["FirstName"]) && empty($_POST["MiddleName"]) &&
+                    empty($_POST["LastName"]) && empty($_POST["MobileNumber"]) && empty($_POST["DateOfBirth"]) && empty($_POST["residence"]) && empty($_POST["nationality"]) && empty($_POST["Qualification"]) && empty($_POST["Email"])) {
+                echo "<p class='error'>
 						تأكد من تعبئة البيانات المطلوبة 	
 						 </p>";
-        } else {
-            //Email validation  
-            if (empty($_POST["Email"])) {
-                $EmailErr = "تأكد من تعبئة البيانات المطلوبة.";
-            } else if (!filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
-                $EmailErr = "البريد الإلكتروني غير صحيح";
-            }
-            //First Name validation 
-            if (empty($_POST["FirstName"])) {
-                $FnameErr = "تأكد من تعبئة البيانات المطلوبة.";
-            } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["FirstName"])) {
-                $FnameErr = "الإسم المدخل غير صحيح";
-            }
-            //Last Name validation 
-            if (empty($_POST["LastName"])) {
-                $LnameErr = "تأكد من تعبئة البيانات المطلوبة.";
-            }
-
-            if (!empty($_POST["LastName"])) {
-                if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["LastName"])) {
-                    $LnameErr = "الإسم الاخير المدخل غير صحيح";
+            } else {
+                //Email validation  
+                if (empty($_POST["Email"])) {
+                    $EmailErr = "تأكد من تعبئة البيانات المطلوبة.";
+                } else if (!filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
+                    $EmailErr = "البريد الإلكتروني غير صحيح";
                 }
-            }
+                //First Name validation 
+                if (empty($_POST["FirstName"])) {
+                    $FnameErr = "تأكد من تعبئة البيانات المطلوبة.";
+                } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["FirstName"])) {
+                    $FnameErr = "الإسم المدخل غير صحيح";
+                }
+                //Last Name validation 
+                if (empty($_POST["LastName"])) {
+                    $LnameErr = "تأكد من تعبئة البيانات المطلوبة.";
+                }
 
-           
-        } if ((!empty($_POST["VolunteerID"])) && (!empty($_POST["FirstName"])) && (!empty($_POST["MiddleName"])) &&
-                (!empty($_POST["LastName"]))&& (!empty($_POST["MobileNumber"])) && (!empty($_POST["DateOfBirth"])) && (!empty($_POST["residence"])) && (!empty($_POST["nationality"]))
-                && (!empty($_POST["Qualification"]))&& (!empty($_POST["Email"]))) {
-           
-$query = "UPDATE volunteer SET VolunteerID = '$VolunteerID' WHERE volunteer.VolunteerUsername = '$username'";
-// Connect to MySQL
-        if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-            die("could not connect to database");
-        }
-        // open database 
-        if (!mysqli_select_db($DB, "sql12229449")) {
-            die("could not open cancer store to database");
-        }
-        // query database 
-        if (!($result = mysqli_query($DB, $query))) {
-            die("could not execute the query");
-        }
-        mysqli_close($DB);
-/*
-        while ($row = mysqli_fetch_array($result)) {
-            foreach ($row as $id => $val) {
-                $VolunteerID = $row['VolunteerID'];
-                $FirstName = $row['FirstName'];
-                $MiddleName = $row['MiddleName'];
-                $LastName = $row['LastName'];
-                $MobileNumber = $row['MobileNumber'];
-                $DateOfBirth = $row['DateOfBirth'];
-                $Gender = $row['Gender'];
-                $residence = $row['residence'];
-                $nationality = $row['nationality'];
-                $Qualification = $row['Qualification'];
-                $Email = $row['Email'];
-            }
-        }*/
+                if (!empty($_POST["LastName"])) {
+                    if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["LastName"])) {
+                        $LnameErr = "الإسم الاخير المدخل غير صحيح";
+                    }
+                }
+            } if ((!empty($_POST["VolunteerID"])) && (!empty($_POST["FirstName"])) && (!empty($_POST["MiddleName"])) &&
+                    (!empty($_POST["LastName"])) && (!empty($_POST["MobileNumber"])) && (!empty($_POST["DateOfBirth"])) && (!empty($_POST["residence"])) && (!empty($_POST["nationality"])) && (!empty($_POST["Qualification"])) && (!empty($_POST["Email"]))) {
+
+                $query = "UPDATE volunteer SET VolunteerID = '$VolunteerID' WHERE volunteer.VolunteerUsername = '$username'";
+                $result = mysqli_query($con, $query);
+                /*
+                  while ($row = mysqli_fetch_array($result)) {
+                  foreach ($row as $id => $val) {
+                  $VolunteerID = $row['VolunteerID'];
+                  $FirstName = $row['FirstName'];
+                  $MiddleName = $row['MiddleName'];
+                  $LastName = $row['LastName'];
+                  $MobileNumber = $row['MobileNumber'];
+                  $DateOfBirth = $row['DateOfBirth'];
+                  $Gender = $row['Gender'];
+                  $residence = $row['residence'];
+                  $nationality = $row['nationality'];
+                  $Qualification = $row['Qualification'];
+                  $Email = $row['Email'];
+                  }
+                  } */
 
                 echo "<p class='error'>
 						شكرا لتواصلك معنا
 						 </p>";
             }
         }
-    
-    ?>
-        
+        ?>
+
         <form method="post" action = "<?php echo $_SERVER['PHP_SELF']; ?>">
             <table cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><input type="text" name="Name" value="<?php print ($FirstName . " ". $MiddleName ." ". $LastName); ?>" required></td>
+                    <td><input type="text" name="Name" value="<?php print ($FirstName . " " . $MiddleName . " " . $LastName); ?>" required></td>
                     <td><label>الاسم</label></td>		 
                 </tr>
                 <tr>
@@ -196,7 +168,7 @@ $query = "UPDATE volunteer SET VolunteerID = '$VolunteerID' WHERE volunteer.Volu
                     <td><input type="text" name="residence" value="<?php print ($residence); ?>" required></td>	
                     <td><label>مكان الإقامة</label></td>	
                 </tr>
-                
+
                 <tr>
                     <td><select name="Qualification" value="" required>
 
@@ -241,19 +213,7 @@ $query = "UPDATE volunteer SET VolunteerID = '$VolunteerID' WHERE volunteer.Volu
         <?php
         $query = "select EventID, EventName, Location from event";
 
-        // Connect to MySQL
-        if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-            die("could not connect to database");
-        }
-        // open database 
-        if (!mysqli_select_db($DB, "sql12229449")) {
-            die("could not open cancer store to database");
-        }
-        // query database 
-        if (!($result = mysqli_query($DB, $query))) {
-            die("could not execute the query");
-        }
-        mysqli_close($DB);
+        $result = mysqli_query($con, $query);
 
 
         $numRows = mysqli_num_rows($result);
@@ -311,19 +271,7 @@ $query = "UPDATE volunteer SET VolunteerID = '$VolunteerID' WHERE volunteer.Volu
         <?php
         $query = "select EventName, StartingHour, EndingHour, SUM(StartingHour+EndingHour) from volunteerparticipateonevent, event, volunteer where volunteerparticipateonevent.Event_ID = event.EventID and volunteerparticipateonevent.Volunteer_ID = volunteer.VolunteerID and volunteer.VolunteerUsername = '$username'";
 
-        // Connect to MySQL
-        if (!($DB = mysqli_connect('sql12.freemysqlhosting.net', 'sql12229449', 'xQDtaEtuwZ', 'sql12229449'))) {
-            die("could not connect to database");
-        }
-        // open database 
-        if (!mysqli_select_db($DB, "sql12229449")) {
-            die("could not open cancer store to database");
-        }
-        // query database 
-        if (!($result = mysqli_query($DB, $query))) {
-            die("could not execute the query");
-        }
-        mysqli_close($DB);
+        $result = mysqli_query($con, $query);
 
 
         $numRows = mysqli_num_rows($result);
@@ -399,13 +347,13 @@ $query = "UPDATE volunteer SET VolunteerID = '$VolunteerID' WHERE volunteer.Volu
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
         </script>
-    <!--Footer of the page -->
-    <center>
-        <div class="footer">
-            <footer>             
-                <?php include('includes/footer.php'); ?>
-            </footer>
-        </div>
-    </center>
-    </body>
+        <!--Footer of the page -->
+        <center>
+            <div class="footer">
+                <footer>             
+                    <?php include('includes/footer.php'); ?>
+                </footer>
+            </div>
+        </center>
+</body>
 </html>

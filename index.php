@@ -144,9 +144,9 @@ include("includes/Header.php"); // the header of the page
              <div class="col-sm-5">
                 <h3>تواصل معنا عبر أحد الوسائل التالية</h3>
                 <p><span class="glyphicon glyphicon-map-marker pull-right"></span> المملكة العربية السعودية  ,المنطقة الشرقية,الخبر  
-                    34427</p>
-                <p><span class="glyphicon glyphicon-phone  pull-right"></span>  013 864 7557  </p>
-                <p><span class="glyphicon glyphicon-envelope  pull-right"></span> myemail@something.com  </p> 
+                    34427 &ensp;</p>
+                <p><span class="glyphicon glyphicon-phone  pull-right"></span>  0505348085 -  0138649887 &ensp;</p>
+                <p><span class="glyphicon glyphicon-envelope  pull-right"></span> info@scf.org.sa  &ensp;</p> 
             </div>
             
             <div class="col-sm-7">
