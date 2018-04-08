@@ -10,14 +10,14 @@ $query = function ($query) use ($con) {
     return mysqli_query($con, $query);
 };
 
-$get_user_data = function ($index, $id = null) use ($query) {
-    if ($id == null) {
-        $id = $_SESSION['id'];
+$get_user_data = function ($index, $username = null) use ($query) {
+    if ($username == null) {
+        $username = $_SESSION['username'];
     }
     if (!is_admin()) {
-        $q = $query("select * from account INNER JOIN volunteer ON (account.Username = volunteer.VolunteerUsername) where account.Username = '$id' ");
+        $q = $query("select * from account INNER JOIN volunteer ON (account.Username = volunteer.VolunteerUsername) where account.Username = '$username' ");
     } else {
-        $q = $query("select * from account INNER JOIN admin ON (account.Username = admin.AdminUsername) where account.Username = '$id' ");
+        $q = $query("select * from account INNER JOIN admin ON (account.Username = admin.AdminUsername) where account.Username = '$username' ");
     }
     $row = mysqli_fetch_array($q);
     return $row[$index];
