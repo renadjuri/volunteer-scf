@@ -1,11 +1,12 @@
 <?php
-$con=mysqli_connect('localhost', 'root', '', 'sql12229449');
+$con=mysqli_connect('localhost', 'root', '');
 if(!$con) die ("failed");
 
-mysqli_select_db($con, 'sql12229449');
+mysqli_select_db($con, 'database');
 mysqli_query($con,"set NAMES utf8");
 
 $query = function ($query) use ($con) {
+     mysqli_set_charset($con,"utf8");
     return mysqli_query($con, $query);
 };
 
