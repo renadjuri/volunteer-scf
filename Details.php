@@ -34,7 +34,7 @@
 
         $EventID = $_GET['EventID'];
       
-        $run_events = $quiry( "select * from event where EventID=$EventID");
+        $run_events = $query( "select * from event where EventID=$EventID");
         while ($row_events = mysqli_fetch_array($run_events)) {
 
             $EventID = $row_events['EventID'];
@@ -56,7 +56,7 @@
 		<table  style='height:40px; width:700px; margin-top:5px; margin-left: auto; margin-right: auto; border:1px #F8F7F3 solid;' >
 		<tr>
 		<td  style='vertical-align: top;'> <p>:تاريخ الفعالية</p><p align='right' >";
-             $result2= $quiry( "SELECT * FROM dateofevent where Event_ID=$EventID");
+             $result2= $query( "SELECT * FROM dateofevent where Event_ID=$EventID");
           
             while ($row = mysqli_fetch_array($result2)) {
                 $Date = $row['Date'];

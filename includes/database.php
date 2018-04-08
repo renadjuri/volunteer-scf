@@ -3,7 +3,7 @@ $con = mysqli_connect('localhost', 'root', '');
 if (!$con)
     die("failed");
 
-mysqli_select_db($con, 'sql12229449');
+mysqli_select_db($con,'database');
 mysqli_query($con, "set NAMES utf8");
 
 /*

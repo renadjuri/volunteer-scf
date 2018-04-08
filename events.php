@@ -35,7 +35,7 @@ include ("includes/connection_arabic.php"); //connecting to the database
 
 
     <?php
-    $run_events = $quiry("select * from event ");
+    $run_events = $query("select * from event ");
 
     while ($row_events = mysqli_fetch_array($run_events)) {
 
@@ -61,7 +61,7 @@ include ("includes/connection_arabic.php"); //connecting to the database
         <tr>
         <td ><p align='left'> <a href='Details.php?EventID=$EventID' >..الإطلاع على المزيد</a></p></td>
             <td align='left'><h6 align='right'>";
-         $result2  =$quiry( "SELECT * FROM dateofevent  
+         $result2  =$query( "SELECT * FROM dateofevent  
 													 
 													  where Event_ID=$EventID");
        

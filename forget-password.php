@@ -36,7 +36,7 @@ include("includes/Header.php"); // the header of the page
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-6 col-sm-offset-3">
-                                                <input type="submit" name="forgetpassword-submit"  tabindex="4" class="form-control btn btn-login" value="إرسال">
+                                                <input type="submit" name="forgetpassword-submit"  tabindex="4" class="form-control btn  btn-register" value="إرسال">
                                             </div>
                                         </div>
                                     </div>

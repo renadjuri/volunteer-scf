@@ -64,7 +64,7 @@ include('server.php')
                     </tr>
                     <tr>
                         <td>
-                            <a href="includes/CharterofVolunteerism.pdf"><b>أقر أني اطلعت على ميثاق التطوع</b>
+                            <a href="includes/CharterofVolunteerism.pdf" target="_blank"><b>أقر أني اطلعت على ميثاق التطوع</b>
                                 <input type="checkbox" name="check" value="ok"required>
                             </a>
                         </td>
