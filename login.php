@@ -28,32 +28,32 @@ include("includes/Header.php"); // the header of the page
                 if (mysqli_num_rows($run)) {
 
                     $query = "select * from account INNER JOIN volunteer ON (account.Username = volunteer.VolunteerUsername) where account.Username = '$username' ";
+                    $admin_query = "select * from account INNER JOIN admin ON (account.Username = admin.AdminUsername) where account.Username = '$username' ";
 
+
+                    $admin_result = mysqli_query($con, $admin_query);
                     $result = mysqli_query($con, $query);
 
-                    $admin_query = "select * from account INNER JOIN admin ON (account.Username = admin.AdminUsername) where account.Username = '$username' ";
-                    $admin_result = mysqli_query($con, $admin_query);
 
-                    if ($admin_result && $result) {
-                        if ($result) {
+                    if ($admin_result) {
 
-                            $row = mysqli_fetch_array($result);
-                            $_SESSION['id'] = $row['VolunteerID']; //here session is used and value of volunter id store in $_SESSION.
-                            $_SESSION["username"] = $row['Username'];
-                            $_SESSION['admin'] = "false";
-                        } else {
+                        $row = mysqli_fetch_array($admin_result);
+                        $_SESSION['id'] = $row['AdminID']; //here session is used and value of volunter id store in $_SESSION.
+                        $_SESSION['username'] = $row['Username'];
+                        $_SESSION['admin'] = 'true';
+                    } else if ($result) {
 
-                            $row = mysqli_fetch_array($admin_result);
-                            $_SESSION["username"] = $row['Username'];
-                            $_SESSION['admin'] = "true";
-                        }
+                        $row = mysqli_fetch_array($result);
+                        $_SESSION['id'] = $row['VolunteerID']; //here session is used and value of volunter id store in $_SESSION.
+                        $_SESSION['username'] = $row['Username'];
+                        $_SESSION['admin'] = 'false';
+                    } else
                         $loginmsg = '<div class="alert alert-success">تم تسجيل الدخول &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
-                        echo "<script>window.open('index.php','_self')</script>";
-                    } else {
+                    echo "<script>window.open('index.php','_self')</script>";
+                } else {
 
-                        $loginmsg = '<div class="alert alert-danger">بياناتك غير مسجلة لدينا ، قم بإنشاء حساب جديد&ensp</div>';
-                    }
-                } $loginmsg = '<div class="alert alert-danger"><strong>إنتبه! </strong>الإسم المدخل أو كلمة المرور غير صحيحة  &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
+                    $loginmsg = '<div class="alert alert-danger">بياناتك غير مسجلة لدينا ، قم بإنشاء حساب جديد</div>';
+                }
             } else {
 
                 //$msg = "Username or Password is invalid";

@@ -1,6 +1,4 @@
-<?php
-session_start(); // Starting Session
-?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,6 +6,7 @@ session_start(); // Starting Session
         <title>
             <?php
             isset($page_title) ? $page_title : "جمعية السرطان السعودية";
+            session_start(); // Starting Session
             ?>
         </title>
         <!--page logo at the header-->
@@ -59,33 +58,27 @@ session_start(); // Starting Session
 
                         </ul>
                         <ul class="nav navbar-nav navbar-left">
-                            <!-- check if there is no logged in user-->
-                            <?php if (empty($_SESSION['username'])) { ?>
-                                <li <?php echo ($filename == 'انشاء حساب') ? 'class="active"' : ''; ?>><a href="signup.php"><span class="glyphicon glyphicon glyphicon-user">
 
-                                        </span> انشاء حساب</a></li>
-                                <li <?php echo ($filename == 'login') ? 'class="active"' : ''; ?>><a href="login.php"><span class="glyphicon glyphicon-log-in">
+                            <!-- check if the user logged in -->
+                            <?php if (isset($_SESSION['id']) && isset($_SESSION['username'])) { ?>
 
-                                        </span> تسجيل الدخول</a></li>
+                                <!-- check if the user is admin-->
 
-    <?php
-}
-?>
-                            <!-- check if the user logged in and not admin-->
-                            <?php if (!empty($_SESSION['id'])) { ?>
-                                <?php if ($_SESSION['admin'] == 'false') { ?>
-                                    <li <?php echo ($filename == 'volunteerprofile') ? 'class="active"' : ''; ?>>
-                                        <a href="volunteerprofile.php"><span class="glyphicon glyphicon-user"></span> <span><?php $username = $_SESSION["username"];
-                            echo $username; ?>  </span></a></li>
+                                <?php if ($_SESSION['admin'] == 'true') { ?> 
+                                    <li <?php echo ($filename == 'admin-profile') ? 'class="active"' : ''; ?>>
+                                        <a href="admin-profile.php"><span class="glyphicon glyphicon-user"></span> <span><?php $username = $_SESSION["username"]; echo $username;?>  </span></a></li>
                                     <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
 
                                     <?php
                                 }
                                 ?>
-                                <!-- check if the user is admin-->
 
-                                <?php if ($_SESSION['admin'] == 'true') { ?> 
-                                    <li <?php echo ($filename == 'admin-profile') ? 'class="active"' : ''; ?>><a href="admin-profile.php"><span class="glyphicon glyphicon-user"></span> <span>  </span></a></li>
+                                <?php if ($_SESSION['admin'] == 'false') { ?>
+                                    <li <?php echo ($filename == 'volunteerprofile') ? 'class="active"' : ''; ?>>
+                                        <a href="volunteerprofile.php"><span class="glyphicon glyphicon-user"></span> <span><?php
+                                                $username = $_SESSION["username"];
+                                                echo $username;
+                                                ?>  </span></a></li>
                                     <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
 
                                     <?php
@@ -94,6 +87,19 @@ session_start(); // Starting Session
                                 <?php
                             }
                             ?>
+                            <!-- check if there is no logged in user-->
+                            <?php if (empty($_SESSION['username']) && empty($_SESSION['id'])) { ?>
+                                <li <?php echo ($filename == 'انشاء حساب') ? 'class="active"' : ''; ?>><a href="signup.php"><span class="glyphicon glyphicon glyphicon-user">
+
+                                        </span> انشاء حساب</a></li>
+                                <li <?php echo ($filename == 'login') ? 'class="active"' : ''; ?>><a href="login.php"><span class="glyphicon glyphicon-log-in">
+
+                                        </span> تسجيل الدخول</a></li>
+
+                                <?php
+                            }
+                            ?>
+
                         </ul>
 
                     </div>

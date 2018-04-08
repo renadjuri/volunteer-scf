@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!-- the header of the page-->
 <?php
-//session_start();
+
 $page_title = "لوحة التحكم"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
-$_SESSION['admin'] = "true"; //0000
+$_SESSION['admin'] = "true"; 
 include("includes/connection.php"); //connecting to the database
 mysqli_set_charset($con, "utf8");
 
@@ -458,7 +458,7 @@ switch ($action) {
 
         $result = mysqli_query($con, $query);
 
-
+        $error = "";
         //Events' list
         echo "<form method='post' name='selectEvent' action='try_AllVolunteers.php'>";
         echo "<span style='color:red;'>$error</span>"; //0000
