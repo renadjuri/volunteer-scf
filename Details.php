@@ -31,14 +31,12 @@ include("includes/Header.php"); // the header of the page
 
     <?php
     if (isset($_GET['reg'])) {
-
-
         echo"done";
     }
     if (isset($_GET['EventID'])) {
 
         $EventID = $_GET['EventID'];
-        
+
         require 'includes/connection.php'; //connecting to the database
         mysqli_set_charset($con, "utf8");
         $get_events = "select * from event where EventID=$EventID";
@@ -119,4 +117,4 @@ include("includes/Header.php"); // the header of the page
     <br>
     <!--Footer of the page -->
 
-<?php include('includes/footer.php'); ?>
+    <?php include('includes/footer.php'); ?>
