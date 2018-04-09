@@ -195,7 +195,11 @@ body {  font-family: ge thameen;
 footer {
     background-color: #555;
     color: white;
-    padding: 15px;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
 }
 footer a {   color: white;
              cursor: pointer;}

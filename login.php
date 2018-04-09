@@ -9,7 +9,7 @@ include("includes/Header.php"); // the header of the page
 <link href="css/style-login.css" rel="stylesheet" type="text/css" />
 <body>
 
-
+<br>
     <!-- LOGIN -->  
     <?php
     require 'includes/connection.php'; //connecting to the database
@@ -141,11 +141,8 @@ include("includes/Header.php"); // the header of the page
         </div>
     </div>
     <br>
-
-
-
-
+    <br>
+    <br>
     <!--Footer of the page -->
-
     <?php include('includes/footer.php'); ?>
 

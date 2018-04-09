@@ -3,7 +3,7 @@
 
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-<footer class="container-fluid text-center">
+<footer class="container-fluid text-center ">
     <div class="social">
 
         <a href="https://twitter.com/SaudiCancerF"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
