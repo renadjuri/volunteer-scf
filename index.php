@@ -20,12 +20,12 @@ include("includes/Header.php"); // the header of the page
     }
 
     .item {
-      width:100%;
+        width:100%;
         height: 500px;
     }
     /*contact background*/
-    .bg-grey {
-        background-color: #f6f6f6;
+    .bg {
+        background-color: #e3efe5;
     }
 </style>
 </head>
@@ -93,11 +93,11 @@ include("includes/Header.php"); // the header of the page
                 <div class="carousel-inner" role="listbox">
 
                     <div class="item active">
-                     <img src="images/img1.jpg"/>
+                        <img src="images/img1.jpg"/>
 
                     </div>
                     <div class="item">
-                         <img src="images/img2.jpg" />
+                        <img src="images/img2.jpg" />
 
                     </div>
 
@@ -140,45 +140,45 @@ include("includes/Header.php"); // the header of the page
     </div>
     <!-- Contact form -->
 
-    <div class="container-fluid bg-grey text-right" id="contact">
+    <div class="container-fluid bg text-right" id="contact">
         <h2 class="text-center">تواصل معنا</h2>
-         <center><div class="Rectangle"></div></center>
-            <br>
+        <center><div class="Rectangle"></div></center>
+        <br>
         <div class="row">
-             <div class="col-sm-5">
+            <div class="col-sm-5">
                 <h3>تواصل معنا عبر أحد الوسائل التالية</h3>
                 <p><span class="glyphicon glyphicon-map-marker pull-right"></span> المملكة العربية السعودية  ,المنطقة الشرقية,الخبر  
                     34427 &ensp;</p>
                 <p><span class="glyphicon glyphicon-phone  pull-right"></span>  0505348085 -  0138649887 &ensp;</p>
                 <p><span class="glyphicon glyphicon-envelope  pull-right"></span> info@scf.org.sa  &ensp;</p> 
             </div>
-            
+
             <div class="col-sm-7">
 
                 <form class="form-horizontal" role="form" method="post" action="index.php">
                     <div class="form-group">
-<!--  value ="<?php //echo htmlspecialchars($_POST['email']);  ?>"-->
+<!--  value ="<?php //echo htmlspecialchars($_POST['email']);   ?>"-->
                         <div class="col-sm-10 col-sm-offset-2">
                             <input type="text" class="form-control text-right" id="name" name="name"  
-                                   placeholder="الأسم الثلاثي" />
+                                   placeholder="الأسم الثلاثي" tabindex="1" />
                             <div>  <?php echo "<p class='text-danger'>$errName</p>"; ?> </div>
                         </div>
 
                     </div>
                     <div class="form-group">
-<!--  value ="<?php // echo htmlspecialchars($_POST['email']);  ?>"-->
+<!--  value ="<?php // echo htmlspecialchars($_POST['email']);   ?>"-->
                         <div class="col-sm-10 col-sm-offset-2">
                             <input type="email" class="form-control text-right" id="email" name="email" 
-                                   placeholder="example@domain.com" />
+                                   placeholder="example@domain.com" tabindex="2"  />
                             <div> <?php echo "<p class='text-danger'>$errEmail</p>"; ?></div>
                         </div>
 
                     </div>
                     <div class="form-group">
-<!--value=" <?php // echo htmlspecialchars($_POST['message']);  ?>"-->
+<!--value=" <?php // echo htmlspecialchars($_POST['message']);   ?>"-->
                         <div class="col-sm-10 col-sm-offset-2">
                             <textarea class="form-control text-right" rows="4" name="message"
-                                      placeholder="رسالتك"></textarea>
+                                      placeholder="رسالتك" tabindex="3" ></textarea>
                             <div> <?php echo "<p class='text-danger'>$errMessage</p>"; ?></div>
                         </div>
 
@@ -186,15 +186,19 @@ include("includes/Header.php"); // the header of the page
                     <div class="form-group">
 
                         <div class="col-sm-10 col-sm-offset-2">
-                            <input type="text" class="form-control text-right" id="human" name="human" placeholder="? = 2 + 3">
+                            <input type="text" class="form-control text-right" id="human" tabindex="4" name="human" placeholder="? = 2 + 3">
                             <?php echo "<p class='text-danger'>$errHuman</p>"; ?>
                         </div>
 
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-10 col-sm-offset-2 pull-left ">
-                            <input id="submit" name="submit" type="submit" value="أرسل" class="btn btn-success">
-                        </div>
+
+                             <div class="col-sm-10 col-sm-offset-2">
+                                <input id="submit" name="submit" type="submit" value="أرسل" tabindex="5"
+                                       class="btn btn-success" style="background-color:#709675;" 
+                                       ata-toggle="tooltip" data-placement="bottom" title="نسعد بسماع ملاحظاتكم"
+                                       >
+                            </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-10 col-sm-offset-2">
@@ -205,7 +209,7 @@ include("includes/Header.php"); // the header of the page
             </div> 
 
 
-           
+
         </div>
     </div>
 
