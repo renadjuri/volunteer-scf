@@ -8,19 +8,20 @@ include("includes/Header.php"); // the header of the page
 <style>
     .carousel-control.right, .carousel-control.left {
         background-image: none;
-        color: #b7a900;
+        color: #8db792;
     }
 
     .carousel-indicators li {
-        border-color: #b7a900;
+        border-color: #8db792;
     }
 
     .carousel-indicators li.active {
-        background-color: #b7a900;
+        background-color: #8db792;
     }
 
-    .item span {
-        font-style: normal;
+    .item {
+      width:100%;
+        height: 500px;
     }
     /*contact background*/
     .bg-grey {
@@ -92,11 +93,11 @@ include("includes/Header.php"); // the header of the page
                 <div class="carousel-inner" role="listbox">
 
                     <div class="item active">
-                        <img src="images/img1.jpg"/>
+                     <img src="images/img1.jpg"/>
 
                     </div>
                     <div class="item">
-                        <img src="images/img2.jpg" />
+                         <img src="images/img2.jpg" />
 
                     </div>
 
@@ -115,7 +116,7 @@ include("includes/Header.php"); // the header of the page
         </div>
         <div class="container text-center">    
             <h2>ادارة المتطوعين في جمعية السرطان السعودية</h2>
-            <h2>أخبارنا</h2><br>
+            <br>
             <div class="row">
                 <div class="col-sm-4">
                     <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">

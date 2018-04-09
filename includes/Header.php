@@ -27,10 +27,11 @@
 
         <header>
             <!--Logo of the website-->
-            <center>
+            
+            <div class="container-fluid" style="background-image:url(images/header-2.png); height: 360px">
                 <a href="index.php">
                     <img src="images/logo.png" style="width: 160px; height: 120px" alt="جمعية السرطان السعودية" id="logo"></a>
-            </center>
+            </div>
 
             <!--Navigation menu-->
             <?php
@@ -66,14 +67,15 @@
 
                                 <?php if ($_SESSION['admin'] == 'true') { ?> 
                                     <li <?php echo ($filename == 'admin-profile') ? 'class="active"' : ''; ?>>
-                                        <a href="admin-profile.php"><span class="glyphicon glyphicon-user"></span> <span><?php $username = $_SESSION["username"]; echo $username;?>  </span></a></li>
+                                        <a href="admin-profile.php"><span class="glyphicon glyphicon-user"></span> <span><?php $username = $_SESSION["username"];
+                            echo $username; ?>  </span></a></li>
                                     <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
 
                                     <?php
                                 }
                                 ?>
 
-                                <?php if ($_SESSION['admin'] == 'false') { ?>
+    <?php if ($_SESSION['admin'] == 'false') { ?>
                                     <li <?php echo ($filename == 'volunteerprofile') ? 'class="active"' : ''; ?>>
                                         <a href="volunteerprofile.php"><span class="glyphicon glyphicon-user"></span> <span><?php
                                                 $username = $_SESSION["username"];
@@ -88,7 +90,7 @@
                             }
                             ?>
                             <!-- check if there is no logged in user-->
-                            <?php if (empty($_SESSION['username']) && empty($_SESSION['id'])) { ?>
+<?php if (empty($_SESSION['username']) && empty($_SESSION['id'])) { ?>
                                 <li <?php echo ($filename == 'انشاء حساب') ? 'class="active"' : ''; ?>><a href="signup.php"><span class="glyphicon glyphicon glyphicon-user">
 
                                         </span> انشاء حساب</a></li>
@@ -105,6 +107,7 @@
                     </div>
                 </div>
             </nav>
+ 
         </header>
     <body>
         <button onclick="topFunction()" id="myBtn">  <span class="glyphicon glyphicon-chevron-up"></span></button>
