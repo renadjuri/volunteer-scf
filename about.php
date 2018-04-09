@@ -11,7 +11,10 @@ include("includes/Header.php"); // the header of the page
         <div class="container text-center" >
         
             <h1 class="display-3 ">نُبذة</h1>
+         
+           
             <p class="lead">نبذة عن جمعية السرطان السعودية</p>
+               <center><div class="Rectangle"></div></center>
             <br>
             <br>
         </div>

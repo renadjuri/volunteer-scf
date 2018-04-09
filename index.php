@@ -116,6 +116,7 @@ include("includes/Header.php"); // the header of the page
         </div>
         <div class="container text-center">    
             <h2>ادارة المتطوعين في جمعية السرطان السعودية</h2>
+            <center><div class="Rectangle"></div></center>
             <br>
             <div class="row">
                 <div class="col-sm-4">
@@ -141,6 +142,8 @@ include("includes/Header.php"); // the header of the page
 
     <div class="container-fluid bg-grey text-right" id="contact">
         <h2 class="text-center">تواصل معنا</h2>
+         <center><div class="Rectangle"></div></center>
+            <br>
         <div class="row">
              <div class="col-sm-5">
                 <h3>تواصل معنا عبر أحد الوسائل التالية</h3>

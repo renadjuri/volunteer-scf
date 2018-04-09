@@ -36,7 +36,12 @@ b {
 body {  font-family: ge thameen;
         text-align: right;
 } 
-
+/* horizental line */
+.Rectangle {
+  width: 758px;
+  height: 1px;
+  background-color: #d8d8d8;
+}
 /*navigation menu style*/
 .navbar {
     margin-bottom: 15px;
