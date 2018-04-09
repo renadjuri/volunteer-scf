@@ -12,8 +12,8 @@ include("includes/Header.php"); // the header of the page
     <?php
     require 'includes/connection.php'; //connecting to the database
     mysqli_set_charset($con, "utf8");
-    $errName = $errMiddleName = $errLastName = $errID = $errnationality = $errCity = 
-            $errPhone = $erremail = $errUsername = $errPassword = $errConfirm = $errorUser = $errUser = $msg =  $errwork= "";
+    $errName = $errMiddleName = $errLastName = $errID = $errnationality = $errCity = $errPhone = $erremail = $errUsername = $errPassword = $errConfirm = $errorUser = $errUser = $msg 
+           = $gender= $errwork = "";
     if (isset($_POST['register-submit'])) {
         $nationalID = $_POST['nationalID'];
         $FirstName = $_POST['FirstName'];
@@ -25,7 +25,7 @@ include("includes/Header.php"); // the header of the page
         $city = $_POST['city'];
         $degree = $_POST['degree'];
         $gender = $_POST['gender'];
-        $workstation= $_POST['workstation'];
+        $workstation = $_POST['workstation'];
         $Email = $_POST['email'];
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -65,7 +65,7 @@ include("includes/Header.php"); // the header of the page
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["city"])) {
             $errCity = "الجنسية المدخلة غير صحيحة";
         }
-          if (empty($_POST["workstation"])) {
+        if (empty($_POST["workstation"])) {
             $errwork = 'الرجاء ادخال الوظيفة';
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["workstation"])) {
             $errwork = "الوظيفة المدخلة غير صحيحة";
@@ -129,7 +129,7 @@ include("includes/Header.php"); // the header of the page
             // Finally, register user if there are no errors in the form
             if (!$errUser && !$errorUser) {
 
-               // $password = md5($password); //encrypt the password before saving in the database
+                // $password = md5($password); //encrypt the password before saving in the database
                 $query1 = "INSERT INTO account (UserName, password, Email)
                  VALUES ('" . $username . "', '" . $password . "', '" . $Email . "' );";
 
@@ -146,10 +146,10 @@ include("includes/Header.php"); // the header of the page
                 if ($result) {
                     //msg successfuly registered
                     $_SESSION['username'] = $username;
-                     $_SESSION['id'] = $nationalID;
-                      $_SESSION['admin'] = 'false';
+                    $_SESSION['id'] = $nationalID;
+                    $_SESSION['admin'] = 'false';
                     $msg = '<div class="alert alert-success">تم حفظ بياناتك بنجاح&ensp;<span class= "glyphicon glyphicon-send"></span></div>';
-                      echo "<script>window.open('index.php','_self')</script>";
+                    echo "<script>window.open('index.php','_self')</script>";
                 } else {
                     $msg = '<div class="alert alert-danger">عذرا حدث خطأ أثناء إرسال رسالتك&ensp;<span class= "glyphicon glyphicon-send"></span> ، حاول مجددا لاحقاً</div>';
                 }
@@ -163,7 +163,7 @@ include("includes/Header.php"); // the header of the page
     <br>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-lg-12 ">
                 <div class="panel panel-login">
                     <div class="panel-heading">
                         <div class="row">       
@@ -180,40 +180,51 @@ include("includes/Header.php"); // the header of the page
                                       ">
                                     <div class="form-group">
                                         <div class="radio" >
-                                            <center> <label><input type="radio" name="gender" value="F">أنثى</label>
+                                            <center >
+                                                
+                                                
+                                                <label><input type="radio" name="gender" value="F">أنثى</label>
 
                                                 <label><input type="radio" name="gender" value="M">ذكر</label>
+                                                <label>الجنس</label>
                                             </center>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-lg-12"> 
+                                        <div class="form-group col-lg-4 ">
 
-                                        <input type="text" name="FirstName" id="username" tabindex="1" class="form-control" placeholder="الاسم الأول" 
-                                               value="" ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
-                                        <div>  <?php echo "<p class = 'text-danger'>$errName</p>"; ?> </div>
-                                    </div>
+                                            <input type="text" name="FirstName" id="username" tabindex="1" class="form-control" placeholder="الاسم الأول" 
+                                                   value=""
+                                                   ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
+                                            <div>  <?php echo "<p class = 'text-danger'>$errName</p>"; ?> </div>
+                                        </div>
 
-                                    <div class="form-group">
+                                        <div class="form-group col-lg-4">
 
-                                        <input type="text" name="MiddleName" id="username" tabindex="1" class="form-control" placeholder="اسم الأب"
-                                               value=""  ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
-                                        <div>  <?php echo "<p class = 'text-danger'>$errMiddleName</p>"; ?> </div>
-                                    </div>
-                                    <div class="form-group">
+                                            <input type="text" name="MiddleName" id="username" tabindex="1" class="form-control" placeholder="اسم الأب"
+                                                   value="" 
+                                                   ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
+                                            <div>  <?php echo "<p class = 'text-danger'>$errMiddleName</p>"; ?> </div>
+                                        </div>
+                                        <div class="form-group col-lg-4">
 
-                                        <input type="text" name="LastName" id="username" tabindex="1" class="form-control" placeholder="العائلة" 
-                                               value=""  ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
-                                        <div>  <?php echo "<p class = 'text-danger'>$errLastName</p>"; ?> </div>
+                                            <input type="text" name="LastName" id="username" tabindex="1" class="form-control" placeholder="العائلة" 
+                                                   value="" 
+                                                   ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
+                                            <div>  <?php echo "<p class = 'text-danger'>$errLastName</p>"; ?> </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" name="nationalID" id="nationalID" tabindex="1" class="form-control" 
-                                               placeholder="رقم السجل المدني/الإقامة" value=""  ata-toggle="tooltip" data-placement="bottom" title="السجل المدني">
+                                               placeholder="رقم السجل المدني/الإقامة" value="" 
+                                               ata-toggle="tooltip" data-placement="bottom" title="السجل المدني">
                                         <div>  <?php echo "<p class = 'text-danger'>$errID</p>"; ?> </div>
                                     </div>
 
                                     <div class="form-group">
                                         <input type="text" name="nationality" id="nationality" tabindex="1" class="form-control"
-                                               placeholder="الجنسية" value=""  ata-toggle="tooltip" data-placement="bottom" title="الجنسية">
+                                               placeholder="الجنسية" value="" 
+                                               ata-toggle="tooltip" data-placement="bottom" title="الجنسية">
                                         <div>  <?php echo "<p class = 'text-danger'>$errnationality</p>"; ?> </div>
                                     </div>
 
@@ -223,7 +234,7 @@ include("includes/Header.php"); // the header of the page
                                         <div>  <?php echo "<p class = 'text-danger'>$errCity</p>"; ?> </div>
                                     </div>
 
-                                     <div class="form-group">
+                                    <div class="form-group">
                                         <input type="text" name="workstation" id="workstation" tabindex="1" class="form-control" placeholder="الوظيفة" 
                                                value=""  ata-toggle="tooltip" data-placement="bottom" title="وظيفتك التي تستطيع القيام بها">
                                         <div>  <?php echo "<p class = 'text-danger'> $errwork</p>"; ?> </div>
@@ -296,7 +307,7 @@ include("includes/Header.php"); // the header of the page
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-10 col-sm-offset-2">
-                                            <?php echo $msg ?>	
+<?php echo $msg ?>	
                                         </div>
                                     </div>
                                 </form>
@@ -314,4 +325,4 @@ include("includes/Header.php"); // the header of the page
 
     <!--Footer of the page -->
 
-    <?php include('includes/footer.php'); ?>
+<?php include('includes/footer.php'); ?>
