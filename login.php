@@ -18,7 +18,7 @@ include("includes/Header.php"); // the header of the page
     if (isset($_POST['login-submit'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-       // $password = md5($password);
+        // $password = md5($password);
         if (empty($username) || empty($password)) {
             //$msg = "Username or Password is empty";
             $loginmsg = '<div class="alert alert-danger">تأكد من إدخال إسم المستخدم و كلمة المرور  &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
@@ -53,18 +53,18 @@ include("includes/Header.php"); // the header of the page
 
                         $loginmsg = '<div class="alert alert-success">تم تسجيل الدخول &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
                         echo "<script>window.open('index.php','_self')</script>";
+                    } else {
+
+                        $loginmsg = '<div class="alert alert-danger">بياناتك غير مسجلة لدينا ، قم بإنشاء حساب جديد</div>';
                     }
-                  else {
+                } else {
 
-                    $loginmsg = '<div class="alert alert-danger">بياناتك غير مسجلة لدينا ، قم بإنشاء حساب جديد</div>';
+                    //$msg = "Username or Password is invalid";
+                    $loginmsg = '<div class="alert alert-danger"><strong>إنتبه! </strong>الإسم المدخل أو كلمة المرور غير صحيحة  &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
                 }
-            } else {
-
-                //$msg = "Username or Password is invalid";
-                $loginmsg = '<div class="alert alert-danger"><strong>إنتبه! </strong>الإسم المدخل أو كلمة المرور غير صحيحة  &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
             }
         }
-    }}
+    }
     ?>
 
 
@@ -89,12 +89,22 @@ include("includes/Header.php"); // the header of the page
                                     <form method="post" id="login-form"  role="form" style="display: block;">
 
                                         <div style="margin-bottom: 25px" class="input-group"> 
-                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="إسم المستخدم" value="" > 
+                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="إسم المستخدم"  
+                                                   value="<?php
+                                                   if (isset($_POST['username'])) {
+                                                       echo $_POST['username'];
+                                                   }
+                                                   ?>"  > 
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                         </div>
                                         <div style="margin-bottom: 25px" class="input-group"> 
 
-                                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="********">
+                                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="********"
+                                                     value="<?php
+                                                   if (isset($_POST['password'])) {
+                                                       echo $_POST['password'];
+                                                   }
+                                                   ?>">
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                         </div>
 
