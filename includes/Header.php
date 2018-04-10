@@ -61,11 +61,11 @@
                         <ul class="nav navbar-nav navbar-left">
 
                             <!-- check if the user logged in -->
-                            <?php if (isset($_SESSION['id']) && isset($_SESSION['username'])) { ?>
+                            <?php
+                            if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
-                                <!-- check if the user is admin-->
-
-                                <?php if ($_SESSION['admin'] == 'true') { ?> 
+                                if (isset($_SESSION['admin'])) {
+                                    ?> 
                                     <li <?php echo ($filename == 'admin-profile') ? 'class="active"' : ''; ?>>
                                         <a href="admin-profile.php"><span class="glyphicon glyphicon-user"></span> <span><?php
                                                 $username = $_SESSION["username"];
@@ -74,7 +74,8 @@
                                     <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
 
                                     <?php
-                                } else if ($_SESSION['admin'] == 'false') {
+                                } else
+                                if (empty($_SESSION['admin'])) {
                                     ?>
                                     <li <?php echo ($filename == 'volunteerprofile') ? 'class="active"' : ''; ?>>
                                         <a href="volunteerprofile.php"><span class="glyphicon glyphicon-user"></span> <span><?php
@@ -88,7 +89,7 @@
                             }
                             ?>
                             <!-- check if there is no logged in user-->
-<?php if (empty($_SESSION['username']) && empty($_SESSION['id'])) { ?>
+                            <?php if (empty($_SESSION['username']) && empty($_SESSION['id'])) { ?>
                                 <li <?php echo ($filename == 'انشاء حساب') ? 'class="active"' : ''; ?>><a href="signup.php"><span class="glyphicon glyphicon glyphicon-user">
 
                                         </span> انشاء حساب</a></li>
