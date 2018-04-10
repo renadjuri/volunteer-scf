@@ -7,7 +7,7 @@
     <div class="social">
 
         <a href="https://twitter.com/SaudiCancerF"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
-        <a > <i class="fa fa-snapchat fa-2x" aria-hidden="true"></i></a> 
+        <a href="https://www.snapchat.com/add/saudicancerf/"> <i class="fa fa-snapchat fa-2x" aria-hidden="true"></i></a> 
         <a href="https://www.instagram.com/saudicancerf/"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
     </div>
     <br>
