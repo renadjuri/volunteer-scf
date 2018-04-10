@@ -106,7 +106,10 @@
         margin: 0px;
         text-align: right;
         padding: 0px 10px;
+        color: #8db792 ;
+
     }
+     
     .event-list > li > .info > .desc {
         font-size: 13pt;
         font-weight: 300;

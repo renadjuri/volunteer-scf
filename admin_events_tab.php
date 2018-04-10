@@ -1,5 +1,5 @@
 
-<h3>الفعاليات</h3>
+<h1>الفعاليات</h1>
 <br>
 <p>.يمكنك اضافة ،حذف و تعديل الفعاليات</p> 
 <!-- Style CSS -->
@@ -9,7 +9,7 @@
 <!-- All events-->
 
 <?php
-$query = "select EventID, EventName,EventDescription,MaleNum,FemaleNum, Location from event";
+$query = "select EventID, EventName,EventDescription,MaleNum,FemaleNum, Location,EventImage from event";
 $result = mysqli_query($con, $query);
 
 
@@ -38,23 +38,40 @@ $numRows = mysqli_num_rows($result);
                                 $EventDescription = $row['EventDescription'];
                                 $MaleNum = $row['MaleNum'];
                                 $FemaleNum = $row['FemaleNum'];
+                                $EventImage = $row['EventImage'];
+                                $DateofEvent = array();
 
-                                $query = "select Date from dateofevent where Event_ID = ".$EventID. "";
+                                $query = "select Date from dateofevent where Event_ID = '$EventID'";
                                 $Date = mysqli_query($con, $query);
+
+                                $numDates = "";
+
+                                $numDates = mysqli_num_rows($Date);
+                                if ($numDates <= 0) {
+                                    $DateofEvent[] = "لم يتم تحديد موعد الفعالية";
+                                } else {
+                                    while ($Dates = mysqli_fetch_array($Date)) {
+                                        foreach ($Dates as $id => $val) {
+                                            $DateofEvent[] = $Dates['Date'];
+                                        }
+                                    }
+                                }
                             }
                             ?>
 
-                            <time datetime = "2014-07-31 1600">
-                                <span class = "day">31</span>
-                                <span class = "month">Jan</span>
-                               <!-- <span class = "year">2014</span>-->
-                                <span class = "time">4:00 PM</span>
+                            <time>
+
+                                <img src="https://placehold.it/120x120?text=IMAGE"/>
+        <!--                                <img> 
+                                //<?php echo $EventImage; ?>
+        </img>-->
+
                             </time>
                             <div class = "info">
                                 <h2 class = "title"> <?php echo $EventName; ?></h2>
                                 <h2 class = "desc">  <?php echo $EventDescription; ?> </h2>
-                                <p class = "desc">  <?php echo $Location; ?> </p>
-
+                                <p class = "desc"><b> الموقع: </b><?php echo $Location; ?> </p>
+                                <p class = "desc"><b> الموعد:</b> <?php echo implode(', ', $DateofEvent); ?> </p>
                                 <ul>
                                     <li style = "width:34%;"> <?php echo $MaleNum; ?> <span class = "fa fa-male"
                                                                                             ata-toggle = "tooltip" data-placement = "bottom" title = "عدد الذكور"></span></li>
@@ -67,8 +84,16 @@ $numRows = mysqli_num_rows($result);
                                     <li style = "width:33%;" ><a href = "#" ata-toggle = "tooltip" data-placement = "bottom" title = "تعديل الفعالية">
                                             <span class = "glyphicon glyphicon-edit"></span></a></li>
                                     <br>
-                                    <li style = "width:33%;" ><a href = "#" ata-toggle = "tooltip" data-placement = "bottom" title = "حذف الفعالية">
+                                    <li style = "width:33%;" ><a href="#" ata-toggle = "tooltip" data-placement = "bottom" title = "حذف الفعالية">
                                             <span class = "glyphicon glyphicon-trash"></span></a></li>
+
+                                    <?php
+                                    
+//                                    if (isset($_GET['id'])) { // if delete was requested AND an id is present...
+//                                        $sql = "DELETE FROM `event` WHERE `EventID` = '" . $_GET['id'] . "'";
+//                                        $result = mysqli_query($con, $sql);
+//                                    }
+                                    ?>
 
                                 </ul>
                             </div>
