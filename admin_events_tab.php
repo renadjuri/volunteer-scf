@@ -38,6 +38,9 @@ $numRows = mysqli_num_rows($result);
                                 $EventDescription = $row['EventDescription'];
                                 $MaleNum = $row['MaleNum'];
                                 $FemaleNum = $row['FemaleNum'];
+
+                                $query = "select Date from dateofevent where Event_ID = ".$EventID. "";
+                                $Date = mysqli_query($con, $query);
                             }
                             ?>
 
@@ -56,7 +59,7 @@ $numRows = mysqli_num_rows($result);
                                     <li style = "width:34%;"> <?php echo $MaleNum; ?> <span class = "fa fa-male"
                                                                                             ata-toggle = "tooltip" data-placement = "bottom" title = "عدد الذكور"></span></li>
                                     <li style = "width:34%;"><?php echo $FemaleNum; ?> <span class = "fa fa-female" 
-                                                                                            ata-toggle = "tooltip" data-placement = "bottom" title = "عدد الإناث"></span></li>
+                                                                                             ata-toggle = "tooltip" data-placement = "bottom" title = "عدد الإناث"></span></li>
                                 </ul>
                             </div>
                             <div class = "edit">
