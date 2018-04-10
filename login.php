@@ -43,7 +43,7 @@ include("includes/Header.php"); // the header of the page
                         $_SESSION['username'] = $row['Username'];
                         $_SESSION['admin'] = 'true';
                         $loginmsg = '<div class="alert alert-success">تم تسجيل الدخول &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
-                        echo "<script>window.open('index.php','_self')</script>";
+                        //echo "<script>window.open('index.php','_self')</script>";
                     } else if ($result) {
 
                         $row = mysqli_fetch_array($result);
@@ -52,7 +52,7 @@ include("includes/Header.php"); // the header of the page
                         $_SESSION['admin'] = 'false';
 
                         $loginmsg = '<div class="alert alert-success">تم تسجيل الدخول &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
-                        echo "<script>window.open('index.php','_self')</script>";
+                       // echo "<script>window.open('index.php','_self')</script>";
                     } else {
 
                         $loginmsg = '<div class="alert alert-danger">بياناتك غير مسجلة لدينا ، قم بإنشاء حساب جديد</div>';

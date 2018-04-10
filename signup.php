@@ -144,11 +144,9 @@ include("includes/Header.php"); // the header of the page
 
                 if ($result) {
                     //msg successfuly registered
-                    $_SESSION['username'] = $username;
-                    $_SESSION['id'] = $nationalID;
-                    $_SESSION['admin'] = 'false';
+                   
                     $msg = '<div class="alert alert-success">تم حفظ بياناتك بنجاح&ensp;<span class= "glyphicon glyphicon-send"></span></div>';
-                    echo "<script>window.open('index.php','_self')</script>";
+                    echo "<script>window.open('login.php','_self')</script>";
                 } else {
                     $msg = '<div class="alert alert-danger">عذرا حدث خطأ أثناء التسجيل&ensp;<span class= "glyphicon glyphicon-send"></span> ، حاول مجددا لاحقاً</div>';
                 }

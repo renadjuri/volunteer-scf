@@ -27,7 +27,7 @@
 
         <header>
             <!--Logo of the website-->
-            
+
             <div class="container-fluid" style="background-image:url(images/header-2.png); height: 360px">
                 <a href="index.php">
                     <img src="images/logo.png" style="width: 160px; height: 120px" alt="جمعية السرطان السعودية" id="logo"></a>
@@ -67,15 +67,15 @@
 
                                 <?php if ($_SESSION['admin'] == 'true') { ?> 
                                     <li <?php echo ($filename == 'admin-profile') ? 'class="active"' : ''; ?>>
-                                        <a href="admin-profile.php"><span class="glyphicon glyphicon-user"></span> <span><?php $username = $_SESSION["username"];
-                            echo $username; ?>  </span></a></li>
+                                        <a href="admin-profile.php"><span class="glyphicon glyphicon-user"></span> <span><?php
+                                                $username = $_SESSION["username"];
+                                                echo $username;
+                                                ?>  </span></a></li>
                                     <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
 
                                     <?php
-                                }
-                                ?>
-
-    <?php if ($_SESSION['admin'] == 'false') { ?>
+                                } else if ($_SESSION['admin'] == 'false') {
+                                    ?>
                                     <li <?php echo ($filename == 'volunteerprofile') ? 'class="active"' : ''; ?>>
                                         <a href="volunteerprofile.php"><span class="glyphicon glyphicon-user"></span> <span><?php
                                                 $username = $_SESSION["username"];
@@ -85,8 +85,6 @@
 
                                     <?php
                                 }
-                                ?>
-                                <?php
                             }
                             ?>
                             <!-- check if there is no logged in user-->
@@ -107,7 +105,7 @@
                     </div>
                 </div>
             </nav>
- 
+
         </header>
     <body>
         <button onclick="topFunction()" id="myBtn">  <span class="glyphicon glyphicon-chevron-up"></span></button>
