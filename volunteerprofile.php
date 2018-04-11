@@ -6,7 +6,7 @@ $page_title = "الصفحة الشخصية"; //page title to pass it to the head
 include("includes/Header.php"); // the header of the page
 include("includes/connection.php"); //connecting to the database
 mysqli_set_charset($con, "utf8");
-$username = 'basma123';
+$username = 'nora555';
         //$_SESSION["username"];
 ?>
 
@@ -34,7 +34,7 @@ $username = 'basma123';
     <div id="PersonalInfo" class="tabcontent" >
         <h3>المعلومات الشخصية</h3>
         <?php
-        $query = 'select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, residence, nationality, Qualification, WorkStatus,  Email from volunteer, account  where account.Username = volunteer.VolunteerUsername and account.Username = "' . $username . '"';
+        $query = 'select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, residence, nationality, Qualification, WorkStatus, WorkType, Sector,  Email from volunteer, account  where account.Username = volunteer.VolunteerUsername and account.Username = "' . $username . '"';
         $result = mysqli_query($con, $query);
 
 
@@ -71,74 +71,59 @@ $username = 'basma123';
             $residence = $_POST["residence"];
             $nationality = $_POST["nationality"];
             $Qualification = $_POST["Qualification"];
+            $WorkStatus = $_POST["WorkStatus"];
+            $WorkType = $_POST["WorkType"];
+            $Sector = $_POST['Sector'];
             $Email = $_POST["email"];
          
-           $query = "UPDATE volunteer SET MobileNumber = '$MobileNumber',residance = '$residence' WHERE volunteer.VolunteerUsername = '$username'";
+           
+
+            
+            //Check if all fields are empty if true show error message 
+            if ( empty($_POST["name"]) && empty($_POST["mobile"]) &&
+                    empty($_POST["bdate"]) && empty($_POST["gender"]) && empty($_POST["residence"]) && empty($_POST["nationality"]) && empty($_POST["Qualification"]) && empty($_POST["WorkStatus"]) && empty($_POST["email"])) {
+                echo "<p class='error'>
+						تأكد من تعبئة البيانات المطلوبة 	
+						 </p>";
+            } else {
+                //Email validation  
+                if (empty($Email)) {
+                    $EmailErr = "تأكد من تعبئة البيانات المطلوبة.";
+                } else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+                    $EmailErr = "البريد الإلكتروني غير صحيح";
+                }
+                //First Name validation 
+                if (empty($_POST["name"])) {
+                    $FnameErr = "تأكد من تعبئة البيانات المطلوبة.";
+                } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["name"])) {
+                    $FnameErr = "الإسم المدخل غير صحيح";
+                }
+                //Last Name validation 
+                //if (empty($_POST["LastName"])) {
+                 //   $LnameErr = "تأكد من تعبئة البيانات المطلوبة.";
+               // }
+
+             //   if (!empty($_POST["LastName"])) {
+                   // if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["LastName"])) {
+                     //   $LnameErr = "الإسم الاخير المدخل غير صحيح";
+                   // }
+                }
+           
+             
+            if ((!empty($Name)) && (!empty($mobile)) && (!empty($bdate)) &&
+                    (!empty($gender)) && (!empty($residence)) && (!empty($nationality)) && (!empty($Qualification)) && (!empty($WorkStatus)) && (!empty($Email)))  {
+
+                
+           $query = "UPDATE volunteer SET MobileNumber = '$mobile', DateOfBirth = '$bdate', Gender = '$gender', nationality = '$nationality', residence = '$residence', WorkStatus = '$WorkStatus', WorkType = '$WorkType', Sector = '$Sector' WHERE volunteer.VolunteerUsername = '$username' UPDATE account SET Email = '$Email' WHERE account.Username='nora555'";
                 $result = mysqli_query($con, $query);
           //  echo "<script type='text/javascript'>alert(' after  submitted successfully!')</script>";
                echo ' <div class="alert alert-success alert-dismissible" >تم تحديث البيانات بنجاح  &ensp;<span class= "glyphicon glyphicon-send" ></span></div>';
             //  echo' <div runat="server" id="div_warning" visible="false" class="alert alert-danger alert-dismissible" style="width: 100%">';
                 echo '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
 //header('location:volunteerprofile.php');
-
-            /*
-            //Check if all fields are empty if true show error message 
-            if (empty($_POST["VolunteerID"]) && empty($_POST["FirstName"]) && empty($_POST["MiddleName"]) &&
-                    empty($_POST["LastName"]) && empty($_POST["MobileNumber"]) && empty($_POST["DateOfBirth"]) && empty($_POST["residence"]) && empty($_POST["nationality"]) && empty($_POST["Qualification"]) && empty($_POST["Email"])) {
-                echo "<p class='error'>
-						تأكد من تعبئة البيانات المطلوبة 	
-						 </p>";
-            } else {
-                //Email validation  
-                if (empty($_POST["Email"])) {
-                    $EmailErr = "تأكد من تعبئة البيانات المطلوبة.";
-                } else if (!filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
-                    $EmailErr = "البريد الإلكتروني غير صحيح";
-                }
-                //First Name validation 
-                if (empty($_POST["FirstName"])) {
-                    $FnameErr = "تأكد من تعبئة البيانات المطلوبة.";
-                } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["FirstName"])) {
-                    $FnameErr = "الإسم المدخل غير صحيح";
-                }
-                //Last Name validation 
-                if (empty($_POST["LastName"])) {
-                    $LnameErr = "تأكد من تعبئة البيانات المطلوبة.";
-                }
-
-                if (!empty($_POST["LastName"])) {
-                    if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["LastName"])) {
-                        $LnameErr = "الإسم الاخير المدخل غير صحيح";
-                    }
-                }
-            }*/
-             
-           // if ((!empty($_POST["VolunteerID"])) && (!empty($_POST["FirstName"])) && (!empty($_POST["MiddleName"])) &&
-                   // (!empty($_POST["LastName"])) && (!empty($_POST["mobile"])) && (!empty($_POST["DateOfBirth"])) && (!empty($_POST["residence"])) && (!empty($_POST["nationality"])) && (!empty($_POST["Qualification"])) && (!empty($_POST["Email"]))) {
-
-                
-                /*
-                  while ($row = mysqli_fetch_array($result)) {
-                  foreach ($row as $id => $val) {
-                  $VolunteerID = $row['VolunteerID'];
-                  $FirstName = $row['FirstName'];
-                  $MiddleName = $row['MiddleName'];
-                  $LastName = $row['LastName'];
-                  $MobileNumber = $row['MobileNumber'];
-                  $DateOfBirth = $row['DateOfBirth'];
-                  $Gender = $row['Gender'];
-                  $residence = $row['residence'];
-                  $nationality = $row['nationality'];
-                  $Qualification = $row['Qualification'];
-                  $Email = $row['Email'];
-                  }
-                  } */
-
-                    
-      
    
     }
-         //   }
+        }
         
         ?>
 
@@ -179,7 +164,7 @@ $username = 'basma123';
                     <td><label>الجنسية</label></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="Nid" value=" <?php print ($VolunteerID); ?>"></td> 
+                    <td><input type="text" name="Nid" value=" <?php print ($VolunteerID); ?>" readonly></td> 
                     <td><label> السجل المدني/الإقامة</label></td>
                 </tr>
                 <tr>
@@ -205,13 +190,14 @@ $username = 'basma123';
                             <option value="موظف" >موظف</option> 
                             <option value="لا أعمل" >لا أعمل</option> 
                         </select></td>
+                        <td><label>الوظيفة</label></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="WorkType" value="<?php print ($WorkType); ?>" required> </td>
+                    <td><input type="text" name="WorkType" value="<?php print ($WorkType); ?>" > </td>
                     <td><label>المسمى الوظيفي</label></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="Sector" value="<?php print ($Sector); ?>" required> </td>
+                    <td><input type="text" name="Sector" value="<?php print ($Sector); ?>" > </td>
                     <td><label>جهة العمل</label></td>
                 </tr>
                 <tr>
