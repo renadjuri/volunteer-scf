@@ -102,7 +102,9 @@ switch ($action) {
         <?php include("admin_events_tab.php"); ?>
 
     </div>
-
+    <div id="addevent" class="tabcontent">
+        <?php include("admin_add_event.php"); ?>
+    </div>
     <!--All Volunteers-->
 
     <div id="volunteer" class="tabcontent">

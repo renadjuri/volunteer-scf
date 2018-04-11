@@ -1,7 +1,8 @@
 
-<h1>الفعاليات</h1>
+ <!-- Tab Name -->
+<legend> <h1>الفعاليات</h1></legend>
+
 <br>
-<p>.يمكنك اضافة ،حذف و تعديل الفعاليات</p> 
 <!-- Style CSS -->
 
 <link href="css/eventlist.css" rel="stylesheet" type="text/css" />
@@ -20,6 +21,8 @@ $numRows = mysqli_num_rows($result);
 
 
 <div class="container">
+    <button class="btn btn-success" onclick="openTab(event, 'addevent')" >اضافة فعالية</button>
+
     <div class="row">
         <div class="[ col-sm-12 col-sm-offset-1 col-md-9 ]">
             <ul class="event-list">
@@ -91,9 +94,11 @@ $numRows = mysqli_num_rows($result);
                                                 <span class="glyphicon glyphicon-edit"></span> </button>
                                             </span>
                                         </form>  
-                                            <?php if (isset($_POST['edit'])) {
-                                                include("admin_edit_event.php");
-                                            }?>
+                                        <?php
+                                        if (isset($_POST['edit'])) {
+                                            include("admin_edit_event.php");
+                                        }
+                                        ?>
                                     </li>
                                     <br>
                                     <li style = "width:33%;" > 
@@ -121,8 +126,8 @@ $numRows = mysqli_num_rows($result);
                                 </ul>
                             </div>
                         </li>
-                    <?php }
-                    ?>
+                <?php }
+                ?>
                 </ul>
                 <?php
             }

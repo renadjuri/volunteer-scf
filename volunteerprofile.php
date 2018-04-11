@@ -32,7 +32,8 @@ $username = 'basma123';
     </div>
 
     <div id="PersonalInfo" class="tabcontent" >
-        <h3>المعلومات الشخصية</h3>
+        <!-- Tab Name -->
+        <legend> <h1>المعلومات الشخصية</h1></legend>
         <?php
         $query = 'select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, residence, nationality, Qualification, WorkStatus,  Email from volunteer, account  where account.Username = volunteer.VolunteerUsername and account.Username = "' . $username . '"';
         $result = mysqli_query($con, $query);
@@ -228,8 +229,9 @@ $username = 'basma123';
                                 <td><label>تأكيد كلمة المرور</label></td>
                             </tr>
                             <tr>
-                                <td><button class="btn btn-success" name="update" value="update" type="submit">حفظ التعديل</button></td>
                                 <td><button class="btn btn-danger" name="cancel" value="cancel" type="reset">إلغاء</button></td>
+                                <td><button class="btn btn-success" name="update" value="update" type="submit">حفظ التعديل</button></td>
+
                             </tr>
                         </table>
                     </form>
@@ -242,7 +244,8 @@ $username = 'basma123';
         <div class="container">
             <div class="row">
                 <div class="[col-sm-8 col-sm-offset-3 col-md-8]">
-                    <h3>الفعاليات</h3>
+                    <!-- Tab Name -->
+                    <legend> <h1>الفعاليات</h1></legend>
                     <br>
                     <!-- All events-->
                     <?php
@@ -296,15 +299,16 @@ $username = 'basma123';
         <div class="container">
             <div class="row">
                 <div class="[col-sm-8 col-sm-offset-3 col-md-8 ]">
-                   
-                    
-                    <h3>طلبات التطوع</h3>
-                 
-                        <table border=2 width=300>
-                            <tr>
-                                <td>حالة الطلب</td><td>المهام</td><td>إسم الفعالية</td>
-                            </tr>
-                        </table>
+
+
+                    <!-- Tab Name -->
+                    <legend> <h1>طلبات التطوع</h1></legend>
+
+                    <table border=2 width=300>
+                        <tr>
+                            <td>حالة الطلب</td><td>المهام</td><td>إسم الفعالية</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -314,7 +318,8 @@ $username = 'basma123';
         <div class="container">
             <div class="row">
                 <div class="[col-sm-8 col-sm-offset-3 col-md-8 ]">
-                    <h3>الفعاليات التي شاركت فيها</h3>
+                    <!-- Tab Name -->
+                    <legend> <h1>الفعاليات التي شاركت فيها</h1></legend>
 
                     <?php
                     $query = "select EventName, StartingHour, EndingHour, SUM(StartingHour+EndingHour) from volunteerparticipateonevent, event, volunteer where volunteerparticipateonevent.Event_ID = event.EventID and volunteerparticipateonevent.Volunteer_ID = volunteer.VolunteerID and volunteer.VolunteerUsername = '$username'";

@@ -1,5 +1,6 @@
-<h3>المتطوعون لدى جمعية السرطان السعودي</h3>
-<p>كشف بمعلومات المتطوعين</p>
+
+ <!-- Tab Name -->
+<legend> <h1>المتطوعون لدى جمعية السرطان السعودي</h1></legend>
 
 <?php
 $query = "select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, VolunteerUsername, BlackList, email from volunteer, account where account.Username = volunteer.VolunteerUsername and BlackList=0";

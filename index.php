@@ -36,14 +36,15 @@ include("includes/Header.php"); // the header of the page
     $name = $email = $message = $human = "";
     $errName = $errEmail = $errMessage = $errHuman = $result = "";
     if (isset($_POST["submit"])) {
+    
         $name = $_POST['name'];
         $email = $_POST['email'];
         $message = $_POST['message'];
         $human = intval($_POST['human']);
         $from = 'Contact Form';
-        $to = 'example@gmail.com';
+        $to = 'renadjuri@gmail.com';
         $subject = 'Message from Contact at volunteer system ';
-
+        $headers = 'From: renadjuri@gmail.com';
         $body = "From: $name\n E-Mail: $email\n Message:\n $message";
 
 
@@ -68,7 +69,7 @@ include("includes/Header.php"); // the header of the page
 
 // If there are no errors, send the email
         if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
-            if (mail($to, $subject, $body, $from)) {
+            if (mail($to, $subject, $body, $headers)) {
                 $result = '<div class="alert alert-success">شكرا لتواصلك ،سنقوم بالتواصل معك في أقرب فرصة</div>';
             } else {
                 $result = '<div class="alert alert-danger">عذرا حدث خطأ أثناء إرسال رسالتك ، حاول مجددا لاحقاً</div>';
@@ -173,7 +174,7 @@ include("includes/Header.php"); // the header of the page
 
                 <form class="form-horizontal" role="form" method="post" action="index.php">
                     <div class="form-group">
-<!--  value ="<?php //echo htmlspecialchars($_POST['email']);          ?>"-->
+<!--  value ="<?php //echo htmlspecialchars($_POST['email']);           ?>"-->
                         <div class="col-sm-10 col-sm-offset-2">
                             <input type="text" class="form-control text-right" id="name" name="name"  
                                    placeholder="الأسم الثلاثي" tabindex="1" />
@@ -182,7 +183,7 @@ include("includes/Header.php"); // the header of the page
 
                     </div>
                     <div class="form-group">
-<!--  value ="<?php // echo htmlspecialchars($_POST['email']);          ?>"-->
+<!--  value ="<?php // echo htmlspecialchars($_POST['email']);           ?>"-->
                         <div class="col-sm-10 col-sm-offset-2">
                             <input type="email" class="form-control text-right" id="email" name="email" 
                                    placeholder="example@domain.com" tabindex="2"  />
@@ -191,7 +192,7 @@ include("includes/Header.php"); // the header of the page
 
                     </div>
                     <div class="form-group">
-<!--value=" <?php // echo htmlspecialchars($_POST['message']);          ?>"-->
+<!--value=" <?php // echo htmlspecialchars($_POST['message']);           ?>"-->
                         <div class="col-sm-10 col-sm-offset-2">
                             <textarea class="form-control text-right" rows="4" name="message"
                                       placeholder="رسالتك" tabindex="3" ></textarea>
@@ -209,9 +210,9 @@ include("includes/Header.php"); // the header of the page
                     </div>
                     <div class="form-group">
 
-                        <div class="col-sm-10 col-sm-offset-2">
+                        <div class="col-sm-8 col-sm-offset-2">
                             <input id="submit" name="submit" type="submit" value="أرسل" tabindex="5"
-                                   class="btn btn-success" style="background-color:#709675;" 
+                                   class="btn btn-success" 
                                    ata-toggle="tooltip" data-placement="bottom" title="نسعد بسماع ملاحظاتكم"
                                    >
                         </div>
