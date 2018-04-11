@@ -81,18 +81,41 @@ $numRows = mysqli_num_rows($result);
                             </div>
                             <div class = "edit">
                                 <ul>
-                                    <li style = "width:33%;" ><a href = "#" ata-toggle = "tooltip" data-placement = "bottom" title = "تعديل الفعالية">
-                                            <span class = "glyphicon glyphicon-edit"></span></a></li>
                                     <br>
-                                    <li style = "width:33%;" ><a href="#" ata-toggle = "tooltip" data-placement = "bottom" title = "حذف الفعالية">
-                                            <span class = "glyphicon glyphicon-trash"></span></a></li>
+                                    <li style = "width:33%;" >
+                                        <form method="post" id='editform' action="#"> 
+
+                                            <input type="hidden" name="ID" value="<?php echo $EventID; ?>"/>
+                                            <button href="#" type="submit" name="edit" class="btn btn-success" 
+                                                    ata-toggle = "tooltip" data-placement = "bottom" title = "تعديل الفعالية" >
+                                                <span class="glyphicon glyphicon-edit"></span> </button>
+                                            </span>
+                                        </form>  
+                                            <?php if (isset($_POST['edit'])) {
+                                                include("admin_edit_event.php");
+                                            }?>
+                                    </li>
+                                    <br>
+                                    <li style = "width:33%;" > 
+
+                                        <form method="post" id='deleteform' action="#"> 
+                                            <input type="hidden" name="ID" value="<?php echo $EventID; ?>"/>
+                                            <button class="btn btn-danger" type="submit" name="submit"  
+                                                    onclick="return confirm('هل انت متأكد من حذف هذه الفعالية؟');"
+                                                    ata-toggle = "tooltip" data-placement = "bottom" title = "حذف الفعالية">
+                                                <span class="glyphicon glyphicon-trash"></span> </button>
+                                            </span>
+                                        </form>   
+                                    </li>                                   
+
 
                                     <?php
-                                    
-//                                    if (isset($_GET['id'])) { // if delete was requested AND an id is present...
-//                                        $sql = "DELETE FROM `event` WHERE `EventID` = '" . $_GET['id'] . "'";
-//                                        $result = mysqli_query($con, $sql);
-//                                    }
+                                    if (isset($_POST['submit'])) {
+                                        $ID = $_POST['ID']; // if delete was requested AND an id is present...
+                                        $sql = "DELETE FROM `event` WHERE `EventID` = '" . $ID . "'";
+                                        $Delete = mysqli_query($con, $sql);
+                                        echo "<meta http-equiv='refresh' content='0'>";
+                                    }
                                     ?>
 
                                 </ul>
