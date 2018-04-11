@@ -9,7 +9,7 @@ include("includes/Header.php"); // the header of the page
 <link href="css/style-login.css" rel="stylesheet" type="text/css" />
 <body>
 
-
+    <br>
     <!-- LOGIN -->  
     <?php
     require 'includes/connection.php'; //connecting to the database
@@ -34,22 +34,21 @@ include("includes/Header.php"); // the header of the page
 
                     $admin_result = mysqli_query($con, $admin_query);
                     $result = mysqli_query($con, $query);
+                    $row = mysqli_fetch_array($result);
+                    $row2 = mysqli_fetch_array($admin_result);
 
+                    if ($row) {
 
-                    if ($admin_result) {
-
-                        $row = mysqli_fetch_array($admin_result);
-                        $_SESSION['id'] = $row['AdminID']; //here session is used and value of volunter id store in $_SESSION.
-                        $_SESSION['username'] = $row['Username'];
-                        $_SESSION['admin'] = 'true';
-                        $loginmsg = '<div class="alert alert-success">تم تسجيل الدخول &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
-                        echo "<script>window.open('index.php','_self')</script>";
-                    } else if ($result) {
-
-                        $row = mysqli_fetch_array($result);
                         $_SESSION['id'] = $row['VolunteerID']; //here session is used and value of volunter id store in $_SESSION.
                         $_SESSION['username'] = $row['Username'];
-                        $_SESSION['admin'] = 'false';
+
+                        $loginmsg = '<div class="alert alert-success">تم تسجيل الدخول &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
+                        echo "<script>window.open('index.php','_self')</script>";
+                    } else if ($row2) {
+
+                        $_SESSION['id'] = $row2 ['AdminID']; //here session is used and value of volunter id store in $_SESSION.
+                        $_SESSION['username'] = $row2['Username'];
+                        $_SESSION['admin'] = "true";
 
                         $loginmsg = '<div class="alert alert-success">تم تسجيل الدخول &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
                         echo "<script>window.open('index.php','_self')</script>";
@@ -100,7 +99,7 @@ include("includes/Header.php"); // the header of the page
                                         <div style="margin-bottom: 25px" class="input-group"> 
 
                                             <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="********"
-                                                     value="<?php
+                                                   value="<?php
                                                    if (isset($_POST['password'])) {
                                                        echo $_POST['password'];
                                                    }
@@ -141,11 +140,8 @@ include("includes/Header.php"); // the header of the page
         </div>
     </div>
     <br>
-
-
-
-
+    <br>
+    <br>
     <!--Footer of the page -->
-
     <?php include('includes/footer.php'); ?>
 

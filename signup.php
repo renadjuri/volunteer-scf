@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- the header of the page-->
 <?php
-$page_title = " إستعادة كلمة المرور"; //page title to pass it to the header
+$page_title = " إنشاء حساب جديد"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
 ?>
 
@@ -32,19 +32,19 @@ include("includes/Header.php"); // the header of the page
 
 // Signup validation
         if (empty($_POST["FirstName"])) {
-            $errName = 'الرجاء ادخال الاسم بشكل صحيح';
+            $errName = 'الرجاء ادخال الاسم ';
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["FirstName"])) {
             $errName = "الإسم المدخل غير صحيح";
         }
 
         if (empty($_POST["MiddleName"])) {
-            $errMiddleName = "الرجاء ادخال الاسم بشكل صحيح";
+            $errMiddleName = "الرجاء ادخال الاسم ";
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["MiddleName"])) {
             $errMiddleName = "الإسم المدخل غير صحيح";
         }
 
         if (empty($_POST["LastName"])) {
-            $errLastName = "الرجاء ادخال الاسم بشكل صحيح";
+            $errLastName = "الرجاء ادخال الاسم ";
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["LastName"])) {
             $errLastName = "الإسم المدخل غير صحيح";
         }
@@ -55,14 +55,14 @@ include("includes/Header.php"); // the header of the page
             $errID = "الرقم المدخل غير صحيح";
         }
         if (empty($_POST["nationality"])) {
-            $errnationality = "الرجاء ادخال الجنسية بشكل صحيح";
+            $errnationality = "الرجاء ادخال الجنسية ";
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["nationality"])) {
             $errnationality = "الجنسية المدخلة غير صحيحة";
         }
         if (empty($_POST["city"])) {
-            $errCity = "الرجاء ادخال الجنسية بشكل صحيح";
+            $errCity = "الرجاء ادخال المدينة ";
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["city"])) {
-            $errCity = "الجنسية المدخلة غير صحيحة";
+            $errCity = "المدينة المدخلة غير صحيحة";
         }
         if (empty($_POST["workstation"])) {
             $errwork = 'الرجاء ادخال الوظيفة';
@@ -81,8 +81,8 @@ include("includes/Header.php"); // the header of the page
         }
         if (empty($_POST["username"])) {
             $errUsername = "الرجاء ادخال اسم المستخدم";
-        } else if (!preg_match("/[ 0-9 a-z A-Z ا-ي ]/", $_POST["username"])) {
-            $errUsername = "اسم المستخدم يتكون من ارقام او حروف ";
+        } else if (!preg_match("/[ 0-9 a-z A-Z]/", $_POST["username"])) {
+            $errUsername = "اسم المستخدم يتكون من ارقام او حروف انجليزية";
         }
 
         if (empty($_POST["password"])) {
@@ -144,13 +144,11 @@ include("includes/Header.php"); // the header of the page
 
                 if ($result) {
                     //msg successfuly registered
-                    $_SESSION['username'] = $username;
-                    $_SESSION['id'] = $nationalID;
-                    $_SESSION['admin'] = 'false';
+                   
                     $msg = '<div class="alert alert-success">تم حفظ بياناتك بنجاح&ensp;<span class= "glyphicon glyphicon-send"></span></div>';
-                    echo "<script>window.open('index.php','_self')</script>";
+                    echo "<script>window.open('login.php','_self')</script>";
                 } else {
-                    $msg = '<div class="alert alert-danger">عذرا حدث خطأ أثناء إرسال رسالتك&ensp;<span class= "glyphicon glyphicon-send"></span> ، حاول مجددا لاحقاً</div>';
+                    $msg = '<div class="alert alert-danger">عذرا حدث خطأ أثناء التسجيل&ensp;<span class= "glyphicon glyphicon-send"></span> ، حاول مجددا لاحقاً</div>';
                 }
             }
         } else {
