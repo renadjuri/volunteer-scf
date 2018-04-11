@@ -364,8 +364,8 @@ $username = 'basma123';
                     <br><br>
 
                     <center>
-                        <button type="submit">التعديل</button>  
-                        <button type="submit">حفظ التعديل</button>
+                        <button type="submit" class="btn btn-warning">التعديل</button>  
+                        <button type="submit" class="btn btn-success">حفظ التعديل</button>
                     </center>
                 </div>
             </div>
