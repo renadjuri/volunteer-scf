@@ -34,7 +34,8 @@
 
                     //printing volunteers' info in the table
                     //طباعة بيانات المتطوعين في الجدول
-                    echo "<td><a Onclick='return ConfirmDeleteFromBlacklist();' href='admin-profile.php?volunteer_id=" . $VolunteerID . "&action=removeFromBlacklist'><img src=\"images/cross-red-circle.png\" alt=\"Remove from blacklist\"' /></a></td>";
+                    echo "<td><a Onclick='return ConfirmDeleteFromBlacklist();' href='admin-profile.php?volunteer_id=" . $VolunteerID . "&action=removeFromBlacklist'>"
+                            . "<span class='glyphicon glyphicon-remove'></span></a></td>";
                     echo "<td>" . $FirstName . " " . $MiddleName . " " . $LastName . "</td>";
                     echo "<td> $VolunteerID</td>";
 

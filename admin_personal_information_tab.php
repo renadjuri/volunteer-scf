@@ -49,12 +49,12 @@
                     <td><label>كلمة المرور</label></td>
                 </tr>
                 <tr>
-                    <td><button class="btn" name="changePassword" type="">تغيير كلمة المرور</button></td>
+                    <td><button class="btn btn-success" name="changePassword" type="">تغيير كلمة المرور</button></td>
                 </tr>
             </table>
             <br><br>
             <center>
-                <button class="btn" name="cancel" type="submit">إلغاء</button>&nbsp;   <button class="btn" name="update" type="submit">حفظ التعديلات</button>		
+                <button class="btn btn-danger" name="cancel" type="submit">إلغاء</button>&nbsp;   <button class="btn btn-success" name="update" type="submit">حفظ التعديلات</button>		
             </center>
         </form>
         </div>

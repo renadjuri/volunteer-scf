@@ -10,7 +10,7 @@
         //Events' list
         echo "<form method='post' name='selectEvent' action='try_AllVolunteers.php'>";
         echo "<span style='color:red;'>$error</span>"; //0000
-        echo "<button type='submit' name='show'  value='show'>بحث</button> &nbsp;&nbsp;";
+        echo "<button class='btn btn-success' type='submit' name='show'  value='show'>بحث</button> &nbsp;&nbsp;";
         echo "<select id='event' name='selectEvent'>";
         while ($row = mysqli_fetch_array($result)) {
             foreach ($row as $id => $val) {
@@ -76,7 +76,7 @@
                 echo "$error"; //0000
                 echo "</table>";
                 echo "</div>";
-                echo "<button Onclick='return sendEmailConfirmation();' type='submit' class='button' name='sendEmail' id='sendEmail' value='Send Certificate'> إرسال الشهادة </button>";
+                echo "<button Onclick='return sendEmailConfirmation();' type='submit' class='btn btn-success' name='sendEmail' id='sendEmail' value='Send Certificate'> إرسال الشهادة </button>";
                 echo "</form>";
             }
         }
