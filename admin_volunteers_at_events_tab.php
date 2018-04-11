@@ -1,4 +1,4 @@
- <h3>المتطوعون بالفعالية</h3>
+ <h1>المتطوعون بالفعالية</h1>
         <p>.كشف بمعلومات المتطوعين</p>
 
         <h4>: الفعالية</h4>
@@ -83,7 +83,7 @@
 
 
 
-            <!--تسجيل ساعات دخول وخروج المتطوعي -->
+            <!--volunteer hours -->
 
             <center>
                 <input type="date" name="date"> &nbsp  أسم الفعالية&nbsp <input type="text" align="right" name="EvnName" > &nbsp التاريخ
@@ -91,18 +91,17 @@
                 <br>
                 &nbsp
 
-                <table id='t01' border=2 width=400>
+                <table id='t01' >
                     <tr>
-                        <th align="center">مجموع الساعات</th><th align="center">وقت الخروج</th><td align="center">وقت الدخول</th><th align="center">أسم المتطوع</td>
+                        <th align="center">مجموع الساعات</th><th align="center">وقت الخروج</th><th align="center">وقت الدخول</th><th align="center">أسم المتطوع</th>
                     </tr>
                     <tr>
                         <td align="center"></td> <td align="center"><input type="time" name="usr_time"></td> <td align="center"><input type="time" name="usr_time"></td> <td align="center"> </td>
                     </tr>
 
                 </table>
-
-                <br><br>
-                <input type="submit" name="حفظ" value="حفظ"/>
+<br><br><center>
+                <button class="btn">حفظ</button>
             </center>
 
             <?php
@@ -173,9 +172,5 @@
             }
             ?>
 
-            <br><br><center>
-                <button type="submit">حفظ</button>  
-
-            </center>
 
  
