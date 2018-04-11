@@ -13,19 +13,19 @@ h2 {
     font-family: ge thameen;
     margin-right: 10pt;
     color: #cbc000;
-    
+
 
 }
 h3 { 
     font-family: ge thameen; 
     margin-right: 10pt;
- 
+    color: #cbc000;
 
 }
 h4 { 
     font-family: ge thameen;
     margin-right: 10pt;
-    
+    color: #cbc000;
 }
 b {
     font-family: ge thameen;
@@ -41,9 +41,9 @@ body {  font-family: ge thameen;
 } 
 /* horizental line */
 .Rectangle {
-  width: 758px;
-  height: 1px;
-  background-color: #d8d8d8;
+    width: 758px;
+    height: 1px;
+    background-color: #d8d8d8;
 }
 /*navigation menu style*/
 .navbar {
@@ -63,7 +63,7 @@ body {  font-family: ge thameen;
 
 .navbar-nav li a:hover ,.navbar-nav li.active a {
     color: #fff !important;
-    background-color:#c6bb32 !important;
+    background-color:#8db792 !important;
 
 }
 
@@ -136,13 +136,13 @@ body {  font-family: ge thameen;
 
 #button:hover {
     border: 1pt solid #666666;
-                 color:#c6b900;
-                 background-color: #cebe03;
-                 color: #fcfcfc;
-                 border-radius: 10px;
-                 text-decoration: none;
-                 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    
+    color:#c6b900;
+    background-color: #cebe03;
+    color: #fcfcfc;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
 }
 /*login button style */
 .s_button {
@@ -191,14 +191,14 @@ body {  font-family: ge thameen;
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: #297b39;
+    background-color: #8db792;
     color: white;
     border:0px solid #8db792;
 }
 
 /* Create an active/current "tab button" class */
 .tab button.active {
-    background-color: #297b39;
+    background-color: #8db792;
     color: white;
 
 }
@@ -239,8 +239,8 @@ footer {
     bottom: 0;
     left: 0;
     padding: 1rem;
-    
-    
+
+
 }
 footer a {   color: white;
              cursor: pointer;}

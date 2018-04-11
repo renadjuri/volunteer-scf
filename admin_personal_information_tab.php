@@ -26,26 +26,26 @@
 <div class="container">
     <div class="row">
         <div class="[ col-sm-8 col-sm-offset-3 col-md-12 ]">
-        <form method="post" action="CheckAdminInfo.php">
+            <form method="post" action="CheckAdminInfo.php" style="  text-align: right;">
             <table>
                 <tr>
-                    <td><input type="text" name="name" value="<?php print ($FirstName . ' ' . $MiddleName . ' ' . $LastName); ?>" required></td>
+                    <td><input style="  text-align: right;" type="text" name="name" value="<?php print ($FirstName . ' ' . $MiddleName . ' ' . $LastName); ?>" required></td>
                     <td><label> الاسم</label></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="id" value="<?php print ($AdminID); ?>"></td>
+                    <td><input style="  text-align: right;" type="text" name="id" value="<?php print ($AdminID); ?>"></td>
                     <td> <label>السجل المدني/الإقامة</label></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="username" value="<?php print ($AdminUsername); ?>"></td>
+                    <td><input style="  text-align: right;"  type="text" name="username" value="<?php print ($AdminUsername); ?>"></td>
                     <td> <label>اسم المستخدم</label></td>
                 </tr>
                 <tr>
-                    <td><input type="email" name="email" value="<?php print ($email); ?>" required></td>
+                    <td><input style="  text-align: right;"  type="email" name="email" value="<?php print ($email); ?>" required></td>
                     <td><label> البريد الإلكتروني </label></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="password" value="<?php print ($password); ?>" required></td>
+                    <td><input style="  text-align: right;" type="text" name="password" value="<?php print ($password); ?>" required></td>
                     <td><label>كلمة المرور</label></td>
                 </tr>
                 <tr>
