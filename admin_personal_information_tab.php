@@ -23,7 +23,9 @@
         }
         ?>
         <br>
-
+<div class="container">
+    <div class="row">
+        <div class="[ col-sm-8 col-sm-offset-3 col-md-12 ]">
         <form method="post" action="CheckAdminInfo.php">
             <table>
                 <tr>
@@ -55,3 +57,6 @@
                 <button class="btn" name="cancel" type="submit">إلغاء</button>&nbsp;   <button class="btn" name="update" type="submit">حفظ التعديلات</button>		
             </center>
         </form>
+        </div>
+    </div>
+</div>
