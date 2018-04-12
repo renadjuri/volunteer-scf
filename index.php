@@ -21,7 +21,7 @@ include("includes/Header.php"); // the header of the page
 
     .item {
         width:100%;
-        height: 500px;
+        height: 650px;
     }
     /*contact background*/
     .bg {
@@ -87,18 +87,22 @@ include("includes/Header.php"); // the header of the page
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
-
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
 
                     <div class="item active">
-                        <img src="https://placehold.it/150x80?text=IMAGE" />
+                        <img src="images/حفل تكريم المتطوعين و المتطوعات بمناسبة ختام انشطة عام 2011 قاعة الاندلس 18-12-2011.jpg" />
 
                     </div>
                     <div class="item">
-                        <img src="https://placehold.it/150x80?text=IMAGE"  />
+                        <img src="images/يوم الطفل المصاب بقرية الخليج -منتجع جولدن توليب 21-3-2014.jpg"  />
+
+                    </div>
+                    <div class="item">
+                        <img src="images/حفل يوم الطفل المصاب 22-12-2011.jpg"  />
 
                     </div>
 

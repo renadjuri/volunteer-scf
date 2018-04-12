@@ -4,15 +4,15 @@
 $page_title = " إنشاء حساب جديد"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
 ?>
- <script>
-function myFunction() {
-    var x = document.getElementById("password");
-    if (x.type === "password") {
-        x.type = "text";
-    } else {
-        x.type = "password";
+<script>
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
     }
-}
 
 
 </script>
@@ -130,11 +130,12 @@ function myFunction() {
                 $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification, WorkStatus, VolunteerUsername)
                 VALUES ('" . $nationalID . "', '" . $FirstName . "', '" . $MiddleName . "', '" . $LastName . "', '" . $MobileNumber . "', '" .
                         $birthdate . "', '" . $gender . "', '" . $nationality . "', '" . $city . "', '" . $degree . "', '" . $workstation . "', '" . $username . "' );";
+                       
                 mysqli_query($con, $query1);
                 $result = mysqli_query($con, $query);
                 if ($result) {
                     //msg successfuly registered
-                   
+
                     $msg = '<div class="alert alert-success">تم حفظ بياناتك بنجاح&ensp;<span class= "glyphicon glyphicon-send"></span></div>';
                     echo "<script>window.open('login.php','_self')</script>";
                 } else {
@@ -155,7 +156,7 @@ function myFunction() {
                     <div class="panel-heading">
                         <div class="row">       
                             <div class="col-lg-12">
-                                <a class="active" id="register-form-link">إنشاء حساب</a>
+                                <h1>إنشاء حساب</h1>
                             </div>
                         </div>
                         <hr>
@@ -218,10 +219,10 @@ function myFunction() {
                                         <input type="text" name="nationalID" id="nationalID" maxlength="10" tabindex="1" class="form-control" 
                                                placeholder="رقم السجل المدني/الإقامة" 
                                                value="<?php
-                                                   if (isset($_POST['nationalID'])) {
-                                                       echo $_POST['nationalID'];
-                                                   }
-                                                   ?>" 
+                                               if (isset($_POST['nationalID'])) {
+                                                   echo $_POST['nationalID'];
+                                               }
+                                               ?>" 
                                                ata-toggle="tooltip" data-placement="bottom" title="السجل المدني">
                                         <div>  <?php echo "<p class = 'text-danger'>$errID</p>"; ?> </div>
                                     </div>
@@ -233,7 +234,7 @@ function myFunction() {
                                                if (isset($_POST['nationality'])) {
                                                    echo $_POST['nationality'];
                                                }
-                                                   ?>" 
+                                               ?>" 
                                                ata-toggle="tooltip" data-placement="bottom" title="الجنسية">
                                         <div>  <?php echo "<p class = 'text-danger'>$errnationality</p>"; ?> </div>
                                     </div>
@@ -319,7 +320,7 @@ function myFunction() {
                                                    echo $_POST['password'];
                                                }
                                                ?>" >
-                                        <input type="checkbox" onclick="myFunction()">
+                                        اظهار كلمة المرور   <input type="checkbox" onclick="myFunction()"> 
                                         <div>  <?php echo "<p class = 'text-danger'>$errPassword</p>"; ?> </div>
                                     </div>
                                     <div class="form-group">
@@ -328,17 +329,18 @@ function myFunction() {
                                         <div>  <?php echo "<p class = 'text-danger'>$errConfirm</p>"; ?> </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="checkbox" name="check" value="ok" >  
                                         <a href="includes/CharterofVolunteerism.pdf" target="_blank" ata-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required>
                                             <b>أقر أني اطلعت على ميثاق التطوع</b> 
                                         </a> 
+                                        <input type="checkbox" name="check" value="ok" required >  
+
                                         </input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="checkbox" name="check2" value="ok" >  
-                                        <a href="includes/Terms_and_Conditions.pdf" target="_blank" ata-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required>
-                                            <b>أتعهد بالإلتزام بشروط و أحكام التطوع في الجمعية السعودية للسرطان</b>
-                                        </a> 
+                                        <a href="includes/Terms_and_Conditions.pdf" target="_blank" ata-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required> 
+                                            <b>أتعهد بالإلتزام بشروط و أحكام التطوع في الجمعية السعودية للسرطان</b> </a> 
+                                        <input type="checkbox" name="check2" value="ok" required> 
+
                                         </input>
                                     </div>
                                     <div class="form-group">
@@ -353,7 +355,7 @@ function myFunction() {
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-10 col-sm-offset-2">
-<?php echo $msg ?>	
+                                            <?php echo $msg ?>	
                                         </div>
                                     </div>
                                 </form>
@@ -371,4 +373,4 @@ function myFunction() {
 
     <!--Footer of the page -->
 
-<?php include('includes/footer.php'); ?>
+    <?php include('includes/footer.php'); ?>

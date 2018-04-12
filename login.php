@@ -75,7 +75,7 @@ include("includes/Header.php"); // the header of the page
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-lg-12">
-                                <a  class="active" id="login-form-link">تسجيل دخول</a>
+                                   <h1>تسجيل الدخول</h1>
                             </div>
 
                         </div>

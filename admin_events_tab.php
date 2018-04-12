@@ -1,5 +1,5 @@
 
- <!-- Tab Name -->
+<!-- Tab Name -->
 <legend> <h1>الفعاليات</h1></legend>
 
 <br>
@@ -12,7 +12,6 @@
 <?php
 $query = "select EventID, EventName,EventDescription,MaleNum,FemaleNum, Location,EventImage from event";
 $result = mysqli_query($con, $query);
-
 
 $numRows = "";
 
@@ -41,7 +40,15 @@ $numRows = mysqli_num_rows($result);
                                 $EventDescription = $row['EventDescription'];
                                 $MaleNum = $row['MaleNum'];
                                 $FemaleNum = $row['FemaleNum'];
-                                $EventImage = $row['EventImage'];
+
+                                $IMAGE = "select EventImage from event where  Event_ID = '$EventID'";
+
+                                $re = mysqli_query($con, $IMAGE);
+
+                                if ($re) {
+                                    $row = mysqli_fetch_object($re);
+                                    $EventImage = $row->EventImage;
+                                }
                                 $DateofEvent = array();
 
                                 $query = "select Date from dateofevent where Event_ID = '$EventID'";
@@ -54,20 +61,16 @@ $numRows = mysqli_num_rows($result);
                                     $DateofEvent[] = "لم يتم تحديد موعد الفعالية";
                                 } else {
                                     while ($Dates = mysqli_fetch_array($Date)) {
-                                        foreach ($Dates as $id => $val) {
-                                            $DateofEvent[] = $Dates['Date'];
-                                        }
+
+                                        $DateofEvent[] = $Dates['Date'];
                                     }
                                 }
                             }
                             ?>
 
                             <time>
-
-                                <img src="https://placehold.it/120x120?text=IMAGE"/>
-        <!--                                <img> 
-                                //<?php echo $EventImage; ?>
-        </img>-->
+                                <img  width="90"
+                                      src="'<?php echo $EventImage ?>'">
 
                             </time>
                             <div class = "info">
@@ -126,8 +129,8 @@ $numRows = mysqli_num_rows($result);
                                 </ul>
                             </div>
                         </li>
-                <?php }
-                ?>
+                    <?php }
+                    ?>
                 </ul>
                 <?php
             }
