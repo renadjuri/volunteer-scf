@@ -56,7 +56,7 @@
                             <li<?php echo ($filename == '#contact') ? 'class="active"' : ''; ?> ><a href="index.php#contact">تواصل</a></li>
                             <li <?php echo ($filename == 'about') ? 'class="active"' : ''; ?>><a href="about.php">عن جمعية السرطان السعودية</a></li>
                             <li <?php echo ($filename == 'events') ? 'class="active"' : ''; ?> ><a href="events.php">الفعاليات</a></li> 
-                            <li <?php echo ($filename == 'index') ? 'class="active"' : ''; ?> ><a href="index.php">الصفحة الرئيسة</a></li>
+                            <li <?php echo ($filename == 'index') ? 'class="active"' : ''; ?> ><a href="index.php">الصفحة الرئيسية</a></li>
 
                         </ul>
                         <ul class="nav navbar-nav navbar-left">
