@@ -64,7 +64,9 @@ $username = 'nora555';
        // echo "<script type='text/javascript'>alert('before submitted successfully!')</script>";
         if (isset($_POST['update'])) {
             
-            $Name = $_POST["Name"];
+            $FirstName = $_POST['FirstName'];
+                $MiddleName = $_POST['MiddleName'];
+                $LastName = $_POST['LastName'];
             $mobile = $_POST["mobile"];
             $bdate = $_POST["bdate"];                      
             $gender = $_POST["gender"];
@@ -80,7 +82,7 @@ $username = 'nora555';
 
             
             //Check if all fields are empty if true show error message 
-            if ( empty($_POST["name"]) && empty($_POST["mobile"]) &&
+            if ( empty($_POST["FirstName"]) && empty($_POST["mobile"]) &&
                     empty($_POST["bdate"]) && empty($_POST["gender"]) && empty($_POST["residence"]) && empty($_POST["nationality"]) && empty($_POST["Qualification"]) && empty($_POST["WorkStatus"]) && empty($_POST["email"])) {
                 echo "<p class='error'>
 						تأكد من تعبئة البيانات المطلوبة 	
@@ -110,11 +112,14 @@ $username = 'nora555';
                 }
            
              
-            if ((!empty($Name)) && (!empty($mobile)) && (!empty($bdate)) &&
+            if ((!empty($FirstName)) && (!empty($mobile)) && (!empty($bdate)) &&
                     (!empty($gender)) && (!empty($residence)) && (!empty($nationality)) && (!empty($Qualification)) && (!empty($WorkStatus)) && (!empty($Email)))  {
 
                 
-           $query = "UPDATE volunteer SET MobileNumber = '$mobile', DateOfBirth = '$bdate', Gender = '$gender', nationality = '$nationality', residence = '$residence', WorkStatus = '$WorkStatus', WorkType = '$WorkType', Sector = '$Sector' WHERE volunteer.VolunteerUsername = '$username' UPDATE account SET Email = '$Email' WHERE account.Username='nora555'";
+           $query = "UPDATE volunteer SET FirstName='$FirstName' , MiddleName = '$MiddleName' ,LastName='$LastName', MobileNumber = '$mobile', DateOfBirth = '$bdate', Gender = '$gender', nationality = '$nationality', residence = '$residence', WorkStatus = '$WorkStatus', WorkType = '$WorkType', Sector = '$Sector' WHERE volunteer.VolunteerUsername = '$username'";
+                $result = mysqli_query($con, $query);
+                
+                $query = "UPDATE account SET Email='$Email' WHERE account.Username='$username'";
                 $result = mysqli_query($con, $query);
           //  echo "<script type='text/javascript'>alert(' after  submitted successfully!')</script>";
                echo ' <div class="alert alert-success alert-dismissible" >تم تحديث البيانات بنجاح  &ensp;<span class= "glyphicon glyphicon-send" ></span></div>';
@@ -130,8 +135,19 @@ $username = 'nora555';
         <form method="post" action = "volunteerprofile.php">
             <table cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><input type="text" name="Name" value="<?php print ($FirstName . " " . $MiddleName . " " . $LastName); ?>" required></td>
-                    <td><label>الاسم </label></td>		 
+                    <td><input type="text" name="FirstName" value="<?php print ($FirstName); ?>" required></td>
+                    <td><label>الاسم الأول </label></td>
+                    
+                </tr>
+                <tr>
+                    <td><input type="text" name="MiddleName" value="<?php print ( $MiddleName ); ?>" required></td>
+                    <td><label>اسم الاب </label></td>
+                    
+                </tr>
+                <tr>
+                    <td><input type="text" name="LastName" value="<?php print ( $LastName); ?>" required></td>
+                    <td><label>اسم العائلة</label></td>
+                    
                 </tr>
                 <tr>
                     <td><input type="date" name="bdate" value="<?php print ($DateOfBirth); ?>" required></td>
@@ -154,12 +170,12 @@ $username = 'nora555';
                 </tr>
                 <tr> 
                     <td><select name="nationality"  value="<?php print ($nationality); ?>" required>  
-                            <option value="سعودي" >سعودي</option> 
-                            <option value="كويتي" >كويتي</option> 
-                            <option value="بحريني" >بحريني</option> 
-                            <option value="قطري" >قطري</option> 
-                            <option value="أماراتي" >إماراتي</option> 
-                            <option value="عماني" >عماني</option> 
+                            <option value="السعودية" >السعودية</option> 
+                            <option value="الكويت" >الكويت</option> 
+                            <option value="البحرين" >البحرين</option> 
+                            <option value="قطر" >قطر</option> 
+                            <option value="الإمارات" >الإمارات</option> 
+                            <option value="عمان" >عمان</option> 
                         </select></td>
                     <td><label>الجنسية</label></td>
                 </tr>
@@ -208,14 +224,7 @@ $username = 'nora555';
                     <td><input type="tel" name="mobile" value="<?php print ($MobileNumber); ?>" required> </td>
                     <td><label>رقم الجوال</label></td>
                 </tr>
-                <tr>
-                    <td><input type="password" name="password" value="" required> </td>
-                    <td><label>كلمة المرور</label></td>
-                </tr>
-                <tr>
-                    <td><input type="password" name="repassword" value="" required></td>
-                    <td><label>تأكيد كلمة المرور</label></td>
-                </tr>
+              
                 <tr>
                     <td><button name="update" value="update" type="submit">حفظ التعديل</button></td>
                     <td><button name="cancel" value="cancel" type="reset">إلغاء</button></td>
@@ -266,8 +275,11 @@ $username = 'nora555';
 
                 echo "</tr>";
             }
-
+            echo "<tr>";
+              echo '<td><button name="submit"  type="submit">التسجيل</button></td>';
+              echo "</tr>";
             echo "</table>";
+            
             echo "</div>";
         }
         ?>
@@ -276,12 +288,49 @@ $username = 'nora555';
 
     <div id="Requests" class="tabcontent" >
         <h3>طلبات التطوع</h3>
-        <center>
-            <table border=2 width=300>
-                <tr>
-                    <td>حالة الطلب</td><td>المهام</td><td>إسم الفعالية</td>
-                </tr>
-            </table>
+         <?php
+        $query = "select EventName, Status from volunteerregisterinevent, event, volunteer where volunteerregisterinevent.Event_ID = event.EventID and volunteerregisterinevent.Vounteer_ID = volunteer.VolunteerID and volunteer.VolunteerUsername = '$username'";
+
+        $result = mysqli_query($con, $query);
+
+
+        $numRows = mysqli_num_rows($result);
+        if ($numRows <= 0) {
+            echo "<br> لا يوجد فعاليات في الوقت الحالي";
+        } else {
+
+            //creating a table for listing all the events
+            // إنشاء جدول لإضافة جميع الفعاليات
+            echo "<div>";
+            echo "<table id='t01'>";
+            echo "<tr>";
+            echo "<th>اسم الفعالية </th>";
+            echo "<th>حالة الطلب</th>";
+           //echo "<th>ساعة الخروج</th>";
+          //  echo "<th>مجموع الساعات</th>";
+            echo "</tr>";
+            while ($row = mysqli_fetch_array($result)) {
+                echo "<tr>";
+                foreach ($row as $id => $val) {
+                    $EventName = $row['EventName'];
+                    $Status = $row['Status'];
+                   
+                }
+
+                //printing events' info in the table
+                //طباعة بيانات الفعاليات في الجدول
+
+                echo "<td> $EventName </td>";
+                echo "<td> $Status </td>";
+                
+
+                echo "</tr>";
+            }
+
+            echo "</table>";
+            echo "</div>";
+        }
+        ?>
     </div>
 
     <div id="Participation" class="tabcontent" >
