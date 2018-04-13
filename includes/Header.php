@@ -29,8 +29,9 @@
             <!--Logo of the website-->
 
             <div class="container-fluid" style="background-image:url(images/header-2.png); height: 360px">
+                <br>
                 <a href="index.php">
-                    <img src="images/logo.png" style="width: 160px; height: 120px" alt="جمعية السرطان السعودية" id="logo"></a>
+                    <img src="images/logo.png" style="width: 270px; height: 90px" alt="جمعية السرطان السعودية" id="logo"></a>
             </div>
 
             <!--Navigation menu-->

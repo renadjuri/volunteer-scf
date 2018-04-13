@@ -12,25 +12,28 @@ h1 {font-size: 28pt;
 h2 { 
     font-family: ge thameen;
     margin-right: 10pt;
-    
+    color: #cbc000;
+
 
 }
 h3 { 
     font-family: ge thameen; 
     margin-right: 10pt;
- 
+    color: #cbc000;
 
 }
 h4 { 
     font-family: ge thameen;
     margin-right: 10pt;
     color: #cbc000;
-
 }
 b {
     font-family: ge thameen;
     color: #cbc000;
-
+}
+p{
+    font-family: ge thameen;
+    margin-right: 10pt; 
 }
 
 body {  font-family: ge thameen;
@@ -38,9 +41,9 @@ body {  font-family: ge thameen;
 } 
 /* horizental line */
 .Rectangle {
-  width: 758px;
-  height: 1px;
-  background-color: #d8d8d8;
+    width: 758px;
+    height: 1px;
+    background-color: #d8d8d8;
 }
 /*navigation menu style*/
 .navbar {
@@ -55,7 +58,7 @@ body {  font-family: ge thameen;
 }
 
 .navbar li a, .navbar .navbar-brand {
-    color: #8db792 !important;
+    color: #297b39 !important;
 }
 
 .navbar-nav li a:hover ,.navbar-nav li.active a {
@@ -120,6 +123,27 @@ body {  font-family: ge thameen;
     text-align: center;
 }
 
+#button{
+    text-align: center;
+    display: inline-block;
+    margin: 0px;
+    cursor: pointer;
+    background-color: #b7a900; 
+    color: #fcfcfc; 
+    border: 1pt solid #b7a900;
+    border-radius: 10px; 
+}
+
+#button:hover {
+    border: 1pt solid #666666;
+    color:#c6b900;
+    background-color: #cebe03;
+    color: #fcfcfc;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
 /*login button style */
 .s_button {
     text-align: center;
@@ -184,7 +208,26 @@ body {  font-family: ge thameen;
     background-color: #f2f2f2;
     padding: 1px 20px;
     width: 80%;
-    height: 800px;
+    height: 900px;
+}
+
+/* desgin table, th,tr,td*/
+table {
+    border-collapse: collapse;
+    width: 50%;
+    border-bottom-color: #297b39;
+}
+
+th, td {
+    text-align: right;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #ffffff}
+
+th {
+    background-color: #297b39;
+    color: white;
 }
 
 /* Set black background color, white text and some padding */
@@ -196,6 +239,8 @@ footer {
     bottom: 0;
     left: 0;
     padding: 1rem;
+
+
 }
 footer a {   color: white;
              cursor: pointer;}

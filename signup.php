@@ -4,7 +4,18 @@
 $page_title = " إنشاء حساب جديد"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
 ?>
+<script>
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
 
+
+</script>
 <!-- Style CSS -->
 
 <link href="css/style-login.css" rel="stylesheet" type="text/css" />
@@ -29,26 +40,22 @@ include("includes/Header.php"); // the header of the page
         $username = $_POST['username'];
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm-password'];
-
 // Signup validation
         if (empty($_POST["FirstName"])) {
             $errName = 'الرجاء ادخال الاسم ';
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["FirstName"])) {
             $errName = "الإسم المدخل غير صحيح";
         }
-
         if (empty($_POST["MiddleName"])) {
             $errMiddleName = "الرجاء ادخال الاسم ";
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["MiddleName"])) {
             $errMiddleName = "الإسم المدخل غير صحيح";
         }
-
         if (empty($_POST["LastName"])) {
             $errLastName = "الرجاء ادخال الاسم ";
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["LastName"])) {
             $errLastName = "الإسم المدخل غير صحيح";
         }
-
         if (empty($_POST["nationalID"])) {
             $errID = "الرجاء ادخال السجل المدني";
         } else if (!preg_match("/[ 0-9  ]/", $_POST["nationalID"])) {
@@ -84,18 +91,14 @@ include("includes/Header.php"); // the header of the page
         } else if (!preg_match("/[ 0-9 a-z A-Z]/", $_POST["username"])) {
             $errUsername = "اسم المستخدم يتكون من ارقام او حروف انجليزية";
         }
-
         if (empty($_POST["password"])) {
             $errPassword = "الرجاء ادخال كلمة المرور";
         } else if (!preg_match("/[ 0-9 a-z A-Z ا-ي ]/", $_POST["password"])) {
             $errPassword = "كلمة المرور تتكون من أرقام أو حروف ";
         }
-
         if ($password != $confirm_password) {
             $errConfirm = "كلمة المرور غير متطابقة";
         }
-
-
         if (!$errName && !$errMiddleName && !$errLastName && !$errID && !$errnationality && !$errCity && !$errPhone &&
                 !$erremail && !$errUsername && !$errPassword && !$errConfirm) {
             // first check the database to make sure 
@@ -107,44 +110,32 @@ include("includes/Header.php"); // the header of the page
                 if ($user['Email'] === $Email) {
                     $errorUser = "البريد الإلكتروني موجود مسبقاً";
                 }
-
                 if ($user['Username'] === $username) {
                     $errorUser = "اسم المستخدم موجود مسبقاً";
                 }
             }
-
             $user_check_query = "SELECT * FROM Volunteer WHERE  VolunteerID='$nationalID' LIMIT 1";
             $result = mysqli_query($con, $user_check_query);
             $user = mysqli_fetch_assoc($result);
-
-
-
             if ($user) { // if user exists
                 if ($user['VolunteerID'] === $nationalID) {
                     $errUser = "رقم السجل الوطني موجود مسبقاً";
                 }
             }
-
             // Finally, register user if there are no errors in the form
             if (!$errUser && !$errorUser) {
-
                 // $password = md5($password); //encrypt the password before saving in the database
                 $query1 = "INSERT INTO account (UserName, password, Email)
                  VALUES ('" . $username . "', '" . $password . "', '" . $Email . "' );";
-
-
                 $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification, WorkStatus, VolunteerUsername)
                 VALUES ('" . $nationalID . "', '" . $FirstName . "', '" . $MiddleName . "', '" . $LastName . "', '" . $MobileNumber . "', '" .
                         $birthdate . "', '" . $gender . "', '" . $nationality . "', '" . $city . "', '" . $degree . "', '" . $workstation . "', '" . $username . "' );";
-
-
-
+                       
                 mysqli_query($con, $query1);
                 $result = mysqli_query($con, $query);
-
                 if ($result) {
                     //msg successfuly registered
-                   
+
                     $msg = '<div class="alert alert-success">تم حفظ بياناتك بنجاح&ensp;<span class= "glyphicon glyphicon-send"></span></div>';
                     echo "<script>window.open('login.php','_self')</script>";
                 } else {
@@ -165,7 +156,7 @@ include("includes/Header.php"); // the header of the page
                     <div class="panel-heading">
                         <div class="row">       
                             <div class="col-lg-12">
-                                <a class="active" id="register-form-link">إنشاء حساب</a>
+                                <h1>إنشاء حساب</h1>
                             </div>
                         </div>
                         <hr>
@@ -225,13 +216,13 @@ include("includes/Header.php"); // the header of the page
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="nationalID" id="nationalID" tabindex="1" class="form-control" 
+                                        <input type="text" name="nationalID" id="nationalID" maxlength="10" tabindex="1" class="form-control" 
                                                placeholder="رقم السجل المدني/الإقامة" 
                                                value="<?php
-                                                   if (isset($_POST['nationalID'])) {
-                                                       echo $_POST['nationalID'];
-                                                   }
-                                                   ?>" 
+                                               if (isset($_POST['nationalID'])) {
+                                                   echo $_POST['nationalID'];
+                                               }
+                                               ?>" 
                                                ata-toggle="tooltip" data-placement="bottom" title="السجل المدني">
                                         <div>  <?php echo "<p class = 'text-danger'>$errID</p>"; ?> </div>
                                     </div>
@@ -243,7 +234,7 @@ include("includes/Header.php"); // the header of the page
                                                if (isset($_POST['nationality'])) {
                                                    echo $_POST['nationality'];
                                                }
-                                                   ?>" 
+                                               ?>" 
                                                ata-toggle="tooltip" data-placement="bottom" title="الجنسية">
                                         <div>  <?php echo "<p class = 'text-danger'>$errnationality</p>"; ?> </div>
                                     </div>
@@ -276,7 +267,7 @@ include("includes/Header.php"); // the header of the page
                                                    echo $_POST['phone'];
                                                }
                                                ?>" 
-                                               ata-toggle="tooltip" data-placement="bottom" title="رقم الهاتف">
+                                               ata-toggle="tooltip" data-placement="bottom" title="رقم الهاتف" maxlength="10">
                                         <div>  <?php echo "<p class = 'text-danger'>$errPhone</p>"; ?> </div>
                                     </div>
 
@@ -329,6 +320,7 @@ include("includes/Header.php"); // the header of the page
                                                    echo $_POST['password'];
                                                }
                                                ?>" >
+                                        اظهار كلمة المرور   <input type="checkbox" onclick="myFunction()"> 
                                         <div>  <?php echo "<p class = 'text-danger'>$errPassword</p>"; ?> </div>
                                     </div>
                                     <div class="form-group">
@@ -337,17 +329,18 @@ include("includes/Header.php"); // the header of the page
                                         <div>  <?php echo "<p class = 'text-danger'>$errConfirm</p>"; ?> </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="checkbox" name="check" value="ok" >  
                                         <a href="includes/CharterofVolunteerism.pdf" target="_blank" ata-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required>
                                             <b>أقر أني اطلعت على ميثاق التطوع</b> 
                                         </a> 
+                                        <input type="checkbox" name="check" value="ok" required >  
+
                                         </input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="checkbox" name="check2" value="ok" >  
-                                        <a href="includes/Terms_and_Conditions.pdf" target="_blank" ata-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required>
-                                            <b>أتعهد بالإلتزام بشروط و أحكام التطوع في الجمعية السعودية للسرطان</b>
-                                        </a> 
+                                        <a href="includes/Terms_and_Conditions.pdf" target="_blank" ata-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required> 
+                                            <b>أتعهد بالإلتزام بشروط و أحكام التطوع في الجمعية السعودية للسرطان</b> </a> 
+                                        <input type="checkbox" name="check2" value="ok" required> 
+
                                         </input>
                                     </div>
                                     <div class="form-group">
@@ -362,7 +355,7 @@ include("includes/Header.php"); // the header of the page
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-10 col-sm-offset-2">
-<?php echo $msg ?>	
+                                            <?php echo $msg ?>	
                                         </div>
                                     </div>
                                 </form>
@@ -380,4 +373,4 @@ include("includes/Header.php"); // the header of the page
 
     <!--Footer of the page -->
 
-<?php include('includes/footer.php'); ?>
+    <?php include('includes/footer.php'); ?>
