@@ -33,7 +33,6 @@ include("includes/Header.php"); // the header of the page
 <br>
 <br>
 
-<br>
 <!--Footer of the page -->
 
 <?php include('includes/footer.php'); ?>
