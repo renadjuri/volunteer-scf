@@ -10,7 +10,7 @@
 <!-- All events-->
 
 <?php
-$query = "select EventID, EventName,EventDescription,MaleNum,FemaleNum, Location,EventImage from event";
+$query = "select EventID, EventName,EventDescription,MaleNum,FemaleNum, Location from event";
 $result = mysqli_query($con, $query);
 
 $numRows = "";
@@ -20,7 +20,7 @@ $numRows = mysqli_num_rows($result);
 
 
 <div class="container">
-    <button class="btn btn-success" onclick="openTab(event, 'addevent')" >اضافة فعالية</button>
+    <a href="admin_add_event.php" tabindex="5" class="btn btn-success">اضافة فعالية</a>
 
     <div class="row">
         <div class="[ col-sm-12 col-sm-offset-1 col-md-9 ]">
@@ -40,15 +40,7 @@ $numRows = mysqli_num_rows($result);
                                 $EventDescription = $row['EventDescription'];
                                 $MaleNum = $row['MaleNum'];
                                 $FemaleNum = $row['FemaleNum'];
-
-                                $IMAGE = "select EventImage from event where  Event_ID = '$EventID'";
-
-                                $re = mysqli_query($con, $IMAGE);
-
-                                if ($re) {
-                                    $row = mysqli_fetch_object($re);
-                                    $EventImage = $row->EventImage;
-                                }
+                                $Tasks = array();
                                 $DateofEvent = array();
 
                                 $query = "select Date from dateofevent where Event_ID = '$EventID'";
@@ -65,19 +57,39 @@ $numRows = mysqli_num_rows($result);
                                         $DateofEvent[] = $Dates['Date'];
                                     }
                                 }
+
+                                $query = "select Task from taskofevent where Event_ID = '$EventID'";
+                                $Task = mysqli_query($con, $query);
+
+                                $numtasks = "";
+
+                                $numtasks = mysqli_num_rows($Task);
+                                if ($numDates <= 0) {
+                                    $Tasks[] = "لم يتم تحديد مهام الفعالية";
+                                } else {
+                                    while ($task = mysqli_fetch_array($Task)) {
+
+                                        $Tasks[] = $task['Task'];
+                                    }
+                                }
+                                $IMAGE = "select EventImage from event where EventID = '$EventID'";
+                                $re = mysqli_query($con, $IMAGE);
+                                //  $result =mysqli_fetch_array($re);
+                                // this is code to display 
+                                // echo '<time><img src="' . base64_encode($result['EventImage']) . '"/></time>';
                             }
                             ?>
 
-                            <time>
-                                <img  width="90"
-                                      src="'<?php echo $EventImage ?>'">
 
-                            </time>
+                            <time><img /></time>
+
+
                             <div class = "info">
                                 <h2 class = "title"> <?php echo $EventName; ?></h2>
                                 <h2 class = "desc">  <?php echo $EventDescription; ?> </h2>
                                 <p class = "desc"><b> الموقع: </b><?php echo $Location; ?> </p>
                                 <p class = "desc"><b> الموعد:</b> <?php echo implode(', ', $DateofEvent); ?> </p>
+                                <p class = "desc"><b> المهام:</b> <?php echo implode(', ', $Tasks); ?> </p>
                                 <ul>
                                     <li style = "width:34%;"> <?php echo $MaleNum; ?> <span class = "fa fa-male"
                                                                                             ata-toggle = "tooltip" data-placement = "bottom" title = "عدد الذكور"></span></li>

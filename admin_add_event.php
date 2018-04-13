@@ -1,7 +1,13 @@
 <?php
+$page_title = "اضافة فعالية"; //page title to pass it to the header
+include("includes/Header.php"); // the header of the page
+?>
+
+
+<?php
 require 'includes/connection.php'; //connecting to the database
 mysqli_set_charset($con, "utf8");
-$msg = "";
+$msg = $error ="";
 $ID = $_SESSION['id'];
 if (isset($_POST['add-submit'])) {
     $eventName = $_POST['eventName'];
@@ -9,7 +15,10 @@ if (isset($_POST['add-submit'])) {
     $MaleNum = $_POST['MaleNum'];
     $FemaleNum = $_POST['FemaleNum'];
     $Location = $_POST['location'];
-    $encoded_image = "notuploaded";
+    $dateStart = $_POST['dateStart'];
+    $dateEnd = $_POST['dateEnd'];
+    $Tasks= $_POST['tasks'];
+    $encoded_image = "Not uploaded";
 
     if (isset($_FILES['uploadFile']['name']) && !empty($_FILES['uploadFile']['name'])) {
         //Allowed file type
@@ -23,6 +32,8 @@ if (isset($_POST['add-submit'])) {
             //Convert image to base64
             $encoded_image = base64_encode(file_get_contents($_FILES['uploadFile']['tmp_name']));
             $encoded_image = 'data:image/' . $ext . ';base64,' . $encoded_image;
+        } else {
+            $error = '<div class="alert alert-danger">صيغة الملف المرفوع غير صحيحة</div>';
         }
     }
 
@@ -32,10 +43,18 @@ if (isset($_POST['add-submit'])) {
     $add = mysqli_query($con, $q);
 
     if ($add) {
-
-        $msg = '<div class="alert alert-success">تم ضافة الفعالية بنجاح</div>';
-    } else {
-        $msg = '<div class="alert alert-danger">حدث خطأ اثناء اضافة الفعالية الرجاء المحاولة لاحقا</div>';
+        $last_insert_id = mysqli_insert_id($con);
+        if ($last_insert_id) {
+            $query = "INSERT INTO `dateofevent` (`Event_ID`, `Date`) VALUES ('" . $last_insert_id . "','" . $dateStart . "'), ('" . $last_insert_id . "', '" . $dateEnd . "');";
+            $qTasks = "INSERT INTO `taskofevent` (`Event_ID`, `Task`) VALUES ('" . $last_insert_id . "', '" . $Tasks . "');";
+            $addtasks = mysqli_query($con, $qTasks);
+            $result = mysqli_query($con, $query);
+            if ($result && $addtasks) {
+                $msg = '<div class="alert alert-success">تم ضافة الفعالية بنجاح</div>';
+            }
+        } else {
+            $msg = '<div class="alert alert-danger">حدث خطأ اثناء اضافة الفعالية الرجاء المحاولة لاحقا</div>';
+        }
     }
 }
 ?>
@@ -89,7 +108,7 @@ if (isset($_POST['add-submit'])) {
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-10 col-sm-offset-1">
-                                            <input id="dateStart" name="dateEnd" type="date" style=" text-align: right;"  required=""tabindex="3"  
+                                            <input id="dateEnd" name="dateEnd" type="date" style=" text-align: right;"  required=""tabindex="3"  
                                                    ata-toggle="tooltip" data-placement="bottom" title="تاريخ نهاية الفعالية">
                                             <input id="dateStart" name="dateStart" type="date" style=" text-align: right;"  required=""tabindex="4"  
                                                    ata-toggle="tooltip" data-placement="bottom" title="تاريخ بداية الفعالية">
@@ -133,13 +152,13 @@ if (isset($_POST['add-submit'])) {
                                 </div>
 
 
-                                <!-- notes-->
+                                <!-- Tasks-->
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-10 col-sm-offset-1">
-                                            <input id="notes" name="notes" type="text" placeholder="الملاحظات"  tabindex="8" style=" text-align: right;"  
-                                                   ata-toggle="tooltip" data-placement="bottom" title="ملاحظات اضافية">
-                                            <label type="text">الملاحظات</label>
+                                            <input id="tasks" name="tasks" type="text" placeholder="المهام"  tabindex="8" style=" text-align: right;"  
+                                                   ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية">
+                                            <label type="text">المهام</label>
 
                                         </div>
                                     </div>
@@ -149,7 +168,7 @@ if (isset($_POST['add-submit'])) {
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-10 col-sm-offset-1">
-                                            <label type="text" style=" text-align: right;" ata-toggle="tooltip" data-placement="bottom" title="اختيار صورة">صورة  </label>
+                                            <label type="text" style=" text-align: right;" ata-toggle="tooltip" data-placement="bottom" title="اختر صورة">صورة  </label>
                                             <input type="file" id="uploadFile" name="uploadFile"    tabindex="9" style="text-align: right">
 
 
@@ -161,8 +180,9 @@ if (isset($_POST['add-submit'])) {
                                     <div class="row">  
                                         <div class="col-sm-6 col-sm-offset-3">
                                             <div class="col-sm-3"  >
-                                                <input  onclick="openTab(event, 'events')"  type="submit" name="cancel" id="cancel"  tabindex="4" class="form-control btn btn-danger" 
-                                                        value="الغاء"/>
+
+                                                <a href="admin-profile.php" tabindex="11"  name="cancel" id="cancel" class="form-control btn btn-danger" >الغاء</a>
+
                                             </div>
                                             <div class="col-sm-3">
                                                 <input type="submit" name="add-submit" id="add-submit" tabindex="10"
@@ -174,7 +194,8 @@ if (isset($_POST['add-submit'])) {
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-<?php echo $msg; ?>	
+                                        <?php echo $error; ?>
+                                        <?php echo $msg; ?>	
                                     </div>
                                 </div>
                             </form>
@@ -186,3 +207,6 @@ if (isset($_POST['add-submit'])) {
     </div>
 </div>
 
+<!--Footer of the page -->
+
+<?php include('includes/footer.php'); ?>
