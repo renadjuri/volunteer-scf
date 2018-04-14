@@ -82,7 +82,7 @@
 
 
             <!--volunteer hours -->
-
+<!--
             <center>
                 <input type="date" name="date"> &nbsp  أسم الفعالية&nbsp <input type="text" align="right" name="EvnName" > &nbsp التاريخ
 
@@ -100,27 +100,10 @@
                 </table>
 <br><br><center>
                 <button class="btn">حفظ</button>
-            </center>
+            </center> -->
 
             <?php
-            echo "<select id='event' name='Admin_selectEvent'>";
-            while ($row = mysqli_fetch_array($result)) {
-                foreach ($row as $id => $val) {
-                    $EventID = $row['EventID'];
-                    $EventName = $row['EventName'];
-                }
-
-                echo "<option value='$EventID' >$EventName</option>";
-            }
-            echo "</select>";
-            echo "</form>";
-
-
-            if (isset($_POST["Admin_selectEvent"])) {
-
-                $Admin_selectEvent = $_POST["Admin_selectEvent"];
-
-
+           
                 $query = "select volunteer.FirstName, volunteer.MiddleName, volunteer.LastName from volunteer where volunteer.Volunteer_ID = volunteerparticipateonevent.Volunteer_ID AND volunteerparticipateonevent.Event_ID = $Volunteer_selectEvent";
 
                 $result = mysqli_query($con, $query);

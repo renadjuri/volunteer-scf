@@ -122,25 +122,28 @@ body {  font-family: ge thameen;
     text-align: center;
 }
 
-#button{
+.btn{
     text-align: center;
     display: inline-block;
     margin: 0px;
     cursor: pointer;
-    background-color: #b7a900; 
+    background-color: #d5ca4b; 
     color: #fcfcfc; 
-    border: 1pt solid #b7a900;
-    border-radius: 10px; 
+    border: 1pt solid #cbbe2d;
+    border-radius: 7px; 
+    font-family: ge thameen;
 }
 
-#button:hover {
-    border: 1pt solid #666666;
+.btn:hover {
+    border: 1pt solid #b7a900;
     color:#c6b900;
-    background-color: #cebe03;
+    background-color: #cbbe2d;
     color: #fcfcfc;
-    border-radius: 10px;
+    border-radius: 7px;
     text-decoration: none;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    width:60px;
+    font-family: ge thameen;
+    
 
 }
 /*login button style */
