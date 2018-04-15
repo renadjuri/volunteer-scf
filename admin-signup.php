@@ -93,7 +93,7 @@
             }
             // Finally, register user if there are no errors in the form
             if (!$errUser && !$errorUser) {
-                //$password = md5($password); //encrypt the password before saving in the database
+                $password = md5($password); //encrypt the password before saving in the database
                 $query1 = "INSERT INTO account (UserName, password, Email)
                  VALUES ('" . $username . "', '" . $password . "', '" . $Email . "' );";
                 $query = "INSERT INTO admin (AdminID, FirstName, MiddleName, LastName, AdminUsername)
@@ -132,11 +132,10 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12"> 
-                                <form method="post" id="register-form"  role="form" style="display: block;"
+                                <form method="post" id="register-form"  role="form"
                                       autocomplete="on">
 
-
-                                    <div class="form-group  ">
+                                  
                                         <div class="form-group ">
 
                                             <input type="text" name="FirstName" id="username" tabindex="1" class="form-control" placeholder="الاسم الأول" 
@@ -170,7 +169,7 @@
                                                ?>" 
                                                ata-toggle="tooltip" data-placement="bottom" title="العائلة">
                                         <div>  <?php echo "<p class = 'text-danger'>$errLastName</p>"; ?> </div>
-                                    </div>
+                                
 
 
 

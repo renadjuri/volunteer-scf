@@ -30,7 +30,7 @@ include("includes/Header.php"); // the header of the page
     if (isset($_POST['login-submit'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-       // $password = md5($password); //encrypt the password before saving in the database
+        $password = md5($password); //encrypt the password before saving in the database
 
         if (empty($username) || empty($password)) {
             //$msg = "Username or Password is empty";

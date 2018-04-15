@@ -124,7 +124,7 @@ include("includes/Header.php"); // the header of the page
             }
             // Finally, register user if there are no errors in the form
             if (!$errUser && !$errorUser) {
-               // $password = md5($password); //encrypt the password before saving in the database
+                $password = md5($password); //encrypt the password before saving in the database
                 $query1 = "INSERT INTO account (UserName, password, Email)
                  VALUES ('" . $username . "', '" . $password . "', '" . $Email . "' );";
                 $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification, WorkStatus, VolunteerUsername)
