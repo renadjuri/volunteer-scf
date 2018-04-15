@@ -3,6 +3,7 @@
 <?php
 $query = 'select AdminID, FirstName, MiddleName, LastName, AdminUsername, Email, password from admin, account where account.Username = admin.AdminUsername and account.Username = "' . $_SESSION["username"] . '"';
 $result = mysqli_query($con, $query);
+$FnameError = $MnameError = $LnameError = $EmailError = "";
 
 
 $numRows = mysqli_num_rows($result);

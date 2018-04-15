@@ -47,6 +47,70 @@ switch ($action) {
             header("Location: admin-profile.php");
         }
         break;
+        case "addToBlacklist":
+        if (isset($_GET['volunteer_id'])) {
+            if (isset($_GET['volunteer_id'])) {
+                $query = "UPDATE volunteer SET BlackList = 1 where VolunteerID=$id"; //0000
+                $result = mysqli_query($con, $query);
+
+                header("Location: admin-profile.php");
+            }
+        } else {
+            header("Location: admin-profile.php");
+        }
+        break;
+    case "AcceptVolunteer":
+        if (isset($_GET['volunteer_id'])) {
+            if (isset($_GET['event_id'])) {
+                $event_id = $_GET['event_id'];
+                $query = "UPDATE volunteerregisterinevent SET status = 1, Admin_ID=" . $_SESSION['id'] . " where Vounteer_ID=$id and Event_ID=$event_id";
+                $result = mysqli_query($con, $query);
+                $query2 = "INSERT INTO volunteerparticipateonevent (Volunteer_ID, Event_ID) VALUES ('$id', '$event_id')";
+                $result2 = mysqli_query($con, $query2);
+//0000
+                //  header("Location: admin-profile.php");
+            }
+        } else {
+            //0000000
+            // header("Location: admin-profile.php");
+        }
+        break;
+    case "RejectVolunteer":
+        if (isset($_GET['volunteer_id'])) {
+            if (isset($_GET['event_id'])) {
+                $event_id = $_GET['event_id'];
+                $query = "UPDATE volunteerregisterinevent SET status = 2, Admin_ID=" . $_SESSION['id'] . " where Vounteer_ID=$id and Event_ID=$event_id";
+                $result = mysqli_query($con, $query);
+
+                header("Location: admin-profile.php");
+            }
+        } else {
+            header("Location: admin-profile.php");
+        }
+        break;
+    case "EditTask":
+        // id="defaultOpen"
+        //onclick="openTab(event, 'event_volunteers')"
+        // echo "<script type='text/javascript'> openTab(event, 'event_volunteers');</script>"; //0000
+
+        break;
+    case "SaveEditTask":
+        if (isset($_POST["TasksDropdown"])) {
+            $newTask = $_POST["TasksDropdown"];
+            if (isset($_GET['volunteer_id'])) {
+                if (isset($_GET['event_id'])) {
+                    $event_id = $_GET['event_id'];
+                    $query = "UPDATE volunteerregisterinevent SET Task ='" . $newTask . "' where Vounteer_ID=$id and Event_ID=$event_id";
+                    $result = mysqli_query($con, $query);
+
+                    //header("Location: admin-profile.php");
+                    // echo "<script type='text/javascript'> openTab(event, 'event_volunteers');</script>"; //00000
+                }
+            }
+        } else {
+            //header("Location: admin-profile.php");
+        }
+        break;
 }
 ?>
 
