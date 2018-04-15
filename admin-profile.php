@@ -3,7 +3,7 @@
 <?php
 $page_title = "لوحة التحكم"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
-$_SESSION['admin'] = "true";
+$_SESSION['admin'];
 include("includes/connection.php"); //connecting to the database
 mysqli_set_charset($con, "utf8");
 
