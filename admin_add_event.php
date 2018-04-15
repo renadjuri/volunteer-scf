@@ -17,15 +17,15 @@ if (isset($_POST['add-submit'])) {
     $Location = $_POST['location'];
     $dateStart = $_POST['dateStart'];
     $dateEnd = $_POST['dateEnd'];
-    $Task1 = $_POST['task1'];
-    $Task2 = $_POST['task2'];
-    $Task3 = $_POST['task3'];
-    $Task4 = $_POST['task4'];
-    $Task5 = $_POST['task5'];
-    $Task6 = $_POST['task6'];
-    $Task7 = $_POST['task7'];
-    $Task8 = $_POST['task8'];
-    
+    $Tasks = array();
+
+    for ($i = $n = 1; $i < 9; $i++) {
+        if ($_POST['task'.$i]) {
+            $Tasks[$n] = $_POST['task'.$i];
+            $n++;
+        }
+    }
+
     $encoded_image = "Not uploaded";
 
     if (isset($_FILES['uploadFile']['name']) && !empty($_FILES['uploadFile']['name'])) {
@@ -54,11 +54,14 @@ if (isset($_POST['add-submit'])) {
         $last_insert_id = mysqli_insert_id($con);
         if ($last_insert_id) {
             $query = "INSERT INTO `dateofevent` (`Event_ID`, `Date`) VALUES ('" . $last_insert_id . "','" . $dateStart . "'), ('" . $last_insert_id . "', '" . $dateEnd . "');";
-            $qTasks = "INSERT INTO `taskofevent` (`Event_ID`, `Task`) VALUES ('" . $last_insert_id . "', '" . $Task1 . "'),('" . $last_insert_id . "', '" . $Task2 . "'),"
-                    . "('" . $last_insert_id . "', '" . $Task3 . "'),('" . $last_insert_id . "', '" . $Task4 . "'),('" . $last_insert_id . "', '" . $Task5 . "')"
-                    . ",('" . $last_insert_id . "', '" . $Task6 . "'),('" . $last_insert_id . "', '" . $Task7 . "'),('" . $last_insert_id . "', '" . $Task8 . "');";
-            
-            $addtasks = mysqli_query($con, $qTasks);
+
+            $num_values = count($Tasks);
+            $addtasks = "";
+            for ($i = 1; $i <= $num_values; $i++) {
+                $qTasks = "INSERT INTO `taskofevent` (`Event_ID`, `Task`) VALUES ('" . $last_insert_id . "', '" . $Tasks[$i] . "');";
+                $addtasks = mysqli_query($con, $qTasks);
+            }
+
             $result = mysqli_query($con, $query);
             if ($result && $addtasks) {
                 $msg = '<div class="alert alert-success">تم ضافة الفعالية بنجاح</div>';
@@ -200,25 +203,25 @@ if (isset($_POST['add-submit'])) {
 
                     <tr  class="col-sm-12">
                         <td>
-                            <input id="tasks" name="task1" type="text" placeholder="المهام"  tabindex="8" style=" text-align: right;"  
+                            <input id="task1" name="task1" type="text" placeholder="المهام"  tabindex="15" style=" text-align: right;"  
                                    ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
                                    if (isset($_POST['task1'])) {
                                        echo $_POST['task1'];
                                    }
                                    ?>">
-                            <input id="tasks" name="task2" type="text" placeholder="المهام"  tabindex="8" style=" text-align: right;"  
+                            <input id="task2" name="task2" type="text" placeholder="المهام"  tabindex="14" style=" text-align: right;"  
                                    ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
                                    if (isset($_POST['tasks2'])) {
                                        echo $_POST['task2'];
                                    }
                                    ?>">
-                            <input id="tasks" name="task3" type="text" placeholder="المهام"  tabindex="8" style=" text-align: right;"  
+                            <input id="task3" name="task3" type="text" placeholder="المهام"  tabindex="13" style=" text-align: right;"  
                                    ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
                                    if (isset($_POST['tasks3'])) {
                                        echo $_POST['task3'];
                                    }
                                    ?>">
-                            <input id="tasks" name="task4" type="text" placeholder="المهام"  tabindex="8" style=" text-align: right;"  
+                            <input id="task4" name="task4" type="text" placeholder="المهام"  tabindex="12" style=" text-align: right;"  
                                    ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
                                    if (isset($_POST['task4'])) {
                                        echo $_POST['task4'];
@@ -226,25 +229,25 @@ if (isset($_POST['add-submit'])) {
                                    ?>">
 
 
-                            <input id="tasks" name="task5" type="text" placeholder="المهام"  tabindex="8" style=" text-align: right;"  
+                            <input id="task5" name="task5" type="text" placeholder="المهام"  tabindex="11" style=" text-align: right;"  
                                    ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
                                    if (isset($_POST['tasks5'])) {
                                        echo $_POST['task5'];
                                    }
                                    ?>">
-                            <input id="tasks" name="task6" type="text" placeholder="المهام"  tabindex="8" style=" text-align: right;"  
+                            <input id="task6" name="task6" type="text" placeholder="المهام"  tabindex="10" style=" text-align: right;"  
                                    ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
                                    if (isset($_POST['task6'])) {
                                        echo $_POST['task6'];
                                    }
                                    ?>">
-                            <input id="tasks" name="task7" type="text" placeholder="المهام"  tabindex="8" style=" text-align: right;"  
+                            <input id="task7" name="task7" type="text" placeholder="المهام"  tabindex="9" style=" text-align: right;"  
                                    ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
                                    if (isset($_POST['task7'])) {
                                        echo $_POST['task7'];
                                    }
                                    ?>">
-                            <input id="tasks" name="task8" type="text" placeholder="المهام"  tabindex="8" style=" text-align: right;"  
+                            <input id="task8 " name="task8" type="text" placeholder="المهام"  tabindex="8" style=" text-align: right;"  
                                    ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
                                    if (isset($_POST['task8'])) {
                                        echo $_POST['task8'];
@@ -259,7 +262,7 @@ if (isset($_POST['add-submit'])) {
                     <tr  class="col-sm-12">
 
 
-                        <td><input type="file" id="uploadFile" name="uploadFile"    tabindex="9" style="text-align: right" value="<?php
+                        <td><input type="file" id="uploadFile" name="uploadFile"    tabindex="16" style="text-align: right" value="<?php
                             if (isset($_POST['uploadFile'])) {
                                 echo $_POST['uploadFile'];
                             }
@@ -276,13 +279,13 @@ if (isset($_POST['add-submit'])) {
                         <td> 
 
 
-                            <a href="admin-profile.php" tabindex="11"  name="cancel" id="cancel" class="form-control btn btn-danger" >رجوع</a>
+                            <a href="admin-profile.php" tabindex="18"  name="cancel" id="cancel" class="form-control btn btn-danger" >رجوع</a>
 
 
                         </td>
                         <td>
 
-                            <input type="submit" name="add-submit" id="add-submit" tabindex="10"
+                            <input type="submit" name="add-submit" id="add-submit" tabindex="17"
                                    class="form-control btn btn-success" value="حفظ"/>
 
                         </td>
