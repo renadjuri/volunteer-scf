@@ -181,7 +181,7 @@ if (isset($_POST['add-submit'])) {
                                         <div class="col-sm-6 col-sm-offset-3">
                                             <div class="col-sm-3"  >
 
-                                                <a href="admin-profile.php" tabindex="11"  name="cancel" id="cancel" class="form-control btn btn-danger" >الغاء</a>
+                                                <a href="admin-profile.php" tabindex="11"  name="cancel" id="cancel" class="form-control btn btn-danger" >رجوع</a>
 
                                             </div>
                                             <div class="col-sm-3">

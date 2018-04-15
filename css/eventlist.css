@@ -21,7 +21,7 @@
     margin: 0px 0px 20px;
 }
 .event-list > li > time {
-    
+
     color: rgb(255, 255, 255);
     background-color:#8db792 ;
     padding: 5px;
@@ -109,7 +109,8 @@
         color: #8db792 ;
 
     }
-     
+
+
     .event-list > li > .info > .desc {
         font-size: 13pt;
         font-weight: 300;
@@ -153,14 +154,14 @@
         font-weight: 300;
 
     }
-    .event-list > li > .edit > ul > li > a {
+    .event-list > li > .edit > ul > li > .btn {
         display: block;
         width: 30px;
         padding: 0px 0px 0px 0px;
         color: #cbc000;
     }
-    .event-list > li > .edit > ul > li a:hover {
-        color: #8db792 ;
-
+    .event-list > li > .edit > ul > li .btn:hover {
+        color: #fff;
+        width: 50px;
     }
 }

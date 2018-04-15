@@ -128,7 +128,7 @@ body {  font-family: ge thameen;
     display: inline-block;
     margin: 0px;
     cursor: pointer;
-    background-color: #d5ca4b; 
+    background-color:#cbc000;
     color: #fcfcfc; 
     border: 1pt solid #cbbe2d;
     border-radius: 7px; 
@@ -138,34 +138,13 @@ body {  font-family: ge thameen;
 .btn:hover {
     border: 1pt solid #b7a900;
     color:#c6b900;
-    background-color: #cbbe2d;
+    background-color: #b7a900;
     color: #fcfcfc;
     border-radius: 7px;
     text-decoration: none;
-    width:60px;
-    font-family: ge thameen;
-    
-
+    font-family: ge thameen;  
 }
-/*login button style */
-.s_button {
-    text-align: center;
-    display: inline-block;
-    margin: 0px;
-    cursor: pointer;
-    background-color: #b7a900; 
-    color: #fcfcfc; 
-    border: 1pt solid #b7a900;
-    border-radius: 10px;}
 
-.s_button:hover {border: 1pt solid #666666;
-                 color:#c6b900;
-                 background-color: #cebe03;
-                 color: #fcfcfc;
-                 border-radius: 10px;
-                 text-decoration: none;
-                 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
 
 /* Style the tab */
 .tab {
