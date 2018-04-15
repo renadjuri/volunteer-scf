@@ -25,6 +25,7 @@ h4 {
     font-family: ge thameen;
     margin-right: 10pt;
     color: #cbc000;
+    font-size: 2.5em;
 }
 b {
     font-family: ge thameen;
@@ -169,16 +170,18 @@ body {  font-family: ge thameen;
 /* Style the tab */
 .tab {
     float: right;
-    border: 0px solid #d6d5c3;
-    background-color: #eaeaea;
     width: 20%;
-
+    border-color: #ccc;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    box-shadow: 2px 2px 3px 2px rgba(0,0,0,0.2);
+    background-color: #fff;
 }
 
 /* Style the buttons inside the tab */
 .tab button {
     display: block;
-    background-color: #f2f2f2;
+      background-color: #fff;
     color: black;
     padding: 22px 16px;
     width: 100%;
@@ -206,11 +209,15 @@ body {  font-family: ge thameen;
 }
 
 /* Style the tab content */
-.tabcontent {
-    background-color: #f2f2f2;
+.tabcontent { 
     padding: 1px 20px;
     width: 80%;
     height: 900px;
+    border-color: #ccc;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    box-shadow: 2px 2px 3px 2px rgba(0,0,0,0.2);
+    background-color: #fff;
 }
 
 /* desgin table, th,tr,td*/
@@ -266,9 +273,7 @@ footer a:hover {   color:  #8db792;}
     }
     .row.content {height:auto;} 
 }
-.about-section {
-    padding: 4em 0;
-}
+
 .site-title  {
     padding: 2em 0;
 }
@@ -279,19 +284,15 @@ footer a:hover {   color:  #8db792;}
     font-weight: 700;
 }
 .site-title p {
-    font-size: 1.1em;
+    font-size: 1.6em;
     color: #333333;
     line-height: 1.8em;
     margin-top: 0.5em;
 }
 
-.about-inner-column h4 {
-    font-size: 2.5em;
-    color: #FFD001;
-    font-family:ge thameen;
-}
+
 .about-inner-column p {
-    font-size: 1.1em;
+    font-size: 1.5em;
     color: #333333;
     line-height: 1.8em;
     margin: 1em 0 0;

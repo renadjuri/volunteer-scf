@@ -124,7 +124,7 @@ include("includes/Header.php"); // the header of the page
             }
             // Finally, register user if there are no errors in the form
             if (!$errUser && !$errorUser) {
-                // $password = md5($password); //encrypt the password before saving in the database
+                $password = md5($password); //encrypt the password before saving in the database
                 $query1 = "INSERT INTO account (UserName, password, Email)
                  VALUES ('" . $username . "', '" . $password . "', '" . $Email . "' );";
                 $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification, WorkStatus, VolunteerUsername)
@@ -324,7 +324,7 @@ include("includes/Header.php"); // the header of the page
                                         <div>  <?php echo "<p class = 'text-danger'>$errPassword</p>"; ?> </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="أعادة كلمة المرور" 
+                                        <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="اعادة كلمة المرور" 
                                                ata-toggle="tooltip" data-placement="bottom" title="اعد كتابة كلمة المرور">
                                         <div>  <?php echo "<p class = 'text-danger'>$errConfirm</p>"; ?> </div>
                                     </div>

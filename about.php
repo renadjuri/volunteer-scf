@@ -5,7 +5,7 @@ $page_title = "نبذة عن جمعية السرطان السعودية"; //page
 include("includes/Header.php"); // the header of the page
 ?>
 
-<body>
+
 
    
         <div class="container text-center" >
@@ -32,7 +32,7 @@ include("includes/Header.php"); // the header of the page
 				<img src="images/ab1.png" alt=" ">
 			</div>
 				<div class="col-md-6 about-inner-column">
-					<h4>رؤيتنا </h4>
+					<h4 class="display-3" >رؤيتنا </h4>
                                         <p>تحقيق مكانه متميزة وفقاً للمعايير الدولية في مجال مكافحة مرض السرطان والوصول لمجتمع صحي على مستوى المملكة</p>
 				
 				<div class="clearfix"> </div>
@@ -83,16 +83,10 @@ include("includes/Header.php"); // the header of the page
 			</div>
 		</div>
 	</div>
-  </body>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
+ <br>
+ <br>
+ <br>
+ <br>
 
 <!--Footer of the page -->
 

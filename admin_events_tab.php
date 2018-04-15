@@ -72,16 +72,23 @@ $numRows = mysqli_num_rows($result);
                                         $Tasks[] = $task['Task'];
                                     }
                                 }
-                                $IMAGE = "select EventImage from event where EventID = '$EventID'";
-                                $re = mysqli_query($con, $IMAGE);
-                                //  $result =mysqli_fetch_array($re);
-                                // this is code to display 
-                                // echo '<time><img src="' . base64_encode($result['EventImage']) . '"/></time>';
+
+                                $sql = "select EventImage from event where EventID = '$EventID'";
+                                $result1 = mysqli_query($con, $sql);
+                                $numimages = mysqli_num_rows($result1);
+                                if ($numimages <= 0) {
+                                    $Image = "https://placehold.it/50x80?text=IMAGE";
+                                } else {
+                                    while ($image = mysqli_fetch_array($result1)) {
+
+                                        $Image = 'data:image/jpeg;base64,'.base64_encode($image['EventImage']).'"';
+                                    }
+                                }
                             }
                             ?>
 
 
-                            <time><img /></time>
+                            <time><img  src="<?php echo$Image ?>" /></time>
 
 
                             <div class = "info">

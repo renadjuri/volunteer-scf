@@ -18,10 +18,12 @@ if ($numRows <= 0) {
             $AdminUsername = $row['AdminUsername'];
             $Email = $row['Email'];
             $password = $row['password'];
+            $password = md5($password);
         }
     }
 }
 ?>
+
 <br>
 <div class="container">
     <div class="row">
@@ -41,15 +43,19 @@ if ($numRows <= 0) {
                         <td> <label>اسم المستخدم</label></td>
                     </tr>
                     <tr>
-                        <td><input style="  text-align: right;"  type="email" name="email" value="<?php print ($email); ?>" required></td>
+                        <td><input style="  text-align: right;"  type="email" name="email" value="<?php print ($Email); ?>" required></td>
                         <td><label> البريد الإلكتروني </label></td>
                     </tr>
                     <tr>
-                        <td><input style="  text-align: right;" type="text" name="password" value="<?php print ($password); ?>" required></td>
+                        <td><input style="  text-align: right;" type="password" name="password" id="password"  
+                                   value="<?php echo $password; ?>" required/></td>
                         <td><label>كلمة المرور</label></td>
                     </tr>
+
                     <tr>
-                        <td><button class="btn" name="changePassword" type="">تغيير كلمة المرور</button></td>
+                      
+                        </td>
+                        <td><button class="btn btn-success" name="changePassword" type="">تغيير كلمة المرور</button></td>
                     </tr>
                 </table>
                 <br><br>

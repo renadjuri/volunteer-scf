@@ -36,7 +36,7 @@ include("includes/Header.php"); // the header of the page
     $name = $email = $message = $human = "";
     $errName = $errEmail = $errMessage = $errHuman = $result = "";
     if (isset($_POST["submit"])) {
-    
+
         $name = $_POST['name'];
         $email = $_POST['email'];
         $message = $_POST['message'];
@@ -120,17 +120,14 @@ include("includes/Header.php"); // the header of the page
             </div>
         </div>
         <div class="container text-center">    
-            <h2>ادارة المتطوعين في جمعية السرطان السعودية</h2>
-            <center><div class="Rectangle"></div></center>
-            <br>
             <div class="row">
-                <div class="col-sm-6">
+
+                <div class="col-sm-8 col-md-offset-2"> 
+                    <h2>احصائيات التطوع لدينا</h2> 
+                    <center><div class="Rectangle"></div></center>
+                    <br>
                     <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-                    <p>نبذة عن التطوع</p>
-                </div>
-                <div class="col-sm-6"> 
-                    <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-                    <p>الإحصائيات</p>    
+
                 </div>
 
             </div>
@@ -178,7 +175,7 @@ include("includes/Header.php"); // the header of the page
 
                 <form class="form-horizontal" role="form" method="post" action="index.php">
                     <div class="form-group">
-<!--  value ="<?php //echo htmlspecialchars($_POST['email']);           ?>"-->
+<!--  value ="<?php //echo htmlspecialchars($_POST['email']);            ?>"-->
                         <div class="col-sm-10 col-sm-offset-2">
                             <input type="text" class="form-control text-right" id="name" name="name"  
                                    placeholder="الأسم الثلاثي" tabindex="1" />
@@ -187,7 +184,7 @@ include("includes/Header.php"); // the header of the page
 
                     </div>
                     <div class="form-group">
-<!--  value ="<?php // echo htmlspecialchars($_POST['email']);           ?>"-->
+<!--  value ="<?php // echo htmlspecialchars($_POST['email']);            ?>"-->
                         <div class="col-sm-10 col-sm-offset-2">
                             <input type="email" class="form-control text-right" id="email" name="email" 
                                    placeholder="example@domain.com" tabindex="2"  />
@@ -196,7 +193,7 @@ include("includes/Header.php"); // the header of the page
 
                     </div>
                     <div class="form-group">
-<!--value=" <?php // echo htmlspecialchars($_POST['message']);           ?>"-->
+<!--value=" <?php // echo htmlspecialchars($_POST['message']);            ?>"-->
                         <div class="col-sm-10 col-sm-offset-2">
                             <textarea class="form-control text-right" rows="4" name="message"
                                       placeholder="رسالتك" tabindex="3" ></textarea>
