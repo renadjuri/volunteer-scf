@@ -26,20 +26,21 @@
 
 //session_start();
 // step 1: connect to database
-if (! ( $database = mysqli_connect ("localhost","root","", "cancergroup")) )
-die ("Cann't connect to database");
-
-// setcharset to utf-8
-if(mysqli_set_charset($database,'utf8'))  
-
-// step 2: open database
-if ( ! ( mysqli_select_db ($database, "cancergroup")))
-die ("Cann't open database ");
+include($_SERVER['DOCUMENT_ROOT']."/volunteer-new/includes/connection.php"); //connecting to the database
+//if (! ( $database = mysqli_connect ("localhost","root","", "cancergroup")) )
+//die ("Cann't connect to database");
+//
+//// setcharset to utf-8
+//if(mysqli_set_charset($database,'utf8'))  
+//
+//// step 2: open database
+//if ( ! ( mysqli_select_db ($database, "cancergroup")))
+//die ("Cann't open database ");
 
 //  set sql encoding
-mysqli_query($database, "SET NAMES 'utf-8'");  
-//$SqlEncoding=mysqli_client_encoding($database);
-$SqlEncoding = mysqli_character_set_name($database);
+mysqli_query($con, "SET NAMES 'utf-8'");  
+//$SqlEncoding=mysqli_client_encoding($con);
+$SqlEncoding = mysqli_character_set_name($con);
  
 $event_id = $_GET['event_id'];
 $volunteer_id = $_GET['volunteer_id'];
@@ -48,8 +49,8 @@ $volunteer_id = $_GET['volunteer_id'];
 //query to retrieve volunteer name 
 $query = "SELECT FirstName, MiddleName, LastName FROM volunteer WHERE VolunteerID = $volunteer_id";
 
-if ( ! $result = mysqli_query($database, $query))
-	die ("Error While Execute Query ".mysqli_error($database));
+if ( ! $result = mysqli_query($con, $query))
+	die ("Error While Execute Query ".mysqli_error($con));
 
 $row = mysqli_fetch_row ($result);
 
@@ -57,8 +58,8 @@ $row = mysqli_fetch_row ($result);
 //query to retrieve event name
 $query2 = "SELECT EventName FROM event WHERE EventID = $event_id";
 
-if ( ! $result2 = mysqli_query($database, $query2))
-	die ("Error While Execute Query ".mysql_error($database));
+if ( ! $result2 = mysqli_query($con, $query2))
+	die ("Error While Execute Query ".mysql_error($con));
 
 $row2 = mysqli_fetch_row ($result2);
 
@@ -66,8 +67,8 @@ $row2 = mysqli_fetch_row ($result2);
 // Attended_hours//00000
 $query3 = "SELECT SUM(EndingHour-StartingHour)/10000 FROM volunteerparticipateonevent WHERE Volunteer_ID=$volunteer_id and Event_ID=$event_id";
 
-if ( ! $result3 = mysqli_query($database, $query3))
-	die ("Error While Execute Query ".mysql_error($database));
+if ( ! $result3 = mysqli_query($con, $query3))
+	die ("Error While Execute Query ".mysql_error($con));
 
 $row3 = mysqli_fetch_row ($result3);	
 $AttendedHours = $row3[0];

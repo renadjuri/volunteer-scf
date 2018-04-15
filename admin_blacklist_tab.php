@@ -19,7 +19,7 @@
         //creating a table for listing all the volunteers in the blacklist
         // إنشاء جدول لإضافة جميع المتطوعين الذين وضعوا في القائمة السوداء
         echo "<div>";
-        echo "<table id='t01'>";
+        echo "<table class='col-md-12 table-hover table-striped'>";
         echo "<tr>";
         echo "<th> القائمة السوداء </th>"; // حذف من القائمة
         echo "<th>الاسم الثلاثي</th>";

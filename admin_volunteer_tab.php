@@ -14,9 +14,8 @@ if ($numRows <= 0) {
 } else {
     //creating a table for listing all the volunteers
     // إنشاء جدول لإضافة جميع المتطوعين المسجلين بالموقع
-    echo '<div class="container"><div class="row">
-        <div class="[col-sm-8 col-sm-offset-3 col-md-12]">';
-    echo "<table id='t01'>";
+    echo '<div class="col-md-12">';
+    echo "<table class='table table-hover table-striped'>";
     echo "<tr>";
     echo "<th>اضافة للقائمة السوداء</th>";
     echo "<th> اسم المستخدم </th>";

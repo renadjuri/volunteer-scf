@@ -3,7 +3,7 @@
 <?php
 $page_title = "لوحة التحكم"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
-$_SESSION['admin'];
+$_SESSION['admin'] = "true";
 include("includes/connection.php"); //connecting to the database
 mysqli_set_charset($con, "utf8");
 
@@ -36,18 +36,6 @@ switch ($action) {
         break;
     //Add to blacklist
     case "addToBlacklist":
-        if (isset($_GET['volunteer_id'])) {
-
-            $query = "UPDATE volunteer SET BlackList = 1 where VolunteerID=$id"; //0000
-
-            $result = mysqli_query($con, $query);
-
-            header("Location: admin-profile.php");
-        } else {
-            header("Location: admin-profile.php");
-        }
-        break;
-        case "addToBlacklist":
         if (isset($_GET['volunteer_id'])) {
             if (isset($_GET['volunteer_id'])) {
                 $query = "UPDATE volunteer SET BlackList = 1 where VolunteerID=$id"; //0000
@@ -120,6 +108,17 @@ switch ($action) {
         background-size:cover;
         background-attachment:fixed;
     }
+    .kbtn{
+        text-align: center;
+        display: inline-block;
+        margin: 0px;
+        cursor: pointer;
+        border-radius: 7px; 
+        font-family: ge thameen;
+    }
+    .kbtn:hover {
+        text-decoration: none;
+    }
 </style>
 <!DOCTYPE html>
 <!-- the header of the page-->
@@ -127,7 +126,7 @@ switch ($action) {
 <script type="text/javascript">
     function ConfirmDeleteFromBlacklist()
     {
-        var x = confirm("Are you sure you want to remove the volunteer from the blacklist?");
+        var x = confirm("هل تريد إزالة المتطوع من القائمة السوداء؟");
         if (x)
             return true;
         else
@@ -135,7 +134,48 @@ switch ($action) {
     }
     function ConfirmAddToBlacklist()
     {
-        var x = confirm("Are you sure you want to add the volunteer to the blacklist?");
+        var x = confirm("هل تريد إضافة المتطوع للقائمة السوداء؟");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+    function checkboxAll()
+    {
+        var checkboxes = document.getElementsByTagName('input'), val = null;
+
+
+        for (var i = 0; i < checkboxes.length; i++)
+        {
+            if (checkboxes[i].type == 'checkbox')
+            {
+                if (val === null)
+                    val = checkboxes[i].checked;
+                {
+                    checkboxes[i].checked = val;
+                }
+            }
+        }
+    }
+    function sendEmailConfirmation()
+    {
+        var x = confirm("هل تريد إرسال الشهادة للمتطوعين المحددين؟");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+    function ConfirmAcceptVolunteer()
+    {
+        var x = confirm("هل تريد قبول المتطوع في الفعالية المحددة؟");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+    function ConfirmRejectVolunteer()
+    {
+        var x = confirm("هل تريد رفض المتطوع من الفعالية المحددة؟");
         if (x)
             return true;
         else
@@ -156,7 +196,7 @@ switch ($action) {
         <button class="tablinks" onclick="openTab(event, 'event_volunteers')">المتطوعون بالفعالية </button>
         <button class="tablinks" onclick="openTab(event, 'black_list')">القائمة السوداء </button>
         <button class="tablinks" onclick="openTab(event, 'certificate')">الشهادات </button>
-         <button class="tablinks" onclick="openTab(event, 'admin')" >اضافة مسؤول</button>
+        <button class="tablinks" onclick="openTab(event, 'admin')" >اضافة مسؤول</button>
         <button class="tablinks" onclick="openTab(event, 'profile')" >المعلومات الشخصية</button>
     </div>
 
@@ -167,7 +207,7 @@ switch ($action) {
         <?php include("admin_events_tab.php"); ?>
 
     </div>
-  
+
     <!--All Volunteers-->
 
     <div id="volunteer" class="tabcontent">
@@ -182,7 +222,7 @@ switch ($action) {
 
     <!--Black list-->
     <div id="black_list" class="tabcontent">
-          <?php include("admin_blacklist_tab.php"); ?>
+        <?php include("admin_blacklist_tab.php"); ?>
     </div>
 
     <!--Certificate-->
@@ -190,13 +230,13 @@ switch ($action) {
         <?php include("admin_certificate_tab.php"); ?>
     </div>
 
-     <!--add admin-->
+    <!--add admin-->
     <div id="admin" class="tabcontent">
-          <?php include("admin-signup.php"); ?>
+        <?php include("admin-signup.php"); ?>
     </div>
     <!--personal information-->
     <div id="profile" class="tabcontent">
-          <?php include("admin_personal_information_tab.php"); ?>
+        <?php include("admin_personal_information_tab.php"); ?>
     </div>
 
     <!--Footer of the page -->

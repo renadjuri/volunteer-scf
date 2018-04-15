@@ -3,8 +3,8 @@
 <?php
 $query = 'select AdminID, FirstName, MiddleName, LastName, AdminUsername, Email, password from admin, account where account.Username = admin.AdminUsername and account.Username = "' . $_SESSION["username"] . '"';
 $result = mysqli_query($con, $query);
-$FnameError = $MnameError = $LnameError = $EmailError = "";
 
+$FnameError = $MnameError = $LnameError = $EmailError = "";
 
 $numRows = mysqli_num_rows($result);
 if ($numRows <= 0) {
@@ -23,47 +23,114 @@ if ($numRows <= 0) {
         }
     }
 }
+
+if (isset($_POST['update'])) {
+
+    $FirstName = $_POST['FirstName'];
+    $MiddleName = $_POST['MiddleName'];
+    $LastName = $_POST['LastName'];
+    $email = $_POST["email"];
+
+    //Check if all fields are empty if true show error message 
+    if (empty($_POST["FirstName"]) && empty($_POST["MiddleName"]) &&
+            empty($_POST["LastName"]) && empty($_POST["email"])) {
+        echo "<p class='error'>تأكد من تعبئة البيانات المطلوبة 	</p>";
+    } else {
+        //Email validation  
+        if (empty($Email)) {
+            $EmailError = "تأكد من تعبئة البيانات المطلوبة.";
+        } else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+            $EmailError = "البريد الإلكتروني غير صحيح";
+        }
+        //First Name validation 
+        if (empty($_POST["FirstName"])) {
+            $FnameError = "تأكد من تعبئة البيانات المطلوبة.";
+        } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["FirstName"])) {
+            $FnameError = "الإسم المدخل غير صحيح";
+        }
+        //Middle Name validation 
+        if (empty($_POST["MiddleName"])) {
+            $MnameError = "تأكد من تعبئة البيانات المطلوبة.";
+        } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["MiddleName"])) {
+            $MnameError = "اسم الأب المدخل غير صحيح";
+        }
+        //Last Name validation 
+        if (empty($_POST["LastName"])) {
+            $LnameError = "تأكد من تعبئة البيانات المطلوبة.";
+        }
+        if (!empty($_POST["LastName"])) {
+            if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["LastName"])) {
+                $LnameError = "اسم العائلة المدخل غير صحيح";
+            }
+        }
+
+
+        if (!$FnameError && !$MnameError && !$LnameError && !$EmailError) {
+            $query = "UPDATE admin SET FirstName='$FirstName' , MiddleName = '$MiddleName' ,LastName='$LastName' WHERE admin.AdminUsername = '" . $_SESSION["username"] . "'";
+            $result = mysqli_query($con, $query);
+
+            $query = "UPDATE account SET Email='$email' WHERE account.Username='" . $_SESSION["username"] . "'";
+            $result2 = mysqli_query($con, $query);
+            
+            //update admin id
+            //update admin set AdminID='2130009111' where AdminUsername='admin'
+            
+            
+            //  echo "<script type='text/javascript'>alert(' after  submitted successfully!')</script>";
+            //echo ' <div class="alert alert-success alert-dismissible" >تم تحديث البيانات بنجاح  &ensp;<span class= "glyphicon glyphicon-send" ></span></div>';
+            //  echo' <div runat="server" id="div_warning" visible="false" class="alert alert-danger alert-dismissible" style="width: 100%">';
+            //echo '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+            //header('location:volunteerprofile.php');
+        }
+    }
+}
+
 ?>
 
 <br>
-<div class="container">
-    <div class="row">
-        <div class="[ col-sm-8 col-sm-offset-3 col-md-12 ]">
-            <form method="post" action="CheckAdminInfo.php" style="  text-align: right;">
-                <table>
+<div class="row">
+    <div class="[ col-sm-8 col-sm-offset-3 col-md-12 ]">
+        <form method="post" action="admin-profile.php" style="  text-align: right;">
+            <div class="form-group">
+                <table class='table-striped'>
                     <tr>
-                        <td><input style="  text-align: right;" type="text" name="name" value="<?php print ($FirstName . ' ' . $MiddleName . ' ' . $LastName); ?>" required></td>
-                        <td><label> الاسم</label></td>
-                    </tr>
-                    <tr>
-                        <td><input style="  text-align: right;" type="text" name="id" value="<?php print ($AdminID); ?>"></td>
+                        <td><input class='form-control' style="  text-align: right;" type="text" name="AdminID" value="<?php print ($AdminID); ?>" readonly></td>
                         <td> <label>السجل المدني/الإقامة</label></td>
                     </tr>
                     <tr>
-                        <td><input style="  text-align: right;"  type="text" name="username" value="<?php print ($AdminUsername); ?>"></td>
+                        <td><input class='form-control' style="  text-align: right;"  type="text" name="AdminUsername" value="<?php print ($AdminUsername); ?>" readonly></td>
                         <td> <label>اسم المستخدم</label></td>
                     </tr>
                     <tr>
-                        <td><input style="  text-align: right;"  type="email" name="email" value="<?php print ($Email); ?>" required></td>
-                        <td><label> البريد الإلكتروني </label></td>
+                        <td><input class='form-control' style="  text-align: right;" type="text" name="FirstName" value="<?php print ($FirstName); ?>" required>
+                            <div>  <?php echo "<p class = 'text-danger'>$FnameError</p>"; ?> </div></td>
+                        <td><label>  الاسم الأول</label></td>
+                    <tr>
+                        <td><input class='form-control' style="  text-align: right;" type="text" name="MiddleName" value="<?php print ($MiddleName); ?>" required>
+                    <div>  <?php echo "<p class = 'text-danger'>$MnameError</p>"; ?> </div></td><td><label> اسم الأب</label></td>
                     </tr>
                     <tr>
-                        <td><input style="  text-align: right;" type="password" name="password" id="password"  
-                                   value="<?php echo $password; ?>" required/></td>
+                        <td><input class='form-control' style="  text-align: right;" type="text" name="LastName" value="<?php print ($LastName); ?>" required>
+                    <div>  <?php echo "<p class = 'text-danger'>$LnameError</p>"; ?> </div></td><td><label> اسم العائلة</label></td>
+                    </tr>
+                    <tr>
+                        <td><input class='form-control' style="  text-align: right;"  type="email" name="email" value="<?php print ($email); ?>" required>
+                    <div>  <?php echo "<p class = 'text-danger'>$EmailError</p>"; ?> </div></td><td><label> البريد الإلكتروني </label></td>
+                    </tr>
+                    <tr>
+                        <td><input class='form-control' style="  text-align: right;" type="text" name="password" value="<?php print ($password); ?>" readonly required></td>
                         <td><label>كلمة المرور</label></td>
                     </tr>
-
                     <tr>
-                      
-                        </td>
-                        <td><button class="btn btn-success" name="changePassword" type="">تغيير كلمة المرور</button></td>
+                        <td><button class="btn" style="margin-right:20px;" name="changePassword" type="">تغيير كلمة المرور</button></td>
+                        <td></td>
                     </tr>
                 </table>
                 <br><br>
                 <center>
-                    <button class="btn btn-danger" name="cancel" type="submit">إلغاء</button>&nbsp;   <button class="btn btn-success" name="update" type="submit">حفظ التعديلات</button>		
+                    <button style="margin-right:10px;" class="btn btn-danger" name="cancel" type="reset">إلغاء</button>&nbsp;   <button style="margin-right:50%;" class="btn btn-success" name="update" type="submit">حفظ التعديلات</button>		
                 </center>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </div>
