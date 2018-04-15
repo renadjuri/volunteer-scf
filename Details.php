@@ -5,6 +5,7 @@ $page_title = "تفاصيل عن الفعالية"; //page title to pass it to t
 include("includes/Header.php"); // the header of the page
 ?>
 
+
 <style>
     body{
         background-size:cover;
