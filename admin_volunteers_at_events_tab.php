@@ -22,7 +22,7 @@
         echo "</select>";
         echo "</form>";
 
-
+$Volunteer_selectEvent="";
         if (isset($_POST["Volunteer_selectEvent"])) {
 
             $Volunteer_selectEvent = $_POST["Volunteer_selectEvent"];
@@ -107,7 +107,6 @@
                 $query = "select volunteer.FirstName, volunteer.MiddleName, volunteer.LastName from volunteer where volunteer.Volunteer_ID = volunteerparticipateonevent.Volunteer_ID AND volunteerparticipateonevent.Event_ID = $Volunteer_selectEvent";
 
                 $result = mysqli_query($con, $query);
-
 
                 $numRows = mysqli_num_rows($result);
                 if ($numRows <= 0) {

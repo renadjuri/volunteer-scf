@@ -92,6 +92,7 @@ switch ($action) {
         <button class="tablinks" onclick="openTab(event, 'event_volunteers')">المتطوعون بالفعالية </button>
         <button class="tablinks" onclick="openTab(event, 'black_list')">القائمة السوداء </button>
         <button class="tablinks" onclick="openTab(event, 'certificate')">الشهادات </button>
+         <button class="tablinks" onclick="openTab(event, 'admin')" >اضافة مسؤول</button>
         <button class="tablinks" onclick="openTab(event, 'profile')" >المعلومات الشخصية</button>
     </div>
 
@@ -125,6 +126,10 @@ switch ($action) {
         <?php include("admin_certificate_tab.php"); ?>
     </div>
 
+     <!--add admin-->
+    <div id="admin" class="tabcontent">
+          <?php include("admin-signup.php"); ?>
+    </div>
     <!--personal information-->
     <div id="profile" class="tabcontent">
           <?php include("admin_personal_information_tab.php"); ?>

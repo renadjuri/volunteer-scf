@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<!-- the header of the page-->
-<?php
-$page_title = " إنشاء حساب جديد للادمن"; //page title to pass it to the header
-include("includes/Header.php"); // the header of the page
-?>
+
 <script>
     function myFunction() {
         var x = document.getElementById("password");
@@ -98,7 +93,7 @@ include("includes/Header.php"); // the header of the page
             }
             // Finally, register user if there are no errors in the form
             if (!$errUser && !$errorUser) {
-                $password = md5($password); //encrypt the password before saving in the database
+                //$password = md5($password); //encrypt the password before saving in the database
                 $query1 = "INSERT INTO account (UserName, password, Email)
                  VALUES ('" . $username . "', '" . $password . "', '" . $Email . "' );";
                 $query = "INSERT INTO admin (AdminID, FirstName, MiddleName, LastName, AdminUsername)
@@ -122,7 +117,7 @@ include("includes/Header.php"); // the header of the page
     ?>
 
     <br>
-    <div class="container">
+    <div >
         <div class="row">
             <div class="col-lg-12 ">
                 <div class="panel panel-login">
@@ -261,7 +256,3 @@ include("includes/Header.php"); // the header of the page
     <br>
 
 
-
-    <!--Footer of the page -->
-
-    <?php include('includes/footer.php'); ?>
