@@ -114,11 +114,11 @@ if (isset($_POST['update'])) {
                     <div>  <?php echo "<p class = 'text-danger'>$LnameError</p>"; ?> </div></td><td><label> اسم العائلة</label></td>
                     </tr>
                     <tr>
-                        <td><input class='form-control' style="  text-align: right;"  type="email" name="email" value="<?php print ($email); ?>" required>
+                        <td><input class='form-control' style="  text-align: right;"  type="email" name="email" value="<?php print ($Email); ?>" required>
                     <div>  <?php echo "<p class = 'text-danger'>$EmailError</p>"; ?> </div></td><td><label> البريد الإلكتروني </label></td>
                     </tr>
                     <tr>
-                        <td><input class='form-control' style="  text-align: right;" type="text" name="password" value="<?php print ($password); ?>" readonly required></td>
+                        <td><input class='form-control' style="  text-align: right;" type="password" name="password" value="<?php print ($password); ?>" readonly required></td>
                         <td><label>كلمة المرور</label></td>
                     </tr>
                     <tr>
