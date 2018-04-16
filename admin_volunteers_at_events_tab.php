@@ -192,14 +192,14 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
                 </center> -->
 
     <?php
-    $query = "select volunteer.FirstName, volunteer.MiddleName, volunteer.LastName from volunteer where volunteer.Volunteer_ID = volunteerparticipateonevent.Volunteer_ID AND volunteerparticipateonevent.Event_ID = $Volunteer_selectEvent";
+    //$query = "select volunteer.FirstName, volunteer.MiddleName, volunteer.LastName from volunteer where volunteer.Volunteer_ID = volunteerparticipateonevent.Volunteer_ID AND volunteerparticipateonevent.Event_ID = $Volunteer_selectEvent";
 
-    $result = mysqli_query($con, $query);
+    //$result = mysqli_query($con, $query);
 
-    $numRows = mysqli_num_rows($result);
-    if ($numRows <= 0) {
-        echo "<br> لايوجد متطوعين في الوقت الحالي";
-    } else {
+    //$numRows = mysqli_num_rows($result);
+    //if ($numRows <= 0) {
+      //  echo "<br> لايوجد متطوعين في الوقت الحالي";
+    //} else {
 
 //creating a table for listing all the volunteer
         // إنشاء جدول لتسجيل دخول وخروج كل متطوع بالفعالية
@@ -236,7 +236,7 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
 
         echo "</table>";
         echo "</div>";
-    }
+  //  }
     ?>
 
 
