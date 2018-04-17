@@ -45,7 +45,7 @@ include("includes/Header.php"); // the header of the page
         $to = 'renadjuri@gmail.com';
         $subject = 'Message from Contact at volunteer system ';
         $headers = 'From: renadjuri@gmail.com';
-        $body = "From: $name\n E-Mail: $email\n Message:\n $message";
+        $body = "من: $name\n البريد الإلكتروني: $email\n الرسالة:\n $message";
 
 
         // Check if name has been entered
