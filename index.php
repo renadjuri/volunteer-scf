@@ -94,15 +94,15 @@ include("includes/Header.php"); // the header of the page
                 <div class="carousel-inner" role="listbox">
 
                     <div class="item active">
-                        <img src="images/حفل تكريم المتطوعين و المتطوعات بمناسبة ختام انشطة عام 2011 قاعة الاندلس 18-12-2011.jpg" />
+                        <img src="images/img4.jpg" />
 
                     </div>
                     <div class="item">
-                        <img src="images/يوم الطفل المصاب بقرية الخليج -منتجع جولدن توليب 21-3-2014.jpg"  />
+                        <img src="images/img2.jpg"  />
 
                     </div>
                     <div class="item">
-                        <img src="images/حفل يوم الطفل المصاب 22-12-2011.jpg"  />
+                        <img src="images/img1.jpg"  />
 
                     </div>
 
