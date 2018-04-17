@@ -21,7 +21,7 @@ include("includes/Header.php"); // the header of the page
 
     .item {
         width:100%;
-        height: 650px;
+        height: 70%;
     }
     /*contact background*/
     .bg {

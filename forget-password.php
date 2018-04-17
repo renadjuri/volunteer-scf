@@ -54,7 +54,7 @@ if (isset($_POST["forgetpassword-submit"])) {
                         <div class="row">
                             <div class="col-lg-12">
                                 <p> فضلا قم بإدخال بريدك الإلكتروني و سوف يتم إرسال تعليمات كلمة المرور الخاصة بك من خلال البريد الإلكتروني  </p> 
-                                <form  method="post" action="rana.php">
+                                <form  method="post" >
 
                                     <div style="margin-bottom: 25px" class="input-group"> 
                                         <input type="text" name="Email" id="username" tabindex="1" class="form-control" placeholder="البريد الإلكتروني" value="" required> 
