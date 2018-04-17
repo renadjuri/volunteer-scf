@@ -3,7 +3,7 @@
 <?php
 $page_title = "لوحة التحكم"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
-$_SESSION['admin'] = "true";
+$_SESSION['admin'] = "true"; //000
 include("includes/connection.php"); //connecting to the database
 mysqli_set_charset($con, "utf8");
 
@@ -92,7 +92,7 @@ switch ($action) {
                     $result = mysqli_query($con, $query);
 
                     //header("Location: admin-profile.php");
-                    // echo "<script type='text/javascript'> openTab(event, 'event_volunteers');</script>"; //00000
+                    // echo "<script type='text/javascript'> openTab(event, 'event_volunteers');</script>";
                 }
             }
         } else {
@@ -187,7 +187,7 @@ switch ($action) {
 
     <br>
 
-
+<div class="container-fluid">
 
     <div class="tab">
 
@@ -238,7 +238,7 @@ switch ($action) {
     <div id="profile" class="tabcontent">
         <?php include("admin_personal_information_tab.php"); ?>
     </div>
-
+</div>
     <!--Footer of the page -->
 
     <?php include('includes/footer.php'); ?>
