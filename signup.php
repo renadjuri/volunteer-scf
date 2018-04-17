@@ -191,6 +191,8 @@ include("includes/Header.php"); // the header of the page
                                             <div>  <?php echo "<p class = 'text-danger'>$errLastName</p>"; ?> </div>
                                         </div>
 
+                                        
+                                        
                                         <div class="form-group col-lg-4">
 
                                             <input type="text" name="MiddleName" id="username" tabindex="1" class="form-control" placeholder="اسم الأب"
