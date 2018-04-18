@@ -10,17 +10,21 @@ if (isset($_POST["forgetpassword-submit"])) {
     $email = "";
     $email = $_POST['Email'];
     require 'includes/connection.php';
-    $DB = "SELECT password FROM account WHERE email='$email'";
+    $DB = "SELECT Username FROM account WHERE email='$email'";
     $res = mysqli_query($con, $DB);
     $count = mysqli_num_rows($res);
     if ($count == 1) {
-
+        $generated_password = substr(rand(999, 999999), 0, 8);
+        $generated_password1 = md5($generated_password);
         $r = mysqli_fetch_assoc($res);
-        $password = $r['password'];
+        $username = $r['Username'];
+        $q = " UPDATE `account` SET `password`='$generated_password1' WHERE `Email`='$email'";
+        mysqli_query($con, $q);
+        
         $headers = 'From: renadjuri@gmail.com';
         $to = $email;
         $subject = 'كلمة المرور الخاصة بك ';
-        $message = "الرجاء استخدام كلمة المرور لتسجيل الدخول" . $password;
+        $message = "مرحبا" . $username ."\n". "تم تغيير كلمة المرور الخاصة بك الى\n " ."\n". $generated_password ."\n". "نرجوا الدخول و تغييرها \n شكرا لك";
         if (mail($to, $subject, $message, $headers)) {
 
             $result = '<div class="alert alert-success">تم ارسال كلمة المرور إلى البريد الإلكتروني الخاص بك</div>';
