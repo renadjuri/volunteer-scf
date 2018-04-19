@@ -19,7 +19,6 @@ $numRows = mysqli_num_rows($result);
 ?>
 
 
-<div class="container">
    
         <div class="[ col-sm-12 col-sm-offset-1 col-md-9 ]">
             <a href="admin_add_event.php" tabindex="5" class="btn btn-success">اضافة فعالية</a>
@@ -162,6 +161,5 @@ $numRows = mysqli_num_rows($result);
                 ?>
             </div>
         </div>
-    </div>
 
 

@@ -40,7 +40,7 @@ $username = 'nora555';
     </div>
 
     <div id="Requests" class="tabcontent" >
-        <div class="container">
+      
             <div class="row">
                 <div class="[col-sm-8 col-sm-offset-3 col-md-8 ]">
                     <!-- Tab Name -->
@@ -143,10 +143,10 @@ $username = 'nora555';
                 </div>
             </div>
         </div>
-    </div>
+   
 
     <div id="Alerts" class="tabcontent" >
-        <div class="container">
+       
             <div class="row">
                 <div class="[col-sm-8 col-sm-offset-3 col-md-8 ]">
                     <h3>التنبيهات</h3>
@@ -156,7 +156,7 @@ $username = 'nora555';
                         <span class="time-left">11:01</span>
                     </div>
                 </div>
-            </div> </div>
+            </div> 
     </div>
     <script>
         function openfile(evt, tabName) {

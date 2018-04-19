@@ -77,7 +77,7 @@ if (isset($_POST['add-submit'])) {
 <link href="css/style-login.css" rel="stylesheet" type="text/css" />
 
 
-<div class="container">
+
     <div class="panel-heading">
         <div class="row">       
             <div class="col-lg-12">
@@ -304,7 +304,7 @@ if (isset($_POST['add-submit'])) {
             </form>
 
         </div>
-    </div>
+ 
 </div>
 
 <!--Footer of the page -->
