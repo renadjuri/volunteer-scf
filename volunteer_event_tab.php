@@ -43,7 +43,7 @@
                 echo "</tr>";
             }
             echo "<tr>";
-            echo '<td><button name="submit"  type="submit">التسجيل</button></td>';
+            echo '<td><button name="submit"   class="btn btn-success" type="submit">التسجيل</button></td>';
             echo "</tr>";
             echo "</table>";
 
