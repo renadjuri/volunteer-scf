@@ -88,7 +88,7 @@ $username = 'nora555';
     </div>
 
     <div id="Participation" class="tabcontent" >
-        <div class="container">
+   
             <div class="row">
                 <div class="[col-sm-8 col-sm-offset-3 col-md-8 ]">
                     <!-- Tab Name -->
@@ -141,23 +141,11 @@ $username = 'nora555';
                     <br>
                     <br>
                 </div>
-            </div>
+        
         </div>
    
 
-    <div id="Alerts" class="tabcontent" >
-       
-            <div class="row">
-                <div class="[col-sm-8 col-sm-offset-3 col-md-8 ]">
-                    <h3>التنبيهات</h3>
-                    <div class="container">
-                        <img src="" alt="logo" class="right" style="width:100%;">
-                        <p align="right"> أهلا بك مشاركا في العطاء مع الجمعية السعودية للسرطان</p>
-                        <span class="time-left">11:01</span>
-                    </div>
-                </div>
-            </div> 
-    </div>
+
     <script>
         function openfile(evt, tabName) {
             var i, tabcontent, tablinks;
