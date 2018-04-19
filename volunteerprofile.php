@@ -5,8 +5,8 @@ $page_title = "الصفحة الشخصية"; //page title to pass it to the head
 include("includes/Header.php"); // the header of the page
 include("includes/connection.php"); //connecting to the database
 mysqli_set_charset($con, "utf8");
-$username = 'nora555';
-//$_SESSION["username"];
+//$username = 'nora555';
+$_SESSION["username"];
 ?>
 
 
