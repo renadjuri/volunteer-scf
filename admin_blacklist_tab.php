@@ -18,8 +18,8 @@
 
         //creating a table for listing all the volunteers in the blacklist
         // إنشاء جدول لإضافة جميع المتطوعين الذين وضعوا في القائمة السوداء
-        echo "<div>";
-        echo "<table class='col-md-12 table-hover table-striped'>";
+        echo "<br><div class='row'><div class='[ col-sm-8 col-sm-offset-2 col-md-12 ]'> <center>";
+        echo "<table  table-hover table-striped'>";
         echo "<tr>";
         echo "<th> القائمة السوداء </th>"; // حذف من القائمة
         echo "<th>الاسم الثلاثي</th>";
@@ -45,8 +45,8 @@
         }
 
 
-        echo "</table>";
-        echo "</div>";
+        echo "</table></center> ";
+        echo "</div></div>";
     }
     ?><!-- end PHP script -->
 
