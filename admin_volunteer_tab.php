@@ -7,7 +7,7 @@ $query = "select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, Vol
 
 $result = mysqli_query($con, $query);
 
-?><div class='row'>
+?><div class='row'> 
   <div class="[ col-sm-12 col-sm-offset-1 col-md-9 ]">
 <?php
 $numRows = mysqli_num_rows($result);
@@ -17,7 +17,7 @@ if ($numRows <= 0) {
 } else {
     //creating a table for listing all the volunteers
     // إنشاء جدول لإضافة جميع المتطوعين المسجلين بالموقع
-    echo "   <div class='[ col-sm-12 col-sm-offset-1 col-md-9 ]'>";
+    echo "  <div class='[ col-sm-12 col-sm-offset-1 col-md-9 ]'>";
     echo "<table class='table table-hover table-striped'>";
     echo "<tr>";
     echo "<th>اضافة للقائمة السوداء</th>";
@@ -53,10 +53,11 @@ if ($numRows <= 0) {
     }
 
     echo "</table>";
-    echo "<br><br><br></div> </div> ";
+    echo "<br><br><br></div>  ";
 }
 ?><!-- end PHP script -->
 <br>
 <br>
-
+<br>
+</div>
       </div>
