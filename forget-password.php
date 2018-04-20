@@ -6,6 +6,7 @@ include("includes/Header.php"); // the header of the page
 ?>
 
 <?php
+
 if (isset($_POST["forgetpassword-submit"])) {
     $email = "";
     $email = $_POST['Email'];
@@ -34,7 +35,9 @@ if (isset($_POST["forgetpassword-submit"])) {
     } else {
         $result = '<div class="alert alert-danger">البريد الالكتروني غير موجود</div>';
     }
-}
+} else {
+        $result = '';
+    }
 ?>
 <!-- Style CSS -->
 

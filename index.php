@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!-- the header of the page-->
 <?php

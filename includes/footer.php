@@ -18,6 +18,8 @@
 
 
 </footer>
+
+
 <script>
     $(document).ready(function () {
         // Add smooth scrolling to all links in navbar + footer link
@@ -82,4 +84,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </body>
-</html>
+<?php 
+ob_end_flush();
+?>

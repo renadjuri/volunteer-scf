@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 ob_start();
 session_start(); // Starting Session
 ?>
@@ -10,6 +13,7 @@ session_start(); // Starting Session
             <?php
             isset($page_title) ? $page_title : "جمعية السرطان السعودية";
             ?>
+
         </title>
         <!--page logo at the header-->
         <link rel="shortcut icon" href="images/logo1.png"></link>
