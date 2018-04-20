@@ -1,4 +1,7 @@
-
+<?php
+ob_start();
+session_start(); // Starting Session
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,7 +9,6 @@
         <title>
             <?php
             isset($page_title) ? $page_title : "جمعية السرطان السعودية";
-            session_start(); // Starting Session
             ?>
         </title>
         <!--page logo at the header-->

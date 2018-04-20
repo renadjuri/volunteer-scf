@@ -42,9 +42,9 @@ include("includes/Header.php"); // the header of the page
         $message = $_POST['message'];
         $human = intval($_POST['human']);
         $from = 'Contact Form';
-        $to = 'renadjuri@gmail.com';
+        $to = 'admin@volunteer-scf.org';
         $subject = 'Message from Contact at volunteer system ';
-        $headers = 'From: renadjuri@gmail.com';
+        $headers = 'From: admin@volunteer-scf.org';
         $body = "من: $name\n البريد الإلكتروني: $email\n الرسالة:\n $message";
 
 

@@ -21,7 +21,7 @@ if (isset($_POST["forgetpassword-submit"])) {
         $q = " UPDATE `account` SET `password`='$generated_password1' WHERE `Email`='$email'";
         mysqli_query($con, $q);
         
-        $headers = 'From: renadjuri@gmail.com';
+        $headers = 'From: admin@volunteer-scf.org';
         $to = $email;
         $subject = 'كلمة المرور الخاصة بك ';
         $message = "مرحبا" . $username ."\n". "تم تغيير كلمة المرور الخاصة بك الى\n " ."\n". $generated_password ."\n". "نرجوا الدخول و تغييرها \n شكرا لك";
