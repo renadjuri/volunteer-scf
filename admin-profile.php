@@ -56,11 +56,11 @@ switch ($action) {
                 $query2 = "INSERT INTO volunteerparticipateonevent (Volunteer_ID, Event_ID) VALUES ('$id', '$event_id')";
                 $result2 = mysqli_query($con, $query2);
 //0000
-                 header("Location: admin-profile.php");
+               //  header("Location: admin-profile.php");
             }
         } else {
             //0000000
-            header("Location: admin-profile.php");
+            //header("Location: admin-profile.php");
         }
         break;
     case "RejectVolunteer":
@@ -91,8 +91,8 @@ switch ($action) {
                     $query = "UPDATE volunteerregisterinevent SET Task ='" . $newTask . "' where Vounteer_ID=$id and Event_ID=$event_id";
                     $result = mysqli_query($con, $query);
 
-                    header("Location: admin-profile.php");
-                     echo "<script type='text/javascript'> openTab(event, 'event_volunteers');</script>";
+                   // header("Location: admin-profile.php");
+                   //  echo "<script type='text/javascript'> openTab(event, 'event_volunteers');</script>";
                 }
             }
         } else {
@@ -100,6 +100,37 @@ switch ($action) {
         }
         break;
 }
+
+if (isset ($_POST['sendEmail']))//0000
+	{
+	//	echo "out";
+		if(!isset($_POST['CertificateSelection'])){
+			$error = "Please select a volunteer";
+		}
+		if( isset($_POST['CertificateSelection'])  && is_array($_POST['CertificateSelection']) ) 
+		{
+			$error="";
+	//		echo "middle";
+			foreach ( $_POST['CertificateSelection'] as $value)
+			{
+	//			echo "inside";
+	//			echo "value = $value";
+				// Email code , send the certificate via email to each selected volunteer
+				$query = "SELECT email FROM account, volunteer WHERE account.Username=volunteer.VolunteerUsername and volunteer.VolunteerID=$value";
+				$result = mysqli_query($con, $query);
+			
+				$row = mysqli_fetch_row($result);
+	//			echo "email: " . $row[0];//0000
+				//$row = mysqli_fetch_array($result);
+				//	$query = "";
+				//	connection
+				
+			}
+		}
+	}else{
+		$error="";
+	}
+
 ?>
 
 <style type="text/css">

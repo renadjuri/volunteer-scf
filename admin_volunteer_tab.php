@@ -42,7 +42,7 @@ if ($numRows <= 0) {
 
         //printing volunteers' info in the table
         //طباعة بيانات المتطوعين في الجدول
-        echo "<td><a style= 'color:red;' Onclick='openTab(event, 'volunteer');return ConfirmAddToBlacklist();' href='admin-profile.php?volunteer_id=" . $VolunteerID . "&action=addToBlacklist'> <span class='glyphicon glyphicon-plus-sign'></span> </a></td>";
+        echo "<td><a style= 'color:red;' Onclick='return ConfirmAddToBlacklist();' href='admin-profile.php?volunteer_id=" . $VolunteerID . "&action=addToBlacklist'> <span class='glyphicon glyphicon-plus-sign'></span> </a></td>";
         echo "<td> $VolunteerUsername </td>";
         echo "<td> $email </td>";
         echo "<td> $MobileNumber </td>";

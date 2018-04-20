@@ -26,7 +26,7 @@
 
 //session_start();
 // step 1: connect to database
-include($_SERVER['DOCUMENT_ROOT']."/volunteer-new/includes/connection.php"); //connecting to the database
+include($_SERVER['DOCUMENT_ROOT']."/volunteer-scf/includes/connection.php"); //connecting to the database
 //if (! ( $database = mysqli_connect ("localhost","root","", "cancergroup")) )
 //die ("Cann't connect to database");
 //

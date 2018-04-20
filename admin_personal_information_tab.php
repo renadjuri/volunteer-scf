@@ -30,7 +30,7 @@ if (isset($_POST['update'])) {
     $FirstName = $_POST['FirstName'];
     $MiddleName = $_POST['MiddleName'];
     $LastName = $_POST['LastName'];
-    $email = $_POST["email"];
+    $Email = $_POST["email"];
 
     //Check if all fields are empty if true show error message 
     if (empty($_POST["FirstName"]) && empty($_POST["MiddleName"]) &&
@@ -58,21 +58,16 @@ if (isset($_POST['update'])) {
         //Last Name validation 
         if (empty($_POST["LastName"])) {
             $LnameError = "تأكد من تعبئة البيانات المطلوبة.";
-        }
-        if (!empty($_POST["LastName"])) {
-            if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["LastName"])) {
+        }else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["LastName"])) {
                 $LnameError = "اسم العائلة المدخل غير صحيح";
             }
-        }
 
 
         if (!$FnameError && !$MnameError && !$LnameError && !$EmailError) {
-            $query = "UPDATE admin SET FirstName='$FirstName' , MiddleName = '$MiddleName' ,LastName='$LastName' WHERE admin.AdminUsername = '" . $_SESSION["username"] . "'";
+            $query = "UPDATE admin, account SET FirstName='$FirstName' , MiddleName = '$MiddleName' ,LastName='$LastName', Email='$Email' WHERE account.Username=admin.AdminUsername and admin.AdminUsername = '" . $_SESSION["username"] . "'";
             $result = mysqli_query($con, $query);
 
-            $query = "UPDATE account SET Email='$email' WHERE account.Username='" . $_SESSION["username"] . "'";
-            $result2 = mysqli_query($con, $query);
-
+           
             //update admin id
             //update admin set AdminID='2130009111' where AdminUsername='admin'
             //  echo "<script type='text/javascript'>alert(' after  submitted successfully!')</script>";
@@ -120,10 +115,10 @@ if (isset($_POST['update'])) {
                         <td><input class='form-control' style="  text-align: right;" type="password" name="password" value="<?php print ($password); ?>" readonly required></td>
                         <td><label>كلمة المرور</label></td>
                     </tr>
-                    <tr>
+                   <!-- <tr>
                         <td><button class="btn" style="margin-right:20px;" name="changePassword" type="">تغيير كلمة المرور</button></td>
                         <td></td>
-                    </tr>
+                    </tr>-->
                 </table>
                 <br><br>
                 <center>
