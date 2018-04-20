@@ -2,8 +2,6 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-ob_start();
-session_start(); // Starting Session
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,6 +10,8 @@ session_start(); // Starting Session
         <title>
             <?php
             isset($page_title) ? $page_title : "جمعية السرطان السعودية";
+            ob_start();
+            session_start(); // Starting Session
             ?>
 
         </title>
@@ -75,9 +75,9 @@ session_start(); // Starting Session
                                     ?> 
                                     <li <?php echo ($filename == 'admin-profile') ? 'class="active"' : ''; ?>>
                                         <a href="admin-profile.php"><span class="glyphicon glyphicon-user"></span> <span><?php
-                                                $username = $_SESSION["username"];
-                                                echo $username;
-                                                ?>  </span></a></li>
+                            $username = $_SESSION["username"];
+                            echo $username;
+                                    ?>  </span></a></li>
                                     <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
 
                                     <?php
@@ -86,9 +86,9 @@ session_start(); // Starting Session
                                     ?>
                                     <li <?php echo ($filename == 'volunteerprofile') ? 'class="active"' : ''; ?>>
                                         <a href="volunteerprofile.php"><span class="glyphicon glyphicon-user"></span> <span><?php
-                                                $username = $_SESSION["username"];
-                                                echo $username;
-                                                ?>  </span></a></li>
+                            $username = $_SESSION["username"];
+                            echo $username;
+                                    ?>  </span></a></li>
                                     <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
 
                                     <?php
