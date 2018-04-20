@@ -121,10 +121,9 @@
         <div class="row">
             <div class="col-lg-12 ">
                 <div class="panel panel-login">
-
                     <div class="panel-body">
                         <div class="col-lg-12">
-                            <h1>إنشاء حساب خاص بالادمن</h1>
+                           <legend>   <h1>إنشاء حساب خاص بالادمن</h1>  </legend>
                         </div>
 
                         <form method="post" id="register-form"  role="form"

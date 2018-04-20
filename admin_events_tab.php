@@ -115,9 +115,11 @@ $numRows = mysqli_num_rows($result);
                                         <li style = "width:33%;" >
                                             <form method="post" id='editform' action="admin_edit_event.php"> 
 
-                                                <input type="hidden" name="ID" value="<?php echo $EventID; ?>"/>
+                                            <input type="hidden" name="ID" value="<?php echo $EventID; ?>"/>
                                                 <button href="#" type="submit" name="edit" class="btn btn-success" 
-                                                        ata-toggle = "tooltip" data-placement = "bottom" title = "تعديل الفعالية" >
+                                                        ata-toggle = "tooltip" data-placement = "bottom" title = "تعديل الفعالية"
+                                                        
+                                                        >
                                                     <span class="glyphicon glyphicon-edit"></span> </button>
                                                 </span>
                                             </form>  
@@ -161,5 +163,13 @@ $numRows = mysqli_num_rows($result);
                 ?>
             </div>
         </div>
+<script>
+function SetCookie(c_name,value,expiredays)
+	{
+		var exdate=new Date()
+		exdate.setDate(exdate.getDate()+expiredays)
+		document.cookie=c_name+ "=" +escape(value)+
+		((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+	}
 
-
+</script>

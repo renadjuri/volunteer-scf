@@ -9,7 +9,6 @@ mysqli_set_charset($con, "utf8");
 $_SESSION["username"];
 ?>
 
-
 <style>
     body{
         background-size:cover;

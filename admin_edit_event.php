@@ -2,9 +2,10 @@
 <?php
 $page_title = "تعديل فعالية"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
-$EventID = $_POST['ID']; // 
-?>
 
+//SetCookie("event","1",1); 
+$EventID = $_POST['ID'];
+?>
 
 <?php
 require 'includes/connection.php'; //connecting to the database
@@ -12,57 +13,61 @@ mysqli_set_charset($con, "utf8");
 $msg = $error = "";
 $ID = $_SESSION['id'];
 
-$query = 'select EventName, EventDescription, MaleNum, FemaleNum, Location, date from event, dateofevent where event.EventID = dateofevent.Event_ID and event.EventID = "' . $EventID . '"';
+$query = "select * from event where EventID=$EventID";
 $result = mysqli_query($con, $query);
-
 $numRows = mysqli_num_rows($result);
 if ($numRows <= 0) {
     echo "<br> نعتذر لقد حدث خلل، نرجو الخروج و محاولة الدخول للنظام مرة أخرى";  //0000
 } else {
     while ($row = mysqli_fetch_array($result)) {
-        foreach ($row as $id => $val) {
-            $eventName = $row['EventName'];
-            $description = $row['EventDescription'];
-            $MaleNum = $row['MaleNum'];
-            $FemaleNum = $row['FemaleNum'];
-            $Location = $row['Location'];
-            $dateStart = $row['date'];
-            $dateEnd = $row['date'];
-        }
+
+        $eventName = $row['EventName'];
+        $Description = $row['EventDescription'];
+        $MaleNum = $row['MaleNum'];
+        $FemaleNum = $row['FemaleNum'];
+        $Location = $row['Location'];
+        $EventImage = $row['EventImage'];
     }
 }
 
 
+$qry2 = "SELECT * FROM dateofevent where Event_ID=$EventID";
+$result2 = mysqli_query($con, $qry2);
+$Date = array();
 
-if (isset($_POST['add-submit'])) {
+while ($row = mysqli_fetch_array($result2)) {
+    $Date[] = $row['Date'];
+}
+
+
+$qry3 = "SELECT * FROM taskofevent where Event_ID=$EventID";
+$result3 = mysqli_query($con, $qry3);
+$Tasks = array();
+
+while ($row = mysqli_fetch_array($result3)) {
+    $Tasks[] = $row['Task'];
+}
+
+
+if (isset($_POST['aupdate-submit'])) {
     $eventName = $_POST['eventName'];
     $description = $_POST['description'];
     $MaleNum = $_POST['MaleNum'];
     $FemaleNum = $_POST['FemaleNum'];
     $Location = $_POST['location'];
-    $dateStart = $_POST['dateStart'];
-    $dateEnd = $_POST['dateEnd'];
-    $Tasks = array();
-
-    for ($i = $n = 1; $i < 9; $i++) {
-        if ($_POST['task' . $i]) {
-            $Tasks[$n] = $_POST['task' . $i];
-            $n++;
-        }
-    }
 
     $encoded_image = "Not uploaded";
 
     if (isset($_FILES['uploadFile']['name']) && !empty($_FILES['uploadFile']['name'])) {
-        //Allowed file type
+//Allowed file type
         $allowed_extensions = array("jpg", "jpeg", "png", "gif");
 
-        //File extension
+//File extension
         $ext = strtolower(pathinfo($_FILES['uploadFile']['name'], PATHINFO_EXTENSION));
 
-        //Check extension
+//Check extension
         if (in_array($ext, $allowed_extensions)) {
-            //Convert image to base64
+//Convert image to base64
             $encoded_image = base64_encode(file_get_contents($_FILES['uploadFile']['tmp_name']));
             $encoded_image = 'data:image/' . $ext . ';base64,' . $encoded_image;
         } else {
@@ -74,22 +79,18 @@ if (isset($_POST['add-submit'])) {
          Admin_ID='$ID'  WHERE event.EventID=  '" . $EventID . "'";
 
 
-    $add = mysqli_query($con, $q);
+    $update = mysqli_query($con, $q);
 
-    if ($add) {
-        $last_insert_id = mysqli_insert_id($con);
-        if ($last_insert_id) {
-//            $query = "INSERT INTO `dateofevent` (`Event_ID`, `Date`) VALUES ('" . $last_insert_id . "','" . $dateStart . "'), ('" . $last_insert_id . "', '" . $dateEnd . "');";
-//
-//            $num_values = count($Tasks);
-//            $addtasks = "";
-//            for ($i = 1; $i <= $num_values; $i++) {
-//                $qTasks = "INSERT INTO `taskofevent` (`Event_ID`, `Task`) VALUES ('" . $last_insert_id . "', '" . $Tasks[$i] . "');";
-//                $addtasks = mysqli_query($con, $qTasks);
-//            }
-//
-//            $result = mysqli_query($con, $query);
-//            if ($result && $addtasks) {
+    if ($update) {
+
+        $query1 = "UPDATE `dateofevent` SET `Event_ID`= '$EventID' ,`Date`='" . $_POST['dateEnd'] . "' WHERE `Event_ID`='$EventID' and `Date = $Date[1]";
+        $query2 = "UPDATE `dateofevent` SET `Event_ID`='$EventID',`Date`='" . $_POST['dateStart'] . "' WHERE `Event_ID`='$EventID' and `Date`= $Date[0]";
+
+
+
+        $result = mysqli_query($con, $query1);
+        $result2 = mysqli_query($con, $query2);
+        if ($result && $result2) {
             $msg = '<div class="alert alert-success">تم تعديل الفعالية بنجاح</div>';
 //            }
         } else {
@@ -123,13 +124,11 @@ if (isset($_POST['add-submit'])) {
                             <td colspan="2">
                                 <!-- name-->
                                 <input id="eventName"  name="eventName" type="text"  tabindex="1" placeholder="عنوان الفعالية " style=" text-align: right;" required="الرجاء ادخال البيانات"  
-                                       value=<?php print ($eventName); ?>" >
+                                       value= "<?php print "$eventName"; ?>" >
                             </td>
-                            <td style="width:20%">
+                            <td>
                                 <label type="text">مسمى الفعالية</label>
                             </td>
-
-
 
                         </tr>
 
@@ -140,7 +139,7 @@ if (isset($_POST['add-submit'])) {
                             <td colspan="2">
                                 <textarea class="form-control text-right" cols="100"rows="4" name="description"
                                           placeholder="تفاصيل الفعالية" tabindex="2"  
-                                          ata-toggle="tooltip" data-placement="bottom" title="تفاصيل الفعالية " value="<?php print ($description); ?>" ></textarea> 
+                                          ata-toggle="tooltip" data-placement="bottom" title="تفاصيل الفعالية " value="<?php print "$Description"; ?>" ></textarea> 
 
                             </td>
                             <td>
@@ -156,11 +155,11 @@ if (isset($_POST['add-submit'])) {
 
                             <td>
                                 <input id="dateEnd" name="dateEnd" type="date" style=" text-align: right;"  required=""tabindex="3"  
-                                       ata-toggle="tooltip" data-placement="bottom" title="تاريخ نهاية الفعالية" value="<?php print ($dateEnd); ?>" >
+                                       ata-toggle="tooltip" data-placement="bottom" title="تاريخ نهاية الفعالية" value="<?php echo "$Date[1]" ?>" >
                             </td>
                             <td>
                                 <input id="dateStart" name="dateStart" type="date" style=" text-align: right;"  required=""tabindex="4"  
-                                       ata-toggle="tooltip" data-placement="bottom" title="تاريخ بداية الفعالية" value="<?php print ($dateStart); ?>" >
+                                       ata-toggle="tooltip" data-placement="bottom" title="تاريخ بداية الفعالية" value="<?php echo "$Date[0]" ?>" >
                             </td>
                             <td>
                                 <label type="text">تاريخ  الفعالية</label>
@@ -199,56 +198,79 @@ if (isset($_POST['add-submit'])) {
 
                         <tr>
                             <td>
-                                <input id="task1" name="task1" type="text" placeholder="المهام"  tabindex="12" style=" text-align: right;"  
-                                       ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
-                                       if (isset($_POST['task1'])) {
-                                           echo $_POST['task1'];
+                                <input id="task1" name="task1" type="text" placeholder="أضف مهمة"  tabindex="12" style=" text-align: right;"  
+                                       ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية"  value="<?php
+if (empty($Tasks[4])) {
+    
+} else {
+    print "$Tasks[4]";
+}
+?>">
+
+                                <input id="task2" name="task2" type="text" placeholder="أضف مهمة"  tabindex="13" style=" text-align: right;"  
+                                       ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية"  value="<?php
+                                       if (empty($Tasks[5])) {
+                                           
+                                       } else {
+                                           print "$Tasks[5]";
                                        }
-                                       ?>">
-                                <input id="task2" name="task2" type="text" placeholder="المهام"  tabindex="13" style=" text-align: right;"  
-                                       ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
-                                       if (isset($_POST['tasks2'])) {
-                                           echo $_POST['task2'];
+?>">
+                                <input id="task3" name="task3" type="text" placeholder="أضف مهمة"  tabindex="14" style=" text-align: right;"  
+                                       ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" 
+                                       value="<?php
+                                       if (empty($Tasks[6])) {
+                                           
+                                       } else {
+                                           print "$Tasks[6]";
                                        }
-                                       ?>">
-                                <input id="task3" name="task3" type="text" placeholder="المهام"  tabindex="14" style=" text-align: right;"  
+?>">
+
+                                <input id="task4" name="task4" type="text" placeholder="أضف مهمة"  tabindex="15" style=" text-align: right;"  
                                        ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
-                                       if (isset($_POST['tasks3'])) {
-                                           echo $_POST['task3'];
+                                       if (empty($Tasks[7])) {
+                                           
+                                       } else {
+                                           print "$Tasks[7]";
                                        }
-                                       ?>">
-                                <input id="task4" name="task4" type="text" placeholder="المهام"  tabindex="15" style=" text-align: right;"  
-                                       ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
-                                       if (isset($_POST['task4'])) {
-                                           echo $_POST['task4'];
-                                       }
-                                       ?>">
+?>">
                             </td>
                             <td>
-                                <input id="task5" name="task5" type="text" placeholder="المهام"  tabindex="8" style=" text-align: right;"  
+                                <input id="task5" name="task5" type="text" placeholder="أضف مهمة"  tabindex="8" style=" text-align: right;"  
                                        ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
-                                       if (isset($_POST['tasks5'])) {
-                                           echo $_POST['task5'];
+                                       if (empty($Tasks[0])) {
+                                           
+                                       } else {
+                                           print "$Tasks[0]";
                                        }
-                                       ?>">
-                                <input id="task6" name="task6" type="text" placeholder="المهام"  tabindex="9" style=" text-align: right;"  
+?>">
+                                <input id="task6" name="task6" type="text" placeholder="أضف مهمة"  tabindex="9" style=" text-align: right;"  
                                        ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
-                                       if (isset($_POST['task6'])) {
-                                           echo $_POST['task6'];
+                                       if (empty($Tasks[1])) {
+                                           
+                                       } else {
+                                           print "$Tasks[1]";
                                        }
-                                       ?>">
-                                <input id="task7" name="task7" type="text" placeholder="المهام"  tabindex="10"style=" text-align: right;"  
-                                       ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
-                                       if (isset($_POST['task7'])) {
-                                           echo $_POST['task7'];
+?>">
+
+                                <input id="task7" name="task7" type="text" placeholder="أضف مهمة"  tabindex="10"style=" text-align: right;"  
+                                       ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" 
+                                       value="<?php
+                                       if (empty($Tasks[2])) {
+                                           
+                                       } else {
+                                           print "$Tasks[2]";
                                        }
-                                       ?>">
-                                <input id="task8 " name="task8" type="text" placeholder="المهام"  tabindex="11"style=" text-align: right;"  
-                                       ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية" value="<?php
-                                       if (isset($_POST['task8'])) {
-                                           echo $_POST['task8'];
+?>"> 
+
+
+                                <input id="task8 " name="task8" type="text" placeholder="أضف مهمة"  tabindex="11"style=" text-align: right;"  
+                                       ata-toggle="tooltip" data-placement="bottom" title="المهام الاساسية"  value="<?php
+                                       if (empty($Tasks[3])) {
+                                           
+                                       } else {
+                                           print "$Tasks[3]";
                                        }
-                                       ?>">
+?>"> 
 
                             </td>
                             <td>
@@ -260,10 +282,10 @@ if (isset($_POST['add-submit'])) {
 
                             <td></td>
                             <td><input type="file" id="uploadFile" name="uploadFile"    tabindex="16" style="text-align: right" value="<?php
-                                if (isset($_POST['uploadFile'])) {
-                                    echo $_POST['uploadFile'];
-                                }
-                                ?>">
+                                       if (isset($_POST['uploadFile'])) {
+                                           echo $_POST['uploadFile'];
+                                       }
+?>">
                             </td>
 
                             <td>
@@ -276,17 +298,11 @@ if (isset($_POST['add-submit'])) {
                         <tr>
 
                             <td> 
-
-
                                 <a href="admin-profile.php" tabindex="18"  name="cancel" id="cancel" class="form-control btn btn-danger" >رجوع</a>
-
-
                             </td>
                             <td>
-
-                                <input type="submit" name="add-submit" id="add-submit" tabindex="17"
+                                <input type="submit" name="update-submit" id="aupdate-submit" tabindex="17"
                                        class="form-control btn btn-success" value="حفظ"/>
-
                             </td>
 
                         </tr>
