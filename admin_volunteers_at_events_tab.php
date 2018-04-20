@@ -7,6 +7,8 @@ $query = "select EventID, EventName from event";
 $result = mysqli_query($con, $query);
 
 //Events' list
+echo "<br> <div class='row'>
+    <div class='[ col-sm-12 col-sm-offset-1 col-md-8 ]'> ";
 echo "<form method='post' class='form-inline' name='Volunteer_selectEvent' action='admin-profile.php'>";
 echo "<button type='submit' class='btn btn-success' name='show'  value='show'>بحث</button> &nbsp;&nbsp;";
 echo "<div class='form-group'>";
@@ -21,7 +23,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 echo "</select>";
 echo "</div>";
-echo "</form>";
+echo "</form></div>";
 
 if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
     //00000
@@ -40,12 +42,12 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
 
     $numRows = mysqli_num_rows($result);
     if ($numRows <= 0) {
-        echo "<br> لا يوجد طلبات للتطوع في هذه الفعالية حاليا";
+        echo "<br><div class='row'> لا يوجد طلبات للتطوع في هذه الفعالية حاليا </div>";
     } else {
-        echo "<br>";
+        echo "<br> <div class='row'>";
         //creating a table for listing the volunteers in the selected event
         // إنشاء جدول لإضافة المتطوعين المشاركين بالفعالية المحددة
-        echo "<div class='col-md-12'>";
+        echo "<div class='[ col-sm-12 col-sm-offset-1 col-md-8 ]'>";
         echo "<table class='col-md-12 table-hover table-striped'>";
         echo "<tr>";
         echo "<th> </th>";
@@ -115,13 +117,14 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
 
         echo "</table>";
         echo "<br><br>";
-        echo "</div>";
+        echo "</div> </div>";
     }
-    
-    
-    echo "<br><br><br><br><br>";
 
-    echo "<legend> <h3>المتطوعون المقبولون بالفعالية</h3></legend>";
+
+    echo "<br><br><br><br><br> <div class='row'>
+           <div class='[ col-sm-12 ]'> ";
+
+    echo "<legend> <h3>المتطوعون المقبولون بالفعالية</h3></legend> </div></div>";
 //                    $query = "select DISTINCT VolunteerID, FirstName, MiddleName, LastName, MobileNumber, email from volunteer, account, volunteerparticipateonevent where account.Username = volunteer.VolunteerUsername and"
 //                    . " volunteer.VolunteerID = volunteerparticipateonevent.Volunteer_ID and volunteerparticipateonevent.Event_ID = $Volunteer_selectEvent";
 
@@ -137,8 +140,8 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
 
         //creating a table for listing the volunteers in the selected event
         // إنشاء جدول لإضافة المتطوعين المقبولون بالفعالية المحددة
-        echo "<div class='col-md-12'>";
-        echo "<table class='col-md-12 table-hover table-striped'>";
+        echo "<div class='row'>";
+        echo "<table class='col-sm-12 col-sm-offset-1 col-md-8 table-hover table-striped'>";
         echo "<tr>";
         echo "<th>المهمه </th>";
         echo "<th>الاسم الثلاثي</th>";
@@ -170,73 +173,72 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
 }
 ?>
 <br><br><br><br>
-    <!--volunteer hours -->
-    <!--
-                <center>
-                    <input type="date" name="date"> &nbsp  أسم الفعالية&nbsp <input type="text" align="right" name="EvnName" > &nbsp التاريخ
-    
-                    <br>
-                    &nbsp
-    
-                    <table id='t01' >
-                        <tr>
-                            <th align="center">مجموع الساعات</th><th align="center">وقت الخروج</th><th align="center">وقت الدخول</th><th align="center">أسم المتطوع</th>
-                        </tr>
-                        <tr>
-                            <td align="center"></td> <td align="center"><input type="time" name="usr_time"></td> <td align="center"><input type="time" name="usr_time"></td> <td align="center"> </td>
-                        </tr>
-    
-                    </table>
-    <br><br><center>
-                    <button class="btn">حفظ</button>
-                </center> -->
+<!--volunteer hours -->
+<!--
+            <center>
+                <input type="date" name="date"> &nbsp  أسم الفعالية&nbsp <input type="text" align="right" name="EvnName" > &nbsp التاريخ
 
-    <?php
-    //$query = "select volunteer.FirstName, volunteer.MiddleName, volunteer.LastName from volunteer where volunteer.Volunteer_ID = volunteerparticipateonevent.Volunteer_ID AND volunteerparticipateonevent.Event_ID = $Volunteer_selectEvent";
+                <br>
+                &nbsp
 
-    //$result = mysqli_query($con, $query);
+                <table id='t01' >
+                    <tr>
+                        <th align="center">مجموع الساعات</th><th align="center">وقت الخروج</th><th align="center">وقت الدخول</th><th align="center">أسم المتطوع</th>
+                    </tr>
+                    <tr>
+                        <td align="center"></td> <td align="center"><input type="time" name="usr_time"></td> <td align="center"><input type="time" name="usr_time"></td> <td align="center"> </td>
+                    </tr>
 
-    //$numRows = mysqli_num_rows($result);
-    //if ($numRows <= 0) {
-      //  echo "<br> لايوجد متطوعين في الوقت الحالي";
-    //} else {
+                </table>
+<br><br><center>
+                <button class="btn">حفظ</button>
+            </center> -->
 
+<?php
+//$query = "select volunteer.FirstName, volunteer.MiddleName, volunteer.LastName from volunteer where volunteer.Volunteer_ID = volunteerparticipateonevent.Volunteer_ID AND volunteerparticipateonevent.Event_ID = $Volunteer_selectEvent";
+//$result = mysqli_query($con, $query);
+//$numRows = mysqli_num_rows($result);
+//if ($numRows <= 0) {
+//  echo "<br> لايوجد متطوعين في الوقت الحالي";
+//} else {
 //creating a table for listing all the volunteer
-        // إنشاء جدول لتسجيل دخول وخروج كل متطوع بالفعالية
-        echo "<div>";
-        echo "<table id='t01'>";
-        echo "<tr>";
-        echo "<th>اسم المتطوع</th>";
-        echo "<th>وقت الدخول</th>";
-        echo "<th>وقت الخروج</th>";
-        echo "<th>مجموع الساعات</th>";
-        echo "</tr>";
-        while ($row = mysqli_fetch_array($result)) {
-            echo "<tr>";
-            foreach ($row as $id => $val) {
-                $FirstName = $row['FirstName'];
-                $MiddleName = $row['MiddleName'];
-                $LastName = $row['LastName'];
-                $StartingHour = $row['in_time'];
-                $EndingHour = $row['out_time'];
-                $total = $row['SUM(in_time-out_time)'];
-            }
+// إنشاء جدول لتسجيل دخول وخروج كل متطوع بالفعالية
+echo "<div>";
+echo "<table id='t01'>";
+echo "<tr>";
+echo "<th>اسم المتطوع</th>";
+echo "<th>وقت الدخول</th>";
+echo "<th>وقت الخروج</th>";
+echo "<th>مجموع الساعات</th>";
+echo "</tr>";
+while ($row = mysqli_fetch_array($result)) {
+    echo "<tr>";
+    foreach ($row as $id => $val) {
+        $FirstName = $row['FirstName'];
+        $MiddleName = $row['MiddleName'];
+        $LastName = $row['LastName'];
+        $StartingHour = $row['in_time'];
+        $EndingHour = $row['out_time'];
+        $total = $row['SUM(in_time-out_time)'];
+    }
 
 
-            //printing events' info in the table
-            //طباعة بيانات دخول وخروج المتطوعين في الجدول
+    //printing events' info in the table
+    //طباعة بيانات دخول وخروج المتطوعين في الجدول
 
-            echo "<td>" . $FirstName . " " . $MiddleName . " " . $LastName . "</td>";
-            echo "<td> $StartingHour </td>";
-            echo "<td> $EndingHour</td>";
-            echo "<td> $total</td>";
+    echo "<td>" . $FirstName . " " . $MiddleName . " " . $LastName . "</td>";
+    echo "<td> $StartingHour </td>";
+    echo "<td> $EndingHour</td>";
+    echo "<td> $total</td>";
 
-            echo "</tr>";
-        }
+    echo "</tr>";
+}
 
-        echo "</table>";
-        echo "</div>";
-  //  }
-    ?>
+echo "</table>";
+echo "</div>";
+echo "<br> </div>";
+//  }
+?>
+   
 
 

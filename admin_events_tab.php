@@ -1,25 +1,25 @@
 
-<!-- Tab Name -->
-<legend> <h1>الفعاليات</h1></legend>
+        <!-- Tab Name -->
+        <legend> <h1>الفعاليات</h1></legend>
 
-<br>
-<!-- Style CSS -->
+        <br>
+        <!-- Style CSS -->
 
-<link href="css/eventlist.css" rel="stylesheet" type="text/css" />
+        <link href="css/eventlist.css" rel="stylesheet" type="text/css" />
 
-<!-- All events-->
+        <!-- All events-->
 
-<?php
-$query = "select EventID, EventName,EventDescription,MaleNum,FemaleNum, Location from event";
-$result = mysqli_query($con, $query);
+        <?php
+        $query = "select EventID, EventName,EventDescription,MaleNum,FemaleNum, Location from event";
+        $result = mysqli_query($con, $query);
 
-$numRows = "";
+        $numRows = "";
 
-$numRows = mysqli_num_rows($result);
-?>
+        $numRows = mysqli_num_rows($result);
+        ?>
 
 
-   
+
         <div class="[ col-sm-12 col-sm-offset-1 col-md-9 ]">
             <a href="admin_add_event.php" tabindex="5" class="btn btn-success">اضافة فعالية</a>
             <br>
@@ -115,17 +115,17 @@ $numRows = mysqli_num_rows($result);
                                         <li style = "width:33%;" >
                                             <form method="post" id='editform' action="admin_edit_event.php"> 
 
-                                            <input type="hidden" name="ID" value="<?php echo $EventID; ?>"/>
+                                                <input type="hidden" name="ID" value="<?php echo $EventID; ?>"/>
                                                 <button href="#" type="submit" name="edit" class="btn btn-success" 
                                                         ata-toggle = "tooltip" data-placement = "bottom" title = "تعديل الفعالية"
-                                                        
+
                                                         >
                                                     <span class="glyphicon glyphicon-edit"></span> </button>
                                                 </span>
                                             </form>  
                                             <?php
                                             if (isset($_POST['edit'])) {
-                                              header("Location:admin_edit_event.php");
+                                                header("Location:admin_edit_event.php");
                                             }
                                             ?>
                                         </li>
@@ -163,13 +163,13 @@ $numRows = mysqli_num_rows($result);
                 ?>
             </div>
         </div>
-<script>
-function SetCookie(c_name,value,expiredays)
-	{
-		var exdate=new Date()
-		exdate.setDate(exdate.getDate()+expiredays)
-		document.cookie=c_name+ "=" +escape(value)+
-		((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
-	}
+        <script>
+            function SetCookie(c_name, value, expiredays)
+            {
+                var exdate = new Date()
+                exdate.setDate(exdate.getDate() + expiredays)
+                document.cookie = c_name + "=" + escape(value) +
+                        ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString())
+            }
 
-</script>
+        </script>

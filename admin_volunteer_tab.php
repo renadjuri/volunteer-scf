@@ -1,5 +1,5 @@
 
- <!-- Tab Name -->
+<!-- Tab Name -->
 <legend> <h1>المتطوعون لدى جمعية السرطان السعودية</h1></legend>
 
 <?php
@@ -7,14 +7,17 @@ $query = "select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, Vol
 
 $result = mysqli_query($con, $query);
 
-
+?>
+  <div class="[ col-sm-12 col-sm-offset-1 col-md-9 ]">
+<?php
 $numRows = mysqli_num_rows($result);
 if ($numRows <= 0) {
-    echo "<br> لا يوجد متطوعين في الوقت الحالي";
+    echo "<div class='row'><center> لا يوجد متطوعين في الوقت الحالي </center><br><br>";
+    echo "<br><br><br><br><br><br><br></div>";
 } else {
     //creating a table for listing all the volunteers
     // إنشاء جدول لإضافة جميع المتطوعين المسجلين بالموقع
-    echo '<div class="col-md-12">';
+    echo "<div class='row'>   <div class='[ col-sm-12 col-sm-offset-1 col-md-9 ]'>";
     echo "<table class='table table-hover table-striped'>";
     echo "<tr>";
     echo "<th>اضافة للقائمة السوداء</th>";
@@ -50,6 +53,7 @@ if ($numRows <= 0) {
     }
 
     echo "</table>";
-    echo "</div> </div> </div>";
+    echo "<br><br><br></div> </div> ";
 }
 ?><!-- end PHP script -->
+      </div>

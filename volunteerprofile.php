@@ -39,132 +39,134 @@ $_SESSION["username"];
     </div>
 
     <div id="Requests" class="tabcontent" >
-      
-            <div class="row">
-                <div class="[col-sm-8 col-sm-offset-3 col-md-8 ]">
-                    <!-- Tab Name -->
-                    <legend>  <h1>طلبات التطوع</h1></legend>
-                    <?php
-                    $query = "select EventName, Status from volunteerregisterinevent, event, volunteer where volunteerregisterinevent.Event_ID = event.EventID and volunteerregisterinevent.Vounteer_ID = volunteer.VolunteerID and volunteer.VolunteerUsername = '$username'";
-                    $result = mysqli_query($con, $query);
-                    $numRows = mysqli_num_rows($result);
-                    if ($numRows <= 0) {
-                        echo "<br> لا يوجد فعاليات في الوقت الحالي";
-                    } else {
-                        //creating a table for listing all the events
-                        // إنشاء جدول لإضافة جميع الفعاليات
-                        echo "<div>";
-                        echo "<table id='t01'>";
-                        echo "<tr>";
-                        echo "<th>اسم الفعالية </th>";
-                        echo "<th>حالة الطلب</th>";
-                        //echo "<th>ساعة الخروج</th>";
-                        //  echo "<th>مجموع الساعات</th>";
-                        echo "</tr>";
-                        while ($row = mysqli_fetch_array($result)) {
-                            echo "<tr>";
-                            foreach ($row as $id => $val) {
-                                $EventName = $row['EventName'];
-                                $Status = $row['Status'];
-                            }
-                            //printing events' info in the table
-                            //طباعة بيانات الفعاليات في الجدول
-                            echo "<td> $EventName </td>";
-                            echo "<td> $Status </td>";
 
-                            echo "</tr>";
+        <div class="row">
+            <div class="[col-sm-8 col-sm-offset-3 col-md-8 ]">
+                <!-- Tab Name -->
+                <legend>  <h1>طلبات التطوع</h1></legend>
+                <?php
+                $query = "select EventName, Status from volunteerregisterinevent, event, volunteer where volunteerregisterinevent.Event_ID = event.EventID and volunteerregisterinevent.Vounteer_ID = volunteer.VolunteerID and volunteer.VolunteerUsername = '$username'";
+                $result = mysqli_query($con, $query);
+                $numRows = mysqli_num_rows($result);
+                if ($numRows <= 0) {
+                    echo "<br> لا يوجد فعاليات في الوقت الحالي";
+                } else {
+                    //creating a table for listing all the events
+                    // إنشاء جدول لإضافة جميع الفعاليات
+                    echo "<div>";
+                    echo "<table id='t01'>";
+                    echo "<tr>";
+                    echo "<th>اسم الفعالية </th>";
+                    echo "<th>حالة الطلب</th>";
+                    //echo "<th>ساعة الخروج</th>";
+                    //  echo "<th>مجموع الساعات</th>";
+                    echo "</tr>";
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo "<tr>";
+                        foreach ($row as $id => $val) {
+                            $EventName = $row['EventName'];
+                            $Status = $row['Status'];
                         }
-                        echo "</table>";
-                        echo "</div>";
+                        //printing events' info in the table
+                        //طباعة بيانات الفعاليات في الجدول
+                        echo "<td> $EventName </td>";
+                        echo "<td> $Status </td>";
+
+                        echo "</tr>";
                     }
-                    ?>
-                    <br>
-                    <br>
-                    <br>
-                </div>
+                    echo "</table>";
+                    echo "</div>";
+                }
+                ?>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
             </div>
         </div>
     </div>
 
-    <div id="Participation" class="tabcontent" >
-   
-            <div class="row">
-                <div class="[col-sm-8 col-sm-offset-3 col-md-8 ]">
-                    <!-- Tab Name -->
-                    <legend> <h1>الفعاليات التي شاركت فيها</h1></legend>
-                    <br>
-                    <?php
-                    $query = "select EventName, StartingHour, EndingHour, SUM(StartingHour+EndingHour) from volunteerparticipateonevent, event, volunteer where volunteerparticipateonevent.Event_ID = event.EventID and volunteerparticipateonevent.Volunteer_ID = volunteer.VolunteerID and volunteer.VolunteerUsername = '$username'";
-                    $result = mysqli_query($con, $query);
-                    $numRows = mysqli_num_rows($result);
-                    if ($numRows <= 0) {
-                        echo "<br> لا يوجد فعاليات في الوقت الحالي";
-                    } else {
-                        //creating a table for listing all the events
-                        // إنشاء جدول لإضافة جميع الفعاليات
-                        echo "<div>";
-                        echo "<table id='t01'>";
-                        echo "<tr>";
-                        echo "<th>اسم الفعالية </th>";
-                        echo "<th>ساعة الدخول</th>";
-                        echo "<th>ساعة الخروج</th>";
-                        echo "<th>مجموع الساعات</th>";
-                        echo "</tr>";
-                        while ($row = mysqli_fetch_array($result)) {
-                            echo "<tr>";
-                            foreach ($row as $id => $val) {
-                                $EventName = $row['EventName'];
-                                $StartingHour = $row['StartingHour'];
-                                $EndingHour = $row['EndingHour'];
-                                $total = $row['SUM(StartingHour+EndingHour)'];
-                            }
-                            //printing events' info in the table
-                            //طباعة بيانات الفعاليات في الجدول
-                            echo "<td> $EventName </td>";
-                            echo "<td> $StartingHour </td>";
-                            echo "<td> $EndingHour</td>";
-                            echo "<td> $total</td>";
-                            echo "</tr>";
-                        }
-                        echo "</table>";
-                        echo "</div>";
+
+<div id="Participation" class="tabcontent" >
+
+    <div class="row">
+        <div class="[col-sm-8 col-sm-offset-3 col-md-8 ]">
+            <!-- Tab Name -->
+            <legend> <h1>الفعاليات التي شاركت فيها</h1></legend>
+            <br>
+            <?php
+            $query = "select EventName, StartingHour, EndingHour, SUM(StartingHour+EndingHour) from volunteerparticipateonevent, event, volunteer where volunteerparticipateonevent.Event_ID = event.EventID and volunteerparticipateonevent.Volunteer_ID = volunteer.VolunteerID and volunteer.VolunteerUsername = '$username'";
+            $result = mysqli_query($con, $query);
+            $numRows = mysqli_num_rows($result);
+            if ($numRows <= 0) {
+                echo "<br> لا يوجد فعاليات في الوقت الحالي";
+            } else {
+                //creating a table for listing all the events
+                // إنشاء جدول لإضافة جميع الفعاليات
+                echo "<div>";
+                echo "<table id='t01'>";
+                echo "<tr>";
+                echo "<th>اسم الفعالية </th>";
+                echo "<th>ساعة الدخول</th>";
+                echo "<th>ساعة الخروج</th>";
+                echo "<th>مجموع الساعات</th>";
+                echo "</tr>";
+                while ($row = mysqli_fetch_array($result)) {
+                    echo "<tr>";
+                    foreach ($row as $id => $val) {
+                        $EventName = $row['EventName'];
+                        $StartingHour = $row['StartingHour'];
+                        $EndingHour = $row['EndingHour'];
+                        $total = $row['SUM(StartingHour+EndingHour)'];
                     }
-                    ?>
-                    <br><br>
+                    //printing events' info in the table
+                    //طباعة بيانات الفعاليات في الجدول
+                    echo "<td> $EventName </td>";
+                    echo "<td> $StartingHour </td>";
+                    echo "<td> $EndingHour</td>";
+                    echo "<td> $total</td>";
+                    echo "</tr>";
+                }
+                echo "</table>";
+                echo "</div>";
+            }
+            ?>
+            <br><br>
 
-                    <center>
-                        <button type="submit" class="btn btn-warning">التعديل</button>  
-                        <button type="submit" class="btn btn-success">حفظ التعديل</button>
-                    </center>
-                    <br>
-                    <br>
-                    <br>
-                </div>
-        
+            <center>
+                <button type="submit" class="btn btn-warning">التعديل</button>  
+                <button type="submit" class="btn btn-success">حفظ التعديل</button>
+            </center>
+            <br>
+            <br>
+            <br>
         </div>
-   
+
+    </div>
 
 
-    <script>
-        function openfile(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
-    </script>
+
     <!--Footer of the page -->
 </div>
-</div>
-</div>           
+
+
+<script>
+    function openfile(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
 <?php include('includes/footer.php'); ?>
 

@@ -1,3 +1,4 @@
+
 <!-- Tab Name -->
 <legend> <h1>المعلومات الشخصية</h1></legend>
 <?php
@@ -71,11 +72,9 @@ if (isset($_POST['update'])) {
 
             $query = "UPDATE account SET Email='$email' WHERE account.Username='" . $_SESSION["username"] . "'";
             $result2 = mysqli_query($con, $query);
-            
+
             //update admin id
             //update admin set AdminID='2130009111' where AdminUsername='admin'
-            
-            
             //  echo "<script type='text/javascript'>alert(' after  submitted successfully!')</script>";
             //echo ' <div class="alert alert-success alert-dismissible" >تم تحديث البيانات بنجاح  &ensp;<span class= "glyphicon glyphicon-send" ></span></div>';
             //  echo' <div runat="server" id="div_warning" visible="false" class="alert alert-danger alert-dismissible" style="width: 100%">';
@@ -84,12 +83,12 @@ if (isset($_POST['update'])) {
         }
     }
 }
-
 ?>
 
 <br>
-<div class="row">
-    <div class="[ col-sm-8 col-sm-offset-3 col-md-12 ]">
+<div class='row'>
+    <div class='[ col-sm-9 col-sm-offset-2 col-md-9 ]'> 
+  
         <form method="post" action="admin-profile.php" style="  text-align: right;">
             <div class="form-group">
                 <table class='table-striped'>
@@ -107,15 +106,15 @@ if (isset($_POST['update'])) {
                         <td><label>  الاسم الأول</label></td>
                     <tr>
                         <td><input class='form-control' style="  text-align: right;" type="text" name="MiddleName" value="<?php print ($MiddleName); ?>" required>
-                    <div>  <?php echo "<p class = 'text-danger'>$MnameError</p>"; ?> </div></td><td><label> اسم الأب</label></td>
+                            <div>  <?php echo "<p class = 'text-danger'>$MnameError</p>"; ?> </div></td><td><label> اسم الأب</label></td>
                     </tr>
                     <tr>
                         <td><input class='form-control' style="  text-align: right;" type="text" name="LastName" value="<?php print ($LastName); ?>" required>
-                    <div>  <?php echo "<p class = 'text-danger'>$LnameError</p>"; ?> </div></td><td><label> اسم العائلة</label></td>
+                            <div>  <?php echo "<p class = 'text-danger'>$LnameError</p>"; ?> </div></td><td><label> اسم العائلة</label></td>
                     </tr>
                     <tr>
                         <td><input class='form-control' style="  text-align: right;"  type="email" name="email" value="<?php print ($Email); ?>" required>
-                    <div>  <?php echo "<p class = 'text-danger'>$EmailError</p>"; ?> </div></td><td><label> البريد الإلكتروني </label></td>
+                            <div>  <?php echo "<p class = 'text-danger'>$EmailError</p>"; ?> </div></td><td><label> البريد الإلكتروني </label></td>
                     </tr>
                     <tr>
                         <td><input class='form-control' style="  text-align: right;" type="password" name="password" value="<?php print ($password); ?>" readonly required></td>
@@ -134,3 +133,4 @@ if (isset($_POST['update'])) {
         </form>
     </div>
 </div>
+

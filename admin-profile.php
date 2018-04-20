@@ -56,11 +56,11 @@ switch ($action) {
                 $query2 = "INSERT INTO volunteerparticipateonevent (Volunteer_ID, Event_ID) VALUES ('$id', '$event_id')";
                 $result2 = mysqli_query($con, $query2);
 //0000
-                //  header("Location: admin-profile.php");
+                 header("Location: admin-profile.php");
             }
         } else {
             //0000000
-            // header("Location: admin-profile.php");
+            header("Location: admin-profile.php");
         }
         break;
     case "RejectVolunteer":
@@ -91,8 +91,8 @@ switch ($action) {
                     $query = "UPDATE volunteerregisterinevent SET Task ='" . $newTask . "' where Vounteer_ID=$id and Event_ID=$event_id";
                     $result = mysqli_query($con, $query);
 
-                    //header("Location: admin-profile.php");
-                    // echo "<script type='text/javascript'> openTab(event, 'event_volunteers');</script>";
+                    header("Location: admin-profile.php");
+                     echo "<script type='text/javascript'> openTab(event, 'event_volunteers');</script>";
                 }
             }
         } else {
@@ -184,11 +184,7 @@ switch ($action) {
 </script>
 
 <body>
-
-    <br>
-
 <div class="container-fluid">
-
     <div class="tab">
 
         <button class="tablinks" onclick="openTab(event, 'events')" id="defaultOpen">الفعاليات</button>
@@ -213,35 +209,34 @@ switch ($action) {
     <div id="volunteer" class="tabcontent">
         <?php include("admin_volunteer_tab.php"); ?>
     </div>
-
-    <!-- Volunteers at events-->
+    <!--Volunteers at events-->  
     <div id="event_volunteers" class="tabcontent">
         <?php include("admin_volunteers_at_events_tab.php"); ?>
     </div>
+    <!--
 
 
-    <!--Black list-->
-    <div id="black_list" class="tabcontent">
-        <?php include("admin_blacklist_tab.php"); ?>
+    Black list
+-->    <div id="black_list" class="tabcontent">
+        <?php  include("admin_blacklist_tab.php"); ?>
+    </div><!--
+
+    Certificate
+-->   <div id="certificate" class="tabcontent">
+        <?php  include("admin_certificate_tab.php"); ?>
+    </div><!--
+
+    add admin
+-->    <div id="admin" class="tabcontent">
+        <?php  include("admin-signup.php"); ?>
+    </div><!--
+    personal information
+-->    <div id="profile" class="tabcontent">
+        <?php  include("admin_personal_information_tab.php"); ?>
     </div>
 
-    <!--Certificate-->
-    <div id="certificate" class="tabcontent">
-        <?php include("admin_certificate_tab.php"); ?>
-    </div>
-
-    <!--add admin-->
-    <div id="admin" class="tabcontent">
-        <?php include("admin-signup.php"); ?>
-    </div>
-    <!--personal information-->
-    <div id="profile" class="tabcontent">
-        <?php include("admin_personal_information_tab.php"); ?>
-    </div>
 </div>
-    <!--Footer of the page -->
-
-    <?php include('includes/footer.php'); ?>
+   
 
     <script>
         function openTab(evt, tabName) {
@@ -261,3 +256,6 @@ switch ($action) {
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
     </script>
+ <!--Footer of the page -->
+
+  <?php include('includes/footer.php'); ?>
