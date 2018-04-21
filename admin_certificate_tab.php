@@ -2,7 +2,7 @@
 <!-- Certificates for volunteers-->
 <!-- Tab Name -->
 <legend> <h1>الشهادات</h1></legend>
-<center>
+
     <?php
 //0000000000000000000000000000000000000000000000000000000
     $query = "select EventID, EventName from event";
@@ -13,7 +13,7 @@
 //Events' list
     echo "<br>"; 
     echo "<br><div class='row'>
-    <div class='[ col-sm-12 col-sm-offset-1 col-md-9 ]'> <center>";
+    <div class='col-md-12'>";
     echo "<form method='post' class='form-inline' name='selectEvent' action='admin-profile.php'>";
     echo "<span style='color:red;'>$error</span>"; //0000
     echo "<button class='btn btn-success' type='submit' name='show'  value='show'>بحث</button> &nbsp;&nbsp;";
@@ -89,7 +89,7 @@
             echo "</div>";
             echo "<br><br><button Onclick='return sendEmailConfirmation();' type='submit' class='btn btn-success' name='sendEmail' id='sendEmail' value='Send Certificate'> إرسال الشهادة </button>";
             echo "</form>";
-            echo "</center>";
+            
               echo "</div>";
         }
     }

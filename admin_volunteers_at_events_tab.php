@@ -7,8 +7,8 @@ $query = "select EventID, EventName from event";
 $result = mysqli_query($con, $query);
 
 //Events' list
-echo "<br> <div class='row'>
-    <div class='[ col-sm-12 col-sm-offset-1 col-md-8 ]'> ";
+echo "<br> <div>
+    <div class='col-sm-12'> ";
 echo "<form method='post' class='form-inline' name='Volunteer_selectEvent' action='admin-profile.php'>";
 echo "<button type='submit' class='btn btn-success' name='show'  value='show'>بحث</button> &nbsp;&nbsp;";
 echo "<div class='form-group'>";
@@ -44,10 +44,10 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
     if ($numRows <= 0) {
         echo "<br><div class='row'> لا يوجد طلبات للتطوع في هذه الفعالية حاليا </div>";
     } else {
-        echo "<br> <div class='row'>";
+        echo "<br> <div>";
         //creating a table for listing the volunteers in the selected event
         // إنشاء جدول لإضافة المتطوعين المشاركين بالفعالية المحددة
-        echo "<div class='[ col-sm-12 col-sm-offset-1 col-md-8 ]'>";
+        echo "<div class='col-md-12'>";
         echo "<table class='col-md-12 table-hover table-striped'>";
         echo "<tr>";
         echo "<th> </th>";
@@ -120,7 +120,7 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
     }
 
 
-    echo "<div class='row'>
+    echo "<div>
            <div class='[ col-sm-12 ]'> ";
 
     echo "<legend> <h3>المتطوعون المقبولون بالفعالية</h3></legend> </div></div>";
@@ -139,8 +139,8 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
 
         //creating a table for listing the volunteers in the selected event
         // إنشاء جدول لإضافة المتطوعين المقبولون بالفعالية المحددة
-        echo "<div class='row'>";
-        echo "<table class='col-sm-12 col-sm-offset-1 col-md-8 table-hover table-striped'>";
+        echo "<div>";
+        echo "<table class='col-md-12 table-hover table-striped'>";
         echo "<tr>";
         echo "<th>المهمه </th>";
         echo "<th>الاسم الثلاثي</th>";
@@ -235,7 +235,7 @@ while ($row = mysqli_fetch_array($result)) {
 
 echo "</table>";
 echo "</div>";*/
-echo "<br> </div>";
+echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> </div>";
 //  }
 ?>
    

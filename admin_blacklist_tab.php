@@ -18,8 +18,8 @@ if ($numRows <= 0) {
     //creating a table for listing all the volunteers in the blacklist
     // إنشاء جدول لإضافة جميع المتطوعين الذين وضعوا في القائمة السوداء
     echo "<br><div class='row'>
-    <div class='[ col-sm-12 col-sm-offset-1 col-md-9 ]'> <center>";
-    echo "<table  table-hover table-striped'>";
+    <div class='col-md-12'> <center>";
+    echo "<table class='col-md-12 table-hover table-striped'>";
     echo "<tr>";
     echo "<th> القائمة السوداء </th>"; // حذف من القائمة
     echo "<th>الاسم الثلاثي</th>";
