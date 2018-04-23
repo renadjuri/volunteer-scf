@@ -1,8 +1,7 @@
+
 <!DOCTYPE html>
 
 <?php
-ob_start();
-session_start(); // Starting Session
 $page_title = "تسجيل الدخول"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
 ?>
@@ -32,15 +31,18 @@ include("includes/Header.php"); // the header of the page
     if (isset($_POST['login-submit'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $password = md5($password); //encrypt the password before saving in the database
+        $password1 = md5($password); //encrypt the password before saving in the database
 
         if (empty($username) || empty($password)) {
             //$msg = "Username or Password is empty";
             $loginmsg = '<div class="alert alert-danger">تأكد من إدخال إسم المستخدم و كلمة المرور  &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
         } else {
-            $query = "select * from account where  username='$username' AND password='$password'";
+            $query = "SELECT * FROM `account` WHERE username='$username' AND password='$password1'";
             $run = mysqli_query($con, $query);
-            if ($run) {
+            $numRows = mysqli_num_rows($run);
+            if ($numRows <= 0) {
+                $loginmsg = '<div class="alert alert-danger"><strong>إنتبه! </strong>الإسم المدخل أو كلمة المرور غير صحيحة  &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
+            } else {
 
                 $query = "select * from account INNER JOIN volunteer ON (account.Username = volunteer.VolunteerUsername) where account.Username = '$username' ";
                 $admin_query = "select * from account INNER JOIN admin ON (account.Username = admin.AdminUsername) where account.Username = '$username' ";
@@ -50,7 +52,9 @@ include("includes/Header.php"); // the header of the page
                 $row = mysqli_fetch_array($result);
                 $row2 = mysqli_fetch_array($admin_result);
 
+
                 if ($row) {
+
 
                     $_SESSION['id'] = $row['VolunteerID']; //here session is used and value of volunter id store in $_SESSION.
                     $_SESSION['username'] = $row['Username'];
@@ -69,14 +73,9 @@ include("includes/Header.php"); // the header of the page
 
                     $loginmsg = '<div class="alert alert-danger">بياناتك غير مسجلة لدينا ، قم بإنشاء حساب جديد</div>';
                 }
-            } else {
-
-                //$msg = "Username or Password is invalid";
-                $loginmsg = '<div class="alert alert-danger"><strong>إنتبه! </strong>الإسم المدخل أو كلمة المرور غير صحيحة  &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
             }
         }
     }
-    ob_end_flush();
     ?>
 
 

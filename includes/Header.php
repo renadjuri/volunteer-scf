@@ -1,7 +1,6 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+@ob_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,7 +9,6 @@ error_reporting(E_ALL);
         <title>
             <?php
             isset($page_title) ? $page_title : "جمعية السرطان السعودية";
-            session_start(); // Starting Session
             ?>
 
         </title>
