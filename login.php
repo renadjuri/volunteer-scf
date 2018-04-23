@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <?php
-
+ob_start();
+session_start(); // Starting Session
 $page_title = "تسجيل الدخول"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
 ?>
@@ -75,6 +76,7 @@ include("includes/Header.php"); // the header of the page
             }
         }
     }
+    ob_end_flush();
     ?>
 
 
@@ -159,6 +161,5 @@ include("includes/Header.php"); // the header of the page
 <br>
 <!--Footer of the page -->
 <?php include('includes/footer.php');
-
 ?>
 

@@ -199,14 +199,14 @@ if (isset($_POST['update'])) {
                         <td><input type="text" name="Sector" value="<?php print ($Sector); ?>" > </td>
                         <td><label>جهة العمل</label></td>
                     </tr>
-                    <tr>
-                        <td><input type="email" name="email" value="<?php print ($Email); ?>" required> </td>
+<!--                    <tr>
+                        <td><input type="email" name="email" value="<?php// print ($Email); ?>" required> </td>
                         <td><label>البريد الإلكتروني</label></td>
                     </tr>
                     <tr>
-                        <td><input type="tel" name="mobile" value="<?php print ($MobileNumber); ?>" required> </td>
+                        <td><input type="tel" name="mobile" value="<?php //print ($MobileNumber); ?>" required> </td>
                         <td><label>رقم الجوال</label></td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td><input type="password" name="password" id ="password" value="<?php print ($Password); ?>" required> </td>
                         <td><label>كلمة المرور</label></td>

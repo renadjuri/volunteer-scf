@@ -10,7 +10,6 @@ error_reporting(E_ALL);
         <title>
             <?php
             isset($page_title) ? $page_title : "جمعية السرطان السعودية";
-            ob_start();
             session_start(); // Starting Session
             ?>
 
