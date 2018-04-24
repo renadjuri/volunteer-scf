@@ -93,7 +93,7 @@ include("includes/Header.php"); // the header of the page
                 <div class="carousel-inner" role="listbox">
 
                     <div class="item active">
-                        <img src="images/img4.jpg" />
+                        <img src="images/img3.jpg" />
 
                     </div>
                     <div class="item">

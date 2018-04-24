@@ -30,11 +30,14 @@ session_start();
 
         <header>
             <!--Logo of the website-->
-
-            <div class="container-fluid" style="background-image:url(images/header-2.png); height: 360px">
+            <div class="container-fluid" style="background-image:url(images/header-2.png); background-repeat:no-repeat;  background-size: cover;">
+                <br>
                 <br>
                 <a href="index.php">
-                    <img src="images/logo.png" style="width: 270px; height: 90px" alt="جمعية السرطان السعودية" id="logo"></a>
+                    <img src="images/logo.png" style="width: 250px; height: 90px" alt="جمعية السرطان السعودية" id="logo"></a>
+                <br>
+                <br>
+                <br>
             </div>
 
             <!--Navigation menu-->
@@ -72,9 +75,9 @@ session_start();
                                     ?> 
                                     <li <?php echo ($filename == 'admin-profile') ? 'class="active"' : ''; ?>>
                                         <a href="admin-profile.php"><span class="glyphicon glyphicon-user"></span> <span><?php
-                            $username = $_SESSION["username"];
-                            echo $username;
-                                    ?>  </span></a></li>
+                                                $username = $_SESSION["username"];
+                                                echo $username;
+                                                ?>  </span></a></li>
                                     <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
 
                                     <?php
@@ -83,9 +86,9 @@ session_start();
                                     ?>
                                     <li <?php echo ($filename == 'volunteerprofile') ? 'class="active"' : ''; ?>>
                                         <a href="volunteerprofile.php"><span class="glyphicon glyphicon-user"></span> <span><?php
-                            $username = $_SESSION["username"];
-                            echo $username;
-                                    ?>  </span></a></li>
+                                                $username = $_SESSION["username"];
+                                                echo $username;
+                                                ?>  </span></a></li>
                                     <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
 
                                     <?php
