@@ -45,13 +45,15 @@ if (isset($_POST['update'])) {
     $WorkType = $_POST["WorkType"];
     $Sector = $_POST['Sector'];
     $Email = $_POST["email"];
-    $Password = $_POST['password'];
+    $Password = $_POST['repassword'];
 
 
 
     //Check if all fields are empty if true show error message 
     if (empty($_POST["FirstName"]) && empty($_POST["mobile"]) &&
-            empty($_POST["bdate"]) && empty($_POST["gender"]) && empty($_POST["residence"]) && empty($_POST["nationality"]) && empty($_POST["Qualification"]) && empty($_POST["WorkStatus"]) && empty($_POST["email"]) && empty($_POST["password"])) {
+            empty($_POST["bdate"]) && empty($_POST["gender"]) && empty($_POST["residence"]) &&
+            empty($_POST["nationality"]) && empty($_POST["Qualification"]) &&
+            empty($_POST["WorkStatus"]) && empty($_POST["email"])) {
         echo "<p class='error'>
 						تأكد من تعبئة البيانات المطلوبة 	
 						 </p>";
@@ -68,20 +70,11 @@ if (isset($_POST['update'])) {
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["name"])) {
             $FnameErr = "الإسم المدخل غير صحيح";
         }
-        //Last Name validation 
-        //if (empty($_POST["LastName"])) {
-        //   $LnameErr = "تأكد من تعبئة البيانات المطلوبة.";
-        // }
-        //   if (!empty($_POST["LastName"])) {
-        // if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["LastName"])) {
-        //   $LnameErr = "الإسم الاخير المدخل غير صحيح";
-        // }
     }
 
 
     if ((!empty($FirstName)) && (!empty($mobile)) && (!empty($bdate)) &&
             (!empty($gender)) && (!empty($residence)) && (!empty($nationality)) && (!empty($Qualification)) && (!empty($WorkStatus)) && (!empty($Email))) {
-
 
         $query = "UPDATE volunteer SET FirstName='$FirstName' , MiddleName = '$MiddleName' ,LastName='$LastName', MobileNumber = '$mobile', DateOfBirth = '$bdate', Gender = '$gender', nationality = '$nationality', residence = '$residence', WorkStatus = '$WorkStatus', WorkType = '$WorkType', Sector = '$Sector' WHERE volunteer.VolunteerUsername = '$username'";
         $result = mysqli_query($con, $query);
@@ -168,10 +161,6 @@ if (isset($_POST['update'])) {
                         <td><label>رقم الجوال</label></td>
                     </tr>
 
-<!--                    <tr>
-       <td><button class="btn btn-danger" name="cancel" value="cancel" type="reset">إلغاء</button></td>
-       <td><button class="btn btn-success" name="update" value="update" type="submit">حفظ التعديل</button></td>
-   </tr>-->
                     <tr>
                         <td> <select name="Qualification"  value="<?php print ($Qualification); ?>" required> 
                                 <option value="ثانوي"> ثانوي</option>
@@ -199,14 +188,7 @@ if (isset($_POST['update'])) {
                         <td><input type="text" name="Sector" value="<?php print ($Sector); ?>" > </td>
                         <td><label>جهة العمل</label></td>
                     </tr>
-<!--                    <tr>
-                        <td><input type="email" name="email" value="<?php// print ($Email); ?>" required> </td>
-                        <td><label>البريد الإلكتروني</label></td>
-                    </tr>
-                    <tr>
-                        <td><input type="tel" name="mobile" value="<?php //print ($MobileNumber); ?>" required> </td>
-                        <td><label>رقم الجوال</label></td>
-                    </tr>-->
+
                     <tr>
                         <td><input type="password" name="password" id ="password" value="<?php print ($Password); ?>" required> </td>
                         <td><label>كلمة المرور</label></td>
@@ -223,7 +205,5 @@ if (isset($_POST['update'])) {
                 </table>
             </div>
         </form>
-
-
     </div>
 </div>
