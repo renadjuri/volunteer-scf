@@ -78,22 +78,19 @@
                                         }
                                     }
 
-                                    $sql = "select EventImage from event where EventID = '$EventID'";
-                                    $result1 = mysqli_query($con, $sql);
-                                    $numimages = mysqli_num_rows($result1);
-                                    if ($numimages <= 0) {
-                                        $Image = "https://placehold.it/50x80?text=IMAGE";
-                                    } else {
-                                        while ($image = mysqli_fetch_array($result1)) {
+                                       $query = "select `EventImage` from `event` where EventID ='$EventID'";
+                                $result2 = mysqli_query($con, $query);
+                                if (mysqli_num_rows($result2) >= 1) {
+                                    $row2 = mysqli_fetch_object($result2);
+                                   $Image= '<img src="'.$row2->EventImage.'" width=150; >';
 
-                                            $Image = 'data:image/jpeg;base64,' . base64_encode($image['EventImage']) . '"';
-                                        }
-                                    }
+                              
+                                }
                                 }
                                 ?>
 
 
-                                <time><img  src="<?php echo$Image ?>" /></time>
+                                <time><?php echo $Image; ?></time>
 
 
                                 <div class = "info">

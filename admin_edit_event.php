@@ -2,7 +2,6 @@
 <?php
 $page_title = "تعديل فعالية"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
-
 //SetCookie("event","1",1); 
 $EventID = $_POST['ID'];
 ?>
@@ -56,23 +55,26 @@ if (isset($_POST['aupdate-submit'])) {
     $FemaleNum = $_POST['FemaleNum'];
     $Location = $_POST['location'];
 
-    $encoded_image = "Not uploaded";
+   
+
 
     if (isset($_FILES['uploadFile']['name']) && !empty($_FILES['uploadFile']['name'])) {
-//Allowed file type
+        //Allowed file type
         $allowed_extensions = array("jpg", "jpeg", "png", "gif");
 
-//File extension
+        //File extension
         $ext = strtolower(pathinfo($_FILES['uploadFile']['name'], PATHINFO_EXTENSION));
 
-//Check extension
+        //Check extension
         if (in_array($ext, $allowed_extensions)) {
-//Convert image to base64
+            //Convert image to base64
             $encoded_image = base64_encode(file_get_contents($_FILES['uploadFile']['tmp_name']));
             $encoded_image = 'data:image/' . $ext . ';base64,' . $encoded_image;
         } else {
             $error = '<div class="alert alert-danger">صيغة الملف المرفوع غير صحيحة</div>';
         }
+    }else{
+         $encoded_image = "Not uploaded";
     }
 
     $q = " UPDATE event SET EventName='$eventName' ,EventDescription='$description',MaleNum='$MaleNum',FemaleNum ='$FemaleNum', Location='$Location',EventImage='$encoded_image',
@@ -120,6 +122,12 @@ if (isset($_POST['aupdate-submit'])) {
             <form method="post" id="add_event-form"  role="form" style="  text-align: right;"  autocomplete="on" >
                 <div class="form-group">
                     <table class='table-striped'>
+                         <tr>
+                            <td colspan="3">
+                                <?php echo $error; ?>
+                                <?php echo $msg; ?>	
+                            </td>
+                        </tr>
                         <tr>
                             <td colspan="2">
                                 <!-- name-->
@@ -307,12 +315,7 @@ if (empty($Tasks[4])) {
 
                         </tr>
 
-                        <tr>
-                            <td>
-                                <?php echo $error; ?>
-                                <?php echo $msg; ?>	
-                            </td>
-                        </tr>
+                       
                     </table>
                 </div>
             </form>
