@@ -27,7 +27,9 @@ include("includes/Header.php"); // the header of the page
     }
 
 </style>
+<!-- Style CSS -->
 
+<link href="css/eventlist.css" rel="stylesheet" type="text/css" />
 <body>
 
     <br>
@@ -35,57 +37,111 @@ include("includes/Header.php"); // the header of the page
 
     <?php
     require 'includes/connection.php'; //connecting to the database
-      mysqli_set_charset($con, "utf8");
+    mysqli_set_charset($con, "utf8");
 
     $get_events = "select * from event ";
 
     $run_events = mysqli_query($con, $get_events);
-
-    while ($row_events = mysqli_fetch_array($run_events)) {
-
-        $EventID = $row_events['EventID'];
-        $EventName = $row_events['EventName'];
-        $EventDescription = $row_events['EventDescription'];
-        $EventImage = $row_events['EventImage'];
-        $Location = $row_events['Location'];
-
-        echo "<table  style='height:40px; width:600px; margin-top:5px; margin-left: auto; margin-right: auto; 
-                border:1px #F8F7F3 solid;' >
-                <tr>
-		<td colspan='2' style='vertical-align: bottom;'> <p align='right' > $EventName </p></td>
-			<td rowspan='3' width='150'> <p align='right' ><img src='images/events/$EventImage'"
-        . " height='150' width='150' alt='$EventName'></td>
-       <p> </tr>
-
-		<tr>
-            <td colspan='2' style='vertical-align: top;'><p align='right'> 
-            $EventDescription سيتضمن البرنامج أمسيات حوارية، حيث تقام في اليوم الأول: أمسية “الوعي الاسري”، من تقديم الدكتور/خالد الحليبي، والدكتور/ عبد السلام الصقعبي، أما اليوم الثاني فستقام أمسية حوارية بعنوان “الوعي الذاتي”، من تقديم الدكتور/محمد المقهوي والدكتور/فهد الماجد.ا </p></td>
-        </tr>
-
-        <tr>
-        <td ><p align='left'> <a href='Details.php?EventID=$EventID' >..الإطلاع على المزيد</a></p></td>
-            <td align='left'><h6 align='right'>";
-        $qry2 = "SELECT * FROM dateofevent where Event_ID=$EventID";
-
-
-        $result2 = mysqli_query($con, $qry2);
-
-        while ($row = mysqli_fetch_array($result2)) {
-
-            $Date = $row['Date'];
-            echo "$Date. ";
-        }
-        echo"  </h6></td>
-
-		</tr>
-        </table >
-        <hr class='style4'>";
-    }
+    $numRows = mysqli_num_rows($run_events);
     ?>
 
-    <br>
-    <br>
-    <!--Footer of the page -->
+    <div class="row ">
+        <div class="[col-sm-10 col-sm-offset-2 col-md-8 ]">
+            <ul class="event-list">
+                <?php
+                if ($numRows <= 0) {
+                    echo "<br> لا يوجد فعاليات في الوقت الحالي";
+                } else {
+                    while ($row = mysqli_fetch_array($run_events)) {
+                        ?>
+                        <li>
+                            <?php
+                            foreach ($row as $id => $val) {
+                                $EventID = $row['EventID'];
+                                $EventName = $row['EventName'];
+                                $Location = $row['Location'];
+                                $EventDescription = $row['EventDescription'];
+                                $MaleNum = $row['MaleNum'];
+                                $FemaleNum = $row['FemaleNum'];
+                                $Tasks = array();
+                                $DateofEvent = array();
 
-    <?php include('includes/footer.php'); ?>
+                                $query = "select Date from dateofevent where Event_ID = '$EventID'";
+                                $Date = mysqli_query($con, $query);
+
+                                $numDates = "";
+
+                                $numDates = mysqli_num_rows($Date);
+                                if ($numDates <= 0) {
+                                    $DateofEvent[] = "لم يتم تحديد موعد الفعالية";
+                                } else {
+                                    while ($Dates = mysqli_fetch_array($Date)) {
+
+                                        $DateofEvent[] = $Dates['Date'];
+                                    }
+                                }
+
+
+
+                                $sql = "select EventImage from event where EventID = '$EventID'";
+                                $result1 = mysqli_query($con, $sql);
+                                $numimages = mysqli_num_rows($result1);
+                                if ($numimages <= 0) {
+                                    $Image = "https://placehold.it/50x80?text=IMAGE";
+                                } else {
+                                    while ($image = mysqli_fetch_array($result1)) {
+
+                                        $Image = 'data:image/jpeg;base64,' . base64_encode($image['EventImage']) . '"';
+                                    }
+                                }
+                            }
+                            ?>
+
+
+                            <time><img  src="<?php echo$Image ?>" /></time>
+
+
+                            <div class = "info">
+                                <h2 class = "title"> <?php echo $EventName; ?></h2>
+                                <h2 class = "desc">  <?php echo $EventDescription; ?> </h2>
+                                <br>
+                                <p class = "desc"><b> الموقع: </b><?php echo $Location; ?> </p>
+                                <p class = "desc"><b> الموعد:</b> <?php echo implode(', ', $DateofEvent); ?> </p>
+                                
+                                <p align='left'><a href='Details.php?EventID=<?php echo $EventID ?>'  > .الإطلاع على المزيد</a></p>
+                                
+                                        <ul>
+                                            <li style = "width:34%;"> <?php echo $MaleNum; ?> <span class = "fa fa-male"
+                                                                                                    ata-toggle = "tooltip" data-placement = "bottom" title = "عدد الذكور"></span></li>
+                                            <li style = "width:34%;"><?php echo $FemaleNum; ?> <span class = "fa fa-female" 
+                                                                                                     ata-toggle = "tooltip" data-placement = "bottom" title = "عدد الإناث"></span></li>
+                                        </ul>
+                            </div>
+                            <div class = "edit">
+                                <ul>
+                                    <br>
+                                    <li style = "width:33%;" >
+
+                                    </li>
+                                    <br>
+                                    <li style = "width:33%;" > 
+
+                                    </li>                                   
+
+
+                                </ul>
+                            </div>
+                        </li>
+                    <?php }
+                    ?>
+                </ul>
+                <?php } ?>
+        </div>
+    </div>
+                <br>
+                <br>
+                <!--Footer of the page -->
+
+                <?php include('includes/footer.php');
+                ?>
      
