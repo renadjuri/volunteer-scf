@@ -42,7 +42,7 @@ include("includes/Header.php"); // the header of the page
         $confirm_password = $_POST['confirm-password'];
 // Signup validation
         if (empty($_POST["FirstName"])) {
-            $errName = 'الرجاء ادخال الاسم ';
+            $errName = 'الرجاء إدخال الاسم ';
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["FirstName"])) {
             $errName = "الإسم المدخل غير صحيح";
         }
@@ -77,7 +77,7 @@ include("includes/Header.php"); // the header of the page
             $errwork = "الوظيفة المدخلة غير صحيحة";
         }
         if (empty($_POST["phone"])) {
-            $errPhone = "الرجاء ادخال رقم الهاتف";
+            $errPhone = "الرجاء ادخال رقم الجوال";
         } else if (!preg_match("/[ 0-9 ]/", $_POST["phone"])) {
             $errPhone = "رقم الهاتف المدخل غير صحيح";
         }
