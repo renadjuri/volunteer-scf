@@ -79,7 +79,7 @@ include("includes/Header.php"); // the header of the page
         if (empty($_POST["phone"])) {
             $errPhone = "الرجاء ادخال رقم الجوال";
         } else if (!preg_match("/[ 0-9 ]/", $_POST["phone"])) {
-            $errPhone = "رقم الهاتف المدخل غير صحيح";
+            $errPhone = "رقم الجوال المدخل غير صحيح";
         }
         if (empty($_POST["email"])) {
             $erremail = "الرجاء ادخال البريد الإلكتروني";
