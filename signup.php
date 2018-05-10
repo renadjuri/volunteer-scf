@@ -287,6 +287,7 @@ include("includes/Header.php"); // the header of the page
                                         <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="المؤهل العلمي">المؤهل العلمي </span>
 
                                         <select class="form-control" name="degree" id="degree">
+                                            <option value="متوسط">متوسط</option>
                                             <option value="ثانوي">ثانوي</option>
                                             <option value ="بكالوريوس">بكالوريوس</option>
                                             <option value="ماجستير">ماجستير</option>
