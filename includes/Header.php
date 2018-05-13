@@ -34,7 +34,7 @@ session_start();
                 <br>
                 <br>
                 <a href="index.php">
-                    <img src="images/logo.png" style="width: 250px; height: 90px" alt="جمعية السرطان السعودية" id="logo"></a>
+                    <img src="images/logo.png" style="width: 260px; height: 80px" alt="جمعية السرطان السعودية" id="logo"></a>
                 <br>
                 <br>
                 <br>

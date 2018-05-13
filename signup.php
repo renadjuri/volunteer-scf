@@ -251,15 +251,49 @@ include("includes/Header.php"); // the header of the page
                                                ata-toggle="tooltip" data-placement="bottom" title="مكان الإقامة">
                                         <div>  <?php echo "<p class = 'text-danger'>$errCity</p>"; ?> </div>
                                     </div>
-
+                                    
                                     <div class="form-group">
-                                        <input type="text" name="workstation" id="workstation" tabindex="1" class="form-control" placeholder="الوظيفة" 
+                                        <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="المؤهل العلمي">المؤهل العلمي </span>
+
+                                        <select class="form-control" name="degree" id="degree">
+                                            <option value="متوسط">متوسط</option>
+                                            <option value="ثانوي">ثانوي</option>
+                                            <option value ="بكالوريوس">بكالوريوس</option>
+                                            <option value="ماجستير">ماجستير</option>
+                                            <option value="دكتوراه">دكتوراه</option>
+                                        </select>
+                                    </div>
+
+                                       <div class="form-group">
+                                        <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="الوظيفة">الوظيفة </span>
+
+                                        <select class="form-control" name="degree" id="degree">
+                                            <option value="طالب">طالب</option>
+                                            <option value ="موظف">موظف</option>
+                                            <option value="لا أعمل">لا أعمل</option>
+                                           
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <input type="text" name="workstation" id="workstation" tabindex="1" class="form-control" placeholder="المسمى الوظيفي" 
                                                value="<?php
                                                if (isset($_POST['workstation'])) {
                                                    echo $_POST['workstation'];
                                                }
                                                ?>" 
-                                               ata-toggle="tooltip" data-placement="bottom" title="وظيفتك التي تستطيع القيام بها">
+                                               ata-toggle="tooltip" data-placement="bottom" title="اسم الوظيفة">
+                                        <div>  <?php echo "<p class = 'text-danger'> $errwork</p>"; ?> </div>
+                                    </div>
+                                    
+                                     <div class="form-group">
+                                        <input type="text" name="workstation" id="workstation" tabindex="1" class="form-control" placeholder="جهه العمل" 
+                                               value="<?php
+                                               if (isset($_POST['workstation'])) {
+                                                   echo $_POST['workstation'];
+                                               }
+                                               ?>" 
+                                               ata-toggle="tooltip" data-placement="bottom" title="اسم مكان العمل">
                                         <div>  <?php echo "<p class = 'text-danger'> $errwork</p>"; ?> </div>
                                     </div>
                                     <div class="form-group">
@@ -283,17 +317,7 @@ include("includes/Header.php"); // the header of the page
                                                ata-toggle="tooltip" data-placement="bottom" title="البريد الإلكتروني">
                                         <div>  <?php echo "<p class = 'text-danger'>$erremail</p>"; ?> </div>
                                     </div>
-                                    <div class="form-group">
-                                        <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="المؤهل العلمي">المؤهل العلمي </span>
-
-                                        <select class="form-control" name="degree" id="degree">
-                                            <option value="متوسط">متوسط</option>
-                                            <option value="ثانوي">ثانوي</option>
-                                            <option value ="بكالوريوس">بكالوريوس</option>
-                                            <option value="ماجستير">ماجستير</option>
-                                            <option value="دكتوراه">دكتوراه</option>
-                                        </select>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <span class="input-group-addon" ata-toggle="tooltip" data-placement="bottom" title="تاريخ الميلاد">تاريخ  الميلاد </span>
                                         <input type="date" name="birthdate" id="bithdate" tabindex="1" class="form-control" placeholder="تاريخ الميلاد" 
