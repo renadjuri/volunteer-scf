@@ -356,6 +356,7 @@ include("includes/Header.php"); // the header of the page
                                                    echo $_POST['password'];
                                                }
                                                ?>" >
+                                        <br>
                                         اظهار كلمة المرور   <input type="checkbox" onclick="myFunction()"> 
                                         <div>  <?php echo "<p class = 'text-danger'>$errPassword</p>"; ?> </div>
                                     </div>
