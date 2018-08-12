@@ -410,7 +410,7 @@ include("includes/Header.php"); // the header of the page
     </div>
     <br>
 
-
+    <br>
 
     <!--Footer of the page -->
 
