@@ -166,19 +166,10 @@ include("includes/Header.php"); // the header of the page
                             <div class="col-lg-12"> 
                                 <form method="post" id="register-form"  role="form" style="display: block;"
                                       autocomplete="on">
-                                    <div class="form-group">
-                                        <div class="radio" >
-                                            <center >
-
-
-                                                <label><input type="radio" name="gender" value="F" checked>أنثى</label>
-
-                                                <label><input type="radio" name="gender" value="M">ذكر</label>
-                                                <label>الجنس</label>
-                                            </center>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12"> 
+                                     <fieldset>
+                                     <legend>المعلومات الشخصية</legend>
+                                     
+                                     <div class="col-lg-12"> 
                                         <div class="form-group col-lg-4 ">
 
                                             <input type="text" name="LastName" id="username" tabindex="1" class="form-control" placeholder="العائلة" 
@@ -192,7 +183,7 @@ include("includes/Header.php"); // the header of the page
                                         </div>
 
                                         
-                                        
+                                        <center>
                                         <div class="form-group col-lg-4">
 
                                             <input type="text" name="MiddleName" id="username" tabindex="1" class="form-control" placeholder="اسم الأب"
@@ -217,7 +208,7 @@ include("includes/Header.php"); // the header of the page
 
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                     <div class="form-group">
                                         <input type="text" name="nationalID" id="nationalID" maxlength="10" tabindex="1" class="form-control" 
                                                placeholder="رقم السجل المدني/الإقامة" 
                                                value="<?php
@@ -228,8 +219,19 @@ include("includes/Header.php"); // the header of the page
                                                ata-toggle="tooltip" data-placement="bottom" title="السجل المدني">
                                         <div>  <?php echo "<p class = 'text-danger'>$errID</p>"; ?> </div>
                                     </div>
+                                     <div class="form-group">
+                                        <div class="radio" >
+                                            <center >
 
-                                    <div class="form-group">
+
+                                                <label><input type="radio" name="gender" value="F" checked>أنثى</label>
+
+                                                <label><input type="radio" name="gender" value="M">ذكر</label>
+                                                <label>الجنس</label>
+                                            </center>
+                                        </div>
+                                    </div>
+                                     <div class="form-group">
                                         <input type="text" name="nationality" id="nationality" tabindex="1" class="form-control"
                                                placeholder="الجنسية" 
                                                value="<?php
@@ -240,8 +242,7 @@ include("includes/Header.php"); // the header of the page
                                                ata-toggle="tooltip" data-placement="bottom" title="الجنسية">
                                         <div>  <?php echo "<p class = 'text-danger'>$errnationality</p>"; ?> </div>
                                     </div>
-
-                                    <div class="form-group">
+                                     <div class="form-group">
                                         <input type="text" name="city" id="city" tabindex="1" class="form-control" placeholder="مكان الإقامة" 
                                                value="<?php
                                                if (isset($_POST['city'])) {
@@ -251,8 +252,20 @@ include("includes/Header.php"); // the header of the page
                                                ata-toggle="tooltip" data-placement="bottom" title="مكان الإقامة">
                                         <div>  <?php echo "<p class = 'text-danger'>$errCity</p>"; ?> </div>
                                     </div>
-                                    
-                                    <div class="form-group">
+                                     <div class="form-group">
+                                        <span class="input-group-addon" ata-toggle="tooltip" data-placement="bottom" title="تاريخ الميلاد">تاريخ  الميلاد </span>
+                                        <input type="date" name="birthdate" id="bithdate" tabindex="1" class="form-control" placeholder="تاريخ الميلاد" 
+                                               value="<?php
+                                               if (isset($_POST['birthdate'])) {
+                                                   echo $_POST['birthdate'];
+                                               }
+                                               ?>"  >
+
+                                    </div>
+                      
+                                    <fieldset>
+                                     <legend>معلومات الدراسة / الوظيفة</legend>
+                                                                         <div class="form-group">
                                         <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="المؤهل العلمي">المؤهل العلمي </span>
 
                                         <select class="form-control" name="degree" id="degree">
@@ -296,7 +309,10 @@ include("includes/Header.php"); // the header of the page
                                                ata-toggle="tooltip" data-placement="bottom" title="اسم مكان العمل">
                                         <div>  <?php echo "<p class = 'text-danger'> $errwork</p>"; ?> </div>
                                     </div>
-                                    <div class="form-group">
+                                     </fieldset>
+                                    <fieldset>
+                                     <legend>معلومات التواصل</legend>
+                                     <div class="form-group">
                                         <input type="phone" name="phone" id="phone" tabindex="1" class="form-control" placeholder="رقم الهاتف/الجوال" 
                                                value="<?php
                                                if (isset($_POST['phone'])) {
@@ -317,17 +333,10 @@ include("includes/Header.php"); // the header of the page
                                                ata-toggle="tooltip" data-placement="bottom" title="البريد الإلكتروني">
                                         <div>  <?php echo "<p class = 'text-danger'>$erremail</p>"; ?> </div>
                                     </div>
-                                    
-                                    <div class="form-group">
-                                        <span class="input-group-addon" ata-toggle="tooltip" data-placement="bottom" title="تاريخ الميلاد">تاريخ  الميلاد </span>
-                                        <input type="date" name="birthdate" id="bithdate" tabindex="1" class="form-control" placeholder="تاريخ الميلاد" 
-                                               value="<?php
-                                               if (isset($_POST['birthdate'])) {
-                                                   echo $_POST['birthdate'];
-                                               }
-                                               ?>"  >
-
-                                    </div>
+                                     </fieldset>
+                                     
+                                 <fieldset>
+                                     <legend>معلومات الحساب</legend>
                                     <div class="form-group">
                                         <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="إسم المستخدم" 
                                                value="<?php
@@ -355,6 +364,9 @@ include("includes/Header.php"); // the header of the page
                                                ata-toggle="tooltip" data-placement="bottom" title="اعد كتابة كلمة المرور">
                                         <div>  <?php echo "<p class = 'text-danger'>$errConfirm</p>"; ?> </div>
                                     </div>
+                                     </fieldset>
+                                      <fieldset>
+                                     <legend>الإقرار</legend>
                                     <div class="form-group">
                                         <a href="includes/CharterofVolunteerism.pdf" target="_blank" ata-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required>
                                             <b>أقر أني اطلعت على ميثاق التطوع</b> 
@@ -370,6 +382,8 @@ include("includes/Header.php"); // the header of the page
 
                                         </input>
                                     </div>
+                                     </fieldset>
+                                     <br>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-6 col-sm-offset-3">
