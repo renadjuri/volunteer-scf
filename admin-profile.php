@@ -56,7 +56,7 @@ switch ($action) {
                 $query2 = "INSERT INTO volunteerparticipateonevent (Volunteer_ID, Event_ID) VALUES ('$id', '$event_id')";
                 $result2 = mysqli_query($con, $query2);
 //0000
-               //  header("Location: admin-profile.php");
+                //  header("Location: admin-profile.php");
             }
         } else {
             //0000000
@@ -91,8 +91,8 @@ switch ($action) {
                     $query = "UPDATE volunteerregisterinevent SET Task ='" . $newTask . "' where Vounteer_ID=$id and Event_ID=$event_id";
                     $result = mysqli_query($con, $query);
 
-                   // header("Location: admin-profile.php");
-                   //  echo "<script type='text/javascript'> openTab(event, 'event_volunteers');</script>";
+                    // header("Location: admin-profile.php");
+                    //  echo "<script type='text/javascript'> openTab(event, 'event_volunteers');</script>";
                 }
             }
         } else {
@@ -101,36 +101,31 @@ switch ($action) {
         break;
 }
 
-if (isset ($_POST['sendEmail']))//0000
-	{
-	//	echo "out";
-		if(!isset($_POST['CertificateSelection'])){
-			$error = "Please select a volunteer";
-		}
-		if( isset($_POST['CertificateSelection'])  && is_array($_POST['CertificateSelection']) ) 
-		{
-			$error="";
-	//		echo "middle";
-			foreach ( $_POST['CertificateSelection'] as $value)
-			{
-	//			echo "inside";
-	//			echo "value = $value";
-				// Email code , send the certificate via email to each selected volunteer
-				$query = "SELECT email FROM account, volunteer WHERE account.Username=volunteer.VolunteerUsername and volunteer.VolunteerID=$value";
-				$result = mysqli_query($con, $query);
-			
-				$row = mysqli_fetch_row($result);
-	//			echo "email: " . $row[0];//0000
-				//$row = mysqli_fetch_array($result);
-				//	$query = "";
-				//	connection
-				
-			}
-		}
-	}else{
-		$error="";
-	}
+if (isset($_POST['sendEmail'])) {//0000
+    //	echo "out";
+    if (!isset($_POST['CertificateSelection'])) {
+        $error = "Please select a volunteer";
+    }
+    if (isset($_POST['CertificateSelection']) && is_array($_POST['CertificateSelection'])) {
+        $error = "";
+        //		echo "middle";
+        foreach ($_POST['CertificateSelection'] as $value) {
+            //			echo "inside";
+            //			echo "value = $value";
+            // Email code , send the certificate via email to each selected volunteer
+            $query = "SELECT email FROM account, volunteer WHERE account.Username=volunteer.VolunteerUsername and volunteer.VolunteerID=$value";
+            $result = mysqli_query($con, $query);
 
+            $row = mysqli_fetch_row($result);
+            //			echo "email: " . $row[0];//0000
+            //$row = mysqli_fetch_array($result);
+            //	$query = "";
+            //	connection
+        }
+    }
+} else {
+    $error = "";
+}
 ?>
 
 <style type="text/css">
@@ -215,59 +210,59 @@ if (isset ($_POST['sendEmail']))//0000
 </script>
 
 <body>
-<div class="container-fluid">
-    <div class="tab">
+    <div class="container-fluid">
+        <div class="tab">
 
-        <button class="tablinks" onclick="openTab(event, 'events')" id="defaultOpen">الفعاليات</button>
-        <button class="tablinks" onclick="openTab(event, 'volunteer')">المتطوعون لدى الجمعية</button>
-        <button class="tablinks" onclick="openTab(event, 'event_volunteers')">المتطوعون بالفعالية </button>
-        <button class="tablinks" onclick="openTab(event, 'black_list')">القائمة السوداء </button>
-        <button class="tablinks" onclick="openTab(event, 'certificate')">الشهادات </button>
-        <button class="tablinks" onclick="openTab(event, 'admin')" >اضافة مسؤول</button>
-        <button class="tablinks" onclick="openTab(event, 'profile')" >المعلومات الشخصية</button>
+            <button class="tablinks" onclick="openTab(event, 'events')" id="defaultOpen">الفعاليات</button>
+            <button class="tablinks" onclick="openTab(event, 'volunteer')">المتطوعون لدى الجمعية</button>
+            <button class="tablinks" onclick="openTab(event, 'event_volunteers')">المتطوعون بالفعالية </button>
+            <button class="tablinks" onclick="openTab(event, 'black_list')">القائمة السوداء </button>
+            <button class="tablinks" onclick="openTab(event, 'certificate')">الشهادات </button>
+            <button class="tablinks" onclick="openTab(event, 'admin')" >اضافة مسؤول</button>
+            <button class="tablinks" onclick="openTab(event, 'profile')" >المعلومات الشخصية</button>
+        </div>
+
+
+        <!--All the events-->
+        <div id="events" class="tabcontent">
+
+<?php include("admin_events_tab.php"); ?>
+
+        </div>
+
+        <!--All Volunteers-->
+
+        <div id="volunteer" class="tabcontent">
+<?php include("admin_volunteer_tab.php"); ?>
+        </div>
+        <!--Volunteers at events-->  
+        <div id="event_volunteers" class="tabcontent">
+            <?php include("admin_volunteers_at_events_tab.php"); ?>
+        </div>
+        <!--
+    
+    
+        Black list
+        -->    <div id="black_list" class="tabcontent">
+<?php include("admin_blacklist_tab.php"); ?>
+        </div><!--
+    
+        Certificate
+        -->   <div id="certificate" class="tabcontent">
+            <?php include("admin_certificate_tab.php"); ?>
+        </div><!--
+    
+        add admin
+        -->    <div id="admin" class="tabcontent">
+            <?php include("admin-signup.php"); ?>
+        </div><!--
+        personal information
+        -->    <div id="profile" class="tabcontent">
+            <?php include("admin_personal_information_tab.php"); ?>
+        </div>
+
     </div>
 
-
-    <!--All the events-->
-    <div id="events" class="tabcontent">
-
-        <?php include("admin_events_tab.php"); ?>
-
-    </div>
-
-    <!--All Volunteers-->
-
-    <div id="volunteer" class="tabcontent">
-        <?php include("admin_volunteer_tab.php"); ?>
-    </div>
-    <!--Volunteers at events-->  
-    <div id="event_volunteers" class="tabcontent">
-        <?php include("admin_volunteers_at_events_tab.php"); ?>
-    </div>
-    <!--
-
-
-    Black list
--->    <div id="black_list" class="tabcontent">
-        <?php  include("admin_blacklist_tab.php"); ?>
-    </div><!--
-
-    Certificate
--->   <div id="certificate" class="tabcontent">
-        <?php  include("admin_certificate_tab.php"); ?>
-    </div><!--
-
-    add admin
--->    <div id="admin" class="tabcontent">
-        <?php  include("admin-signup.php"); ?>
-    </div><!--
-    personal information
--->    <div id="profile" class="tabcontent">
-        <?php  include("admin_personal_information_tab.php"); ?>
-    </div>
-
-</div>
-   
 
     <script>
         function openTab(evt, tabName) {
@@ -287,6 +282,6 @@ if (isset ($_POST['sendEmail']))//0000
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
     </script>
- <!--Footer of the page -->
+    <!--Footer of the page -->
 
-  <?php include('includes/footer.php'); ?>
+<?php include('includes/footer.php'); ?>

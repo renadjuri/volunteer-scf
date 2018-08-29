@@ -130,7 +130,7 @@ include("includes/Header.php"); // the header of the page
                 $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification, WorkStatus, VolunteerUsername)
                 VALUES ('" . $nationalID . "', '" . $FirstName . "', '" . $MiddleName . "', '" . $LastName . "', '" . $MobileNumber . "', '" .
                         $birthdate . "', '" . $gender . "', '" . $nationality . "', '" . $city . "', '" . $degree . "', '" . $workstation . "', '" . $username . "' );";
-                       
+
                 mysqli_query($con, $query1);
                 $result = mysqli_query($con, $query);
                 if ($result) {
@@ -166,240 +166,240 @@ include("includes/Header.php"); // the header of the page
                             <div class="col-lg-12"> 
                                 <form method="post" id="register-form"  role="form" style="display: block;"
                                       autocomplete="on">
-                                     <fieldset>
-                                     <legend>المعلومات الشخصية</legend>
-                                     
-                                     <div class="col-lg-12"> 
-                                        <div class="form-group col-lg-4 ">
+                                    <fieldset>
+                                        <legend>المعلومات الشخصية</legend>
 
-                                            <input type="text" name="LastName" id="username" tabindex="1" class="form-control" placeholder="العائلة" 
+                                        <div class="col-lg-12"> 
+                                            <div class="form-group col-lg-4 ">
+
+                                                <input type="text" name="LastName" id="username" tabindex="1" class="form-control" placeholder="العائلة" 
+                                                       value="<?php
+                                                       if (isset($_POST['LastName'])) {
+                                                           echo $_POST['LastName'];
+                                                       }
+                                                       ?>" 
+                                                       ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
+                                                <div>  <?php echo "<p class = 'text-danger'>$errLastName</p>"; ?> </div>
+                                            </div>
+
+
+                                            <center>
+                                                <div class="form-group col-lg-4">
+
+                                                    <input type="text" name="MiddleName" id="username" tabindex="1" class="form-control" placeholder="اسم الأب"
+                                                           value="<?php
+                                                           if (isset($_POST['MiddleName'])) {
+                                                               echo $_POST['MiddleName'];
+                                                           }
+                                                           ?>"
+                                                           ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
+                                                    <div>  <?php echo "<p class = 'text-danger'>$errMiddleName</p>"; ?> </div>
+                                                </div>
+                                                <div class="form-group col-lg-4">
+
+                                                    <input type="text" name="FirstName" id="username" tabindex="1" class="form-control" placeholder="الاسم الأول" 
+                                                           value="<?php
+                                                           if (isset($_POST['FirstName'])) {
+                                                               echo $_POST['FirstName'];
+                                                           }
+                                                           ?>"
+                                                           ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
+                                                    <div>  <?php echo "<p class = 'text-danger'>$errName</p>"; ?> </div>
+
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="nationalID" id="nationalID" maxlength="10" tabindex="1" class="form-control" 
+                                                   placeholder="رقم السجل المدني/الإقامة" 
                                                    value="<?php
-                                                   if (isset($_POST['LastName'])) {
-                                                       echo $_POST['LastName'];
+                                                   if (isset($_POST['nationalID'])) {
+                                                       echo $_POST['nationalID'];
                                                    }
                                                    ?>" 
-                                                   ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
-                                            <div>  <?php echo "<p class = 'text-danger'>$errLastName</p>"; ?> </div>
+                                                   ata-toggle="tooltip" data-placement="bottom" title="السجل المدني">
+                                            <div>  <?php echo "<p class = 'text-danger'>$errID</p>"; ?> </div>
                                         </div>
-
-                                        
-                                        <center>
-                                        <div class="form-group col-lg-4">
-
-                                            <input type="text" name="MiddleName" id="username" tabindex="1" class="form-control" placeholder="اسم الأب"
-                                                   value="<?php
-                                                   if (isset($_POST['MiddleName'])) {
-                                                       echo $_POST['MiddleName'];
-                                                   }
-                                                   ?>"
-                                                   ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
-                                            <div>  <?php echo "<p class = 'text-danger'>$errMiddleName</p>"; ?> </div>
-                                        </div>
-                                        <div class="form-group col-lg-4">
-
-                                            <input type="text" name="FirstName" id="username" tabindex="1" class="form-control" placeholder="الاسم الأول" 
-                                                   value="<?php
-                                                   if (isset($_POST['FirstName'])) {
-                                                       echo $_POST['FirstName'];
-                                                   }
-                                                   ?>"
-                                                   ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
-                                            <div>  <?php echo "<p class = 'text-danger'>$errName</p>"; ?> </div>
-
-                                        </div>
-                                    </div>
-                                     <div class="form-group">
-                                        <input type="text" name="nationalID" id="nationalID" maxlength="10" tabindex="1" class="form-control" 
-                                               placeholder="رقم السجل المدني/الإقامة" 
-                                               value="<?php
-                                               if (isset($_POST['nationalID'])) {
-                                                   echo $_POST['nationalID'];
-                                               }
-                                               ?>" 
-                                               ata-toggle="tooltip" data-placement="bottom" title="السجل المدني">
-                                        <div>  <?php echo "<p class = 'text-danger'>$errID</p>"; ?> </div>
-                                    </div>
-                                     <div class="form-group">
-                                        <div class="radio" >
-                                            <center >
+                                        <div class="form-group">
+                                            <div class="radio" >
+                                                <center >
 
 
-                                                <label><input type="radio" name="gender" value="F" checked>أنثى</label>
+                                                    <label><input type="radio" name="gender" value="F" checked>أنثى</label>
 
-                                                <label><input type="radio" name="gender" value="M">ذكر</label>
-                                                <label>الجنس</label>
-                                            </center>
-                                        </div>
-                                    </div>
-                                     <div class="form-group">
-                                        <input type="text" name="nationality" id="nationality" tabindex="1" class="form-control"
-                                               placeholder="الجنسية" 
-                                               value="<?php
-                                               if (isset($_POST['nationality'])) {
-                                                   echo $_POST['nationality'];
-                                               }
-                                               ?>" 
-                                               ata-toggle="tooltip" data-placement="bottom" title="الجنسية">
-                                        <div>  <?php echo "<p class = 'text-danger'>$errnationality</p>"; ?> </div>
-                                    </div>
-                                     <div class="form-group">
-                                        <input type="text" name="city" id="city" tabindex="1" class="form-control" placeholder="مكان الإقامة" 
-                                               value="<?php
-                                               if (isset($_POST['city'])) {
-                                                   echo $_POST['city'];
-                                               }
-                                               ?>" 
-                                               ata-toggle="tooltip" data-placement="bottom" title="مكان الإقامة">
-                                        <div>  <?php echo "<p class = 'text-danger'>$errCity</p>"; ?> </div>
-                                    </div>
-                                     <div class="form-group">
-                                        <span class="input-group-addon" ata-toggle="tooltip" data-placement="bottom" title="تاريخ الميلاد">تاريخ  الميلاد </span>
-                                        <input type="date" name="birthdate" id="bithdate" tabindex="1" class="form-control" placeholder="تاريخ الميلاد" 
-                                               value="<?php
-                                               if (isset($_POST['birthdate'])) {
-                                                   echo $_POST['birthdate'];
-                                               }
-                                               ?>"  >
-
-                                    </div>
-                      
-                                    <fieldset>
-                                     <legend>معلومات الدراسة / الوظيفة</legend>
-                                                                         <div class="form-group">
-                                        <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="المؤهل العلمي">المؤهل العلمي </span>
-
-                                        <select class="form-control" name="degree" id="degree">
-                                            <option value="متوسط">متوسط</option>
-                                            <option value="ثانوي">ثانوي</option>
-                                            <option value ="بكالوريوس">بكالوريوس</option>
-                                            <option value="ماجستير">ماجستير</option>
-                                            <option value="دكتوراه">دكتوراه</option>
-                                        </select>
-                                    </div>
-
-                                       <div class="form-group">
-                                        <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="الوظيفة">الوظيفة </span>
-
-                                        <select class="form-control" name="degree" id="degree">
-                                            <option value="طالب">طالب</option>
-                                            <option value ="موظف">موظف</option>
-                                            <option value="لا أعمل">لا أعمل</option>
-                                           
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <input type="text" name="workstation" id="workstation" tabindex="1" class="form-control" placeholder="المسمى الوظيفي" 
-                                               value="<?php
-                                               if (isset($_POST['workstation'])) {
-                                                   echo $_POST['workstation'];
-                                               }
-                                               ?>" 
-                                               ata-toggle="tooltip" data-placement="bottom" title="اسم الوظيفة">
-                                        <div>  <?php echo "<p class = 'text-danger'> $errwork</p>"; ?> </div>
-                                    </div>
-                                    
-                                     <div class="form-group">
-                                        <input type="text" name="workstation" id="workstation" tabindex="1" class="form-control" placeholder="جهه العمل" 
-                                               value="<?php
-                                               if (isset($_POST['workstation'])) {
-                                                   echo $_POST['workstation'];
-                                               }
-                                               ?>" 
-                                               ata-toggle="tooltip" data-placement="bottom" title="اسم مكان العمل">
-                                        <div>  <?php echo "<p class = 'text-danger'> $errwork</p>"; ?> </div>
-                                    </div>
-                                     </fieldset>
-                                    <fieldset>
-                                     <legend>معلومات التواصل</legend>
-                                     <div class="form-group">
-                                        <input type="phone" name="phone" id="phone" tabindex="1" class="form-control" placeholder="رقم الهاتف/الجوال" 
-                                               value="<?php
-                                               if (isset($_POST['phone'])) {
-                                                   echo $_POST['phone'];
-                                               }
-                                               ?>" 
-                                               ata-toggle="tooltip" data-placement="bottom" title="رقم الهاتف" maxlength="10">
-                                        <div>  <?php echo "<p class = 'text-danger'>$errPhone</p>"; ?> </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="البريد الإلكتروني"
-                                               value="<?php
-                                               if (isset($_POST['email'])) {
-                                                   echo $_POST['email'];
-                                               }
-                                               ?>"  
-                                               ata-toggle="tooltip" data-placement="bottom" title="البريد الإلكتروني">
-                                        <div>  <?php echo "<p class = 'text-danger'>$erremail</p>"; ?> </div>
-                                    </div>
-                                     </fieldset>
-                                     
-                                 <fieldset>
-                                     <legend>معلومات الحساب</legend>
-                                    <div class="form-group">
-                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="إسم المستخدم" 
-                                               value="<?php
-                                               if (isset($_POST['username'])) {
-                                                   echo $_POST['username'];
-                                               }
-                                               ?>" 
-                                               ata-toggle="tooltip" data-placement="bottom" title="اسم المستخدم">
-                                        <div>  <?php echo "<p class = 'text-danger'>$errUsername</p>"; ?> </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="كلمة المرور" 
-                                               ata-toggle="tooltip" data-placement="bottom" title="كلمة المرور"
-                                               value="<?php
-                                               if (isset($_POST['password'])) {
-                                                   echo $_POST['password'];
-                                               }
-                                               ?>" >
-                                        <br>
-                                        اظهار كلمة المرور   <input type="checkbox" onclick="myFunction()"> 
-                                        <div>  <?php echo "<p class = 'text-danger'>$errPassword</p>"; ?> </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="اعادة كلمة المرور" 
-                                               ata-toggle="tooltip" data-placement="bottom" title="اعد كتابة كلمة المرور">
-                                        <div>  <?php echo "<p class = 'text-danger'>$errConfirm</p>"; ?> </div>
-                                    </div>
-                                     </fieldset>
-                                      <fieldset>
-                                     <legend>الإقرار</legend>
-                                    <div class="form-group">
-                                        <a href="includes/CharterofVolunteerism.pdf" target="_blank" ata-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required>
-                                            <b>أقر أني اطلعت على ميثاق التطوع</b> 
-                                        </a> 
-                                        <input type="checkbox" name="check" value="ok" required >  
-
-                                        </input>
-                                    </div>
-                                    <div class="form-group">
-                                        <a href="includes/Terms_and_Conditions.pdf" target="_blank" ata-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required> 
-                                            <b>أتعهد بالإلتزام بشروط و أحكام التطوع في الجمعية السعودية للسرطان</b> </a> 
-                                        <input type="checkbox" name="check2" value="ok" required> 
-
-                                        </input>
-                                    </div>
-                                     </fieldset>
-                                     <br>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-sm-offset-3">
-                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4"
-                                                       class="form-control btn btn-register" value="سجل الآن">
-
+                                                    <label><input type="radio" name="gender" value="M">ذكر</label>
+                                                    <label>الجنس</label>
+                                                </center>
                                             </div>
                                         </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-10 col-sm-offset-2">
-                                            <?php echo $msg ?>	
+                                        <div class="form-group">
+                                            <input type="text" name="nationality" id="nationality" tabindex="1" class="form-control"
+                                                   placeholder="الجنسية" 
+                                                   value="<?php
+                                                   if (isset($_POST['nationality'])) {
+                                                       echo $_POST['nationality'];
+                                                   }
+                                                   ?>" 
+                                                   ata-toggle="tooltip" data-placement="bottom" title="الجنسية">
+                                            <div>  <?php echo "<p class = 'text-danger'>$errnationality</p>"; ?> </div>
                                         </div>
-                                    </div>
+                                        <div class="form-group">
+                                            <input type="text" name="city" id="city" tabindex="1" class="form-control" placeholder="مكان الإقامة" 
+                                                   value="<?php
+                                                   if (isset($_POST['city'])) {
+                                                       echo $_POST['city'];
+                                                   }
+                                                   ?>" 
+                                                   ata-toggle="tooltip" data-placement="bottom" title="مكان الإقامة">
+                                            <div>  <?php echo "<p class = 'text-danger'>$errCity</p>"; ?> </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="input-group-addon" ata-toggle="tooltip" data-placement="bottom" title="تاريخ الميلاد">تاريخ  الميلاد </span>
+                                            <input type="date" name="birthdate" id="bithdate" tabindex="1" class="form-control" placeholder="تاريخ الميلاد" 
+                                                   value="<?php
+                                                   if (isset($_POST['birthdate'])) {
+                                                       echo $_POST['birthdate'];
+                                                   }
+                                                   ?>"  >
+
+                                        </div>
+
+                                        <fieldset>
+                                            <legend>معلومات الدراسة / الوظيفة</legend>
+                                            <div class="form-group">
+                                                <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="المؤهل العلمي">المؤهل العلمي </span>
+
+                                                <select class="form-control" name="degree" id="degree">
+                                                    <option value="متوسط">متوسط</option>
+                                                    <option value="ثانوي">ثانوي</option>
+                                                    <option value ="بكالوريوس">بكالوريوس</option>
+                                                    <option value="ماجستير">ماجستير</option>
+                                                    <option value="دكتوراه">دكتوراه</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="الوظيفة">الوظيفة </span>
+
+                                                <select class="form-control" name="degree" id="degree">
+                                                    <option value="طالب">طالب</option>
+                                                    <option value ="موظف">موظف</option>
+                                                    <option value="لا أعمل">لا أعمل</option>
+
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="text" name="workstation" id="workstation" tabindex="1" class="form-control" placeholder="المسمى الوظيفي" 
+                                                       value="<?php
+                                                       if (isset($_POST['workstation'])) {
+                                                           echo $_POST['workstation'];
+                                                       }
+                                                       ?>" 
+                                                       ata-toggle="tooltip" data-placement="bottom" title="اسم الوظيفة">
+                                                <div>  <?php echo "<p class = 'text-danger'> $errwork</p>"; ?> </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="text" name="workstation" id="workstation" tabindex="1" class="form-control" placeholder="جهه العمل" 
+                                                       value="<?php
+                                                       if (isset($_POST['workstation'])) {
+                                                           echo $_POST['workstation'];
+                                                       }
+                                                       ?>" 
+                                                       ata-toggle="tooltip" data-placement="bottom" title="اسم مكان العمل">
+                                                <div>  <?php echo "<p class = 'text-danger'> $errwork</p>"; ?> </div>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset>
+                                            <legend>معلومات التواصل</legend>
+                                            <div class="form-group">
+                                                <input type="phone" name="phone" id="phone" tabindex="1" class="form-control" placeholder="رقم الهاتف/الجوال" 
+                                                       value="<?php
+                                                       if (isset($_POST['phone'])) {
+                                                           echo $_POST['phone'];
+                                                       }
+                                                       ?>" 
+                                                       ata-toggle="tooltip" data-placement="bottom" title="رقم الهاتف" maxlength="10">
+                                                <div>  <?php echo "<p class = 'text-danger'>$errPhone</p>"; ?> </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="البريد الإلكتروني"
+                                                       value="<?php
+                                                       if (isset($_POST['email'])) {
+                                                           echo $_POST['email'];
+                                                       }
+                                                       ?>"  
+                                                       ata-toggle="tooltip" data-placement="bottom" title="البريد الإلكتروني">
+                                                <div>  <?php echo "<p class = 'text-danger'>$erremail</p>"; ?> </div>
+                                            </div>
+                                        </fieldset>
+
+                                        <fieldset>
+                                            <legend>معلومات الحساب</legend>
+                                            <div class="form-group">
+                                                <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="إسم المستخدم" 
+                                                       value="<?php
+                                                       if (isset($_POST['username'])) {
+                                                           echo $_POST['username'];
+                                                       }
+                                                       ?>" 
+                                                       ata-toggle="tooltip" data-placement="bottom" title="اسم المستخدم">
+                                                <div>  <?php echo "<p class = 'text-danger'>$errUsername</p>"; ?> </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="كلمة المرور" 
+                                                       ata-toggle="tooltip" data-placement="bottom" title="كلمة المرور"
+                                                       value="<?php
+                                                       if (isset($_POST['password'])) {
+                                                           echo $_POST['password'];
+                                                       }
+                                                       ?>" >
+                                                <br>
+                                                اظهار كلمة المرور   <input type="checkbox" onclick="myFunction()"> 
+                                                <div>  <?php echo "<p class = 'text-danger'>$errPassword</p>"; ?> </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="اعادة كلمة المرور" 
+                                                       ata-toggle="tooltip" data-placement="bottom" title="اعد كتابة كلمة المرور">
+                                                <div>  <?php echo "<p class = 'text-danger'>$errConfirm</p>"; ?> </div>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset>
+                                            <legend>الإقرار</legend>
+                                            <div class="form-group">
+                                                <a href="includes/CharterofVolunteerism.pdf" target="_blank" ata-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required>
+                                                    <b>أقر أني اطلعت على ميثاق التطوع</b> 
+                                                </a> 
+                                                <input type="checkbox" name="check" value="ok" required >  
+
+                                                </input>
+                                            </div>
+                                            <div class="form-group">
+                                                <a href="includes/Terms_and_Conditions.pdf" target="_blank" ata-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required> 
+                                                    <b>أتعهد بالإلتزام بشروط و أحكام التطوع في الجمعية السعودية للسرطان</b> </a> 
+                                                <input type="checkbox" name="check2" value="ok" required> 
+
+                                                </input>
+                                            </div>
+                                        </fieldset>
+                                        <br>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-sm-offset-3">
+                                                    <input type="submit" name="register-submit" id="register-submit" tabindex="4"
+                                                           class="form-control btn btn-register" value="سجل الآن">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-10 col-sm-offset-2">
+                                                <?php echo $msg ?>	
+                                            </div>
+                                        </div>
                                 </form>
 
                             </div>

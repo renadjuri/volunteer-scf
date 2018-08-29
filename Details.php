@@ -31,8 +31,24 @@ include("includes/Header.php"); // the header of the page
     <br>
 
     <?php
+   
     if (isset($_GET['reg'])) {
-        echo"done";
+        $register = $_GET['reg'];
+        
+        if ($register === 'false') {
+             $msg = '<div class="alert alert-danger"> تأكد من تسجيل دخولك قبل التسجيل&ensp;'
+                    . '<span class= "glyphicon glyphicon-send"></span> '
+                    . 'ً</div>';
+           
+            echo $msg ;
+            
+        } else if ($register === 'true') {
+            $msg = '<div class="alert alert-success">تم تسجيلك بنجاح&ensp;'
+                    . '<span class= "glyphicon glyphicon-send"></span>'
+                    . '</div>';
+
+            echo $msg;
+        }
     }
     if (isset($_GET['EventID'])) {
 
