@@ -262,6 +262,6 @@ if (isset($_POST['register-submit'])) {
     </div>
 </div>
 
-        <br>
+<br>
 
 

@@ -11,7 +11,6 @@ $query = " INSERT INTO `volunteertask`(`EventID`, `VoluID`, `task`)  VALUES ('$I
 
 mysqli_query($con, $query);
 $reg = 'true';
-
 }
 else {
     $reg ='false';

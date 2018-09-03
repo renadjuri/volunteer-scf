@@ -226,14 +226,14 @@ if (isset($_POST['sendEmail'])) {//0000
         <!--All the events-->
         <div id="events" class="tabcontent">
 
-<?php include("admin_events_tab.php"); ?>
+            <?php include("admin_events_tab.php"); ?>
 
         </div>
 
         <!--All Volunteers-->
 
         <div id="volunteer" class="tabcontent">
-<?php include("admin_volunteer_tab.php"); ?>
+            <?php include("admin_volunteer_tab.php"); ?>
         </div>
         <!--Volunteers at events-->  
         <div id="event_volunteers" class="tabcontent">
@@ -244,7 +244,7 @@ if (isset($_POST['sendEmail'])) {//0000
     
         Black list
         -->    <div id="black_list" class="tabcontent">
-<?php include("admin_blacklist_tab.php"); ?>
+            <?php include("admin_blacklist_tab.php"); ?>
         </div><!--
     
         Certificate
@@ -284,4 +284,4 @@ if (isset($_POST['sendEmail'])) {//0000
     </script>
     <!--Footer of the page -->
 
-<?php include('includes/footer.php'); ?>
+    <?php include('includes/footer.php'); ?>

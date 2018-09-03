@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- the header of the page-->
 <?php
-$page_title = "جمعية السرطان السعودي"; //page title to pass it to the header
+$page_title = "جمعية السرطان السعودية"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
 ?>
 <style>

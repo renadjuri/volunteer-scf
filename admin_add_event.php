@@ -18,7 +18,7 @@ if (isset($_POST['add-submit'])) {
     $dateStart = $_POST['dateStart'];
     $dateEnd = $_POST['dateEnd'];
     $Tasks = array();
-  
+
     for ($i = $n = 1; $i < 9; $i++) {
         if ($_POST['task' . $i]) {
             $Tasks[$n] = $_POST['task' . $i];
@@ -42,11 +42,11 @@ if (isset($_POST['add-submit'])) {
         } else {
             $error = '<div class="alert alert-danger">صيغة الملف المرفوع غير صحيحة</div>';
         }
-    }else {
-          $encoded_image = "";
+    } else {
+        $encoded_image = "";
     }
-    
-  
+
+
     $q = " INSERT INTO event ( EventName, EventDescription, MaleNum, FemaleNum, Location, EventImage, Admin_ID) VALUES"
             . " ('" . $eventName . "' , '" . $description . "' , '" . $MaleNum . "' , '" . $FemaleNum . "' , '" . $Location . "' , '" . $encoded_image . "' , '" . $ID . "')";
 
@@ -96,7 +96,7 @@ if (isset($_POST['add-submit'])) {
             <div class="form-group">
                 <table class='table-striped'>
                     <tr>
-                       <td colspan="3">
+                        <td colspan="3">
                             <?php echo $error; ?>
                             <?php echo $msg; ?>	
                         </td>
@@ -238,7 +238,7 @@ if (isset($_POST['add-submit'])) {
 
                     </tr>
 
-                    
+
                 </table>
             </div>
         </form>
