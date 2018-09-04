@@ -64,11 +64,11 @@ include("includes/Header.php"); // the header of the page
         } else if (!preg_match("/[ 0-9  ]/", $_POST["nationalID"])) {
             $errID = "الرقم المدخل غير صحيح";
         }
-        if (empty($_POST["nationality"])) {
+       /* if (empty($_POST["nationality"])) {
             $errnationality = "الرجاء ادخال الجنسية ";
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["nationality"])) {
             $errnationality = "الجنسية المدخلة غير صحيحة";
-        }
+        }*/
         if (empty($_POST["city"])) {
             $errCity = "الرجاء ادخال المدينة ";
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["city"])) {
@@ -240,17 +240,8 @@ include("includes/Header.php"); // the header of the page
                                                 </center>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <input  type="text" name="nationality" id="nationality" tabindex="1" class="form-control"
-                                                   placeholder="الجنسية" 
-                                                   value="<?php
-                                                   if (isset($_POST['nationality'])) {
-                                                       echo $_POST['nationality'];
-                                                   }
-                                                   ?>" 
-                                                   ata-toggle="tooltip" data-placement="bottom" title="الجنسية">
-                                            <div>  <?php echo "<p class = 'text-danger'>$errnationality</p>"; ?> </div>
-                                        </div>
+                                  
+                                       
                                         <div class="form-group">
                                             <input type="text" name="city" id="city" tabindex="1" class="form-control" placeholder="مكان الإقامة" 
                                                    value="<?php
@@ -283,6 +274,55 @@ include("includes/Header.php"); // the header of the page
                                                     <option value ="بكالوريوس">بكالوريوس</option>
                                                     <option value="ماجستير">ماجستير</option>
                                                     <option value="دكتوراه">دكتوراه</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="الجنسية">الجنسية </span>
+
+                                                <select class="form-control" name="nationality" id="nationality">
+                                                    <option value="السعودية">السعودية</option>
+                                                    <option value="السودان">السودان</option>
+                                                    <option value ="الجزائر">الجزائر</option>
+                                                    <option value="المغرب">المغرب</option>
+                                                    <option value="تونس">تونس</option>
+                                                    <option value="سوريا">سوريا</option>
+                                                    <option value="فلسطين">فلسطين</option>
+                                                    <option value ="العراق">العراق</option>
+                                                    <option value="اليمن">اليمن</option>
+                                                    <option value="الإمارات">الإمارات</option>
+                                                    <option value="عمان">عمان</option>
+                                                    <option value="قطر">قطر</option>
+                                                    <option value ="الكويت">الكويت</option>
+                                                    <option value="البحرين">البحرين</option>
+                                                    <option value="الأردن">الأردن</option>
+                                                    <option value="لبنان">لبنان</option>
+                                                    <option value="ليبيا">ليبيا</option>
+                                                    <option value ="موريتانيا">موريتانيا</option>
+                                                    <option value="الصومال">الصومال</option>
+                                                    <option value="جيبوتي">جيبوتي</option>
+                                                    <option value="تركيا">تركيا</option>
+                                                    <option value="ماليزيا">ماليزيا</option>
+                                                    <option value ="اندونيسيا">اندونيسيا</option>
+                                                    <option value="باكستان">باكستان</option>
+                                                    <option value="الهند">الهند</option>
+                                                    <option value="تشاد">تشاد</option>
+                                                    <option value="إريتريا">إريتريا</option>
+                                                    <option value ="أثيوبيا">أثيوبيا</option>
+                                                    <option value="نيجيريا">نيجيريا</option>
+                                                    <option value="مالي">مالي</option>
+                                                    <option value="بريطانيا">بريطانيا</option>
+                                                    <option value="فرنسا">فرنسا</option>
+                                                    <option value ="أيطاليا">إيطاليا</option>
+                                                    <option value="روسيا">روسيا</option>
+                                                    <option value="الولايات المتحدة">الولايات المتحدة</option>
+                                                    <option value="كندا">كندا</option>
+                                                    <option value="استراليا">استراليا</option>
+                                                    <option value ="دولة أفريقية أخرى">دولة أفريقية أخرى</option>
+                                                    <option value="دولة آسيوية أخرى">دولة آسيوية أخرى</option>
+                                                    <option value="دولة أوروبية أخرى">دولة أوروبية أخرى</option>
+                                                    <option value="دولة أمريكية أخرى">دولة أمريكية أخرى</option>
+                                                   
                                                 </select>
                                             </div>
 
