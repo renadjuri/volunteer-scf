@@ -51,7 +51,7 @@ if (isset($_POST["forgetpassword-submit"])) {
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-12">
-                                <a  class="active" id="login-form-link" >استعادة كلمة المرور</a>
+                                <h1>استعادة كلمة المرور</h1>
                             </div>
 
                         </div>
