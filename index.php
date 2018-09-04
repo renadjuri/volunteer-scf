@@ -121,13 +121,13 @@ include("includes/Header.php"); // the header of the page
         <div class="container text-center">    
             <div class="row">
 
-                <div class="col-sm-8 col-md-offset-2"> 
+<!--                <div class="col-sm-8 col-md-offset-2"> 
                     <h2>احصائيات التطوع لدينا</h2> 
                     <center><div class="Rectangle"></div></center>
                     <br>
                     <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
 
-                </div>
+                </div>-->
 
             </div>
         </div><br>
