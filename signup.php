@@ -23,20 +23,23 @@ include("includes/Header.php"); // the header of the page
     <?php
     require 'includes/connection.php'; //connecting to the database
     mysqli_set_charset($con, "utf8");
-    $errName = $errMiddleName = $errLastName = $errID = $errnationality = $errCity = $errPhone = $erremail = $errUsername = $errPassword = $errConfirm = $errorUser = $errUser = $msg = $gender = $errwork = "";
+    $errName = $errMiddleName = $errLastName = $errID = $errnationality = $errCity = $errPhone = $erremail = $errUsername = $errPassword = $errConfirm = $errorUser = $errUser = $msg = $gender = $errwork = $errsector= "";
     if (isset($_POST['register-submit'])) {
         $nationalID = $_POST['nationalID'];
         $FirstName = $_POST['FirstName'];
         $MiddleName = $_POST['MiddleName'];
         $LastName = $_POST['LastName'];
-        $MobileNumber = $_POST['phone'];
-        $birthdate = $_POST['birthdate'];
+        $gender = $_POST['gender'];
         $nationality = $_POST['nationality'];
         $city = $_POST['city'];
+        $birthdate = $_POST['birthdate'];
         $degree = $_POST['degree'];
-        $gender = $_POST['gender'];
-        $workstation = $_POST['workstation'];
+        $workstatus = $_POST['workstatus'];
+        $worktype = $_POST['worktype'];
+        $sector = $_POST['sector'];
+        $MobileNumber = $_POST['phone'];
         $Email = $_POST['email'];
+
         $username = $_POST['username'];
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm-password'];
@@ -71,11 +74,17 @@ include("includes/Header.php"); // the header of the page
         } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["city"])) {
             $errCity = "المدينة المدخلة غير صحيحة";
         }
-        if (empty($_POST["workstation"])) {
+        if (empty($_POST["worktype"])) {
             $errwork = 'الرجاء ادخال الوظيفة';
-        } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["workstation"])) {
+        } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["worktype"])) {
             $errwork = "الوظيفة المدخلة غير صحيحة";
         }
+        if (empty($_POST["sector"])) {
+            $errsector = 'الرجاء ادخال جهة التوظيف';
+        } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["sector"])) {
+            $errsector = "جهة التوظيف المدخلة غير صحيحة";
+        }
+           
         if (empty($_POST["phone"])) {
             $errPhone = "الرجاء ادخال رقم الجوال";
         } else if (!preg_match("/[ 0-9 ]/", $_POST["phone"])) {
@@ -124,12 +133,12 @@ include("includes/Header.php"); // the header of the page
             }
             // Finally, register user if there are no errors in the form
             if (!$errUser && !$errorUser) {
-                $password = md5($password); //encrypt the password before saving in the database
+                $password1 = md5($password); //encrypt the password before saving in the database
                 $query1 = "INSERT INTO account (UserName, password, Email)
-                 VALUES ('" . $username . "', '" . $password . "', '" . $Email . "' );";
-                $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification, WorkStatus, VolunteerUsername)
+                 VALUES ('" . $username . "', '" . $password1 . "', '" . $Email . "' );";
+                $query = "INSERT INTO volunteer (VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, nationality, residence, Qualification, WorkStatus, WorkType, Sector ,VolunteerUsername)
                 VALUES ('" . $nationalID . "', '" . $FirstName . "', '" . $MiddleName . "', '" . $LastName . "', '" . $MobileNumber . "', '" .
-                        $birthdate . "', '" . $gender . "', '" . $nationality . "', '" . $city . "', '" . $degree . "', '" . $workstation . "', '" . $username . "' );";
+                        $birthdate . "', '" . $gender . "', '" . $nationality . "', '" . $city . "', '" . $degree . "', '" . $workstatus . "', '" . $worktype . "', '" . $sector . "', '" . $username . "' );";
 
                 mysqli_query($con, $query1);
                 $result = mysqli_query($con, $query);
@@ -280,7 +289,7 @@ include("includes/Header.php"); // the header of the page
                                             <div class="form-group">
                                                 <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="الوظيفة">الوظيفة </span>
 
-                                                <select class="form-control" name="degree" id="degree">
+                                                <select class="form-control" name="workstatus" id="degree">
                                                     <option value="طالب">طالب</option>
                                                     <option value ="موظف">موظف</option>
                                                     <option value="لا أعمل">لا أعمل</option>
@@ -289,10 +298,10 @@ include("includes/Header.php"); // the header of the page
                                             </div>
 
                                             <div class="form-group">
-                                                <input type="text" name="workstation" id="workstation" tabindex="1" class="form-control" placeholder="المسمى الوظيفي" 
+                                                <input type="text" name="worktype" id="workstation" tabindex="1" class="form-control" placeholder="المسمى الوظيفي" 
                                                        value="<?php
-                                                       if (isset($_POST['workstation'])) {
-                                                           echo $_POST['workstation'];
+                                                       if (isset($_POST['worktype'])) {
+                                                           echo $_POST['worktype'];
                                                        }
                                                        ?>" 
                                                        ata-toggle="tooltip" data-placement="bottom" title="اسم الوظيفة">
@@ -300,14 +309,14 @@ include("includes/Header.php"); // the header of the page
                                             </div>
 
                                             <div class="form-group">
-                                                <input type="text" name="workstation" id="workstation" tabindex="1" class="form-control" placeholder="جهه العمل" 
+                                                <input type="text" name="sector" id="workstation" tabindex="1" class="form-control" placeholder="جهه العمل" 
                                                        value="<?php
-                                                       if (isset($_POST['workstation'])) {
-                                                           echo $_POST['workstation'];
+                                                       if (isset($_POST['sector'])) {
+                                                           echo $_POST['sector'];
                                                        }
                                                        ?>" 
                                                        ata-toggle="tooltip" data-placement="bottom" title="اسم مكان العمل">
-                                                <div>  <?php echo "<p class = 'text-danger'> $errwork</p>"; ?> </div>
+                                                <div>  <?php echo "<p class = 'text-danger'> $errsector</p>"; ?> </div>
                                             </div>
                                         </fieldset>
                                         <fieldset>

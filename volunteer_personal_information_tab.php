@@ -119,12 +119,12 @@ if (isset($_POST['update'])) {
                     <tr>
                         <td>
                             <?php
-                            if ($Gender == 'f') {
-                                echo "ذكر<input type='radio' name='gender' value='m' checked>";
-                                echo "أنثى<input type='radio' name='gender' value='f' >";
+                            if ($Gender == 'F') {
+                                echo "ذكر<input type='radio' name='gender' value='M' checked>";
+                                echo "أنثى<input type='radio' name='gender' value='F' >";
                             } else {
-                                echo "ذكر<input type='radio' name='gender' value='m' >";
-                                echo "أنثى<input type='radio' name='gender' value='f' checked>";
+                                echo "ذكر<input type='radio' name='gender' value='M' >";
+                                echo "أنثى<input type='radio' name='gender' value='F' checked>";
                             }
                             ?>
 
@@ -132,15 +132,9 @@ if (isset($_POST['update'])) {
                         <td><label> الجنس</label></td>	
                     </tr>
                     <tr> 
-                        <td><select name="nationality"  value="<?php print ($nationality); ?>" required> 
+                        <td><input type="text"  name="nationality"  value="<?php print ($nationality); ?>" required> 
 
-                                <option value="السعودية" >السعودية</option> 
-                                <option value="الكويت" >الكويت</option> 
-                                <option value="البحرين" >البحرين</option> 
-                                <option value="قطر" >قطر</option> 
-                                <option value="الإمارات" >الإمارات</option> 
-                                <option value="عمان" >عمان</option> 
-                            </select></td>
+                        </td>
                         <td><label>الجنسية</label></td>
                     </tr>
                     <tr>
@@ -162,22 +156,14 @@ if (isset($_POST['update'])) {
                     </tr>
 
                     <tr>
-                        <td> <select name="Qualification"  value="<?php print ($Qualification); ?>" required> 
-                                <option value="ثانوي"> ثانوي</option>
-                                <option value="دبلوم">دبلوم</option>
-                                <option value="بكالريوس">بكالوريس</option>
-                                <option value="ماجستير">ماجستير</option>
-                                <option value="دكتوراه">دكتوراه</option>
-                            </select>
+                        <td><input type="text" name="Qualification" value="<?php print ($Qualification); ?>" required> 
+
                         </td>
                         <td><label>المؤهل العلمي</label></td>
                     </tr>
                     <tr>
-                        <td><select name="WorkStatus"  value="<?php print ($WorkStatus); ?>" required>  
-                                <option value="طالب" >طالب</option> 
-                                <option value="موظف" >موظف</option> 
-                                <option value="لا أعمل" >لا أعمل</option> 
-                            </select></td>
+                        <td><input type="text"  name="WorkStatus"  value="<?php print ($WorkStatus); ?>" required>  
+                        </td>
                         <td><label>الوظيفة</label></td>
                     </tr>
                     <tr>
@@ -190,13 +176,10 @@ if (isset($_POST['update'])) {
                     </tr>
 
                     <tr>
-                        <td><input type="password" name="password" id ="password" value="<?php print ($Password); ?>" required> </td>
+                        <td><input type="password" name="password" id ="password" value="<?php print ($Password); ?>" readonly required> </td>
                         <td><label>كلمة المرور</label></td>
                     </tr>
-                    <tr>
-                        <td><input type="password" name="repassword" value="" required></td>
-                        <td><label>تأكيد كلمة المرور</label></td>
-                    </tr>
+                    
 
                     <tr>
                         <td><button class="btn btn-danger" name="cancel" value="cancel" type="reset">إلغاء</button></td>

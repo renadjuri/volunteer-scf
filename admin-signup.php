@@ -93,9 +93,9 @@ if (isset($_POST['register-submit'])) {
         }
         // Finally, register user if there are no errors in the form
         if (!$errUser && !$errorUser) {
-            $password = md5($password); //encrypt the password before saving in the database
+            $password1 = md5($password); //encrypt the password before saving in the database
             $query1 = "INSERT INTO account (UserName, password, Email)
-                 VALUES ('" . $username . "', '" . $password . "', '" . $Email . "' );";
+                 VALUES ('" . $username . "', '" . $password1 . "', '" . $Email . "' );";
             $query = "INSERT INTO admin (AdminID, FirstName, MiddleName, LastName, AdminUsername)
                 VALUES ('" . $nationalID . "', '" . $FirstName . "', '" . $MiddleName . "', '" . $LastName . "', '" . $username . "' );";
 
