@@ -181,7 +181,7 @@ include("includes/Header.php"); // the header of the page
                                         <div class="col-lg-12"> 
                                             <div class="form-group col-lg-4 ">
 
-                                                <input type="text" name="LastName" id="username" tabindex="1" class="form-control" placeholder="العائلة" 
+                                                <input class='form-control' style="  text-align: right;" type="text" name="LastName" id="username" tabindex="1" class="form-control" placeholder="العائلة" 
                                                        value="<?php
                                                        if (isset($_POST['LastName'])) {
                                                            echo $_POST['LastName'];
@@ -195,7 +195,7 @@ include("includes/Header.php"); // the header of the page
                                             <center>
                                                 <div class="form-group col-lg-4">
 
-                                                    <input type="text" name="MiddleName" id="username" tabindex="1" class="form-control" placeholder="اسم الأب"
+                                                    <input class='form-control' style="  text-align: right;" type="text" name="MiddleName" id="username" tabindex="1" class="form-control" placeholder="اسم الأب"
                                                            value="<?php
                                                            if (isset($_POST['MiddleName'])) {
                                                                echo $_POST['MiddleName'];
@@ -206,7 +206,7 @@ include("includes/Header.php"); // the header of the page
                                                 </div>
                                                 <div class="form-group col-lg-4">
 
-                                                    <input type="text" name="FirstName" id="username" tabindex="1" class="form-control" placeholder="الاسم الأول" 
+                                                    <input class='form-control' style="  text-align: right;" type="text" name="FirstName" id="username" tabindex="1" class="form-control" placeholder="الاسم الأول" 
                                                            value="<?php
                                                            if (isset($_POST['FirstName'])) {
                                                                echo $_POST['FirstName'];
@@ -218,7 +218,7 @@ include("includes/Header.php"); // the header of the page
                                                 </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="nationalID" id="nationalID" maxlength="10" tabindex="1" class="form-control" 
+                                            <input  type="text" name="nationalID" id="nationalID" maxlength="10" tabindex="1" class="form-control" 
                                                    placeholder="رقم السجل المدني/الإقامة" 
                                                    value="<?php
                                                    if (isset($_POST['nationalID'])) {
@@ -241,7 +241,7 @@ include("includes/Header.php"); // the header of the page
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="nationality" id="nationality" tabindex="1" class="form-control"
+                                            <input  type="text" name="nationality" id="nationality" tabindex="1" class="form-control"
                                                    placeholder="الجنسية" 
                                                    value="<?php
                                                    if (isset($_POST['nationality'])) {
@@ -275,7 +275,7 @@ include("includes/Header.php"); // the header of the page
                                         <fieldset>
                                             <legend>معلومات الدراسة / الوظيفة</legend>
                                             <div class="form-group">
-                                                <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="المؤهل العلمي">المؤهل العلمي </span>
+                                                <span class="input-group-addon"  ata-toggle="tooltip" data-placement="bottom"  title="المؤهل العلمي">المؤهل العلمي </span>
 
                                                 <select class="form-control" name="degree" id="degree">
                                                     <option value="متوسط">متوسط</option>

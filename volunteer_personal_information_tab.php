@@ -98,22 +98,22 @@ if (isset($_POST['update'])) {
             <div class="form-group">
                 <table class='table-striped'>
                     <tr>
-                        <td><input type="text" name="FirstName" value="<?php print ($FirstName); ?>" required></td>
+                        <td><input class='form-control' style="  text-align: right;" type="text" name="FirstName" value="<?php print ($FirstName); ?>" required></td>
                         <td><label>الاسم الأول </label></td>
 
                     </tr>
                     <tr>
-                        <td><input type="text" name="MiddleName" value="<?php print ( $MiddleName); ?>" required></td>
+                        <td><input class='form-control' style="  text-align: right;" type="text" name="MiddleName" value="<?php print ( $MiddleName); ?>" required></td>
                         <td><label>اسم الاب </label></td>
 
                     </tr>
                     <tr>
-                        <td><input type="text" name="LastName" value="<?php print ( $LastName); ?>" required></td>
+                        <td><input class='form-control' style="  text-align: right;" type="text" name="LastName" value="<?php print ( $LastName); ?>" required></td>
                         <td><label>اسم العائلة</label></td>
 
                     </tr>
                     <tr>
-                        <td><input type="date" name="bdate" value="<?php print ($DateOfBirth); ?>" required></td>
+                        <td><input class='form-control' style="  text-align: right;" type="date" name="bdate" value="<?php print ($DateOfBirth); ?>" required></td>
                         <td> <label>تاريخ الميلاد</label></td>
                     </tr>
                     <tr>
@@ -132,46 +132,46 @@ if (isset($_POST['update'])) {
                         <td><label> الجنس</label></td>	
                     </tr>
                     <tr> 
-                        <td><input type="text"  name="nationality"  value="<?php print ($nationality); ?>" required> 
+                        <td><input class='form-control' style="  text-align: right;" type="text"  name="nationality"  value="<?php print ($nationality); ?>" required> 
 
                         </td>
                         <td><label>الجنسية</label></td>
                     </tr>
                     <tr>
-                        <td><input type="text" name="Nid" value=" <?php print ($VolunteerID); ?>" readonly></td> 
+                        <td><input class='form-control' style="  text-align: right;" type="text" name="Nid" value=" <?php print ($VolunteerID); ?>" readonly></td> 
                         <td><label> السجل المدني/الإقامة</label></td>
                     </tr>
                     <tr>
-                        <td><input type="text" name="residence" value="<?php print ($residence); ?>" required></td>	
+                        <td><input class='form-control' style="  text-align: right;" type="text" name="residence" value="<?php print ($residence); ?>" required></td>	
                         <td><label>مكان الإقامة</label></td>	
                     </tr>
 
                     <tr>
-                        <td><input type="email" name="email" value="<?php print ($Email); ?>" required> </td>
+                        <td><input class='form-control' style="  text-align: right;" type="email" name="email" value="<?php print ($Email); ?>" required> </td>
                         <td><label>البريد الإلكتروني</label></td>
                     </tr>
                     <tr>
-                        <td><input type="tel" name="mobile" value="<?php print ($MobileNumber); ?>" required> </td>
+                        <td><input class='form-control' style="  text-align: right;" type="tel" name="mobile" value="<?php print ($MobileNumber); ?>" required> </td>
                         <td><label>رقم الجوال</label></td>
                     </tr>
 
                     <tr>
-                        <td><input type="text" name="Qualification" value="<?php print ($Qualification); ?>" required> 
+                        <td><input class='form-control' style="  text-align: right;" type="text" name="Qualification" value="<?php print ($Qualification); ?>" required> 
 
                         </td>
                         <td><label>المؤهل العلمي</label></td>
                     </tr>
                     <tr>
-                        <td><input type="text"  name="WorkStatus"  value="<?php print ($WorkStatus); ?>" required>  
+                        <td><input class='form-control' style="  text-align: right;" type="text"  name="WorkStatus"  value="<?php print ($WorkStatus); ?>" required>  
                         </td>
                         <td><label>الوظيفة</label></td>
                     </tr>
                     <tr>
-                        <td><input type="text" name="WorkType" value="<?php print ($WorkType); ?>" > </td>
+                        <td><input class='form-control' style="  text-align: right;" type="text" name="WorkType" value="<?php print ($WorkType); ?>" > </td>
                         <td><label>المسمى الوظيفي</label></td>
                     </tr>
                     <tr>
-                        <td><input type="text" name="Sector" value="<?php print ($Sector); ?>" > </td>
+                        <td><input class='form-control' style="  text-align: right;" type="text" name="Sector" value="<?php print ($Sector); ?>" > </td>
                         <td><label>جهة العمل</label></td>
                     </tr>
 
