@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<!-- the header of the page-->
 <?php
 $page_title = "الفعاليات"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page

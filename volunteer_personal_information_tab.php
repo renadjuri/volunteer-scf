@@ -45,7 +45,7 @@ if (isset($_POST['update'])) {
     $WorkType = $_POST["WorkType"];
     $Sector = $_POST['Sector'];
     $Email = $_POST["email"];
-    $Password = $_POST['repassword'];
+   
 
 
 
@@ -78,9 +78,9 @@ if (isset($_POST['update'])) {
 
         $query = "UPDATE volunteer SET FirstName='$FirstName' , MiddleName = '$MiddleName' ,LastName='$LastName', MobileNumber = '$mobile', DateOfBirth = '$bdate', Gender = '$gender', nationality = '$nationality', residence = '$residence', WorkStatus = '$WorkStatus', WorkType = '$WorkType', Sector = '$Sector' WHERE volunteer.VolunteerUsername = '$username'";
         $result = mysqli_query($con, $query);
-        $password = md5($Password);
+       
 
-        $query = "UPDATE account SET Email='$Email',password =' $password' WHERE account.Username='$username'";
+        $query = "UPDATE account SET Email='$Email' WHERE account.Username='$username'";
         $result = mysqli_query($con, $query);
         //  echo "<script type='text/javascript'>alert(' after  submitted successfully!')</script>";
         echo ' <div class="alert alert-success alert-dismissible" >تم تحديث البيانات بنجاح  &ensp;<span class= "glyphicon glyphicon-send" ></span></div>';
@@ -119,7 +119,7 @@ if (isset($_POST['update'])) {
                     <tr>
                         <td>
                             <?php
-                            if ($Gender == 'F') {
+                            if ($Gender == 'M') {
                                 echo "ذكر<input type='radio' name='gender' value='M' checked>";
                                 echo "أنثى<input type='radio' name='gender' value='F' >";
                             } else {

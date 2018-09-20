@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 $page_title = "نبذة عن جمعية السرطان السعودية"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
