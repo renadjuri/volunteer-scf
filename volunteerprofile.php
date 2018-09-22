@@ -96,7 +96,7 @@ $_SESSION["username"];
             <legend> <h1>الفعاليات التي شاركت فيها</h1></legend>
             <br>
             <?php
-            $query = "select EventName, StartingHour, EndingHour, SUM(StartingHour+EndingHour) from volunteerparticipateonevent, event, volunteer where volunteerparticipateonevent.Event_ID = event.EventID and volunteerparticipateonevent.Volunteer_ID = volunteer.VolunteerID and volunteer.VolunteerUsername = '$username'";
+            $query = "select EventName, StartingHour, EndingHour, SUM(EndingHour-StartingHour)DIV 10000 from volunteerparticipateonevent, event, volunteer where volunteerparticipateonevent.Event_ID = event.EventID and volunteerparticipateonevent.Volunteer_ID = volunteer.VolunteerID and volunteer.VolunteerUsername = '$username'";
             $result = mysqli_query($con, $query);
             $numRows = mysqli_num_rows($result);
             if ($numRows <= 0) {
@@ -118,7 +118,8 @@ $_SESSION["username"];
                         $EventName = $row['EventName'];
                         $StartingHour = $row['StartingHour'];
                         $EndingHour = $row['EndingHour'];
-                        $total = $row['SUM(StartingHour+EndingHour)'];
+                        $total = $row['SUM(EndingHour-StartingHour)DIV 10000'];
+                        
                     }
                     //printing events' info in the table
                     //طباعة بيانات الفعاليات في الجدول
