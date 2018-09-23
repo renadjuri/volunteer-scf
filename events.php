@@ -45,10 +45,20 @@ include("includes/Header.php"); // the header of the page
 
 <link href="css/eventlist.css" rel="stylesheet" type="text/css" />
 <body>
-
-    <br>
-
-
+        <!-- Page Header -->
+    <header class="masthead" style="background-image: url('images/header-2.png')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>الفعاليات</h1>
+              <span class="subheading">قم بالتسجيل بأحد الفعاليات التابعة لجمعية السرطان السعودية</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
     <?php
     require 'includes/connection.php'; //connecting to the database
     mysqli_set_charset($con, "utf8");

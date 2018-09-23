@@ -28,94 +28,89 @@ session_start();
 
     <body>
 
-        <header>
-            <!--Logo of the website-->
-            <div class="container-fluid" style="background-image:url(images/header-2.png); background-repeat:no-repeat;  background-size: cover;">
-                <br>
-                <br>
-                <a href="index.php">
-                    <img src="images/logo.png" style="width: 260px; height: 80px" alt="جمعية السرطان السعودية" id="logo"></a>
-                <br>
-                <br>
-                <br>
-            </div>
-
-            <!--Navigation menu-->
+        
             <?php
             $filename = basename($_SERVER["SCRIPT_FILENAME"], '.php');
             ?>
-            <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
+            <div class="container">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar9">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
 
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>                        
-                        </button>
-                    </div>
+                        <div class="brand-centered">
+                            <a class="navbar-brand" href="index.php"><img src="images/logo.png" style="width: 220px; height: 90px" alt="جمعية السرطان السعودية" id="logo"></a>
+                        </div>
 
-                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <div id="navbar9" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-left">
+                                <!-- check if the user logged in -->
+                                <?php
+                                if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
-                        <ul class="nav navbar-nav  navbar-right">
-                            <!-- Image and text -->
-                            <li<?php echo ($filename == '#contact') ? 'class="active"' : ''; ?> ><a href="index.php#contact">تواصل</a></li>
-                            <li <?php echo ($filename == 'about') ? 'class="active"' : ''; ?>><a href="about.php">عن جمعية السرطان السعودية</a></li>
-                            <li <?php echo ($filename == 'events') ? 'class="active"' : ''; ?> ><a href="events.php">الفعاليات</a></li> 
-                            <li <?php echo ($filename == 'index') ? 'class="active"' : ''; ?> ><a href="index.php">الصفحة الرئيسية</a></li>
+                                    if (isset($_SESSION['admin'])) {
+                                        ?> 
+                                        <li <?php echo ($filename == 'admin-profile') ? 'class="active"' : ''; ?>>
+                                            <a href="admin-profile.php" style="font-size: 12pt;"> <span><?php
+                                                    $username = $_SESSION["username"];
+                                                    echo $username;
+                                                    ?>  </span>
+                                        </span> <span class="glyphicon glyphicon-user"style="font-size: 10pt;"></span> </a></li>
+                                        <li> <a href="logout.php" style="font-size: 12pt;" > تسجيل الخروج <span class="glyphicon glyphicon-log-out" style="font-size: 10pt;"></span> </a></li>
 
-                        </ul>
-                        <ul class="nav navbar-nav navbar-left">
+                                        <?php
+                                    } else
+                                    if (empty($_SESSION['admin'])) {
+                                        ?>
+                                        <li <?php echo ($filename == 'volunteerprofile') ? 'class="active"' : ''; ?>>
+                                            <a href="volunteerprofile.php"style="font-size: 12pt;"> <span><?php
+                                                    $username = $_SESSION["username"];
+                                                    echo $username;
+                                                    ?>  </span> <span class="glyphicon glyphicon-user"style="font-size: 10pt;"></span> </a></li>
+                                        <li> <a href="logout.php" style="font-size: 12pt;" > تسجيل الخروج <span class="glyphicon glyphicon-log-out" style="font-size: 10pt;"></span> </a></li>
 
-                            <!-- check if the user logged in -->
-                            <?php
-                            if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
+                                        <?php
+                                    }
+                                }
+                                ?>
+                                <!-- check if there is no logged in user-->
+                                <?php if (empty($_SESSION['username']) && empty($_SESSION['id'])) { ?>
+                                    <li <?php echo ($filename == 'انشاء حساب') ? 'class="active"' : ''; ?>><a href="signup.php" style="font-size: 12pt;"> انشاء حساب <span class="glyphicon glyphicon glyphicon-user" style="font-size: 10pt;">
 
-                                if (isset($_SESSION['admin'])) {
-                                    ?> 
-                                    <li <?php echo ($filename == 'admin-profile') ? 'class="active"' : ''; ?>>
-                                        <a href="admin-profile.php"><span class="glyphicon glyphicon-user"></span> <span><?php
-                                                $username = $_SESSION["username"];
-                                                echo $username;
-                                                ?>  </span></a></li>
-                                    <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
+                                            </span> </a></li>
+                                            <li <?php echo ($filename == 'login') ? 'class="active"' : ''; ?>><a href="login.php" style="font-size: 12pt;">تسجيل الدخول <span class="glyphicon glyphicon-log-in" style="font-size: 10pt;">
 
-                                    <?php
-                                } else
-                                if (empty($_SESSION['admin'])) {
-                                    ?>
-                                    <li <?php echo ($filename == 'volunteerprofile') ? 'class="active"' : ''; ?>>
-                                        <a href="volunteerprofile.php"><span class="glyphicon glyphicon-user"></span> <span><?php
-                                                $username = $_SESSION["username"];
-                                                echo $username;
-                                                ?>  </span></a></li>
-                                    <li> <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> تسجيل الخروج</a></li>
+                                            </span> </a></li>
 
                                     <?php
                                 }
-                            }
-                            ?>
-                            <!-- check if there is no logged in user-->
-                            <?php if (empty($_SESSION['username']) && empty($_SESSION['id'])) { ?>
-                                <li <?php echo ($filename == 'انشاء حساب') ? 'class="active"' : ''; ?>><a href="signup.php"><span class="glyphicon glyphicon glyphicon-user">
+                                ?>
 
-                                        </span> انشاء حساب</a></li>
-                                <li <?php echo ($filename == 'login') ? 'class="active"' : ''; ?>><a href="login.php"><span class="glyphicon glyphicon-log-in">
-
-                                        </span> تسجيل الدخول</a></li>
-
-                                <?php
-                            }
-                            ?>
-
-                        </ul>
-
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <!-- Image and text -->
+                                <li<?php echo ($filename == '#contact') ? 'class="active"' : ''; ?> ><a href="contact.php">تواصل</a></li>
+                                <li <?php echo ($filename == 'about') ? 'class="active"' : ''; ?>><a href="about.php">عن الجمعية</a></li>
+                                <li <?php echo ($filename == 'events') ? 'class="active"' : ''; ?> ><a href="events.php">الفعاليات</a></li> 
+                                <li <?php echo ($filename == 'index') ? 'class="active"' : ''; ?> ><a href="index.php">الرئيسية</a></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                        <!--/.nav-collapse -->
                     </div>
-                </div>
-            </nav>
+                    <!--/.container-fluid -->
+                </nav>
+            </div>
 
-        </header>
-    <body>
+
+
+
         <button onclick="topFunction()" id="myBtn">  <span class="glyphicon glyphicon-chevron-up"></span></button>
 
 

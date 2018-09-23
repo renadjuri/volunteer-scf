@@ -2,16 +2,22 @@
 $page_title = "نبذة عن جمعية السرطان السعودية"; //page title to pass it to the header
 include("includes/Header.php"); // the header of the page
 ?>
-<div class="container text-center" >
 
-    <h1 class="display-3 ">نُبذة</h1>
+        <!-- Page Header -->
+    <header class="masthead" style="background-image: url('images/header-2.png')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-10 mx-auto">
+            <div class="site-heading">
+               <h1 class="display-3 ">نُبذة</h1>
+              <span class="subheading">نبذة عن جمعية السرطان السعودية</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-
-    <p class="lead">نبذة عن جمعية السرطان السعودية</p>
-    <center><div class="Rectangle"></div></center>
-    <br>
-    <br>
-</div>
 <div class="about-section">
     <div class="container">
         <div class="site-title text-center">

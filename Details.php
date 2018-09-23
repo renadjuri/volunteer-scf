@@ -25,7 +25,20 @@ include("includes/Header.php"); // the header of the page
 
 
 <body>
-
+<!-- Page Header -->
+    <header class="masthead" style="background-image: url('images/header-2.png')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>الفعاليات</h1>
+              <span class="subheading">قم بالتسجيل بأحد الفعاليات التابعة لجمعية السرطان السعودية</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
     <br>
 
     <?php
@@ -128,6 +141,13 @@ include("includes/Header.php"); // the header of the page
         }
     }
     ?>
+    
+    
+        <div class="row">
+
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-primary"> <a href="events.php" style="color:#fff">رجوع</a> </button>
+            </div></div>
     <br>
     <br>
     <!--Footer of the page -->
