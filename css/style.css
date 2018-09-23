@@ -111,7 +111,25 @@ Responsive navbar-brand image CSS
 
 
 
+.navbar {	
+    margin-bottom: 15px;	
+    margin-top: 5px;	
+    background-color:#fff;	
+    z-index: 9999;	
+    border: 0;	
+    font-size: 18px !important;	
+    line-height: 4 !important;	
+    border-radius: 0;
 
+
+}
+.navbar li a, .navbar .navbar-brand {	
+    color: #297b39 !important;
+}
+
+.navbar-nav li a:hover ,.navbar-nav li.active a {	
+    color:#8db792 !important;	
+    background-color:#fff !important;}
 
 .navbar-default .navbar-toggle {
     border-color: transparent;
