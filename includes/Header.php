@@ -23,7 +23,7 @@ session_start();
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
         <!-- Style CSS -->
-        <link href="css\style.css" rel="stylesheet" type="text/css" />
+        <link href="css\style1.css" rel="stylesheet" type="text/css" />
     </head>
 
     <body>

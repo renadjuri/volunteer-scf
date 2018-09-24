@@ -132,7 +132,7 @@ include("includes/Header.php"); // the header of the page
             <p><span class="glyphicon glyphicon-map-marker pull-right"></span> المملكة العربية السعودية  ,المنطقة الشرقية,الخبر  
                 34427 &ensp;</p>
             <p><span class="glyphicon glyphicon-phone  pull-right"></span>  0505348085 -  0138649887 &ensp;</p>
-            <p><span class="glyphicon glyphicon-envelope  pull-right"></span> info@scf.org.sa  &ensp;</p> 
+            <p><span class="glyphicon glyphicon-globe  pull-right"></span> <a href="http://scf.org.sa/"> scf.org.sa  &ensp;</a></p> 
         </div>
     </div></div>
 

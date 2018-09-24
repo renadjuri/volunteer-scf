@@ -82,9 +82,7 @@ include("includes/Header.php"); // the header of the page
 	  <br>
 	 
 		<table  style='height:40px; width:700px; margin-top:5px; margin-left: auto; margin-right: auto; border:2px #F8F7F3 solid;' >
-		<tr>
-                <td  width='200'> <p align='center' ><img src='images/events/$EventImage' height='170' width='200' alt='$EventName'></td>
-                </tr>
+		
 
 <tr>
 		

@@ -18,7 +18,7 @@ include("includes/Header.php"); // the header of the page
 </script>
 <!-- Style CSS -->
 
-<link href="css/style-login.css" rel="stylesheet" type="text/css" />
+<link href="css\style-login.css" rel="stylesheet" type="text/css" />
 <body>
     <?php
     require 'includes/connection.php'; //connecting to the database

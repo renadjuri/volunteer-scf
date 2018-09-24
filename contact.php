@@ -77,7 +77,7 @@ include("includes/Header.php"); // the header of the page
             <div class="col-sm-7">
             <h3>يمكنك تعبئة النموذج التالي و سنقوم بالرد في أقرب وقت </h3>
 
-                <form class="form-horizontal" role="form" method="post" action="index.php">
+            <form class="form-horizontal" role="form" method="post" action="contact.php">
                     <div class="form-group">
 <!--  value ="<?php //echo htmlspecialchars($_POST['email']);             ?>"-->
                         <div class="col-sm-10 col-sm-offset-2">
@@ -123,7 +123,7 @@ include("includes/Header.php"); // the header of the page
                         </div>
                     </div>
                     <div class="form-group">
-                         <div class="col-sm-8 col-sm-offset-2">
+                         <div class="col-sm-10 col-sm-offset-2">
                             <?php echo $result; ?>	
                         </div>
                     </div>
