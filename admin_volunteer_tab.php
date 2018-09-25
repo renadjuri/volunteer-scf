@@ -1,14 +1,72 @@
+<?php
+include("includes/Header.php"); // the header of the page
+//$_SESSION['admin'] = "true"; //000
+include("includes/connection.php"); //connecting to the database
+mysqli_set_charset($con, "utf8");
+$page = 'admin_volunteer_tab'; //page title to pass it to admin profile tabs
+include("includes/admin_tabs.php"); // Admin profile tabs
+        
 
+if (isset($_GET['volunteer_id'])) {
+
+    $id = $_GET['volunteer_id'];
+} else {
+    $id = 1; //0000 id should be none or 0
+}
+if (isset($_GET['action'])) {
+
+    $action = $_GET['action'];
+} else {
+    $action = "none";
+}
+switch ($action) {
+    //Add to blacklist
+    case "addToBlacklist":
+        if (isset($_GET['volunteer_id'])) {
+            if (isset($_GET['volunteer_id'])) {
+                $query = "UPDATE volunteer SET BlackList = 1 where VolunteerID=$id"; //0000
+                $result = mysqli_query($con, $query);
+
+                header("Location: admin_volunteer_tab.php");
+            }
+        } else {
+            header("Location: admin_volunteer_tab.php");
+        }
+        break;
+}
+        ?>
+<style type="text/css">
+    body{
+
+        background-size:cover;
+        background-attachment:fixed;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+</style>
+<script type="text/javascript">
+    function ConfirmAddToBlacklist()
+    {
+        var x = confirm("هل تريد إضافة المتطوع للقائمة السوداء؟");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+</script>
+<body>
 <!-- Tab Name -->
-<legend> <h1>المتطوعون لدى جمعية السرطان السعودية</h1></legend>
+<legend> <h1>المتطوعون لدى جمعية السرطان السعودية &nbsp;</h1></legend>
 
 <?php
 $query = "select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, VolunteerUsername, BlackList, email from volunteer, account where account.Username = volunteer.VolunteerUsername and BlackList=0";
 
 $result = mysqli_query($con, $query);
 
-?><div class='row'> 
-  <div class="col-md-12">
+?>
+<div class='row'> 
+  <div class="col-md-9">
 <?php
 $numRows = mysqli_num_rows($result);
 if ($numRows <= 0) {
@@ -42,7 +100,7 @@ if ($numRows <= 0) {
 
         //printing volunteers' info in the table
         //طباعة بيانات المتطوعين في الجدول
-        echo "<td><a style= 'color:red;' Onclick='return ConfirmAddToBlacklist();' href='admin-profile.php?volunteer_id=" . $VolunteerID . "&action=addToBlacklist'> <span class='glyphicon glyphicon-plus-sign'></span> </a></td>";
+        echo "<td><a style= 'color:red;' Onclick='return ConfirmAddToBlacklist();' href='admin_volunteer_tab.php?volunteer_id=" . $VolunteerID . "&action=addToBlacklist'> <span class='glyphicon glyphicon-plus-sign'></span> </a></td>";
         echo "<td> $VolunteerUsername </td>";
         echo "<td> $email </td>";
         echo "<td> $MobileNumber </td>";
@@ -61,3 +119,6 @@ if ($numRows <= 0) {
 <br>
 </div>
       </div>
+</body>
+
+    <?php include('includes/footer.php'); ?>

@@ -1,7 +1,67 @@
+<?php
+include("includes/Header.php"); // the header of the page
+//$_SESSION['admin'] = "true"; //000
+include("includes/connection.php"); //connecting to the database
+mysqli_set_charset($con, "utf8");
+$page = 'admin_certificate_tab'; //page title to pass it to admin profile tabs
+include("includes/admin_tabs.php"); // Admin profile tabs
+        
 
+if (isset($_GET['volunteer_id'])) {
+
+    $id = $_GET['volunteer_id'];
+} else {
+    $id = 1; //0000 id should be none or 0
+}
+        ?>
+<style type="text/css">
+    body{
+
+        background-size:cover;
+        background-attachment:fixed;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+</style>
+<script type="text/javascript">
+    function ConfirmDeleteFromBlacklist()
+    {
+        var x = confirm("هل تريد إزالة المتطوع من القائمة السوداء؟");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+    function checkboxAll()
+    {
+        var checkboxes = document.getElementsByTagName('input'), val = null;
+
+
+        for (var i = 0; i < checkboxes.length; i++)
+        {
+            if (checkboxes[i].type == 'checkbox')
+            {
+                if (val === null)
+                    val = checkboxes[i].checked;
+                {
+                    checkboxes[i].checked = val;
+                }
+            }
+        }
+    }
+    function sendEmailConfirmation()
+    {
+        var x = confirm("هل تريد إرسال الشهادة للمتطوعين المحددين؟");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+</script>
 <!-- Certificates for volunteers-->
 <!-- Tab Name -->
-<legend> <h1>الشهادات</h1></legend>
+<legend> <h1>الشهادات&nbsp;</h1></legend>
 
     <?php
 //0000000000000000000000000000000000000000000000000000000
@@ -13,8 +73,8 @@
 //Events' list
     echo "<br>"; 
     echo "<br><div class='row'>
-    <div class='col-md-12'>";
-    echo "<form method='post' class='form-inline' name='selectEvent' action='admin-profile.php'>";
+    <div class='col-md-9'>";
+    echo "<form method='post' class='form-inline' name='selectEvent' action='admin_certificate_tab.php'>";
     echo "<span style='color:red;'>$error</span>"; //0000
     echo "<button class='btn btn-success' type='submit' name='show'  value='show'>بحث</button> &nbsp;&nbsp;";
     echo "<div class='form-group'>";
@@ -43,7 +103,7 @@
         $numRows = mysqli_num_rows($result);
         if ($numRows <= 0) {
             echo "<br> <div class='row'>
-    <div class='[ col-sm-12 col-sm-offset-1 col-md-9 ]'>  لا يوجد متطوعين في الوقت الحالي </div></div>";
+    <div class='[ col-sm-12 col-sm-offset-1 col-md-11 ]'>  لا يوجد متطوعين في الوقت الحالي </div></div>";
         } else {
             echo "<form name='SendCertificateForm' method='POST'>"; //action='0000.php?AID=<?php echo $AID
             //creating a table for listing the volunteers in the selected event
@@ -95,3 +155,6 @@
     }
     ?>
 </div> </div>
+</body>
+
+    <?php include('includes/footer.php'); ?>

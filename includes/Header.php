@@ -56,14 +56,14 @@ session_start();
 
                                     if (isset($_SESSION['admin'])) {
                                         ?> 
-                                        <li <?php echo ($filename == 'admin-profile') ? 'class="active"' : ''; ?>>
-                                            <a href="admin-profile.php" style="font-size: 12pt;"> <span><?php
+                                        <li <?php echo ($filename == 'admin_events_tab') ? 'class="active"' : ''; ?>>
+                                            <a href="admin_events_tab.php" style="font-size: 12pt;"> <span><?php
                                                     $username = $_SESSION["username"];
                                                     echo $username;
                                                     ?>  </span>
                                         </span> <span class="glyphicon glyphicon-user"style="font-size: 10pt;"></span> </a></li>
                                         <li> <a href="logout.php" style="font-size: 12pt;" > تسجيل الخروج <span class="glyphicon glyphicon-log-out" style="font-size: 10pt;"></span> </a></li>
-
+                                    
                                         <?php
                                     } else
                                     if (empty($_SESSION['admin'])) {

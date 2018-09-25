@@ -1,5 +1,64 @@
+<?php
+include("includes/Header.php"); // the header of the page
+//$_SESSION['admin'] = "true"; //000
+include("includes/connection.php"); //connecting to the database
+mysqli_set_charset($con, "utf8");
+$page = 'admin_blacklist_tab'; //page title to pass it to admin profile tabs
+include("includes/admin_tabs.php"); // Admin profile tabs
+        
 
-<legend> <h1>القائمة السوداء</h1></legend>
+if (isset($_GET['volunteer_id'])) {
+
+    $id = $_GET['volunteer_id'];
+} else {
+    $id = 1; //0000 id should be none or 0
+}
+if (isset($_GET['action'])) {
+
+    $action = $_GET['action'];
+} else {
+    $action = "none";
+}
+
+
+switch ($action) {
+    //Remove from blacklist
+    case "removeFromBlacklist":
+        if (isset($_GET['volunteer_id'])) {
+
+            $query = "UPDATE volunteer SET BlackList = 0 where VolunteerID=$id"; //0000
+            $result = mysqli_query($con, $query);
+
+
+            header("Location: admin_blacklist_tab.php");
+        } else {
+            header("Location: admin_blacklist_tab.php");
+        }
+        break;
+}
+        ?>
+<style type="text/css">
+    body{
+
+        background-size:cover;
+        background-attachment:fixed;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+</style>
+<script type="text/javascript">
+    function ConfirmDeleteFromBlacklist()
+    {
+        var x = confirm("هل تريد إزالة المتطوع من القائمة السوداء؟");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+</script>
+<body>
+<legend> <h1>القائمة السوداء&nbsp;</h1></legend>
 
 <p>كشف بمعلومات المتطوعين الذين وضعوا في القائمة السوداء</p>
 
@@ -17,9 +76,8 @@ if ($numRows <= 0) {
 
     //creating a table for listing all the volunteers in the blacklist
     // إنشاء جدول لإضافة جميع المتطوعين الذين وضعوا في القائمة السوداء
-    echo "<br><div class='row'>
-    <div class='col-md-12'> <center>";
-    echo "<table class='col-md-12 table-hover table-striped'>";
+    echo "<br><div class='row'>";
+    echo "<table class='col-md-9 table-hover table-striped'>";
     echo "<tr>";
     echo "<th> القائمة السوداء </th>"; // حذف من القائمة
     echo "<th>الاسم الثلاثي</th>";
@@ -36,7 +94,7 @@ if ($numRows <= 0) {
 
         //printing volunteers' info in the table
         //طباعة بيانات المتطوعين في الجدول
-        echo "<td><a Onclick='return ConfirmDeleteFromBlacklist();' href='admin-profile.php?volunteer_id=" . $VolunteerID . "&action=removeFromBlacklist'>"
+        echo "<td><a Onclick='return ConfirmDeleteFromBlacklist();' href='admin_blacklist_tab.php?volunteer_id=" . $VolunteerID . "&action=removeFromBlacklist'>"
         . "<span class='glyphicon glyphicon-remove'></span></a></td>";
         echo "<td>" . $FirstName . " " . $MiddleName . " " . $LastName . "</td>";
         echo "<td> $VolunteerID</td>";
@@ -49,3 +107,6 @@ if ($numRows <= 0) {
     echo "<br><br><br></div> </div>";
 }
 ?><!-- end PHP script -->
+</body>
+
+    <?php include('includes/footer.php'); ?>

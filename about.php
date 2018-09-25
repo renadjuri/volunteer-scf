@@ -4,7 +4,7 @@ include("includes/Header.php"); // the header of the page
 ?>
 
         <!-- Page Header -->
-    <header class="masthead" style="background-image: url('images/header-2.png')">
+    <header class="masthead" style="background-image: url('images/header-3.png')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">

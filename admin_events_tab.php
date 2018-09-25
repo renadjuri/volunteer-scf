@@ -1,6 +1,26 @@
+<?php
+include("includes/Header.php"); // the header of the page
+//$_SESSION['admin'] = "true"; //000
+include("includes/connection.php"); //connecting to the database
+mysqli_set_charset($con, "utf8");
+$page = 'admin_events_tab'; //page title to pass it to admin profile tabs
+include("includes/admin_tabs.php"); // Admin profile tabs
+        
+        ?>
+<style type="text/css">
+    body{
 
-        <!-- Tab Name -->
-        <legend> <h1>الفعاليات</h1></legend>
+        background-size:cover;
+        background-attachment:fixed;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+</style>
+<body>
+ 
+<!-- Tab Name -->
+<legend> <h1>الفعاليات &nbsp; </h1></legend>
 
         <br>
         <!-- Style CSS -->
@@ -20,7 +40,7 @@
 
 
 
-        <div class="[ col-sm-12 col-sm-offset-1 col-md-9 ]">
+        <div class="[ col-sm-12 col-sm-offset-1 col-md-8 ]">
             <a href="admin_add_event.php" tabindex="5" class="btn btn-success">اضافة فعالية</a>
             <br>
             <br>
@@ -28,7 +48,7 @@
 
 
         <div class="row">
-            <div class="[ col-sm-12 col-sm-offset-1 col-md-9 ]">
+            <div class="[ col-sm-12 col-sm-offset-1 col-md-8 ]">
                 <ul class="event-list">
                     <?php
                     if ($numRows <= 0) {
@@ -160,6 +180,9 @@
                 ?>
             </div>
         </div>
+</body>
+
+    <?php include('includes/footer.php'); ?>
         <script>
             function SetCookie(c_name, value, expiredays)
             {

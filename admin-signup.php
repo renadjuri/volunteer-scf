@@ -15,9 +15,27 @@
 
 <link href="css/style-login.css" rel="stylesheet" type="text/css" />
 
+
 <?php
+include("includes/Header.php"); // the header of the page
+//$_SESSION['admin'] = "true"; //000
 require 'includes/connection.php'; //connecting to the database
 mysqli_set_charset($con, "utf8");
+$page = 'admin-signup'; //page title to pass it to admin profile tabs
+include("includes/admin_tabs.php"); // Admin profile tabs
+?>
+<style type="text/css">
+    body{
+
+        background-size:cover;
+        background-attachment:fixed;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+</style>
+<body>
+<?php
 $errName = $errMiddleName = $errLastName = $errID = $erremail = $errUsername = $errPassword = $errConfirm = $errorUser = $errUser = $msg = "";
 if (isset($_POST['register-submit'])) {
     $nationalID = $_POST['nationalID'];
@@ -124,7 +142,7 @@ if (isset($_POST['register-submit'])) {
             <div class="panel-heading">
                 <div class="row">       
                     <div class="col-lg-12">
-                        <legend>   <h1>إنشاء حساب خاص بالادمن</h1>  </legend>
+                        <legend>   <h1>إنشاء حساب خاص بالادمن &nbsp;</h1>  </legend>
                     </div>
                 </div>
 
@@ -263,5 +281,7 @@ if (isset($_POST['register-submit'])) {
 </div>
 
 <br>
+</body>
 
+    <?php include('includes/footer.php'); ?>
 

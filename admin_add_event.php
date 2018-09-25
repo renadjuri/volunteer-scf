@@ -225,7 +225,7 @@ if (isset($_POST['add-submit'])) {
                         <td> 
 
 
-                            <a href="admin-profile.php" tabindex="18"  name="cancel" id="cancel" class="form-control btn btn-danger" >رجوع</a>
+                            <a href="admin_events_tab.php" tabindex="18"  name="cancel" id="cancel" class="form-control btn btn-danger" >رجوع</a>
 
 
                         </td>

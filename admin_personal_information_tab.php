@@ -1,6 +1,23 @@
+<?php
+include("includes/Header.php"); // the header of the page
+//$_SESSION['admin'] = "true"; //000
+include("includes/connection.php"); //connecting to the database
+mysqli_set_charset($con, "utf8");
+$page = 'admin_personal_information_tab'; //page title to pass it to admin profile tabs
+include("includes/admin_tabs.php"); // Admin profile tabs
+?>
+<style type="text/css">
+    body{
 
-<!-- Tab Name -->
-<legend> <h1>المعلومات الشخصية</h1></legend>
+        background-size:cover;
+        background-attachment:fixed;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+</style>
+<body>
+
 <?php
 $query = 'select AdminID, FirstName, MiddleName, LastName, AdminUsername, Email, password from admin, account where account.Username = admin.AdminUsername and account.Username = "' . $_SESSION["username"] . '"';
 $result = mysqli_query($con, $query);
@@ -79,12 +96,12 @@ if (isset($_POST['update'])) {
     }
 }
 ?>
-
-<br>
+<!-- Tab Name -->
+<legend> <h1>المعلومات الشخصية</h1></legend>
 <div class='row'>
     <div class='[ col-sm-9 col-sm-offset-2 col-md-9 ]'> 
   
-        <form method="post" action="admin-profile.php" style="  text-align: right;">
+        <form method="post" action="admin_personal_information_tab.php" style="  text-align: right;">
             <div class="form-group">
                 <table class='table-striped'>
                     <tr>
