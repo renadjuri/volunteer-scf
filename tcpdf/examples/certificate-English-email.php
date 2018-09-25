@@ -26,7 +26,7 @@
 
 //session_start();
 // step 1: connect to database
-include($_SERVER['DOCUMENT_ROOT']."/volunteer-scf/includes/connection.php"); //connecting to the database
+include($_SERVER['DOCUMENT_ROOT']."/volunteer-saudi/includes/connection.php"); //connecting to the database
 //if (! ( $database = mysqli_connect ("localhost","root","", "cancergroup")) )
 //die ("Cann't connect to database");
 //
@@ -65,7 +65,7 @@ $row2 = mysqli_fetch_row ($result2);
 
 
 // Attended_hours//00000
-$query3 = "SELECT SUM(EndingHour-StartingHour)/10000 FROM volunteerparticipateonevent WHERE Volunteer_ID=$volunteer_id and Event_ID=$event_id";
+$query3 = "SELECT (SUM(EndingHour - StartingHour)DIV 10000) FROM volunteerparticipateonevent WHERE Volunteer_ID=$volunteer_id and Event_ID=$event_id";
 
 if ( ! $result3 = mysqli_query($con, $query3))
 	die ("Error While Execute Query ".mysql_error($con));

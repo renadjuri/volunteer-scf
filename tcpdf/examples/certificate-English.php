@@ -26,14 +26,14 @@
 
 //session_start();
 // step 1: connect to database
-if (! ( $database = mysqli_connect ("localhost","root","", "cancergroup")) )
+if (! ( $database = mysqli_connect ("localhost","root","", "database")) )
 die ("Cann't connect to database");
 
 // setcharset to utf-8
 if(mysqli_set_charset($database,'utf8'))  
 
 // step 2: open database
-if ( ! ( mysqli_select_db ($database, "cancergroup")))
+if ( ! ( mysqli_select_db ($database, "database")))
 die ("Cann't open database ");
 
 //  set sql encoding

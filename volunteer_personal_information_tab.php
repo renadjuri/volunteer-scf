@@ -1,5 +1,25 @@
+<!-- the header of the page-->
+<?php
+$page_title = "الصفحة الشخصية"; //page title to pass it to the header
+include("includes/Header.php"); // the header of the page
+include("includes/connection.php"); //connecting to the database
+mysqli_set_charset($con, "utf8");
+$page = 'volunteer_personal_information_tab'; //page title to pass it to admin profile tabs
+include("includes/volunteer_tabs.php"); // Admin profile tabs
+$_SESSION["username"];
+?>
+
+<style>
+    body{
+        background-size:cover;
+        background-attachment:fixed;
+    }
+</style>	
+
+<body>
+
 <!-- Tab Name -->
-<legend> <h1>المعلومات الشخصية</h1></legend>
+<legend> <h1>المعلومات الشخصية &nbsp;</h1></legend>
 <?php
 $query = 'select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, residence, nationality, Qualification, WorkStatus, WorkType, Sector,  Email, password from volunteer, account  where account.Username = volunteer.VolunteerUsername and account.Username = "' . $username . '"';
 $result = mysqli_query($con, $query);
@@ -92,7 +112,7 @@ if (isset($_POST['update'])) {
 ?>
 <br>
 <div class="row">
-    <div class="[ col-sm-8 col-sm-offset-3 col-md-12 ]">
+    <div class="[ col-sm-8 col-sm-offset-2 col-md-7 ]">
 
         <form method="post" action="volunteerprofile.php" style="  text-align: right;">
             <div class="form-group">
@@ -190,3 +210,4 @@ if (isset($_POST['update'])) {
         </form>
     </div>
 </div>
+<?php include('includes/footer.php'); ?>

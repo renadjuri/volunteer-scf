@@ -134,7 +134,7 @@ if (isset($_GET['volunteer_id'])) {
                 //$num += 1; //7777
                 //printing volunteers' info in the table
                 //طباعة بيانات المتطوعين في الجدول
-                echo "<td><a target='_blank' href='tcpdf/examples/certificate-English-email.php?volunteer_id=" . $VolunteerID . "&event_id=" . $selectEvent . "'><img src=\"images/certificate.png\" alt=\"Certificate\" ' /></a></td>";
+                echo "<td><a target='_blank' href='tcpdf/examples/certificate-English-email.php?volunteer_id=" . $VolunteerID . "&event_id=" . $selectEvent . "'><img src=\"images\Certificate.png\" alt=\"Certificate\" ' /></a></td>";
                 echo "<td> $email </td>";
                 echo "<td> $MobileNumber </td>";
                 echo "<td>" . $FirstName . " " . $MiddleName . " " . $LastName . "</td>";

@@ -68,8 +68,8 @@ session_start();
                                     } else
                                     if (empty($_SESSION['admin'])) {
                                         ?>
-                                        <li <?php echo ($filename == 'volunteerprofile') ? 'class="active"' : ''; ?>>
-                                            <a href="volunteerprofile.php"style="font-size: 12pt;"> <span><?php
+                                        <li <?php echo ($filename == 'volunteer_personal_information_tab') ? 'class="active"' : ''; ?>>
+                                            <a href="volunteer_personal_information_tab.php"style="font-size: 12pt;"> <span><?php
                                                     $username = $_SESSION["username"];
                                                     echo $username;
                                                     ?>  </span> <span class="glyphicon glyphicon-user"style="font-size: 10pt;"></span> </a></li>

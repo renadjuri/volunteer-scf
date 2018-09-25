@@ -97,9 +97,9 @@ if (isset($_POST['update'])) {
 }
 ?>
 <!-- Tab Name -->
-<legend> <h1>المعلومات الشخصية</h1></legend>
+<legend> <h1>المعلومات الشخصية &nbsp;</h1></legend>
 <div class='row'>
-    <div class='[ col-sm-9 col-sm-offset-2 col-md-9 ]'> 
+    <div class='[ col-sm-9 col-sm-offset-2 col-md-7 ]'> 
   
         <form method="post" action="admin_personal_information_tab.php" style="  text-align: right;">
             <div class="form-group">

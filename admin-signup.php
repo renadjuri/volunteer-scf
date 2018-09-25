@@ -35,119 +35,111 @@ include("includes/admin_tabs.php"); // Admin profile tabs
     }
 </style>
 <body>
-<?php
-$errName = $errMiddleName = $errLastName = $errID = $erremail = $errUsername = $errPassword = $errConfirm = $errorUser = $errUser = $msg = "";
-if (isset($_POST['register-submit'])) {
-    $nationalID = $_POST['nationalID'];
-    $FirstName = $_POST['FirstName'];
-    $MiddleName = $_POST['MiddleName'];
-    $LastName = $_POST['LastName'];
-    $Email = $_POST['email'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm-password'];
+    <?php
+    $errName = $errMiddleName = $errLastName = $errID = $erremail = $errUsername = $errPassword = $errConfirm = $errorUser = $errUser = $msg = "";
+    if (isset($_POST['register-submit'])) {
+        $nationalID = $_POST['nationalID'];
+        $FirstName = $_POST['FirstName'];
+        $MiddleName = $_POST['MiddleName'];
+        $LastName = $_POST['LastName'];
+        $Email = $_POST['email'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm-password'];
 // Signup validation
-    if (empty($_POST["FirstName"])) {
-        $errName = 'الرجاء ادخال الاسم ';
-    } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["FirstName"])) {
-        $errName = "الإسم المدخل غير صحيح";
-    }
-    if (empty($_POST["MiddleName"])) {
-        $errMiddleName = "الرجاء ادخال الاسم ";
-    } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["MiddleName"])) {
-        $errMiddleName = "الإسم المدخل غير صحيح";
-    }
-    if (empty($_POST["LastName"])) {
-        $errLastName = "الرجاء ادخال الاسم ";
-    } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["LastName"])) {
-        $errLastName = "الإسم المدخل غير صحيح";
-    }
-    if (empty($_POST["nationalID"])) {
-        $errID = "الرجاء ادخال السجل المدني";
-    } else if (!preg_match("/[ 0-9  ]/", $_POST["nationalID"])) {
-        $errID = "الرقم المدخل غير صحيح";
-    }
+        if (empty($_POST["FirstName"])) {
+            $errName = 'الرجاء ادخال الاسم ';
+        } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["FirstName"])) {
+            $errName = "الإسم المدخل غير صحيح";
+        }
+        if (empty($_POST["MiddleName"])) {
+            $errMiddleName = "الرجاء ادخال الاسم ";
+        } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["MiddleName"])) {
+            $errMiddleName = "الإسم المدخل غير صحيح";
+        }
+        if (empty($_POST["LastName"])) {
+            $errLastName = "الرجاء ادخال الاسم ";
+        } else if (!preg_match("/[a-z A-Z ا-ي ]/", $_POST["LastName"])) {
+            $errLastName = "الإسم المدخل غير صحيح";
+        }
+        if (empty($_POST["nationalID"])) {
+            $errID = "الرجاء ادخال السجل المدني";
+        } else if (!preg_match("/[ 0-9  ]/", $_POST["nationalID"])) {
+            $errID = "الرقم المدخل غير صحيح";
+        }
 
-    if (empty($_POST["email"])) {
-        $erremail = "الرجاء ادخال البريد الإلكتروني";
-    } else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-        $erremail = "البريد الإلكتروني غير صحيح";
-    }
-    if (empty($_POST["username"])) {
-        $errUsername = "الرجاء ادخال اسم المستخدم";
-    } else if (!preg_match("/[ 0-9 a-z A-Z]/", $_POST["username"])) {
-        $errUsername = "اسم المستخدم يتكون من ارقام او حروف انجليزية";
-    }
-    if (empty($_POST["password"])) {
-        $errPassword = "الرجاء ادخال كلمة المرور";
-    } else if (!preg_match("/[ 0-9 a-z A-Z ا-ي ]/", $_POST["password"])) {
-        $errPassword = "كلمة المرور تتكون من أرقام أو حروف ";
-    }
-    if ($password != $confirm_password) {
-        $errConfirm = "كلمة المرور غير متطابقة";
-    }
-    if (!$errName && !$errMiddleName && !$errLastName && !$errID &&
-            !$erremail && !$errUsername && !$errPassword && !$errConfirm) {
-        // first check the database to make sure 
-        // a user does not already exist with the same nationalID and/or email
-        $user_check_query1 = "SELECT * FROM account WHERE Email='$Email' OR Username='$username' LIMIT 1";
-        $result1 = mysqli_query($con, $user_check_query1);
-        $user = mysqli_fetch_assoc($result1);
-        if ($user) { // if user exists
-            if ($user['Email'] === $Email) {
-                $errorUser = "البريد الإلكتروني موجود مسبقاً";
-            }
-            if ($user['Username'] === $username) {
-                $errorUser = "اسم المستخدم موجود مسبقاً";
-            }
+        if (empty($_POST["email"])) {
+            $erremail = "الرجاء ادخال البريد الإلكتروني";
+        } else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+            $erremail = "البريد الإلكتروني غير صحيح";
         }
-        $user_check_query = "SELECT * FROM Admin WHERE  AdminID='$nationalID' LIMIT 1";
-        $result = mysqli_query($con, $user_check_query);
-        $user = mysqli_fetch_assoc($result);
-        if ($user) { // if user exists
-            if ($user['AdminID'] === $nationalID) {
-                $errUser = "رقم السجل الوطني موجود مسبقاً";
-            }
+        if (empty($_POST["username"])) {
+            $errUsername = "الرجاء ادخال اسم المستخدم";
+        } else if (!preg_match("/[ 0-9 a-z A-Z]/", $_POST["username"])) {
+            $errUsername = "اسم المستخدم يتكون من ارقام او حروف انجليزية";
         }
-        // Finally, register user if there are no errors in the form
-        if (!$errUser && !$errorUser) {
-            $password1 = md5($password); //encrypt the password before saving in the database
-            $query1 = "INSERT INTO account (UserName, password, Email)
+        if (empty($_POST["password"])) {
+            $errPassword = "الرجاء ادخال كلمة المرور";
+        } else if (!preg_match("/[ 0-9 a-z A-Z ا-ي ]/", $_POST["password"])) {
+            $errPassword = "كلمة المرور تتكون من أرقام أو حروف ";
+        }
+        if ($password != $confirm_password) {
+            $errConfirm = "كلمة المرور غير متطابقة";
+        }
+        if (!$errName && !$errMiddleName && !$errLastName && !$errID &&
+                !$erremail && !$errUsername && !$errPassword && !$errConfirm) {
+            // first check the database to make sure 
+            // a user does not already exist with the same nationalID and/or email
+            $user_check_query1 = "SELECT * FROM account WHERE Email='$Email' OR Username='$username' LIMIT 1";
+            $result1 = mysqli_query($con, $user_check_query1);
+            $user = mysqli_fetch_assoc($result1);
+            if ($user) { // if user exists
+                if ($user['Email'] === $Email) {
+                    $errorUser = "البريد الإلكتروني موجود مسبقاً";
+                }
+                if ($user['Username'] === $username) {
+                    $errorUser = "اسم المستخدم موجود مسبقاً";
+                }
+            }
+            $user_check_query = "SELECT * FROM Admin WHERE  AdminID='$nationalID' LIMIT 1";
+            $result = mysqli_query($con, $user_check_query);
+            $user = mysqli_fetch_assoc($result);
+            if ($user) { // if user exists
+                if ($user['AdminID'] === $nationalID) {
+                    $errUser = "رقم السجل الوطني موجود مسبقاً";
+                }
+            }
+            // Finally, register user if there are no errors in the form
+            if (!$errUser && !$errorUser) {
+                $password1 = md5($password); //encrypt the password before saving in the database
+                $query1 = "INSERT INTO account (UserName, password, Email)
                  VALUES ('" . $username . "', '" . $password1 . "', '" . $Email . "' );";
-            $query = "INSERT INTO admin (AdminID, FirstName, MiddleName, LastName, AdminUsername)
+                $query = "INSERT INTO admin (AdminID, FirstName, MiddleName, LastName, AdminUsername)
                 VALUES ('" . $nationalID . "', '" . $FirstName . "', '" . $MiddleName . "', '" . $LastName . "', '" . $username . "' );";
 
-            mysqli_query($con, $query1);
-            $result = mysqli_query($con, $query);
-            if ($result) {
-                //msg successfuly registered
+                mysqli_query($con, $query1);
+                $result = mysqli_query($con, $query);
+                if ($result) {
+                    //msg successfuly registered
 
-                $msg = '<div class="alert alert-success">تم حفظ بياناتك بنجاح&ensp;<span class= "glyphicon glyphicon-send"></span></div>';
-                echo "<script>window.open('login.php','_self')</script>";
-            } else {
-                $msg = '<div class="alert alert-danger">عذرا حدث خطأ أثناء التسجيل&ensp;<span class= "glyphicon glyphicon-send"></span> ، حاول مجددا لاحقاً</div>';
+                    $msg = '<div class="alert alert-success">تم حفظ بياناتك بنجاح&ensp;<span class= "glyphicon glyphicon-send"></span></div>';
+                    echo "<script>window.open('login.php','_self')</script>";
+                } else {
+                    $msg = '<div class="alert alert-danger">عذرا حدث خطأ أثناء التسجيل&ensp;<span class= "glyphicon glyphicon-send"></span> ، حاول مجددا لاحقاً</div>';
+                }
             }
+        } else {
+            $msg = '<div class="alert alert-danger">تأكد من تعبئة البيانات &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
         }
-    } else {
-        $msg = '<div class="alert alert-danger">تأكد من تعبئة البيانات &ensp;<span class= "glyphicon glyphicon-send"></span></div>';
     }
-}
-?>
+    ?>
 
-<br>
+    <br>
+<legend>   <h1>إنشاء حساب خاص بالادمن &nbsp;</h1>  </legend>
 
 <div class='row'>
-    <div class='[ col-sm-12 col-sm-offset-1 col-md-9 ]'> 
+    <div class='[ col-sm-9 col-sm-offset-2 col-md-7 ]'> 
         <div class="panel panel-login">
-            <div class="panel-heading">
-                <div class="row">       
-                    <div class="col-lg-12">
-                        <legend>   <h1>إنشاء حساب خاص بالادمن &nbsp;</h1>  </legend>
-                    </div>
-                </div>
-
-            </div>
-
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-12"> 
@@ -283,5 +275,5 @@ if (isset($_POST['register-submit'])) {
 <br>
 </body>
 
-    <?php include('includes/footer.php'); ?>
+<?php include('includes/footer.php'); ?>
 

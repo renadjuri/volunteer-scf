@@ -83,7 +83,7 @@ if (isset($_POST['add-submit'])) {
 <div class="panel-heading">
     <div class="row">       
         <div class="col-lg-12">
-            <legend> <h1>اضافة فعالية</h1></legend>
+            <legend> <h1>اضافة فعالية &nbsp;</h1></legend>
         </div>
 
     </div>
