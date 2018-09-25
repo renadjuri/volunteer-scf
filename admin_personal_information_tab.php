@@ -146,3 +146,6 @@ if (isset($_POST['update'])) {
     </div>
 </div>
 
+</body>
+
+    <?php include('includes/footer.php'); ?>
