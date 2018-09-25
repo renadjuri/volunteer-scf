@@ -72,8 +72,8 @@ if (isset($_GET['volunteer_id'])) {
     $error = ""; //0000000 remove error variable
 //Events' list
     echo "<br>"; 
-    echo "<br><div class='row'>
-    <div class='col-md-9'>";
+  echo " <div class='row'> ";
+echo "<div class='[ col-sm-8 col-sm-offset-2 col-md-7 ]'>";
     echo "<form method='post' class='form-inline' name='selectEvent' action='admin_certificate_tab.php'>";
     echo "<span style='color:red;'>$error</span>"; //0000
     echo "<button class='btn btn-success' type='submit' name='show'  value='show'>بحث</button> &nbsp;&nbsp;";

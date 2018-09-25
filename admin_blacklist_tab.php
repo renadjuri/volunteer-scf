@@ -60,7 +60,7 @@ switch ($action) {
 <body>
 <legend> <h1>القائمة السوداء&nbsp;</h1></legend>
 
-<p>كشف بمعلومات المتطوعين الذين وضعوا في القائمة السوداء</p>
+<p>كشف بمعلومات المتطوعين الذين وضعوا في القائمة السوداء &nbsp;&nbsp;</p>
 
 
 <!-- Blacklist page code-->
@@ -76,8 +76,9 @@ if ($numRows <= 0) {
 
     //creating a table for listing all the volunteers in the blacklist
     // إنشاء جدول لإضافة جميع المتطوعين الذين وضعوا في القائمة السوداء
-    echo "<br><div class='row'>";
-    echo "<table class='col-md-9 table-hover table-striped'>";
+    echo "<br>     <div class='row'> ";
+    echo "<div class='[ col-sm-8 col-sm-offset-2 col-md-7 ]'>";
+    echo "<table class='table-hover table-striped'>";
     echo "<tr>";
     echo "<th> القائمة السوداء </th>"; // حذف من القائمة
     echo "<th>الاسم الثلاثي</th>";
