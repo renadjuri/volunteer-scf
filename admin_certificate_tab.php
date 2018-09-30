@@ -14,16 +14,7 @@ if (isset($_GET['volunteer_id'])) {
     $id = 1; //0000 id should be none or 0
 }
         ?>
-<style type="text/css">
-    body{
 
-        background-size:cover;
-        background-attachment:fixed;
-    }
-    a:hover{
-        text-decoration: none;
-    }
-</style>
 <script type="text/javascript">
     function ConfirmDeleteFromBlacklist()
     {
@@ -59,6 +50,7 @@ if (isset($_GET['volunteer_id'])) {
             return false;
     }
 </script>
+<body>
 <!-- Certificates for volunteers-->
 <!-- Tab Name -->
 <legend> <h1>الشهادات&nbsp;</h1></legend>
@@ -76,7 +68,7 @@ if (isset($_GET['volunteer_id'])) {
 echo "<div class='[ col-sm-8 col-sm-offset-2 col-md-7 ]'>";
     echo "<form method='post' class='form-inline' name='selectEvent' action='admin_certificate_tab.php'>";
     echo "<span style='color:red;'>$error</span>"; //0000
-    echo "<button class='btn btn-success' type='submit' name='show'  value='show'>بحث</button> &nbsp;&nbsp;";
+    echo "<button class='btn btn-success' type='submit' name='show'  value='show'>عرض</button> &nbsp;&nbsp;";
     echo "<div class='form-group'>";
     echo "<select class='form-control' id='event' name='selectEvent'>";
     while ($row = mysqli_fetch_array($result)) {
@@ -137,7 +129,7 @@ echo "<div class='[ col-sm-8 col-sm-offset-2 col-md-7 ]'>";
                 echo "<td><a target='_blank' href='tcpdf/examples/certificate-English-email.php?volunteer_id=" . $VolunteerID . "&event_id=" . $selectEvent . "'><img src=\"images\Certificate.png\" alt=\"Certificate\" ' /></a></td>";
                 echo "<td> $email </td>";
                 echo "<td> $MobileNumber </td>";
-                echo "<td>" . $FirstName . " " . $MiddleName . " " . $LastName . "</td>";
+                echo "<td>" . $FirstName . "&nbsp" . $MiddleName . "&nbsp" . $LastName . "</td>";
                 echo "<td> $VolunteerID</td>";
                 //echo "<td><input type='checkbox' name='" . $num ."' />&nbsp;</td>"; //7777
                 echo "<td> <input type='checkbox' name=CertificateSelection[] value=$VolunteerID> </td>";

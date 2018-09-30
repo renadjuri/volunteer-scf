@@ -76,16 +76,7 @@ switch ($action) {
         break;
 }
 ?>
-<style type="text/css">
-    body{
 
-        background-size:cover;
-        background-attachment:fixed;
-    }
-    a:hover{
-        text-decoration: none;
-    }
-</style>
 
 <script type="text/javascript">
     function ConfirmAcceptVolunteer()
@@ -118,7 +109,7 @@ $result = mysqli_query($con, $query);
 echo " <div class='row'> ";
 echo "<div class='[ col-sm-8 col-sm-offset-2 col-md-7 ]'>";
 echo "<form method='post' class='form-inline' name='Volunteer_selectEvent' action='admin_volunteers_at_events_tab.php'>";
-echo "<button type='submit' class='btn btn-success' name='show'  value='show'>بحث</button> &nbsp;&nbsp;";
+echo "<button type='submit' class='btn btn-success' name='show'  value='show'>عرض</button> &nbsp;&nbsp;";
 
 echo "<select class='form-control' id='event' name='Volunteer_selectEvent'>";
 while ($row = mysqli_fetch_array($result)) {
@@ -131,7 +122,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 echo "</select>";
 
-echo "</form>";
+echo "</form><br><br>";
 
 if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
     //00000
@@ -145,28 +136,28 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
     //                 . " volunteer.VolunteerID = volunteerparticipateonevent.Volunteer_ID and volunteerparticipateonevent.Event_ID = $Volunteer_selectEvent";
 
     $query = "SELECT Vounteer_ID, volunteer.FirstName, volunteer.MiddleName, volunteer.LastName, Task FROM volunteerregisterinevent, volunteer WHERE volunteer.VolunteerID=volunteerregisterinevent.Vounteer_ID and Status=0 and volunteer.BlackList=0 and Event_ID=$Volunteer_selectEvent";
-
     $result = mysqli_query($con, $query);
-
     $numRows = mysqli_num_rows($result);
-   
+   // echo " <div class='row'> ";
+  //  echo "<div class='[ col-sm-8 col-sm-offset-2 col-md-7 ]'>";
     if ($numRows <= 0) {
 
-        echo " لا يوجد طلبات للتطوع في هذه الفعالية حاليا </div>";
-         echo "<br>";
-          echo "<br>";
+        echo "<div> لا يوجد طلبات للتطوع في هذه الفعالية حاليا </div>";
+        echo "<br>";
+        echo "<br>";
     } else {
-        echo "<br><div><br><br>";
+
+        //echo "<br><br><br>";
         //creating a table for listing the volunteers in the selected event
         // إنشاء جدول لإضافة المتطوعين المشاركين بالفعالية المحددة
-        echo "<table table-hover table-striped'>";
+        echo "<table table-hover table-striped' style='width:100%;'>";
         echo "<tr>";
         echo "<th> </th>";
         echo "<th>تعديل المهمه </th>";
+        echo "<th>المهمه </th>";
         if ($action == 'EditTask') {
             echo "<th></th>";
         }
-        echo "<th>المهمه </th>";
         echo "<th>الاسم الثلاثي</th>";
         echo "<th>السجل المدني</th>";
         echo "</tr>";
@@ -197,8 +188,8 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
                 . " <a class='kbtn btn-lg'>  حفظ&nbsp <span class='glyphicon glyphicon-floppy-saved' ata-toggle = 'tooltip' data-placement = 'bottom' title ='حفظ المهمه الجديدة'></span></a></button> </td>";
 
                 echo "<input type='hidden' name='id' value='$EventID'>";
-                echo "<div class='form-group'>";
-                echo "<td width='30'><a style= 'color:grey;' href='admin_volunteers_at_events_tab.php'> <span class='glyphicon glyphicon-remove' ata-toggle = 'tooltip' data-placement = 'bottom' title ='إلغاء التعديل'></span> </a></td>";
+                //echo "<div class='form-group'>";
+                
                 echo "<td> <select class='form-control' name ='TasksDropdown'>";
                 $query2 = "SELECT * FROM taskofevent where Event_ID = $Volunteer_selectEvent";
 
@@ -210,49 +201,49 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
                 }
 
                 echo "</select></td>";
-                echo "</div>";
+                echo "<td><a style='color:grey;' href='admin_volunteers_at_events_tab.php'> <span style='padding-right:100%;' class='glyphicon glyphicon-remove' ata-toggle = 'tooltip' data-placement = 'bottom' title ='إلغاء التعديل'></span> </a></td>";
+   
+                //echo "</div>";
                 echo "</form>";
             } else {
                 echo "<td><a class='kbtn btn-lg' href='admin_volunteers_at_events_tab.php?volunteer_id=" . $VolunteerID . "&event_id=" . $Volunteer_selectEvent . "&action=EditTask'> تعديل&nbsp<span class='glyphicon glyphicon-edit'></span> </a> </td>";
+                echo "<td> $Task </td>";
                 if ($action == 'EditTask') {
                     echo "<td></td>";
                 }
-                echo "<td> $Task </td>";
+                
             }
             //------------------------------------------------------------------
-            echo "<td>" . $FirstName . " " . $MiddleName . " " . $LastName . "</td>";
+            echo "<td>" . $FirstName . "&nbsp" . $MiddleName . "&nbsp" . $LastName . "</td>";
             echo "<td> $VolunteerID</td>";
 
             echo "</tr>";
         }
 
         echo "</table>";
-        echo "</div>";
+       // echo "</div></div>";
     }
 
-    echo "<br> ";
-
+    //echo " <div class='row'> ";
+    //echo "<div class='[ col-sm-8 col-sm-offset-2 col-md-7 ]'>";
     echo "<legend> <h3>المتطوعون المقبولون بالفعالية</h3></legend> ";
 //                    $query = "select DISTINCT VolunteerID, FirstName, MiddleName, LastName, MobileNumber, email from volunteer, account, volunteerparticipateonevent where account.Username = volunteer.VolunteerUsername and"
 //                    . " volunteer.VolunteerID = volunteerparticipateonevent.Volunteer_ID and volunteerparticipateonevent.Event_ID = $Volunteer_selectEvent";
 
     $query = "SELECT Vounteer_ID, volunteer.FirstName, volunteer.MiddleName, volunteer.LastName, Task FROM volunteerregisterinevent, volunteer WHERE volunteer.VolunteerID=volunteerregisterinevent.Vounteer_ID and Status=1 and volunteer.BlackList=0 and Event_ID=$Volunteer_selectEvent";
-
     $result = mysqli_query($con, $query);
-
-
     $numRows = mysqli_num_rows($result);
+
     if ($numRows <= 0) {
-        echo "<br> ";
-        echo "<br> لا يوجد متطوعين مقبولين حتى الآن";
-        echo "</div>";
+        echo "<div> ";
+        echo " لا يوجد متطوعين مقبولين حتى الآن";
         echo "</div>";
     } else {
 
         //creating a table for listing the volunteers in the selected event
         // إنشاء جدول لإضافة المتطوعين المقبولون بالفعالية المحددة
 
-        echo "<table  table-hover table-striped'>";
+        echo "<table  table-hover table-striped' style='width:100%;'>";
         echo "<tr>";
         echo "<th>المهمه </th>";
         echo "<th>الاسم الثلاثي</th>";
@@ -278,8 +269,8 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
         }
 
         echo "</table>";
-    
-        echo "</div></div>";
+        echo "<br>";
+
     }
 }
 ?>
@@ -354,29 +345,30 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
 <!--volunteer hours -->
 
 <?php
-echo "<br><br><br><br>";
-echo "<br> <div class='row'>";
+/*
+  echo "<br><br><br><br>";
+  echo "<br> <div class='row'>";
 
-echo "<div class='[ col-sm-8 col-sm-offset-3 col-md-6 ]'>";
-// filtering by date dropdown list
-echo "<form method='post' class='form-inline' name='Volunteer_selectEvent' action='admin_volunteers_at_events_tab.php'>";
-echo "<button type='submit' class='btn btn-success' name='hours'  value='hours'>إدخال الساعات التطوعية</button> &nbsp;&nbsp;";
-echo "<div class='form-group'>";
+  echo "<div class='[ col-sm-8 col-sm-offset-3 col-md-6 ]'>";
+  // filtering by date dropdown list
+  echo "<form method='post' class='form-inline' name='Volunteer_selectEvent' action='admin_volunteers_at_events_tab.php'>";
+  echo "<button type='submit' class='btn btn-success' name='hours'  value='hours'>إدخال الساعات التطوعية</button> &nbsp;&nbsp;";
+  echo "<div class='form-group'>";
 
-echo "<select class='form-control' id='event'  name='selectEventDate'>";
+  echo "<select class='form-control' id='event'  name='selectEventDate'>";
 
-$query = "SELECT * FROM dateofevent where Event_ID = $Volunteer_selectEvent";
-$result = mysqli_query($con, $query);
+  $query = "SELECT * FROM dateofevent where Event_ID = $Volunteer_selectEvent";
+  $result = mysqli_query($con, $query);
 
-while ($row = mysqli_fetch_array($result)) {
-    echo'<option value="' . $row['Date'] . '">';
-    echo $row['Date'];
-    echo"</option>";
-}
-echo "</select>";
-echo "</div>";
-echo "</form></div></div>";
-
+  while ($row = mysqli_fetch_array($result)) {
+  echo'<option value="' . $row['Date'] . '">';
+  echo $row['Date'];
+  echo"</option>";
+  }
+  echo "</select>";
+  echo "</div>";
+  echo "</form></div></div>";
+ */
 //-----------------------------------------------------
 //if (isset($_POST["hours"])) {
 // $row = $_POST["Volunteer_selectEvent"];
@@ -425,11 +417,11 @@ echo "</form></div></div>";
 // echo "</table>";
 // echo ;
 //--------------------------------------------------------------------------------------
-
-echo "<br><br><br><br><br><br><br><br> ";
+ echo "</div></div>";
+//echo "<br><br><br><br><br><br><br><br> ";
 //  }
 ?>
-
+</body>
 
 
 <?php include('includes/footer.php'); ?>

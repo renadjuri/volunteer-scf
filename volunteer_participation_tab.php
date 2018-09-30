@@ -9,12 +9,6 @@ include("includes/volunteer_tabs.php"); // Admin profile tabs
 $_SESSION["username"];
 ?>
 
-<style>
-    body{
-        background-size:cover;
-        background-attachment:fixed;
-    }
-</style>	
 
 <body>
     <!-- Tab Name -->

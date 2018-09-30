@@ -6,16 +6,7 @@ mysqli_set_charset($con, "utf8");
 $page = 'admin_personal_information_tab'; //page title to pass it to admin profile tabs
 include("includes/admin_tabs.php"); // Admin profile tabs
 ?>
-<style type="text/css">
-    body{
 
-        background-size:cover;
-        background-attachment:fixed;
-    }
-    a:hover{
-        text-decoration: none;
-    }
-</style>
 <body>
 
 <?php

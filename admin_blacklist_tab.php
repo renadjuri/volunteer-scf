@@ -37,16 +37,7 @@ switch ($action) {
         break;
 }
         ?>
-<style type="text/css">
-    body{
 
-        background-size:cover;
-        background-attachment:fixed;
-    }
-    a:hover{
-        text-decoration: none;
-    }
-</style>
 <script type="text/javascript">
     function ConfirmDeleteFromBlacklist()
     {

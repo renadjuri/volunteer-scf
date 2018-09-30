@@ -25,47 +25,70 @@ include("includes/Header.php"); // the header of the page
 
 
 <body>
-<!-- Page Header -->
+    <!-- Page Header -->
     <header class="masthead" style="background-image: url('images/header-2.png')">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 col-md-10 mx-auto">
-            <div class="site-heading">
-              <h1>الفعاليات</h1>
-              <span class="subheading">قم بالتسجيل بأحد الفعاليات التابعة لجمعية السرطان السعودية</span>
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-6">
+                    <div style="height: 25px; padding-top: 35px; padding-bottom: 160px;" class="site-heading">
+                        <h1>الفعاليات</h1>
+                        <span class="subheading">قم بالتسجيل بأحد الفعاليات التابعة لجمعية السرطان السعودية</span>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </header>
-    <br>
+
 
     <?php
-   
-    if (isset($_GET['reg'])) {
-        $register = $_GET['reg'];
-        
-        if ($register === 'false') {
-             $msg = '<div class="alert alert-danger"> تأكد من تسجيل دخولك قبل التسجيل&ensp;'
-                    . '<span class= "glyphicon glyphicon-send"></span> '
-                    . 'ً</div>';
-           
-            echo $msg ;
-            
-        } else if ($register === 'true') {
-            $msg = '<div class="alert alert-success">تم تسجيلك بنجاح&ensp;'
-                    . '<span class= "glyphicon glyphicon-send"></span>'
-                    . '</div>';
-
-            echo $msg;
-        }
-    }
     if (isset($_GET['EventID'])) {
 
         $EventID = $_GET['EventID'];
-
+        $regbef = 'false';
         require 'includes/connection.php'; //connecting to the database
+        if (isset($_SESSION['id'])) {
+            $VoluID = $_SESSION['id'];
+
+            $query1 = "select Vounteer_ID from volunteerregisterinevent where Event_ID='" . $EventID . "' and Vounteer_ID='" . $VoluID . "'";
+
+            $result = mysqli_query($con, $query1);
+            $rownum = mysqli_num_rows($result);
+            if ($rownum >= 1) {
+                $regbef = 'true';
+            }
+        }
+        if (isset($_GET['reg'])) {
+            $register = $_GET['reg'];
+
+            if ($register === 'false') {
+                $msg = '<div style="width: 700px; margin-left: auto; margin-right: auto;" class="alert alert-danger"> تأكد من تسجيل دخولك قبل التسجيل&ensp;'
+                        . '<span class= "glyphicon glyphicon-send"></span> '
+                        . 'ً</div>';
+
+                echo $msg;
+            } else if ($register === 'true') {
+//            if(isset($_GET['regbef'])){//00000Kh
+//            $regbefore= $_GET['regbef'];
+//            //check if the volunteer registered in the same event before
+//            if($regbefore === 'true'){
+//                $msg = '<div style="width: 700px; margin-left: auto; margin-right: auto;" class="alert alert-danger">أنت مشارك في هذه الفعالية  &ensp;'
+//                    . '<span class= "glyphicon glyphicon-send"></span> '
+//                    . '</div>';
+//            }else if($regbefore === 'false'){
+//             
+                $msg = '<div style="width: 700px; margin-left: auto; margin-right: auto;" class="alert alert-success">تم تسجيلك بنجاح&ensp;'
+                        . '<span class= "glyphicon glyphicon-send"></span>'
+                        . '</div>';
+
+                //}
+                echo $msg;
+                //}
+            }
+        }
+        //  if (isset($_GET['EventID'])) {
+        //$EventID = $_GET['EventID'];
+        // require 'includes/connection.php'; //connecting to the database
         mysqli_set_charset($con, "utf8");
         $get_events = "select * from event where EventID=$EventID";
         $run_events = mysqli_query($con, $get_events);
@@ -77,16 +100,14 @@ include("includes/Header.php"); // the header of the page
             $EventImage = $row_events['EventImage'];
             $Location = $row_events['Location'];
             echo "
-	  <br>
-	  <br>
-	  <br>
+
 	 
 		<table  style='height:40px; width:700px; margin-top:5px; margin-left: auto; margin-right: auto; border:2px #F8F7F3 solid;' >
 		
 
 <tr>
 		
-			<td   width='700'style='vertical-align: top;'> <p align='center' > $EventName </p>
+			<td   width='700'style='vertical-align: top;'> <strong><p align='center' > $EventName </p></strong>
 			<p align='center'>   $EventDescription</p></td>
 			
        <p> </tr>
@@ -114,7 +135,7 @@ include("includes/Header.php"); // the header of the page
             <td colspan='2' align='center'><h6 align='center'>
             <form method='post' action='EventRegistration.php'>
              <input type='hidden' name='id' value='$EventID'>
-            <select name='TaskOption'>";
+            <select style='width:100px; margin-left: auto; margin-right: auto;' class='form-control' name='TaskOption'>";
             $qry2 = "SELECT * FROM taskofevent  
 													 
 													  where Event_ID=$EventID";
@@ -127,27 +148,32 @@ include("includes/Header.php"); // the header of the page
                 echo"</option>";
             }
 
-            echo" </select> 
+            echo " </select> 
                     <br>
-                    <br>
+                    <br>";
 
-                    <button type='submit'>التسجيل</button>
-                    </form></h6></td>
+
+            if ($regbef == 'true') {
+                echo "<strong><p style='color:red; font-size:14px;'>أنت مشارك في هذه الفعالية</p></strong>";
+            } else {
+                echo "<button type='submit' class='btn btn-success'>تسجيل</button>";
+            }
+            echo "</form></h6></td>
 		</tr>
         </table >
         <hr class='style4'>";
         }
     }
     ?>
-    
-    
-        <div class="row">
 
-            <div class="col-sm-4">
-                <button type="button" class="btn btn-primary"> <a href="events.php" style="color:#fff">رجوع</a> </button>
-            </div></div>
+
+    <div class="row">
+
+        <div class="col-sm-4">
+            <a href="events.php" style="color:#fff" class="btn btn-success">عودة</a>
+        </div></div>
     <br>
     <br>
     <!--Footer of the page -->
 
-    <?php include('includes/footer.php'); ?>
+<?php include('includes/footer.php'); ?>

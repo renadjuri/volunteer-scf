@@ -119,7 +119,7 @@ include("includes/Header.php"); // the header of the page
 
 
                             <time><?php echo $Image; ?></time>
-
+                            
                             <div class = "info">
                                 <h2 class = "title"> <?php echo $EventName; ?></h2>
                                 <h2 class = "desc">  <?php echo $EventDescription; ?> </h2>
@@ -127,7 +127,7 @@ include("includes/Header.php"); // the header of the page
                                 <p class = "desc"><b> الموقع: </b><?php echo $Location; ?> </p>
                                 <p class = "desc"><b> الموعد:</b> <?php echo implode(', ', $DateofEvent); ?> </p>
 
-                                <p align='left'><a href='Details.php?EventID=<?php echo $EventID ?>'  > .الإطلاع على المزيد</a></p>
+                                <div align='left'>&nbsp;&nbsp;<a href='Details.php?EventID=<?php echo $EventID ?>' class="btn btn-success">تسجيل</a></div>
 
                                 <ul>
                                     <li style = "width:34%;"> <?php echo $MaleNum; ?> <span class = "fa fa-male"

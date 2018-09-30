@@ -35,16 +35,7 @@ switch ($action) {
         break;
 }
         ?>
-<style type="text/css">
-    body{
 
-        background-size:cover;
-        background-attachment:fixed;
-    }
-    a:hover{
-        text-decoration: none;
-    }
-</style>
 <script type="text/javascript">
     function ConfirmAddToBlacklist()
     {
@@ -104,7 +95,7 @@ if ($numRows <= 0) {
         echo "<td> $VolunteerUsername </td>";
         echo "<td> $email </td>";
         echo "<td> $MobileNumber </td>";
-        echo "<td>" . $FirstName . " " . $MiddleName . " " . $LastName . "</td>";
+        echo "<td>" . $FirstName . "&nbsp" . $MiddleName . "&nbsp" . $LastName . "</td>";
         echo "<td> $VolunteerID</td>";
 
         echo "</tr>";

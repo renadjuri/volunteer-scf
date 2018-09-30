@@ -8,12 +8,6 @@ $page = 'volunteer_event_tab'; //page title to pass it to admin profile tabs
 include("includes/volunteer_tabs.php"); // Admin profile tabs
 $_SESSION["username"];
 ?>
-<style>
-    body{
-        background-size:cover;
-        background-attachment:fixed;
-    }
-</style>	
 
 <body>
 
