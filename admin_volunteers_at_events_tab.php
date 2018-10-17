@@ -30,12 +30,7 @@ switch ($action) {
                 $result = mysqli_query($con, $query);
                 $query2 = "INSERT INTO volunteerparticipateonevent (Volunteer_ID, Event_ID) VALUES ('$id', '$event_id')";
                 $result2 = mysqli_query($con, $query2);
-//0000
-                //  header("Location: admin-profile.php");
             }
-        } else {
-            //0000000
-            //header("Location: admin-profile.php");
         }
         break;
     case "RejectVolunteer":
@@ -44,18 +39,10 @@ switch ($action) {
                 $event_id = $_GET['event_id'];
                 $query = "UPDATE volunteerregisterinevent SET status = 2, Admin_ID=" . $_SESSION['id'] . " where Vounteer_ID=$id and Event_ID=$event_id";
                 $result = mysqli_query($con, $query);
-
-                header("Location: admin_volunteers_at_events_tab.php");
             }
         } else {
             header("Location: admin_volunteers_at_events_tab.php");
         }
-        break;
-    case "EditTask":
-        // id="defaultOpen"
-        //onclick="openTab(event, 'event_volunteers')"
-        // echo "<script type='text/javascript'> openTab(event, 'event_volunteers');</script>"; //0000
-
         break;
     case "SaveEditTask":
         if (isset($_POST["TasksDropdown"])) {
@@ -117,8 +104,19 @@ while ($row = mysqli_fetch_array($result)) {
         $EventID = $row['EventID'];
         $EventName = $row['EventName'];
     }
-
-    echo "<option value='$EventID' >$EventName</option>";
+    if (isset($_POST["Volunteer_selectEvent"]) || isset($_GET['event_id']) || $action == 'EditTask') {
+        $Volunteer_selectEvent = $_POST["Volunteer_selectEvent"];
+        if (isset($_GET['event_id'])) {
+            $Volunteer_selectEvent = $_GET['event_id'];
+        }
+        if ($Volunteer_selectEvent == $EventID) {
+            echo "<option value='$EventID' selected>$EventName</option>";
+        } else {
+            echo "<option value='$EventID' >$EventName</option>";
+        }
+    } else {
+        echo "<option value='$EventID' >$EventName</option>";
+    }
 }
 echo "</select>";
 
@@ -132,14 +130,12 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
     if (isset($_GET['event_id'])) {
         $Volunteer_selectEvent = $_GET['event_id'];
     }
-    //         $query = "select DISTINCT VolunteerID, FirstName, MiddleName, LastName, MobileNumber, email from volunteer, account, volunteerparticipateonevent where account.Username = volunteer.VolunteerUsername and"
-    //                 . " volunteer.VolunteerID = volunteerparticipateonevent.Volunteer_ID and volunteerparticipateonevent.Event_ID = $Volunteer_selectEvent";
 
     $query = "SELECT Vounteer_ID, volunteer.FirstName, volunteer.MiddleName, volunteer.LastName, Task FROM volunteerregisterinevent, volunteer WHERE volunteer.VolunteerID=volunteerregisterinevent.Vounteer_ID and Status=0 and volunteer.BlackList=0 and Event_ID=$Volunteer_selectEvent";
     $result = mysqli_query($con, $query);
     $numRows = mysqli_num_rows($result);
-   // echo " <div class='row'> ";
-  //  echo "<div class='[ col-sm-8 col-sm-offset-2 col-md-7 ]'>";
+    // echo " <div class='row'> ";
+    //  echo "<div class='[ col-sm-8 col-sm-offset-2 col-md-7 ]'>";
     if ($numRows <= 0) {
 
         echo "<div> لا يوجد طلبات للتطوع في هذه الفعالية حاليا </div>";
@@ -189,20 +185,22 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
 
                 echo "<input type='hidden' name='id' value='$EventID'>";
                 //echo "<div class='form-group'>";
-                
+
                 echo "<td> <select class='form-control' name ='TasksDropdown'>";
                 $query2 = "SELECT * FROM taskofevent where Event_ID = $Volunteer_selectEvent";
 
                 $result2 = mysqli_query($con, $query2);
                 while ($row2 = mysqli_fetch_array($result2)) {
-                    echo'<option value="' . $row2['Task'] . '">';
-                    echo $row2['Task'];
-                    echo"</option>";
+                    if ($row2['Task'] == $Task) {
+                        echo'<option value="' . $row2['Task'] . '" selected>' . $row2['Task'] . '</option>';
+                    } else {
+                        echo'<option value="' . $row2['Task'] . '">' . $row2['Task'] . '</option>';
+                    }
                 }
 
                 echo "</select></td>";
                 echo "<td><a style='color:grey;' href='admin_volunteers_at_events_tab.php'> <span style='padding-right:100%;' class='glyphicon glyphicon-remove' ata-toggle = 'tooltip' data-placement = 'bottom' title ='إلغاء التعديل'></span> </a></td>";
-   
+
                 //echo "</div>";
                 echo "</form>";
             } else {
@@ -211,7 +209,6 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
                 if ($action == 'EditTask') {
                     echo "<td></td>";
                 }
-                
             }
             //------------------------------------------------------------------
             echo "<td>" . $FirstName . "&nbsp" . $MiddleName . "&nbsp" . $LastName . "</td>";
@@ -221,7 +218,7 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
         }
 
         echo "</table>";
-       // echo "</div></div>";
+        // echo "</div></div>";
     }
 
     //echo " <div class='row'> ";
@@ -270,7 +267,6 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
 
         echo "</table>";
         echo "<br>";
-
     }
 }
 ?>
@@ -417,7 +413,7 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
 // echo "</table>";
 // echo ;
 //--------------------------------------------------------------------------------------
- echo "</div></div>";
+echo "</div></div>";
 //echo "<br><br><br><br><br><br><br><br> ";
 //  }
 ?>

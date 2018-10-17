@@ -46,6 +46,9 @@ $_SESSION["username"];
                 //printing events' info in the table
                 //طباعة بيانات الفعاليات في الجدول
                 echo "<td> $EventName </td>";
+                if ($Status == 0){$Status = "جاري معالجة الطلب";}
+                else if ($Status == 1){$Status = "تم قبول الطلب";}
+                else if ($Status == 1){$Status = "تم رفض الطلب";}
                 echo "<td> $Status </td>";
 
                 echo "</tr>";
