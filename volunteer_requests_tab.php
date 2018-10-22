@@ -1,7 +1,7 @@
 <!-- the header of the page-->
 <?php
 $page_title = "الصفحة الشخصية"; //page title to pass it to the header
-include("includes/Header.php"); // the header of the page
+include("includes/Header2.php"); // the header of the page
 include("includes/connection.php"); //connecting to the database
 mysqli_set_charset($con, "utf8");
 $page = 'volunteer_requests_tab'; //page title to pass it to admin profile tabs
@@ -16,9 +16,9 @@ $_SESSION["username"];
 
     <!-- Tab Name -->
 <legend>  <h1>طلبات التطوع  &nbsp;</h1></legend>
-<br>
+
 <div class="row">
-    <div class="[col-sm-8 col-sm-offset-2 col-md-7 ]">
+    <div class="[col-sm-8 col-md-7 ]">
 
         <?php
         $query = "select EventName, Status from volunteerregisterinevent, event, volunteer where volunteerregisterinevent.Event_ID = event.EventID and volunteerregisterinevent.Vounteer_ID = volunteer.VolunteerID and volunteer.VolunteerUsername = '$username'";

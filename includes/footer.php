@@ -96,7 +96,7 @@
 <script>
     $.fn.select2.defaults.set("theme", "bootstrap");
         $("select.form-control").select2({
-            width: null,
+            width: 350,
             dir: 'rtl'
         })
 </script>

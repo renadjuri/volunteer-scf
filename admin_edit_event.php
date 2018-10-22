@@ -1,7 +1,7 @@
 
 <?php
 $page_title = "تعديل فعالية"; //page title to pass it to the header
-include("includes/Header.php"); // the header of the page
+include("includes/Header2.php"); // the header of the page
 //SetCookie("event","1",1); 
 $EventID = $_POST['ID'];
 ?>
@@ -118,7 +118,7 @@ if (isset($_POST['aupdate-submit'])) {
     </div>
 
     <div class="row">
-        <div class="[ col-sm-8 col-sm-offset-3 col-md-12 ]">
+        <div class="[  col-md-10 ]">
             <form method="post" id="add_event-form"  role="form" style="  text-align: right;"  autocomplete="on" >
                 <div class="form-group">
                     <table class='table-striped'>

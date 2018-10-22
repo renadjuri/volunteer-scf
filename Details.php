@@ -100,7 +100,7 @@ include("includes/Header.php"); // the header of the page
             $EventImage = $row_events['EventImage'];
             $Location = $row_events['Location'];
             echo "
-
+<br><br>
 	 
 		<table  style='height:40px; width:700px; margin-top:5px; margin-left: auto; margin-right: auto; border:2px #F8F7F3 solid;' >
 		
@@ -134,18 +134,15 @@ include("includes/Header.php"); // the header of the page
         <tr>
             <td colspan='2' align='center'><h6 align='center'>
             <form method='post' action='EventRegistration.php'>
-             <input type='hidden' name='id' value='$EventID'>
-            <select style='width:100px; margin-left: auto; margin-right: auto;' class='form-control' name='TaskOption'>";
-            $qry2 = "SELECT * FROM taskofevent  
-													 
-													  where Event_ID=$EventID";
-
+            <input type='hidden' name='id' value='$EventID'>
+            <div class='form-group'>
+            <select style='width:120px; margin-left: auto; margin-right: auto;' class='form-control' name='TaskOption'>";
+            $qry2 = "SELECT * FROM taskofevent where Event_ID=$EventID";
 
             $result2 = mysqli_query($con, $qry2);
             while ($row = mysqli_fetch_array($result2)) {
-                echo'<option value="' . $row['Task'] . '">';
-                echo $row['Task'];
-                echo"</option>";
+                $task = $row['Task'];
+                echo "<option value='$task' >$task</option>";
             }
 
             echo " </select> 
@@ -169,8 +166,8 @@ include("includes/Header.php"); // the header of the page
 
     <div class="row">
 
-        <div class="col-sm-4">
-            <a href="events.php" style="color:#fff" class="btn btn-success">عودة</a>
+        <div class="col-sm-12">
+            <a href="events.php" style="color:#fff; margin-right: 970px;" class="btn btn-success">عودة</a>
         </div></div>
     <br>
     <br>

@@ -1,6 +1,6 @@
 <?php
 $page_title = "اضافة فعالية"; //page title to pass it to the header
-include("includes/Header.php"); // the header of the page
+include("includes/Header2.php"); // the header of the page
 ?>
 
 
@@ -76,13 +76,13 @@ if (isset($_POST['add-submit'])) {
 ?>
 <!-- Style CSS -->
 
-<link href="css/style-login.css" rel="stylesheet" type="text/css" />
+<link href="css/style1.css" rel="stylesheet" type="text/css" />
 
 
 
 <div class="panel-heading">
     <div class="row">       
-        <div class="col-lg-12">
+        <div class="col-lg-12" style="margin-top: 70px;">
             <legend> <h1>اضافة فعالية &nbsp;</h1></legend>
         </div>
 
@@ -91,7 +91,7 @@ if (isset($_POST['add-submit'])) {
 </div>
 
 <div class="row">
-    <div class="[ col-sm-8 col-sm-offset-3 col-md-12 ]">
+    <div class="[  col-md-10 ]">
         <form method="post" id="add_event-form"  role="form" style="  text-align: right;"  autocomplete="on" >
             <div class="form-group">
                 <table class='table-striped'>
@@ -126,7 +126,7 @@ if (isset($_POST['add-submit'])) {
 
                         </td>
                         <td>
-                            <label type="text" >نبذة عن الفعالة</label>
+                            <label type="text" >نبذة عن الفعالية</label>
                         </td>
 
                     </tr>
@@ -223,17 +223,10 @@ if (isset($_POST['add-submit'])) {
                     <tr>
 
                         <td> 
-
-
-                            <a href="admin_events_tab.php" tabindex="18"  name="cancel" id="cancel" class="form-control btn btn-danger" >رجوع</a>
-
-
+                            <a href="admin_events_tab.php" tabindex="18"  name="cancel" id="cancel" class="form-control btn btn-danger" style="padding:auto;">رجوع</a>
                         </td>
                         <td>
-
-                            <input type="submit" name="add-submit" id="add-submit" tabindex="17"
-                                   class="form-control btn btn-success" value="حفظ"/>
-
+                            <input type="submit" name="add-submit" id="add-submit" tabindex="17" class="form-control btn btn-success" value="حفظ"/>
                         </td>
 
                     </tr>

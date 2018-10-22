@@ -106,7 +106,7 @@ include("includes/admin_tabs.php"); // Admin profile tabs
 
                                 <div class = "info">
                                     <h2 class = "title"> <?php echo $EventName; ?></h2>
-                                    <h2 class = "desc">  <?php echo $EventDescription; ?> </h2>
+                                    <h4 class = "desc" style="padding-top: 10px; padding-left: 20px;">  <?php echo $EventDescription; ?> </h4>
                                     <p class = "desc"><b> الموقع: </b><?php echo $Location; ?> </p>
                                     <p class = "desc"><b> الموعد:</b> <?php echo implode(', ', $DateofEvent); ?> </p>
                                     <p class = "desc"><b> المهام:</b> <?php echo implode(', ', $Tasks); ?> </p>

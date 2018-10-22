@@ -97,7 +97,7 @@ echo " <div class='row'> ";
 echo "<div class='[ col-sm-8 col-sm-offset-1 col-md-7 ]'>";
 echo "<form method='post' class='form-inline' name='Volunteer_selectEvent' action='admin_volunteers_at_events_tab.php'>";
 echo "<button type='submit' class='btn btn-success' name='show'  value='show'>عرض</button> &nbsp;&nbsp;";
-
+echo "<div class='form-group'>";
 echo "<select class='form-control' id='event' name='Volunteer_selectEvent'>";
 while ($row = mysqli_fetch_array($result)) {
     foreach ($row as $id => $val) {
@@ -120,7 +120,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 echo "</select>";
 
-echo "</form><br><br>";
+echo "</div></form><br><br>";
 
 if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
     //00000
@@ -223,7 +223,7 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
 
     //echo " <div class='row'> ";
     //echo "<div class='[ col-sm-8 col-sm-offset-2 col-md-7 ]'>";
-    echo "<legend> <h3>المتطوعون المقبولون بالفعالية</h3></legend> ";
+    echo "<br><legend> <h4><strong>المتطوعون المقبولون بالفعالية</strong></h4></legend> ";
 //                    $query = "select DISTINCT VolunteerID, FirstName, MiddleName, LastName, MobileNumber, email from volunteer, account, volunteerparticipateonevent where account.Username = volunteer.VolunteerUsername and"
 //                    . " volunteer.VolunteerID = volunteerparticipateonevent.Volunteer_ID and volunteerparticipateonevent.Event_ID = $Volunteer_selectEvent";
 

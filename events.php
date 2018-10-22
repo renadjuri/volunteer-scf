@@ -82,7 +82,7 @@ include("includes/Header2.php"); // the header of the page
 
 <!--                            <time><?php echo $Image; ?></time>-->
                             
-                            <div class = "info pos-relative">
+                            <div class = "info info1 pos-relative">
                                 <h4 class = "title"> <?php echo $EventName; ?></h4>
                                 <p class = "desc">  <?php echo $EventDescription; ?> </p>
                                 <p class = "desc"><b> الموقع: </b><?php echo $Location; ?> </p>
