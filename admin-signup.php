@@ -17,7 +17,7 @@
 
 
 <?php
-include("includes/Header.php"); // the header of the page
+include("includes/Header2.php"); // the header of the page
 //$_SESSION['admin'] = "true"; //000
 require 'includes/connection.php'; //connecting to the database
 mysqli_set_charset($con, "utf8");
@@ -129,7 +129,7 @@ include("includes/admin_tabs.php"); // Admin profile tabs
 <legend>   <h1>إنشاء حساب خاص بالادمن &nbsp;</h1>  </legend>
 
 <div class='row'>
-    <div class='[ col-sm-9 col-sm-offset-2 col-md-7 ]'> 
+    <div class='[ col-sm-9 col-sm-offset-1 col-md-7 ]'> 
         <div class="panel panel-login">
             <div class="panel-body">
                 <div class="row">

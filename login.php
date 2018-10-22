@@ -3,8 +3,23 @@
 
 <?php
 $page_title = "تسجيل الدخول"; //page title to pass it to the header
-include("includes/Header.php"); // the header of the page
+include("includes/Header2.php"); // the header of the page
 ?>
+  <header class="masthead inner" style="background-image: url('images/header-7.jpg')">
+          <div class="overlay"></div>
+          <div class="container-fluid p-r-l-51 p-t-160 ">
+            <div class="row">
+              <div class="col-lg-12 col-md-12 mx-auto">
+                <div class="">
+                  <h2 class="yellow-text">تسجيل الدخول</h2>
+                  <h4 class="subheading white-text">قم بإدخال اسم المسخدم وكلمة المرور</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        
+
 <script>
     function myFunction() {
         var x = document.getElementById("password");
@@ -79,58 +94,58 @@ include("includes/Header.php"); // the header of the page
     ?>
 
 
-    <br>
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+      
                 <div class="panel panel-login">
-                    <div class="panel-heading">
                         <div class="row">
                             <div class="col-lg-12">
-                                <h1>تسجيل الدخول</h1>
+                                             <h3 class="sub-heading">بيانات الدخول</h3>
                             </div>
 
                         </div>
-                        <hr>
-                    </div>
+                   
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
                                 <?php if (empty($_SESSION['id'])) { ?>
                                     <form method="post" id="login-form"  role="form" style="display: block;">
 
-                                        <div style="margin-bottom: 25px" class="input-group"> 
-                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="إسم المستخدم"  
+<div class="row">
+	<div class="col-md-6">
+                                            <input type="text" name="username" id="username" tabindex="1" class="form-control text-right input-group w-full" placeholder="اسم المستخدم"  
                                                    value="<?php
                                     if (isset($_POST['username'])) {
                                         echo $_POST['username'];
                                     }
                                     ?>"  > 
-                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        </div>
-                                        <div style="margin-bottom: 25px" class="input-group"> 
+                                            
+	</div>
+	<div class="col-md-6">
+<input type="password" name="password" id="password" tabindex="2" class="form-control text-right input-group w-full" placeholder="********"
+value="<?php if (isset($_POST['password'])) { echo $_POST['password'];} ?>">
 
-                                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="********"
-                                                   value="<?php
-                                               if (isset($_POST['password'])) {
-                                                   echo $_POST['password'];
-                                               }
-                                    ?>">
 
-                                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 
-                                        </div>
-                                        <div>   اظهار كلمة المرور   <input type="checkbox" onclick="myFunction()"
+	</div>
+
+</div>
+                                       
+
+
+                                     
+                                        <div class="row p-t-10">
+<div class="col-md-12">
+                                           إظهار كلمة المرور   <input type="checkbox" onclick="myFunction()">
+                                       </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-sm-6 col-sm-offset-3">
-                                                    <input type="submit" name="login-submit" tabindex="4" class="form-control btn  btn-register" value="تسجيل دخول">
-                                                </div>
+                                            	  <div class="col-sm-4 col-sm-offset-4">
+                                            	  	 <input id="submit" name="login-submit" type="submit" value="تسجيل دخول" tabindex="4" class="btn btn-block btn-success">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <div class="row">
+                                            <div class="row p-t-10">
                                                 <div class="col-lg-12">
                                                     <div class="text-center">
                                                         <a href="forget-password.php" tabindex="5" class="forgot-password">نسيت كلمة المرور؟</a>
@@ -154,10 +169,7 @@ include("includes/Header.php"); // the header of the page
             </div>
         </div>
     </div>
-</div>
-<br>
-<br>
-<br>
+
 <!--Footer of the page -->
 <?php include('includes/footer.php');
 ?>

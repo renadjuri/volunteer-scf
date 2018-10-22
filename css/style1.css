@@ -2,42 +2,291 @@
     Created on : Apr 5, 2018, 10:54:22 PM
     Author     : renad
 */
+@font-face {
+font-family: 'Cairo-reg';
+src: url('../fonts/Cairo-Regular.ttf');
+font-weight: normal;
+}
 
+@font-face {
+font-family: 'Cairo-bold';
+src: url('../fonts/Cairo-Bold.ttf');
+font-weight: normal;
+}
+
+@font-face {
+font-family: 'Cairo-two';
+src: url('../fonts/Cairo-Light.ttf');
+font-weight: normal;
+}
+.form-control:focus {
+    border-color: #048e79 !important;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: none;
+}
+.btn-success{
+      background-color: #007e67 !important;
+    outline: none;
+    color: #fff;
+    border-color: #007e67 !important;
+    text-align: center !important;
+}
+.btn-success:hover{
+    background-color: #096753 !important;
+    outline: none;
+    color: #fff;
+    border-color: #096753 !important;
+    text-align: center !important;
+
+}
+input:focus {
+    outline: transparent !important;
+}
+.m-auto{
+  margin: auto;
+}
+.w-full{
+  width: 100%;
+}
+.input-group {
+    text-align: right !important;
+}
+ul {
+	    padding: 0 20px;
+}
+ul li {
+	    padding: 5px 0;
+}
+.dir-rtl, select {
+	direction: rtl;
+}
+
+.r-6 {
+	border-radius:  6px;
+}
+.form-control {
+	box-shadow: none;
+	padding: 20px 10px;
+}
+.font-18 {
+	    font-size: 18px !important;
+}
+    .event-list > li > time {
+
+        color: rgb(255, 255, 255);
+        background-color:#8db792 ;
+        padding: 5px;
+        text-align: center;
+        text-transform: uppercase;
+        display: inline-block;
+        width: 150px;
+        height: 130px;
+        padding: 0px;
+        margin: 0px;
+        float: right;
+    }
+    .event-list > li {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+    }
+
+
+    .event-list > li > .info {
+        padding-top: 5px;
+
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+        text-align: right;
+        padding-right: 40px;
+    }
+.info {
+	border: solid 2px #cbc000;
+	    border-radius: 6px;
+	    padding: 20px;
+	    min-height: 350px;
+	    transition: .3s all;
+		margin-bottom: 30px;
+}
+/*.info:hover {
+	background: #cbc000;
+	transition: .3s all;	
+}*/
+.register-button {
+	position: absolute;
+	left: 20px;
+	right: 20px;
+	bottom: 25px;
+}
+.pos-relative {
+	position: relative;
+}
+.display-block {
+	display: block !important;
+}
+.font-30 {
+	font-size: 30px !important;
+}
+.font-20 {
+	font-size: 20px !important;
+}
+h2 {
+    font-size: 45px;
+    font-family: 'Cairo-bold';
+}
+h3 {
+		font-size: 35px;
+	 font-family: 'Cairo-bold';
+		
+	}
+.white-text {
+	color: white !important;
+}
+.dark-green {
+	color: #126447 !important;
+}
+.yellow-text {
+	color: #cbc000 !important;
+}
+.inner-header {
+	background: white !important;
+	z-index: 99;
+}
+.social {
+    padding: 6px 0;
+    font-size: 16px!important;
+}
+.p-t-160 {
+	    padding-top: 160px !important;
+}
+.p-b-50 {
+	padding-bottom: 50px !important;
+}
+.p-t-22 {
+	padding-top: 22px !important;
+}
+
+.p-b-20 {
+	padding-bottom: 20px !important;
+}
+.p-t-20 {
+	padding-top: 20px !important;
+}
+.p-y-20 {
+	padding-bottom: 20px !important;
+	padding-top: 20px !important;
+}
+.p-t-10 {
+	padding-top: 10px !important;
+}
+.location-icons {
+	font-size: 22px;
+	padding-left: 10px;
+	min-height: 60px;
+    color: #008f79;
+}
+p {
+	margin-right: 0 !important;
+}
+.p-r-l-51 {
+	padding: 0 51px;
+}
+h3.sub-heading {
+font-family: 'Cairo-bold';
+color: #075532;
+position: relative;
+padding-bottom: 20px;
+margin-bottom: 20px;
+margin-right: 0;
+}
+h3.sub-heading:before{
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 60px;
+	height: 5px;
+	background: #bfb400;
+}
+.main-cont {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    font-size: 30px;
+    position: relative;
+    z-index: 9;
+    padding: 30% !important;
+    margin: auto;
+    color: #fff;
+    text-align: center;
+}
+.main-cont p {
+    font-family: Cairo-bold;
+	margin: 0;
+}
+.about-btn {
+	background: #13674a;
+	border: none;
+	color: white;
+	border-radius: 6px;
+	padding: 10px;
+	margin-top: 20px;
+	font-size: 20px;
+	font-family: 'Cairo-bold';
+	transition: .3s all;	
+}
+
+.about-btn:hover {
+  background: #0d583e;
+  color: white;
+  transition: .3s all;
+}
+.about-btn a, .about-btn:hover a, .about-btn a:hover {
+	color: white !important;
+	text-decoration: none;
+}
+.activities-btn {
+	background: #ada638;
+	border: none;
+	color: white;
+	border-radius: 6px;
+	padding: 10px;
+	margin-top: 20px;
+	font-size: 20px;
+	font-family: 'Cairo-bold';
+	transition: .3s all;
+	
+}
+.activities-btn:hover {
+    background: #96902b;
+    transition: .3s all;
+}
+.activities-btn a, .activities-btn:hover a, .activities-btn a:hover {
+	color: white !important;
+	text-decoration: none;
+}
+ul.nav.navbar-nav a {
+    font-family: 'Cairo-bold';
+}
 h1 {font-size: 28pt;
-    font-family: ge thameen;
+    font-family: Cairo-reg;
     color: #cbc000;
     margin-right: 10pt;
 }
 
-h2 { 
-    font-family: ge thameen;
-    margin-right: 10pt;
-    color: #cbc000;
 
-
-}
-h3 { 
-    font-family: ge thameen; 
-    margin-right: 10pt;
-    color: #cbc000;
-}
 h4 { 
-    font-family: ge thameen;
-    margin-right: 10pt;
-    color: #cbc000;
-    font-size: 2.5em;
+    font-family: Cairo-reg;
+    font-size: 2em;
 }
 
-b {
-    font-family: ge thameen;
-    color: #cbc000;
-}
-p{
-    font-family: ge thameen;
-    margin-right: 10pt; 
-}
 
-body {  font-family: ge thameen;
+
+body {  font-family: Cairo-reg;
         text-align: right ;      
 } 
 /* horizental line */
@@ -52,9 +301,10 @@ body {  font-family: ge thameen;
   padding: 0px;
 }
 .navbar-brand>img {
-  
-  padding: 15px;
-  width: auto;
+    padding-top: 10px;
+}
+.float-left {
+	float:  left;
 }
 
 /* EXAMPLE 9 - Center with Flexbox and Text*/
@@ -74,8 +324,21 @@ body {  font-family: ge thameen;
     z-index: 1;
 }
 
+.header-nav {
+	position: absolute;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    width: 100%;
+}
+.container.header-nav .navbar {
+    background: none !important;
+}
 
-
+#navbar9 {
+    padding-top: 10px;
+	padding-right: 85px;
+}
 
 /* CSS Transform Align Navbar Brand Text ... This could also be achieved with table / table-cells */
 .navbar-alignit .navbar-header {
@@ -115,13 +378,15 @@ body {  font-family: ge thameen;
 
 
 }
-.navbar li a, .navbar .navbar-brand {	
-    color: #297b39 !important;
-}
+/*.navbar li a, .navbar .navbar-brand {	
+    color: white !important;
+}*/
 
 .navbar-nav li a:hover ,.navbar-nav li.active a {	
-    color:#8db792 !important;	
-    background-color:#fff !important;}
+    color:#8db792 !important;
+background-color: transparent !important;
+}
+
 
 .navbar-default .navbar-toggle {
     border-color: transparent;
@@ -136,14 +401,18 @@ body {  font-family: ge thameen;
 }
 
 header.masthead {
-  margin-bottom: 50px;
+      height: 100vh;
   background: no-repeat center center;
-  background-color: #868e96;
   background-attachment: scroll;
   position: relative;
   background-size: cover;
 }
 
+header.masthead.inner {
+	  height: 47vh;
+	  margin-bottom: 50px;
+}
+  
 header.masthead .overlay {
   position: absolute;
   top: 0;
@@ -151,7 +420,7 @@ header.masthead .overlay {
   height: 100%;
   width: 100%;
   background-color: #212529;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 header.masthead .page-heading,
@@ -187,7 +456,6 @@ header.masthead .site-heading .subheading {
   line-height: 1.1;
   display: block;
   margin: 10px 0 0;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 @media only screen and (min-width: 768px) {
@@ -211,14 +479,12 @@ header.masthead .post-heading .subheading {
   font-size: 24px;
   font-weight: 600;
   margin: 10px 0 30px;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 header.masthead .post-heading .meta {
   font-size: 20px;
   font-weight: 300;
   font-style: italic;
-  font-family: 'Lora', 'Times New Roman', serif;
 }
 
 header.masthead .post-heading .meta a {
@@ -287,7 +553,7 @@ header.masthead .post-heading .meta a {
     color: #fcfcfc; 
     border: 1pt solid #cbbe2d;
     border-radius: 7px; 
-    font-family: ge thameen;
+    font-family: Cairo-reg;
 }
 
 .btn:hover {
@@ -297,7 +563,7 @@ header.masthead .post-heading .meta a {
     color: #fcfcfc;
     border-radius: 7px;
     text-decoration: none;
-    font-family: ge thameen;  
+    font-family: Cairo-reg;  
 }
 
 
@@ -325,7 +591,7 @@ header.masthead .post-heading .meta a {
     text-align: right;
     cursor: pointer;
     transition: 0.2s;
-    font-family: ge thameen;
+    font-family: Cairo-reg;
     font-size: 18px;
 }
 
@@ -414,7 +680,7 @@ footer a:hover {   color:  #8db792;}
 .site-title h3 {
     font-size: 3.5em;
     color: #14B9D5;
-    font-family: ge thameen;;
+    font-family: Cairo-reg;;
     font-weight: 700;
 }
 .site-title p {
@@ -440,4 +706,80 @@ footer a:hover {   color:  #8db792;}
 .about-right img {
     width: 100%;
 }
+
+
+.panel-login {
+  border: none;
+  box-shadow: none;
+/*    border: solid 3px #006645;
+    border-radius: 6px;
+    box-shadow: none;*/
+}
+.panel-login>.panel-heading {
+ 
+  color: #00415d;
+  background-color: #fff;
+  border-color: #fff;
+  text-align:center;
+}
+.panel-login>.panel-heading a{
+  text-decoration: none ;
+  color: #666;
+  font-weight: bold;
+  font-size: 15px;
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+.panel-login>.panel-heading a.active{
+  color: #029f5b;
+  font-size: 18px;
+  
+}
+.panel-login>.panel-heading hr{
+  margin-top: 10px;
+  margin-bottom: 0px;
+  clear: both;
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+  background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+  background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+  background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+}
+.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"],.panel-login input[type="date"] ,.panel-login input[type="phone"] {
+        height: 33px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+        text-align: center;
+        
+}
+
+
+.btn-login {
+  background-color: #59B2E0;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  height: auto;
+  font-weight: normal;
+  padding: 14px 0;
+  text-transform: uppercase;
+  border-color: #59B2E6;
+}
+
+.forgot-password {
+    text-decoration: none;
+      color: #888;
+}
+.forgot-password:hover,
+.forgot-password:focus {
+  text-decoration: underline;
+  color: #666;
+}
+
+
 

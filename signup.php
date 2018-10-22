@@ -2,8 +2,25 @@
 <!-- the header of the page-->
 <?php
 $page_title = " إنشاء حساب جديد"; //page title to pass it to the header
-include("includes/Header.php"); // the header of the page
+include("includes/Header2.php"); // the header of the page
 ?>
+
+<!-- Page Header -->
+<header class="masthead inner" style="background-image: url('images/header-7.jpg')">
+	<div class="overlay"></div>
+	<div class="container-fluid p-r-l-51 p-t-160 ">
+	  <div class="row">
+	    <div class="col-lg-12 col-md-12 mx-auto">
+	      <div class="">
+	        <h2 class="yellow-text">إنشاء حساب جديد</h2>
+                              <h4 class="subheading white-text">قم بإدخال البيانات المطلوبة</h4>
+
+	      </div>
+	    </div>
+	  </div>
+	</div>
+			    </header>
+			    
 <script>
     function myFunction() {
         var x = document.getElementById("password");
@@ -162,37 +179,29 @@ include("includes/Header.php"); // the header of the page
         <div class="row">
             <div class="col-lg-12 ">
                 <div class="panel panel-login">
-                    <div class="panel-heading">
-                        <div class="row">       
-                            <div class="col-lg-12">
-                                <h1>إنشاء حساب</h1>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12"> 
                                 <form method="post" id="register-form"  role="form" style="display: block;"
                                       autocomplete="on">
                                     <fieldset>
-                                        <legend>المعلومات الشخصية</legend>
+                                                 <h3 class="sub-heading">المعلومات الشخصية</h3>
 
-                                        <div class="col-lg-12"> 
-                                            <div class="form-group col-lg-4 ">
+<div class="row">
+     <div class="form-group col-lg-4">
 
-                                                <input class='form-control' style="  text-align: right;" type="text" name="LastName" id="username" tabindex="1" class="form-control" placeholder="العائلة" 
-                                                       value="<?php
-                                                       if (isset($_POST['LastName'])) {
-                                                           echo $_POST['LastName'];
-                                                       }
-                                                       ?>" 
-                                                       ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
-                                                <div>  <?php echo "<p class = 'text-danger'>$errLastName</p>"; ?> </div>
-                                            </div>
+                                                    <input class='form-control' style="  text-align: right;" type="text" name="FirstName" id="username" tabindex="1" class="form-control" placeholder="الاسم الأول" 
+                                                           value="<?php
+                                                           if (isset($_POST['FirstName'])) {
+                                                               echo $_POST['FirstName'];
+                                                           }
+                                                           ?>"
+                                                           data-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
+                                                    <div>  <?php echo "<p class = 'text-danger'>$errName</p>"; ?> </div>
 
+                                                </div>
+                                           
 
-                                            <center>
                                                 <div class="form-group col-lg-4">
 
                                                     <input class='form-control' style="  text-align: right;" type="text" name="MiddleName" id="username" tabindex="1" class="form-control" placeholder="اسم الأب"
@@ -201,74 +210,76 @@ include("includes/Header.php"); // the header of the page
                                                                echo $_POST['MiddleName'];
                                                            }
                                                            ?>"
-                                                           ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
+                                                           data-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
                                                     <div>  <?php echo "<p class = 'text-danger'>$errMiddleName</p>"; ?> </div>
                                                 </div>
-                                                <div class="form-group col-lg-4">
 
-                                                    <input class='form-control' style="  text-align: right;" type="text" name="FirstName" id="username" tabindex="1" class="form-control" placeholder="الاسم الأول" 
-                                                           value="<?php
-                                                           if (isset($_POST['FirstName'])) {
-                                                               echo $_POST['FirstName'];
-                                                           }
-                                                           ?>"
-                                                           ata-toggle="tooltip" data-placement="bottom" title="اسمك كما تريد أن يظهر في الشهادة">
-                                                    <div>  <?php echo "<p class = 'text-danger'>$errName</p>"; ?> </div>
+                                                 <div class="form-group col-lg-4 ">
 
-                                                </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <input  type="text" name="nationalID" id="nationalID" maxlength="10" tabindex="1" class="form-control" 
+                                                <input class='form-control' style="  text-align: right;" type="text" name="LastName" id="username" tabindex="1" class="form-control" placeholder="العائلة" 
+                                                       value="<?php
+                                                       if (isset($_POST['LastName'])) {
+                                                           echo $_POST['LastName'];
+                                                       }
+                                                       ?>">
+                                                <div>  <?php echo "<p class = 'text-danger'>$errLastName</p>"; ?> </div>
+                                            </div>
+
+                                               
+                                        <div class="form-group col-lg-4">
+                                            <input  type="text" name="nationalID"  style="  text-align: right;" id="nationalID" maxlength="10" tabindex="1" class="form-control" 
                                                    placeholder="رقم السجل المدني/الإقامة" 
                                                    value="<?php
                                                    if (isset($_POST['nationalID'])) {
                                                        echo $_POST['nationalID'];
                                                    }
                                                    ?>" 
-                                                   ata-toggle="tooltip" data-placement="bottom" title="السجل المدني">
+                                                   data-toggle="tooltip" data-placement="bottom" title="السجل المدني">
                                             <div>  <?php echo "<p class = 'text-danger'>$errID</p>"; ?> </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="radio" >
-                                                <center >
+                                        <div class="form-group col-lg-4">
+                                            <div class="radio " >
 
 
                                                     <label><input type="radio" name="gender" value="F" checked>أنثى</label>
 
                                                     <label><input type="radio" name="gender" value="M">ذكر</label>
                                                     <label>الجنس</label>
-                                                </center>
                                             </div>
                                         </div>
                                   
                                        
-                                        <div class="form-group">
-                                            <input type="text" name="city" id="city" tabindex="1" class="form-control" placeholder="مكان الإقامة" 
+                                        <div class="form-group col-lg-4">
+                                            <input type="text" name="city" style="  text-align: right;" id="city" tabindex="1" class="form-control" placeholder="مكان الإقامة" 
                                                    value="<?php
                                                    if (isset($_POST['city'])) {
                                                        echo $_POST['city'];
                                                    }
                                                    ?>" 
-                                                   ata-toggle="tooltip" data-placement="bottom" title="مكان الإقامة">
+                                                   data-toggle="tooltip" data-placement="bottom" title="مكان الإقامة">
                                             <div>  <?php echo "<p class = 'text-danger'>$errCity</p>"; ?> </div>
                                         </div>
-                                        <div class="form-group">
-                                            <span class="input-group-addon" ata-toggle="tooltip" data-placement="bottom" title="تاريخ الميلاد">تاريخ  الميلاد </span>
-                                            <input type="date" name="birthdate" id="bithdate" tabindex="1" class="form-control" placeholder="تاريخ الميلاد" 
+                                        <div class="form-group col-lg-4">
+                                         
+
+                                            <input type="date" name="birthdate" style="  text-align: right;" id="bithdate" tabindex="1" class="form-control" placeholder="تاريخ الميلاد" 
                                                    value="<?php
                                                    if (isset($_POST['birthdate'])) {
                                                        echo $_POST['birthdate'];
                                                    }
                                                    ?>"  >
 
-                                        </div>
+                                        </div></div>
+
 
                                         <fieldset>
-                                            <legend>معلومات الدراسة / الوظيفة</legend>
-                                            <div class="form-group">
-                                                <span class="input-group-addon"  ata-toggle="tooltip" data-placement="bottom"  title="المؤهل العلمي">المؤهل العلمي </span>
+                                            <h3 class="sub-heading">معلومات الدراسة / الوظيفة</h3>
+<div class="row">
+                                            <div class="form-group col-lg-4">
+                                             
 
                                                 <select class="form-control" name="degree" id="degree">
+                                                    <option selected disabled="">المؤهل العلمي</option>
                                                     <option value="متوسط">متوسط</option>
                                                     <option value="ثانوي">ثانوي</option>
                                                     <option value ="بكالوريوس">بكالوريوس</option>
@@ -277,10 +288,11 @@ include("includes/Header.php"); // the header of the page
                                                 </select>
                                             </div>
                                             
-                                            <div class="form-group">
-                                                <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="الجنسية">الجنسية </span>
+                                            <div class="form-group col-lg-4">
+                                           
 
                                                 <select class="form-control" name="nationality" id="nationality">
+                                                    <option selected disabled="">الجنسية</option>
                                                     <option value="السعودية">السعودية</option>
                                                     <option value="السودان">السودان</option>
                                                     <option value ="الجزائر">الجزائر</option>
@@ -326,10 +338,10 @@ include("includes/Header.php"); // the header of the page
                                                 </select>
                                             </div>
 
-                                            <div class="form-group">
-                                                <span class="input-group-addon"ata-toggle="tooltip" data-placement="bottom" title="الوظيفة">الوظيفة </span>
+                                            <div class="form-group col-lg-4">
 
                                                 <select class="form-control" name="workstatus" id="degree">
+                                                    <option selected disabled="">الوظيفة</option>
                                                     <option value="طالب">طالب</option>
                                                     <option value ="موظف">موظف</option>
                                                     <option value="لا أعمل">لا أعمل</option>
@@ -337,69 +349,76 @@ include("includes/Header.php"); // the header of the page
                                                 </select>
                                             </div>
 
-                                            <div class="form-group">
-                                                <input type="text" name="worktype" id="workstation" tabindex="1" class="form-control" placeholder="المسمى الوظيفي" 
+                                            <div class="form-group col-lg-4">
+                                                <input type="text" name="worktype" style="  text-align: right;" id="workstation" tabindex="1" class="form-control" placeholder="المسمى الوظيفي" 
                                                        value="<?php
                                                        if (isset($_POST['worktype'])) {
                                                            echo $_POST['worktype'];
                                                        }
                                                        ?>" 
-                                                       ata-toggle="tooltip" data-placement="bottom" title="اسم الوظيفة">
+                                                       data-toggle="tooltip" data-placement="bottom" title="اسم الوظيفة">
                                                 <div>  <?php echo "<p class = 'text-danger'> $errwork</p>"; ?> </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <input type="text" name="sector" id="workstation" tabindex="1" class="form-control" placeholder="جهه العمل" 
+                                            <div class="form-group col-lg-4">
+                                                <input type="text" name="sector" style="  text-align: right;" id="workstation" tabindex="1" class="form-control" placeholder="جهه العمل" 
                                                        value="<?php
                                                        if (isset($_POST['sector'])) {
                                                            echo $_POST['sector'];
                                                        }
                                                        ?>" 
-                                                       ata-toggle="tooltip" data-placement="bottom" title="اسم مكان العمل">
+                                                       data-toggle="tooltip" style="  text-align: right;" data-placement="bottom" title="اسم مكان العمل">
                                                 <div>  <?php echo "<p class = 'text-danger'> $errsector</p>"; ?> </div>
                                             </div>
+
+</div>
                                         </fieldset>
                                         <fieldset>
-                                            <legend>معلومات التواصل</legend>
-                                            <div class="form-group">
-                                                <input type="phone" name="phone" id="phone" tabindex="1" class="form-control" placeholder="رقم الهاتف/الجوال" 
+                                               <h3 class="sub-heading">معلومات التواصل</h3>
+
+<div class="row">
+                                            <div class="form-group col-lg-4">
+                                                <input type="phone" name="phone" style="  text-align: right;" id="phone" tabindex="1" class="form-control" placeholder="رقم الهاتف/الجوال" 
                                                        value="<?php
                                                        if (isset($_POST['phone'])) {
                                                            echo $_POST['phone'];
                                                        }
                                                        ?>" 
-                                                       ata-toggle="tooltip" data-placement="bottom" title="رقم الهاتف" maxlength="10">
+                                                       data-toggle="tooltip" data-placement="bottom" title="رقم الهاتف" maxlength="10">
                                                 <div>  <?php echo "<p class = 'text-danger'>$errPhone</p>"; ?> </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="البريد الإلكتروني"
+                                            <div class="form-group col-lg-4">
+                                                <input type="email" name="email" style="  text-align: right;" id="email" tabindex="1" class="form-control" placeholder="البريد الإلكتروني"
                                                        value="<?php
                                                        if (isset($_POST['email'])) {
                                                            echo $_POST['email'];
                                                        }
                                                        ?>"  
-                                                       ata-toggle="tooltip" data-placement="bottom" title="البريد الإلكتروني">
+                                                       data-toggle="tooltip" data-placement="bottom" title="البريد الإلكتروني">
                                                 <div>  <?php echo "<p class = 'text-danger'>$erremail</p>"; ?> </div>
                                             </div>
+                                        </div>
                                         </fieldset>
 
                                         <fieldset>
-                                            <legend>معلومات الحساب</legend>
-                                            <div class="form-group">
-                                                <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="إسم المستخدم" 
+                                                                                           <h3 class="sub-heading">معلومات الحساب</h3>
+<div class="row">
+
+                                            <div class="form-group col-lg-4">
+                                                <input type="text" name="username" style="  text-align: right;" id="username" tabindex="1" class="form-control" placeholder="إسم المستخدم" 
                                                        value="<?php
                                                        if (isset($_POST['username'])) {
                                                            echo $_POST['username'];
                                                        }
                                                        ?>" 
-                                                       ata-toggle="tooltip" data-placement="bottom" title="اسم المستخدم">
+                                                       data-toggle="tooltip" data-placement="bottom" title="اسم المستخدم">
                                                 <div>  <?php echo "<p class = 'text-danger'>$errUsername</p>"; ?> </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="كلمة المرور" 
-                                                       ata-toggle="tooltip" data-placement="bottom" title="كلمة المرور"
+                                            <div class="form-group col-lg-4">
+                                                <input type="password" name="password" style="  text-align: right;" id="password" tabindex="2" class="form-control" placeholder="كلمة المرور" 
+                                                       data-toggle="tooltip" data-placement="bottom" title="كلمة المرور"
                                                        value="<?php
                                                        if (isset($_POST['password'])) {
                                                            echo $_POST['password'];
@@ -409,36 +428,39 @@ include("includes/Header.php"); // the header of the page
                                                 اظهار كلمة المرور   <input type="checkbox" onclick="myFunction()"> 
                                                 <div>  <?php echo "<p class = 'text-danger'>$errPassword</p>"; ?> </div>
                                             </div>
-                                            <div class="form-group">
-                                                <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="اعادة كلمة المرور" 
-                                                       ata-toggle="tooltip" data-placement="bottom" title="اعد كتابة كلمة المرور">
+                                            <div class="form-group col-lg-4">
+                                                <input type="password" name="confirm-password" style="  text-align: right;" id="confirm-password" tabindex="2" class="form-control" placeholder="اعادة كلمة المرور" 
+                                                       data-toggle="tooltip" data-placement="bottom" title="اعد كتابة كلمة المرور">
                                                 <div>  <?php echo "<p class = 'text-danger'>$errConfirm</p>"; ?> </div>
                                             </div>
                                         </fieldset>
                                         <fieldset>
-                                            <legend>الإقرار</legend>
-                                            <div class="form-group">
-                                                <a href="includes/CharterofVolunteerism.pdf" target="_blank" ata-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required>
+                                             <h3 class="sub-heading">الإقرار</h3>
+<div class="row">
+                                            <div class="form-group col-lg-12">
+                                                <a href="includes/CharterofVolunteerism.pdf" target="_blank" data-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required>
                                                     <b>أقر أني اطلعت على ميثاق التطوع</b> 
                                                 </a> 
                                                 <input type="checkbox" name="check" value="ok" required >  
 
                                                 </input>
                                             </div>
-                                            <div class="form-group">
-                                                <a href="includes/Terms_and_Conditions.pdf" target="_blank" ata-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required> 
+                                            <div class="form-group col-lg-12">
+                                                <a href="includes/Terms_and_Conditions.pdf" target="_blank" data-toggle="tooltip" data-placement="bottom" title="اقرأ الشروط" required> 
                                                     <b>أتعهد بالإلتزام بشروط و أحكام التطوع في الجمعية السعودية للسرطان</b> </a> 
                                                 <input type="checkbox" name="check2" value="ok" required> 
 
                                                 </input>
                                             </div>
+                                        </div>
                                         </fieldset>
-                                        <br>
+                                        
+
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-sm-6 col-sm-offset-3">
-                                                    <input type="submit" name="register-submit" id="register-submit" tabindex="4"
-                                                           class="form-control btn btn-register" value="سجل الآن">
+                                                <div class="col-sm-4 col-sm-offset-4">
+                                                                                                             <input type="submit" name="register-submit" id="register-submit" tabindex="4" value="سجل الآن" class="btn btn-block btn-success">
+
 
                                                 </div>
                                             </div>
@@ -458,9 +480,7 @@ include("includes/Header.php"); // the header of the page
             </div>
         </div>
     </div>
-    <br>
 
-    <br>
 
     <!--Footer of the page -->
 

@@ -1,5 +1,5 @@
 <?php
-include("includes/Header.php"); // the header of the page
+include("includes/Header2.php"); // the header of the page
 //$_SESSION['admin'] = "true"; //000
 include("includes/connection.php"); //connecting to the database
 mysqli_set_charset($con, "utf8");

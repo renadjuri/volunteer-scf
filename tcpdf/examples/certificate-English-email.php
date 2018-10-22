@@ -26,25 +26,21 @@
 
 //session_start();
 // step 1: connect to database
-include($_SERVER['DOCUMENT_ROOT']."/volunteer-saudi/includes/connection.php"); //connecting to the database
-//if (! ( $database = mysqli_connect ("localhost","root","", "cancergroup")) )
-//die ("Cann't connect to database");
-//
-//// setcharset to utf-8
-//if(mysqli_set_charset($database,'utf8'))  
-//
-//// step 2: open database
-//if ( ! ( mysqli_select_db ($database, "cancergroup")))
-//die ("Cann't open database ");
+include($_SERVER['DOCUMENT_ROOT']."/volunteer-scf/includes/connection.php"); //connecting to the database
 
+//include($_SERVER['DOCUMENT_ROOT']."/volunteer-scf/tcpdf/examples/lang/ara.php");
 //  set sql encoding
 mysqli_query($con, "SET NAMES 'utf-8'");  
 //$SqlEncoding=mysqli_client_encoding($con);
 $SqlEncoding = mysqli_character_set_name($con);
  
+if (isset($_POST['CertificateSelection'])) {
+        $volunteer_id = $_POST['VolunteerID'];
+        $event_id = $_POST['EventID'];
+}else{
 $event_id = $_GET['event_id'];
 $volunteer_id = $_GET['volunteer_id'];
-
+}
 
 //query to retrieve volunteer name 
 $query = "SELECT FirstName, MiddleName, LastName FROM volunteer WHERE VolunteerID = $volunteer_id";
@@ -53,7 +49,6 @@ if ( ! $result = mysqli_query($con, $query))
 	die ("Error While Execute Query ".mysqli_error($con));
 
 $row = mysqli_fetch_row ($result);
-
 
 //query to retrieve event name
 $query2 = "SELECT EventName FROM event WHERE EventID = $event_id";
@@ -75,9 +70,14 @@ $AttendedHours = $row3[0];
 $AttendedHours = number_format($AttendedHours,0);
 
 // Include the main TCPDF library (search for installation path).
-require_once('tcpdf_include.php');
-
+if (!class_exists('TCPDF')) {
+    //echo "inside tcpdf";
+require_once ($_SERVER['DOCUMENT_ROOT'].'/volunteer-scf/tcpdf/tcpdf.php');
+}
+//require_once('tcpdf_include.php');
+//require_once (dirname(__FILE__) . '/tcpdf_include.php');
 // create new PDF document
+if(!class_exists('TCPDF')){die('TCPDF could not be loaded. Abort!');}
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 // set document information
@@ -126,11 +126,11 @@ $pdf->AddPage('L', 'A4');
 $pdf->setPage(1, true);
 $pdf->SetY(13);
 
-
+$img_path=preg_replace('#/+#','/',"images/CertF2.png");
 $html1 = <<<EOD
 <table border="0">
 <tr>
-<td><img src="images\CertF2.png" height="21cm"></td>
+<td><img src="$img_path" height="21cm"></td>
 </tr>
 </table>
 EOD;
@@ -147,6 +147,9 @@ $html2 = <<<EOD
 EOD;
 		
 	$pdf->writeHTMLCell(50, 0, '20', '10',$html2, 0, 1, 0, true, '', true);
+//$pdf->SetFont('times', '', 20);
+//To show names in Arabic
+$pdf->SetFont('aealarabiya', '', 20);
 
 $html3 = <<<EOD
 <table border="0">
@@ -155,7 +158,7 @@ $html3 = <<<EOD
 <td width="600" style="text-align:center;"><p style="color:#b7a900; font-size:35px;"><strong> Volunteer Certificate </strong></p>
 The Saudi Cancer Foundation certifies that
 <p style="color:#b7a900;"><strong> $row[0] $row[1] $row[2] </strong></p>
-<p> had contributed in the organization of $row2[0] event for $AttendedHours hours </p>
+<p> had contributed in the organization of <span>$row2[0]</span> event for $AttendedHours hours </p>
 </td>
 </tr>
 </table>
@@ -186,7 +189,96 @@ $pdf->lastPage();
 $filename='Certificate.pdf';
 //Close and output PDF document
 $pdf->Output($filename, 'I');
+//Try sending the certificate to email
+//sendMail();
 
 //============================================================+
 // END OF FILE
-//============================================================+
+//============================================================
+//function sendMail() {
+// 
+// 
+// 
+// 
+// 
+// // if (!isset ($_POST['to_email'])) { //Oops, forgot your email addy!
+// //   die ("<p>Oops!  You forgot to fill out the email address! Click on the back arrow to go back</p>");
+// // }
+// // else {
+//    //$to_name = "Incident Control ";
+//    
+//    //*******  VARIABLE SETUP  *******//
+//    //$from_name = stripslashes($_POST['from_name']);
+//    //$subject = stripslashes($_POST['subject']);
+//    $filecount = 0;
+//    
+//    
+//    
+//    
+//    //$body = stripslashes($_POST['body']);
+//     
+//  $to_email = ""; 
+//    $attachment = $_FILES['attachment']['tmp_name'];
+//    $attachment_name = $_FILES['attachment']['name']; 
+//    $email = stripslashes($_POST['email']);
+//    $subject = "Certificate";
+//    //if ($impact != "3-Medium")
+//    //    $to_email = "yyy@yyyy.com";
+//    //else
+//    //    $to_email = "xxxx@xxxx.com";
+//    //*****  END VARIABLE SETUP  *****//
+//    
+//    foreach($_FILES as $file => $value) {
+//      $attachment[(int)$filecount] = $_FILES[$file]['tmp_name'];
+//      $attachment_name[(int)$filecount] = $_FILES[$file]['name']; 
+//      if (is_uploaded_file($attachment[(int)$filecount])) { //Do we have a file uploaded?
+//        $fp = fopen($attachment[(int)$filecount], "rb"); //Open it
+//        $data[(int)$filecount] = fread($fp, filesize($attachment[(int)$filecount])); //Read it
+//        $data[(int)$filecount] = chunk_split(base64_encode($data[(int)$filecount])); //Chunk it up and encode it as base64 so it can emailed
+//        fclose($fp);
+//        $filecount++;
+//      } 
+//    
+// 
+//    }
+//    //Let's start our headers
+// //   $headers = "From: $lanid<" . $_POST['email'] . ">\n";
+//   // $headers .= "Reply-To: <" . $_POST['email'] . ">\n"; 
+//    $headers = "MIME-Version: 1.0\n";
+//    $headers .= "Content-Type: multipart/related; type=\"multipart/alternative\"; boundary=\"----=MIME_BOUNDRY_main_message\"\n"; 
+//    $headers .= "X-Sender: $lanid<" . $_POST['email'] . ">\n";
+//    $headers .= "X-Mailer: PHP4\n";
+//    $headers .= "X-Priority: 3\n"; //1 = Urgent, 3 = Normal
+//    $headers .= "Return-Path: <" . $_POST['email'] . ">\n"; 
+//    $headers .= "This is a multi-part message in MIME format.\n";
+//    $headers .= "------=MIME_BOUNDRY_main_message \n"; 
+//    $headers .= "Content-Type: multipart/alternative; boundary=\"----=MIME_BOUNDRY_message_parts\"\n"; 
+//    
+//    $message = "------=MIME_BOUNDRY_message_parts\n";
+//    $message .= "Content-Type: text/html; charset=\"iso-8859-1\"\n"; 
+//    $message .= "Content-Transfer-Encoding: quoted-printable\n"; 
+//    $message .= "\n"; 
+//    /* Add our message, in this case it's plain text.  You could also add HTML by changing the Content-Type to text/html */
+//    //$message .= "$body\n";
+//    $message .= "<b><u>Contact Details</u></b>";
+//    $message .= "<b>Requestor E-mail:</b>  " . $email  . "";
+//
+//    $message .= "<b><u>Impact Information</u></b>";        
+//    $message .= "\n"; 
+//    $message .= "------=MIME_BOUNDRY_message_parts--\n"; 
+//    $message .= "\n"; 
+//    for ($i = 0, $filecount = (int) count($data); $i < $filecount; $i++) {
+//    $message .= "------=MIME_BOUNDRY_main_message\n"; 
+//    $message .= "Content-Type: application/octet-stream;\n\tname=\"" . $attachment_name . "\"\n";
+//    $message .= "Content-Transfer-Encoding: base64\n";
+//    $message .= "Content-Disposition: attachment;\n\tfilename=\"" . $attachment_name . "\"\n\n";
+//    $message .= (isset($data)); //The base64 encoded message
+//    $message .= "\n"; 
+//    }
+//    $message .= "------=MIME_BOUNDRY_main_message--\n"; 
+// 
+//    // send the message
+//    mail("$to_email", $subject, $message, $headers); 
+//    print "Ticket Request Sent.  Thank you.";
+//    
+//}

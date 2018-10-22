@@ -1,5 +1,5 @@
 <?php
-include("includes/Header.php"); // the header of the page
+include("includes/Header2.php"); // the header of the page
 //$_SESSION['admin'] = "true"; //000
 include("includes/connection.php"); //connecting to the database
 mysqli_set_charset($con, "utf8");
@@ -94,7 +94,7 @@ $result = mysqli_query($con, $query);
 
 //Events' list
 echo " <div class='row'> ";
-echo "<div class='[ col-sm-8 col-sm-offset-2 col-md-7 ]'>";
+echo "<div class='[ col-sm-8 col-sm-offset-1 col-md-7 ]'>";
 echo "<form method='post' class='form-inline' name='Volunteer_selectEvent' action='admin_volunteers_at_events_tab.php'>";
 echo "<button type='submit' class='btn btn-success' name='show'  value='show'>عرض</button> &nbsp;&nbsp;";
 

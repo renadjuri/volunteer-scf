@@ -2,6 +2,7 @@
     body{
         background-size:cover;
         background-attachment:fixed;
+        margin-top: 70px;
     }
     a:hover{
         text-decoration: none;

@@ -1,6 +1,6 @@
 <?php
 $page_title = "تواصل معنا"; //page title to pass it to the header
-include("includes/Header.php"); // the header of the page
+include("includes/Header2.php"); // the header of the page
 ?>
 <body>
 
@@ -50,92 +50,85 @@ include("includes/Header.php"); // the header of the page
     }
     ?>
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('images/contact-bg.jpg')">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-10 mx-auto">
-                    <div class="site-heading">
-                        <h1>تواصل معنا</h1>
-                        <span class="subheading"> يسعدنا استقبال ملاحظاتكم و إستفساراتكم</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <br>
+    <header class="masthead inner" style="background-image: url('images/header-6.jpg')">
+		<div class="overlay"></div>
+		<div class="container-fluid p-r-l-51 p-t-160 ">
+		  <div class="row">
+		    <div class="col-lg-12 col-md-12 mx-auto">
+		      <div class="">
+		        <h2 class="yellow-text">تواصل معنا</h2>
+		        <h4 class="subheading white-text">يسعدنا استقبال ملاحظاتكم و استفساراتكم</h4>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+				    </header>
 
 
     <!-- Contact form -->
-
-    <div class="container-fluid bg text-right" id="contact">
-
-        <br>
+  <div class="container-fluid p-r-l-51 p-b-50"  id="contact">    
         <div class="row">
 
 
-            <div class="col-sm-7">
-            <h3>يمكنك تعبئة النموذج التالي و سنقوم بالرد في أقرب وقت </h3>
-
-            <form class="form-horizontal" role="form" method="post" action="contact.php">
-                    <div class="form-group">
-<!--  value ="<?php //echo htmlspecialchars($_POST['email']);             ?>"-->
-                        <div class="col-sm-10 col-sm-offset-2">
-                            <input type="text" class="form-control text-right" id="name" name="name"  
-                                   placeholder="الأسم الثلاثي" tabindex="1" />
-                            <div>  <?php echo "<p class='text-danger'>$errName</p>"; ?> </div>
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-<!--  value ="<?php // echo htmlspecialchars($_POST['email']);             ?>"-->
-                        <div class="col-sm-10 col-sm-offset-2">
-                            <input type="email" class="form-control text-right" id="email" name="email" 
-                                   placeholder="example@domain.com" tabindex="2"  />
-                            <div> <?php echo "<p class='text-danger'>$errEmail</p>"; ?></div>
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-<!--value=" <?php // echo htmlspecialchars($_POST['message']);             ?>"-->
-                        <div class="col-sm-10 col-sm-offset-2">
-                            <textarea class="form-control text-right" rows="4" name="message"
-                                      placeholder="رسالتك" tabindex="3" ></textarea>
-                            <div> <?php echo "<p class='text-danger'>$errMessage</p>"; ?></div>
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-
-                        <div class="col-sm-10 col-sm-offset-2">
-                            <input type="text" class="form-control text-right" id="human" tabindex="4" name="human" placeholder="? = 2 + 3">
-                            <?php echo "<p class='text-danger'>$errHuman</p>"; ?>
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-
-                       <div class="col-sm-10  col-sm-offset-2">
-                            <input id="submit" name="submit" type="submit" value="أرسل" tabindex="5"
-                                   class="btn btn-success" 
-                                   ata-toggle="tooltip" data-placement="bottom" title="نسعد بسماع ملاحظاتكم"
-                                   >
-                        </div>
-                    </div>
-                    <div class="form-group">
-                         <div class="col-sm-10 col-sm-offset-2">
-                            <?php echo $result; ?>	
-                        </div>
-                    </div>
-                </form> 
-            </div> 
-            <div class="col-sm-5 col-offset-2">
-                <h3>تواصل معنا عبر أحد الوسائل التالية</h3>
-                <p><span class="glyphicon glyphicon-map-marker pull-right"></span> المملكة العربية السعودية  ,المنطقة الشرقية,الخبر  
-                    34427 &ensp;</p>
-                <p><span class="glyphicon glyphicon-phone  pull-right"></span>  0505348085 -  0138649887 &ensp;</p>
-                <p><span class="glyphicon glyphicon-envelope  pull-right"></span> info@scf.org.sa  &ensp;</p> 
-            </div>
+            <div class="col-md-4">
+																		 <h3 class="sub-heading">اتصل بنا</h3>
+																		 <div class="row">
+																		 	<div class="col-md-12"><p><span class="glyphicon glyphicon-map-marker pull-left location-icons "></span>المملكة العربية السعودية، المنطقة الشرقية، الخبر، 34427</p></div>
+																		 	<div class="col-md-12"> <p><span class="glyphicon glyphicon-phone pull-left location-icons "></span>0505348085 - 0138649887</p>
+																		 	</div>
+																		 	<div class="col-md-12"> <p><span class="glyphicon glyphicon-envelope pull-left location-icons "></span> <a href="http://scf.org.sa/">info@scf.org.sa</a></p> </div>
+																		 </div>
+																		 
+																		 
+                       </div>
+			
+			            <div class="col-md-8">
+																		 <h3 class="sub-heading">اترك رسالة</h3>
+									
+			            <form class="form-horizontal" role="form" method="post" action="contact.php">
+								<div class="row">
+								<div class="col-md-6">
+			<!--  value ="<?php //echo htmlspecialchars($_POST['email']);             ?>"-->
+			                            <input type="text" class="form-control dir-rtl" id="name" name="name"  
+			                                   placeholder="الاسم الثلاثي" tabindex="1" />
+			                            <div>  <?php echo "<p class='text-danger'>$errName</p>"; ?> </div>
+			                        </div>
+			
+								<div class="col-md-6">
+			<!--  value ="<?php // echo htmlspecialchars($_POST['email']);             ?>"-->
+			                        
+			                            <input type="email" class="form-control dir-rtl" id="email" name="email" 
+			                                   placeholder="example@domain.com" tabindex="2"  />
+			                            <div> <?php echo "<p class='text-danger'>$errEmail</p>"; ?></div>
+			                        </div>
+			
+								<div class="col-md-12 p-t-20">
+			               
+			<!--value=" <?php // echo htmlspecialchars($_POST['message']);             ?>"-->
+			                            <textarea class="form-control dir-rtl" rows="4" name="message"
+			                                      placeholder="رسالتك" tabindex="3" ></textarea>
+			                            <div> <?php echo "<p class='text-danger'>$errMessage</p>"; ?></div>
+			                    </div>
+								<div class="col-md-6 p-t-20">
+			
+			                            <input type="text" class="form-control dir-rtl" id="human" tabindex="4" name="human" placeholder="? = 2 + 3">
+			                            <?php echo "<p class='text-danger'>$errHuman</p>"; ?>
+			
+			                    </div>
+			
+								<div class="col-md-3 p-t-22">
+			                            <input id="submit" name="submit" type="submit" value="أرسل" tabindex="5"
+			                                   class="btn btn-block btn-success" data-toggle="tooltip" data-placement="bottom" title="نسعد بسماع ملاحظاتكم">
+			                    </div>
+			                    <div class="form-group">
+			                         <div class="col-sm-10 col-sm-offset-2">
+			                            <?php echo $result; ?>	
+			                        </div>
+			                    </div>
+								</div>
+			                </form> 
+			            </div> 
+			
 
 
         </div>

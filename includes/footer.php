@@ -4,23 +4,31 @@
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 <footer class="container-fluid text-center ">
-    <div class="social">
-
-        <a href="https://twitter.com/SaudiCancerF"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
-        <a href="https://www.snapchat.com/add/saudicancerf/"> <i class="fa fa-snapchat fa-2x" aria-hidden="true"></i></a> 
-        <a href="https://www.instagram.com/saudicancerf/"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-    </div>
-    <br>
-    <p>&copy; جميع الحقوق محفوظة لجمعية السرطان السعودية  2018 <br>
-        <a href="http://scf.org.sa" title="قم بزيارة الموقع">scf.org.sa</a>
-    </p>
-
-
+	<div class="row">
+		<div class="col-md-12">
+			 <div class="social">
+			
+			        <a href="https://twitter.com/SaudiCancerF"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+			        <a href="https://www.snapchat.com/add/saudicancerf/"> <i class="fa fa-snapchat fa-2x" aria-hidden="true"></i></a> 
+			        <a href="https://www.instagram.com/saudicancerf/"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+			    </div>
+		</div>
+		<div class="col-md-12">
+			   <p class="p-t-10">&copy; جميع الحقوق محفوظة لجمعية السرطان السعودية  2018 
+					<!--<br>-->
+			<!--        <a href="http://scf.org.sa" title="قم بزيارة الموقع">scf.org.sa</a>-->
+			    </p>
+		</div>
+	</div>
+   
+ 
 
 </footer>
 
 
 <script>
+	
+	(function($) {
     $(document).ready(function () {
         // Add smooth scrolling to all links in navbar + footer link
         $(".navbar a, footer a[href='#']").on('click', function (event) {
@@ -55,7 +63,9 @@
             });
         });
     })
+	})(jQuery);
 </script>
+
 
 <!--java script for going to the top of the page-->
 <script>
@@ -81,6 +91,14 @@
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.rtlcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+<script>
+    $.fn.select2.defaults.set("theme", "bootstrap");
+        $("select.form-control").select2({
+            width: null,
+            dir: 'rtl'
+        })
+</script>
 
 </body>
