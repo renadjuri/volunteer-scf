@@ -235,3 +235,10 @@ if (isset($_POST["selectEvent"])) {
 </body>
 
 <?php include('includes/footer.php'); ?>
+<script>
+    $.fn.select2.defaults.set("theme", "bootstrap");
+        $("select.form-control").select2({
+            width: 250,
+            dir: 'rtl'
+        })
+</script>

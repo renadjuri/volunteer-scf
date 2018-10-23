@@ -199,7 +199,7 @@ if ((isset($_POST["Volunteer_selectEvent"])) || (isset($_GET['event_id']))) {
                 }
 
                 echo "</select></td>";
-                echo "<td><a style='color:grey;' href='admin_volunteers_at_events_tab.php'> <span style='padding-right:100%;' class='glyphicon glyphicon-remove' ata-toggle = 'tooltip' data-placement = 'bottom' title ='إلغاء التعديل'></span> </a></td>";
+                echo "<td><a style='color:grey;' href='admin_volunteers_at_events_tab.php?event_id=$Volunteer_selectEvent'> <span style='padding-right:100%;' class='glyphicon glyphicon-remove' ata-toggle = 'tooltip' data-placement = 'bottom' title ='إلغاء التعديل'></span> </a></td>";
 
                 //echo "</div>";
                 echo "</form>";
@@ -421,3 +421,10 @@ echo "</div></div>";
 
 
 <?php include('includes/footer.php'); ?>
+<script>
+    $.fn.select2.defaults.set("theme", "bootstrap");
+        $("select.form-control").select2({
+            width: 250,
+            dir: 'rtl'
+        })
+</script>

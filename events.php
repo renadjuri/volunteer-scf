@@ -25,7 +25,9 @@ include("includes/Header2.php"); // the header of the page
     require 'includes/connection.php'; //connecting to the database
     mysqli_set_charset($con, "utf8");
 
-    $get_events = "select * from event ";
+    $get_events = "select * from event where event.EventID in (select distinct dateofevent.Event_ID from dateofevent where date in (select Date from (SELECT date FROM `dateofevent` group by dateofevent.Event_ID ORDER by date ASC) AS nd WHERE date > CURRENT_DATE()))";
+            //"select * from event ";
+    
 
     $run_events = mysqli_query($con, $get_events);
     $numRows = mysqli_num_rows($run_events);

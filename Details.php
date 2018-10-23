@@ -1,6 +1,6 @@
 <?php
 $page_title = "تفاصيل عن الفعالية"; //page title to pass it to the header
-include("includes/Header.php"); // the header of the page
+include("includes/Header2.php"); // the header of the page
 ?>
 
 
@@ -26,18 +26,18 @@ include("includes/Header.php"); // the header of the page
 
 <body>
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('images/header-2.png')">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-6">
-                    <div style="height: 25px; padding-top: 35px; padding-bottom: 160px;" class="site-heading">
-                        <h1>الفعاليات</h1>
-                        <span class="subheading">قم بالتسجيل بأحد الفعاليات التابعة لجمعية السرطان السعودية</span>
-                    </div>
-                </div>
+    <header class="masthead inner" style="background-image: url('images/header-5.jpg')">
+      <div class="overlay"></div>
+      <div class="container-fluid p-r-l-51 p-t-160 ">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 mx-auto">
+            <div class="">
+              <h2 class="yellow-text">الفعاليات</h2>
+              <h4 class="subheading white-text">قم بالتسجيل بأحد الفعاليات التابعة لجمعية السرطان السعودية</h4>
             </div>
+          </div>
         </div>
+      </div>
     </header>
 
 
@@ -100,7 +100,7 @@ include("includes/Header.php"); // the header of the page
             $EventImage = $row_events['EventImage'];
             $Location = $row_events['Location'];
             echo "
-<br><br>
+
 	 
 		<table  style='height:40px; width:700px; margin-top:5px; margin-left: auto; margin-right: auto; border:2px #F8F7F3 solid;' >
 		
@@ -135,8 +135,8 @@ include("includes/Header.php"); // the header of the page
             <td colspan='2' align='center'><h6 align='center'>
             <form method='post' action='EventRegistration.php'>
             <input type='hidden' name='id' value='$EventID'>
-            <div class='form-group'>
-            <select style='width:120px; margin-left: auto; margin-right: auto;' class='form-control' name='TaskOption'>";
+                <center>
+            <select class='form-control' name='TaskOption'>";
             $qry2 = "SELECT * FROM taskofevent where Event_ID=$EventID";
 
             $result2 = mysqli_query($con, $qry2);
@@ -145,7 +145,7 @@ include("includes/Header.php"); // the header of the page
                 echo "<option value='$task' >$task</option>";
             }
 
-            echo " </select> 
+            echo " </select> </center>
                     <br>
                     <br>";
 
@@ -174,3 +174,10 @@ include("includes/Header.php"); // the header of the page
     <!--Footer of the page -->
 
 <?php include('includes/footer.php'); ?>
+<script>
+    $.fn.select2.defaults.set("theme", "bootstrap");
+        $("select.form-control").select2({
+            width: 150,
+            dir: 'rtl'
+        })
+</script>
