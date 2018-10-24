@@ -40,6 +40,7 @@ include("includes/Header2.php"); // the header of the page
     <?php
     require 'includes/connection.php'; //connecting to the database
     mysqli_set_charset($con, "utf8");
+     $nationality= $degree= $workstatus="";
     $errName = $errMiddleName = $errLastName = $errID = $errnationality = $errCity = $errPhone = $erremail = $errUsername = $errPassword = $errConfirm = $errorUser = $errUser = $msg = $gender = $errwork = $errsector= "";
     if (isset($_POST['register-submit'])) {
         $nationalID = $_POST['nationalID'];

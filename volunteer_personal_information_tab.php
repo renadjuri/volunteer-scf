@@ -12,7 +12,7 @@ $_SESSION["username"];
 
 <body>
 
-<!-- Tab Name -->
+    <!-- Tab Name -->
 <legend> <h1>المعلومات الشخصية &nbsp;</h1></legend>
 <?php
 $query = 'select VolunteerID, FirstName, MiddleName, LastName, MobileNumber, DateOfBirth, Gender, residence, nationality, Qualification, WorkStatus, WorkType, Sector,  Email, password from volunteer, account  where account.Username = volunteer.VolunteerUsername and account.Username = "' . $username . '"';
@@ -59,7 +59,7 @@ if (isset($_POST['update'])) {
     $WorkType = $_POST["WorkType"];
     $Sector = $_POST['Sector'];
     $Email = $_POST["email"];
-   
+
 
 
 
@@ -92,7 +92,7 @@ if (isset($_POST['update'])) {
 
         $query = "UPDATE volunteer SET FirstName='$FirstName' , MiddleName = '$MiddleName' ,LastName='$LastName', MobileNumber = '$mobile', DateOfBirth = '$bdate', Gender = '$gender', nationality = '$nationality', residence = '$residence', WorkStatus = '$WorkStatus', WorkType = '$WorkType', Sector = '$Sector' WHERE volunteer.VolunteerUsername = '$username'";
         $result = mysqli_query($con, $query);
-       
+
 
         $query = "UPDATE account SET Email='$Email' WHERE account.Username='$username'";
         $result = mysqli_query($con, $query);
@@ -132,12 +132,12 @@ if (isset($_POST['update'])) {
                     <tr>
                         <td>
                             <?php
-                            if ($Gender == 'M') {
-                                echo "ذكر<input type='radio' name='gender' value='M' checked>";
-                                echo "أنثى<input type='radio' name='gender' value='F' >";
+                            if ($Gender ==='F') {
+                                echo "ذكر <input type='radio' name='gender' value='M' checked>";
+                                echo " أنثى<input type='radio' name='gender' value='F'>";
                             } else {
-                                echo "ذكر<input type='radio' name='gender' value='M' >";
-                                echo "أنثى<input type='radio' name='gender' value='F' checked>";
+                                echo "ذكر <input type='radio' name='gender' value='M' >";
+                                echo "أنثى <input type='radio' name='gender' value='F' checked >";
                             }
                             ?>
 
@@ -192,7 +192,7 @@ if (isset($_POST['update'])) {
                         <td><input type="password" name="password" id ="password" value="<?php print ($Password); ?>" readonly required> </td>
                         <td><label>كلمة المرور</label></td>
                     </tr>
-                    
+
 
                     <tr>
                         <td><button class="btn btn-danger" name="cancel" value="cancel" type="reset">إلغاء</button></td>
